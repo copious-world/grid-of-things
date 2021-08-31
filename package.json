@@ -1,0 +1,31 @@
+{
+  "name": "grid-of-things",
+  "version": "1.0.0",
+  "description": "Components for web pages (Sevlte) providing a grid layout and management of things",
+  "main": "index.js",
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/copious-world/grid-of-things.git"
+  },
+  "devDependencies": {
+    "rollup": "^2.55.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-svelte": "^7.1.0",
+    "svelte": "^3.41.0"
+  },
+  "keywords": [
+    "Svelte",
+    "grid",
+    "responsive"
+  ],
+  "author": "Richard Leddy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/copious-world/grid-of-things/issues"
+  },
+  "homepage": "https://github.com/copious-world/grid-of-things#readme"
+}
