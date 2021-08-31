@@ -1,6 +1,6 @@
 {
   "name": "grid-of-things",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Components for web pages (Sevlte) providing a grid layout and management of things",
   "main": "index.js",
   "scripts": {

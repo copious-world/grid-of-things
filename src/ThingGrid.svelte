@@ -22,11 +22,14 @@
 		});
 	}
 
+	let grid_container_class = "grid-container"
+	let element_poster_class = "element-poster"
+
 </script>
 
-<div class='grid-container' >
+<div class={grid_container_class} >
 	{#each things as thing (thing.id)}
-		<div id="xy_{thing.id}" class="element-poster" on:click={do_display} on:mouseover="{show_titles}">
+		<div id="xy_{thing.id}" class={element_poster_class} on:click={do_display} on:mouseover="{show_titles}">
 			<svelte:component this={thing_component} {...thing} />
 		</div>
 	{/each}
