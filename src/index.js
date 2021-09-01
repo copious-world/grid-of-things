@@ -1,5 +1,5 @@
-import ThingGrid from './ThingGrid.svelte';
+import name from './ThingGrid.svelte';
 
-export default ThingGrid;
+export default name;
 
 // https://sveltesociety.dev/help/components/

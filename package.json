@@ -1,8 +1,10 @@
 {
   "name": "grid-of-things",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Components for web pages (Sevlte) providing a grid layout and management of things",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "svelte": "src/index.js",
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w"
