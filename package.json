@@ -1,33 +1,34 @@
 {
-  "name": "grid-of-things",
-  "version": "1.0.2",
-  "description": "Components for web pages (Sevlte) providing a grid layout and management of things",
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
-  "svelte": "src/index.js",
-  "scripts": {
-    "build": "rollup -c",
-    "dev": "rollup -c -w"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/copious-world/grid-of-things.git"
-  },
-  "devDependencies": {
-    "rollup": "^2.55.0",
-    "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-svelte": "^7.1.0",
-    "svelte": "^3.41.0"
-  },
-  "keywords": [
-    "Svelte",
-    "grid",
-    "responsive"
-  ],
-  "author": "Richard Leddy",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/copious-world/grid-of-things/issues"
-  },
-  "homepage": "https://github.com/copious-world/grid-of-things#readme"
+    "name": "grid-of-things",
+    "version": "1.0.2",
+    "description": "Components for web pages (Sevlte) providing a grid layout and management of things",
+    "main": "dist/index.js",
+    "module": "dist/index.mjs",
+    "svelte": "src/index.js",
+    "scripts": {
+        "build": "rollup -c",
+        "dev": "rollup -c -w",
+        "gen-docs": "jsdoc --configure ./tools/jsdoc.conf -a all -R README.md --verbose"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/copious-world/grid-of-things.git"
+    },
+    "devDependencies": {
+        "rollup": "^2.55.0",
+        "rollup-plugin-node-resolve": "^5.2.0",
+        "rollup-plugin-svelte": "^7.1.5",
+        "svelte": "^4.0.0"
+    },
+    "keywords": [
+        "Svelte",
+        "grid",
+        "responsive"
+    ],
+    "author": "Richard Leddy",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/copious-world/grid-of-things/issues"
+    },
+    "homepage": "https://github.com/copious-world/grid-of-things#readme"
 }
