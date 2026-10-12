@@ -1,8 +1,14 @@
 <script>
-	// `current` is updated whenever the prop value changes...
-	export let things;
-	export let thing_component
+	
 	import { createEventDispatcher } from 'svelte';
+	/**
+	 * @typedef {Object} Props
+	 * @property {any} things - `current` is updated whenever the prop value changes...
+	 * @property {any} thing_component
+	 */
+
+	/** @type {Props} */
+	let { things, thing_component } = $props();
 
 	const dispatch = createEventDispatcher();
 
@@ -29,8 +35,9 @@
 
 <div class={grid_container_class} >
 	{#each things as thing (thing.id)}
-		<div id="xy_{thing.id}" class={element_poster_class} on:click={do_display} on:mouseover={show_titles}>
-			<svelte:component this={thing_component} {...thing} />
+		{@const SvelteComponent = thing_component}
+		<div id="xy_{thing.id}" class={element_poster_class} onclick={do_display} onmouseover={show_titles}>
+			<SvelteComponent {...thing} />
 		</div>
 	{/each}
 </div>
