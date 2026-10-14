@@ -1,0 +1,7 @@
+
+  <tr>
+    <td class="trash-checkbox-cell"><input type="checkbox" class="trash_check_select" value="{{data.id}}" onchange="update_check_box_pattern(event)" /></td>
+    <td class="trash-recipient-cell" onclick="view_from_trash({{data.id}})">{{ data.sender }}</td>
+    <td class="trash-subject-cell" onclick="view_from_trash({{data.id}})">{{ data.subject }}</td>
+    <td class="trash-date-cell" onclick="view_from_trash({{data.id}})">{{ data.date }}</td>
+  </tr>

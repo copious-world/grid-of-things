@@ -1,0 +1,8 @@
+
+  <tr>
+    <td class="spam-checkbox-cell"><input type="checkbox" class="spam_check_select" value="{{data.id}}" onchange="update_check_box_pattern(event)" /></td>
+    <td class="spam-recipient-cell" onclick="view_from_spam({{data.id}})">{{ data.sender }}</td>
+    <td class="spam-subject-cell" onclick="view_from_spam({{data.id}})">{{ data.subject }}</td>
+    <td class="spam-date-cell" onclick="view_from_spam({{data.id}})">{{ data.date }}</td>
+  </tr>
+

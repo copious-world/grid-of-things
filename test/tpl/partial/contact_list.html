@@ -1,0 +1,9 @@
+
+  <tr>
+    <td class="contact-checkbox-cell">
+      <input type="checkbox" class="contacts_check_select" value="{{data.id}}" onchange="update_check_box_pattern(event)" />
+    </td>
+    <td class="contact-name-cell" onclick="view_from_contacts({{data.id}})">{{ data.name }}</td>
+    <td class="contact-email-cell" onclick="view_from_contacts({{data.id}})">{{ data.email }}</td>
+    <td class="contact-date-cell" onclick="view_from_contacts({{data.id}})">{{ data.date }}</td>
+  </tr>

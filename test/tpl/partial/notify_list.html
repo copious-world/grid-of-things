@@ -1,0 +1,8 @@
+
+  <tr>
+    <td class="notify-checkbox-cell"><input type="checkbox" class="notify_check_select" value="{{data.id}}" onchange="update_check_box_pattern(event)" /></td>
+    <td class="notify-recipient-cell" onclick="view_from_notify({{data.id}})">{{ data.sender }}</td>
+    <td class="notify-subject-cell" onclick="view_from_notify({{data.id}})">{{ data.subject }}</td>
+    <td class="notify-date-cell" onclick="view_from_notify({{data.id}})">{{ data.date }}</td>
+  </tr>
+</table>

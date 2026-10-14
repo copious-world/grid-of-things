@@ -1,0 +1,8 @@
+
+  <tr>
+    <td class="ed-checkbox-cell" ><input type="checkbox" class="drafts_check_select" value="{{data.id}}" onchange="update_check_box_pattern(event)" /></td>
+    <td class="ed-recipient-cell" onclick="edit_from_draft({{data.id}})">{{ data.recipient }}</td>
+    <td class="ed-subject-cell" onclick="edit_from_draft({{data.id}})">{{ data.subject }}</td>
+    <td class="ed-date-cell" onclick="edit_from_draft({{data.id}})">{{ data.date }}</td>
+  </tr>
+  

@@ -6,6 +6,11 @@
     "module": "dist/index.mjs",
     "svelte": "src/index.js",
     "scripts": {
+        "test": "node test/index.js",
+        "web": "http-server test/",
+        "service": "node bin/index.js",
+        "compile": "npx mikado-compile ./tpl/",
+        "compile-test": "npx mikado-compile ./test/tpl/",
         "build": "rollup -c",
         "dev": "rollup -c -w",
         "gen-docs": "jsdoc --configure ./tools/jsdoc.conf -a all -R README.md --verbose"
@@ -30,5 +35,8 @@
     "bugs": {
         "url": "https://github.com/copious-world/grid-of-things/issues"
     },
-    "homepage": "https://github.com/copious-world/grid-of-things#readme"
+    "homepage": "https://github.com/copious-world/grid-of-things#readme",
+    "dependencies": {
+        "mikado": "^0.8.400"
+    }
 }

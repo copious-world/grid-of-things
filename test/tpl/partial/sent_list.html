@@ -1,0 +1,7 @@
+
+  <tr>
+    <td class="sent-checkbox-cell"><input type="checkbox" class="sent_check_select" value="{{data.id}}" onchange="update_check_box_pattern(event)" /></td>
+    <td class="sent-recipient-cell" onclick="view_from_sent({{data.id}})">{{ data.recipient }}</td>
+    <td class="sent-subject-cell" onclick="view_from_sent({{data.id}})">{{ data.subject }}</td>
+    <td class="sent-date-cell" onclick="view_from_sent({{data.id}})">{{ data.date }}</td>
+  </tr>

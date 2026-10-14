@@ -1,0 +1,18 @@
+<table style="width:100%">
+  <tr>
+    <td>User:</td>
+    <td>{{ data.username }}</td>
+  </tr>
+  <tr>
+    <td>Tweets:</td>
+    <td>{{= data.last_tweet }}</td>
+    <td>{{ data.tweets.length }}</td>
+  </tr>
+  <tr>
+    <td>
+      <ul foreach="data.tweets" >
+        <li>{{ data }}</li>
+      </ul>
+    </td>
+  </tr>
+</table>
