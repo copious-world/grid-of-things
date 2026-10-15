@@ -887,6 +887,11 @@ span {
 }
 
 
+.selected-tab-bar-el {
+    font-weight: bolder;
+}
+
+
 .readers-and-comments {
     display: grid;
     background-color: rgb(253, 253, 252);
@@ -1073,6 +1078,8 @@ span {
     //
     import attachment_view_template from "./tpl/partial/attachment_view.js"
     import attachment_edit_template from "./tpl/partial/attachment_edit.js"
+    //
+    import tab_controller from "./tpl/partial/selected_entries_tab.js"
 
     
     let blg_entry_imports = {
@@ -1119,11 +1126,25 @@ span {
         }
     }
 
+    let tab_controller_management = false
+    if ( tab_controller ) {
+        let blog_view_store = new Mikado.Array()
+        let view = new Mikado(tab_controller, { observe: blog_view_store });
+        tab_controller_management = {
+            "view" : view,
+            "store" : blog_view_store,
+            "root" : null,
+            "container_el" : null
+        }
+    }
+
     window._x_share_blg_entry_managers = blg_entry_management
     window._x_share_blg_entry_classes = ['blg_list','drafts', 'published','trash']
 
     window._x_share_attachment_managers = attachment_management
     window._x_share_attachment_classes = ['view','edit']
+
+    window._x_share_tab_controller_manager = tab_controller_management
 
 </script>
 </head>
@@ -1462,12 +1483,15 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 	<div class="fade_able_content" >
 
         <div id="selected-tabs" class="selected-tabs-container" >
-            <button>selected</button><button>but_not</button><button>yet again no</button><button>speedy thoughts</button>
+            <button class="selected-tab-bar-el" style="color:darkgreen" onclick="activate_this_selected(event,1)">selected</button>
+            <button class="selected-tab-bar-el" style="color:darkgreen" onclick="activate_this_selected(event,2)">but_not</button>
+            <button class="selected-tab-bar-el" style="color:darkgreen" onclick="activate_this_selected(event,3)">yet again no</button>
+            <button class="selected-tab-bar-el" style="color:darkgreen" onclick="activate_this_selected(event,4)">speedy thoughts</button>
         </div>
         <!-- <div id="selected-tab" style="color: {{ data.active ? 'green' : 'black' }}; {{ data.value ? '' : 'display: none;' }}"></div> -->
         <div class="readers-and-comments" >
             <div class="reader-box" style="min-width: 350px;min-height: 300px;">
-                <h3>title</h3>
+                <h3 id="blg_entry_message_title">title</h3>
                 <div id="blg_entry_message_contents" class="reader-box-blog-contents" >
 
                 </div>
@@ -1482,6 +1506,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 
 	</div>
 </div>
+
 
 
 <!-- Style the label to look exactly like a button using CSS -->
@@ -1796,6 +1821,13 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
         }
     }
 
+    const tab_controller_el = document.getElementById("selected-tabs")
+
+    const tab_controller_manager = window._x_share_tab_controller_manager
+    if ( tab_controller_manager ) {
+        tab_controller_manager.root = tab_controller_el
+        tab_controller_manager?.view?.mount(tab_controller_manager.root)
+    }
 
     /**
      * 
@@ -1825,7 +1857,15 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
     }
 
     window.store_of_attachment_manager = store_of_attachment_manager
+
+    function store_of_tab_controller() {
+        if ( tab_controller_manager && tab_controller_manager.store ) {
+            return tab_controller_manager.store
+        }
+        return false
+    }
     
+    window.store_of_tab_controller = store_of_tab_controller
 
     /** --------------------------- */
     let g_current_mtype = "blg_list"
@@ -2385,6 +2425,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
             let cb_entry = new CheckBoxPatternEntry(id,cb)
             result_pattern.push(cb_entry)
         }
+        update_reader_selection_tab_with_checked(result_pattern)
     }
 
     function restore_checkbox_pattern(mtype) {
@@ -2395,6 +2436,48 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
             }
         } else {
             clear_check_boxes(mtype)
+        }
+    }
+
+
+    function do_tab_bar_tab_select(id) {
+        let tab_id = `tab-bar-el-${id}`
+        let sel_tab = document.getElementById(tab_id)
+        if ( sel_tab ) {
+            let event = {
+                "target" : sel_tab
+            }
+            activate_this_selected(event,id)
+        }
+    }
+
+
+    function update_reader_selection_tab_with_checked(cb_pattern) {
+        let o_store = store_of_tab_controller()
+        if ( o_store && cb_pattern ) {
+            const mtype = window._current_mtype
+            let obj_store = store_of_blg_entry_manager(mtype)
+            if ( obj_store ) {
+                let id_list = cb_pattern.map(cb_state => {
+                    if ( cb_state.state ) {
+                        return parseInt(cb_state.data_id)
+                    }
+                    return false
+                })
+                id_list = id_list.filter( id => (id !== false) )
+                let objects = get_list_of_objects(mtype,id_list)
+                if ( objects ) {
+                    let tab_objects = objects.map(obj => {
+                        return {
+                            "id" : obj.id,
+                            "subject" : obj.subject
+                        }
+                    })
+                    //
+                    o_store.set(tab_objects)
+                    do_tab_bar_tab_select(tab_objects[0].id)
+                }
+            }
         }
     }
 
@@ -2993,6 +3076,45 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
             }
         }
     }
+
+
+
+    /**
+     * 
+     */
+    function activate_this_selected(event,id) {
+        //
+        let tab_elements = document.getElementsByClassName("selected-tab-bar-el")
+        for ( let el of tab_elements ) {
+            el.setAttribute('x_selected',false)
+            el.style.color = "darkgreen"
+        }
+        //
+        let current_active = event.target
+        current_active.setAttribute('x_selected',true)
+        current_active.style.color = "#ec5109ff"
+        //
+        let mtype = window._current_mtype
+        let objects = get_list_of_objects(mtype,[id])
+        if ( objects ) set_blog_view_contents(objects[0])
+    }
+
+
+
+    /**
+     * 
+     */
+    function set_blog_view_contents(bobj) {
+        let title_el = document.getElementById("blg_entry_message_title")
+        let content_el = document.getElementById("blg_entry_message_contents")
+        if ( title_el && content_el ) {
+            title_el.innerText = bobj.subject
+            content_el.innerHTML = bobj.text
+        }
+    }
+
+
+
     /**
      * 
      */
