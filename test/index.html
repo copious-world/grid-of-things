@@ -15,7 +15,7 @@
 <link rel="icon" type="image/svg+xml" href="/copiousLogo.svg" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700" />
 
-<link rel="stylesheet" href="./mail_styles.css" />
+<link rel="stylesheet" href="./blg_entries_styles.css" />
 
 <style>
 
@@ -240,13 +240,13 @@
     }
 
 
-    .mail-go-container {
+    .nav-go-container {
         padding: 6px;
         padding-right: 16px;
         /*  -- */
     }
 
-    .mail-go-container > blockquote {
+    .nav-go-container > blockquote {
         border: solid 1px rgb(8, 22, 8);
         background-color: white;
         box-shadow: 3px 3px rgba(128, 128, 128, 0.377);
@@ -260,14 +260,14 @@
         display: none;
     }
 
-    details[open]  .mail-go-container > blockquote {
+    details[open]  .nav-go-container > blockquote {
         display: block;
         width: 200px;
         @starting-style { width: 0; }
     }
 
 
-    .mail-go-container ul {
+    .nav-go-container ul {
         width: calc(100% - 24px);
         list-style-type: none; /* Removes the dots */
         padding-left: 10px;
@@ -275,11 +275,11 @@
         margin: 0;             /* Prevents default browser spacing */
     }
 
-    .mail-go-container ul > li {
+    .nav-go-container ul > li {
         border-bottom: 1px solid rgb(5, 36, 5);
     }
 
-    .mail-go-container ul > li > button {
+    .nav-go-container ul > li > button {
         width: 100%;
         background-color: white;
         border:none;
@@ -289,7 +289,7 @@
         text-wrap: nowrap;
     }
 
-    .mail-go-container ul > li > button:hover {
+    .nav-go-container ul > li > button:hover {
         background-color: rgba(221, 255, 177, 0.57);
         color: rgba(255, 123, 0, 0.86)
     }
@@ -358,16 +358,10 @@
     /** list styling **/
 
 
-    .inbox_check_select {
+    .blg_list_check_select {
         border:solid 1px rgba(255, 0, 0, 0.438);
     }
-    .sent_check_select {
-        border:solid 1px rgba(255, 0, 0, 0.438);
-    }
-    .spam_check_select {
-        border:solid 1px rgba(255, 0, 0, 0.438);
-    }
-    .notify_check_select {
+    .published_check_select {
         border:solid 1px rgba(255, 0, 0, 0.438);
     }
     .drafts_check_select {
@@ -376,18 +370,15 @@
     .trash_check_select {
         border:solid 1px rgba(255, 0, 0, 0.438);
     }
-    .contacts_check_select {
-        border:solid 1px rgba(223, 110, 5, 0.9);
-    }
 
     /* drafts list */
-    .email-drafts {
+    .blg-entry-drafts {
         background-color: white;
     }
-    .email-drafts tr:hover td, tr:hover th {
+    .blg-entry-drafts tr:hover td, tr:hover th {
         background-color: #e0e0e0;
     }
-    .email-drafts > thead  th { 
+    .blg-entry-drafts > thead  th { 
         background-color: #e6f0d4ff; 
     }
     .drafts-checkbox-th { background-color: white; cursor: pointer; width: 5%;}
@@ -400,136 +391,79 @@
     .ed-subject-cell { background-color: white; cursor: pointer; width: 33%; padding-left: 4%; }
     .ed-date-cell { background-color: white; cursor: pointer; width: 33%; padding-left: 4%; }
 
-    .email-drafts th > button {
+    .blg-entry-drafts th > button {
         color: navy;
     }
-    .email-drafts th > button:hover {
+    .blg-entry-drafts th > button:hover {
         color: green;
         background-color: #f7fddcff;
     }
 
-    /* sent list */
-    .email-sent {
+    /* published list */
+    .blg-entry-published {
         background-color: white;
     }
-    .email-sent tr:hover td, tr:hover th {
+    .blg-entry-published tr:hover td, tr:hover th {
         background-color: #e0e0e0;
     }
-    .email-sent > thead  th { 
+    .blg-entry-published > thead  th { 
         background-color: #e6f0d4ff; 
     }
-    .sent-checkbox-th { background-color: white; cursor: pointer; width: 5%;}
-    .sent-recipient-th { background-color: white; cursor: pointer; width: 25%; }
-    .sent-subject-th { background-color: white; cursor: pointer; width: 33%; }
-    .sent-date-th { background-color: white; cursor: pointer; width: 33%; }
+    .published-checkbox-th { background-color: white; cursor: pointer; width: 5%;}
+    .published-recipient-th { background-color: white; cursor: pointer; width: 25%; }
+    .published-subject-th { background-color: white; cursor: pointer; width: 33%; }
+    .published-date-th { background-color: white; cursor: pointer; width: 33%; }
     /* ----   */
-    .sent-checkbox-cell { background-color: white; cursor: pointer; width: 5%; }
-    .sent-recipient-cell { background-color: white; cursor: pointer; width: 25%; padding-left: 4%; }
-    .sent-subject-cell { background-color: white; cursor: pointer; width: 33%; padding-left: 4%; }
-    .sent-date-cell { background-color: white; cursor: pointer; width: 33%; padding-left: 4%; }
+    .published-checkbox-cell { background-color: white; cursor: pointer; width: 5%; }
+    .published-recipient-cell { background-color: white; cursor: pointer; width: 25%; padding-left: 4%; }
+    .published-subject-cell { background-color: white; cursor: pointer; width: 33%; padding-left: 4%; }
+    .published-date-cell { background-color: white; cursor: pointer; width: 33%; padding-left: 4%; }
 
-    .email-sent th > button {
+    .blg-entry-published th > button {
         color: navy;
     }
-    .email-sent th > button:hover {
+    .blg-entry-published th > button:hover {
         color: green;
         background-color: #f7fddcff;
     }
 
-    
-    /* inbox list */
-    .email-inbox { 
+    /* blog list */
+    .blg-entry { 
         background-color: white; 
     }
-    .email-inbox tr:hover td, tr:hover th {
+    .blg-entry tr:hover td, tr:hover th {
         background-color: #e0e0e0;
     }
-    .email-inbox > thead  th { 
+    .blg-entry > thead  th { 
         background-color: #e6f0d4ff; 
     }
-    .in-checkbox-th { background-color: white; cursor: pointer; width: 5%;}
-    .in-recipient-th { background-color: white; cursor: pointer; width: 25%; }
-    .in-subject-th { background-color: white; cursor: pointer; width: 33%; }
-    .in-date-th { background-color: white; cursor: pointer; width: 33%; }
+    .blg-checkbox-th { background-color: white; cursor: pointer; width: 5%;}
+    .blg-recipient-th { background-color: white; cursor: pointer; width: 25%; }
+    .blg-subject-th { background-color: white; cursor: pointer; width: 33%; }
+    .blg-date-th { background-color: white; cursor: pointer; width: 33%; }
     /* ----   */
-    .in-checkbox-cell { background-color: white; cursor: pointer; width: 5%; }
-    .in-recipient-cell { background-color: white; cursor: pointer; width: 25%; padding-left: 4%; }
-    .in-subject-cell { background-color: white; cursor: pointer; width: 33%; padding-left: 4%; }
-    .in-date-cell { background-color: white; cursor: pointer; width: 33%; padding-left: 4%; }
+    .blg-checkbox-cell { background-color: white; cursor: pointer; width: 5%; }
+    .blg-recipient-cell { background-color: white; cursor: pointer; width: 25%; padding-left: 4%; }
+    .blg-subject-cell { background-color: white; cursor: pointer; width: 33%; padding-left: 4%; }
+    .blg-date-cell { background-color: white; cursor: pointer; width: 33%; padding-left: 4%; }
 
-    .email-inbox th > button {
+    .blg-entry th > button {
         color: navy;
     }
-    .email-inbox th > button:hover {
+    .blg-entry th > button:hover {
         color: green;
         background-color: #f7fddcff;
     }
 
-
-    /* notify list */
-    .email-notify { 
-        background-color: white; 
-    }
-    .email-notify tr:hover td, tr:hover th {
-        background-color: #e0e0e0;
-    }
-    .email-notify > thead  th { 
-        background-color: #e6f0d4ff; 
-    }
-    .notify-checkbox-th { background-color: white; cursor: pointer; width: 5%;}
-    .notify-recipient-th { background-color: white; cursor: pointer; width: 25%; }
-    .notify-subject-th { background-color: white; cursor: pointer; width: 33%; }
-    .notify-date-th { background-color: white; cursor: pointer; width: 33%; }
-    /* ----   */
-    .notify-checkbox-cell { background-color: white; cursor: pointer; width: 5%; }
-    .notify-recipient-cell { background-color: white; cursor: pointer; width: 25%; padding-left: 4%; }
-    .notify-subject-cell { background-color: white; cursor: pointer; width: 33%; padding-left: 4%; }
-    .notify-date-cell { background-color: white; cursor: pointer; width: 33%; padding-left: 4%; }
-
-    .email-notify th > button {
-        color: navy;
-    }
-    .email-notify th > button:hover {
-        color: green;
-        background-color: #f7fddcff;
-    }
-
-    /* spam list */
-    .email-spam { 
-        background-color: white; 
-    }
-    .email-spam tr:hover td, tr:hover th {
-        background-color: #e0e0e0;
-    }
-    .email-spam > thead  th { 
-        background-color: #e6f0d4ff; 
-    }
-    .spam-checkbox-th { background-color: white; cursor: pointer; width: 5%;}
-    .spam-recipient-th { background-color: white; cursor: pointer; width: 25%; }
-    .spam-subject-th { background-color: white; cursor: pointer; width: 33%; }
-    .spam-date-th { background-color: white; cursor: pointer; width: 33%; }
-    /* ----   */
-    .spam-checkbox-cell { background-color: white; cursor: pointer; width: 5%; }
-    .spam-recipient-cell { background-color: white; cursor: pointer; width: 25%; padding-left: 4%; }
-    .spam-subject-cell { background-color: white; cursor: pointer; width: 33%; padding-left: 4%; }
-    .spam-date-cell { background-color: white; cursor: pointer; width: 33%; padding-left: 4%; }
-
-    .email-spam th > button {
-        color: navy;
-    }
-    .email-spam th > button:hover {
-        color: green;
-        background-color: #f7fddcff;
-    }
 
     /* trash list */
-    .email-trash { 
+    .blg-entry-trash { 
         background-color: white; 
     }
-    .email-trash tr:hover td, tr:hover th {
+    .blg-entry-trash tr:hover td, tr:hover th {
         background-color: #e0e0e0;
     }
-    .email-trash > thead  th { 
+    .blg-entry-trash > thead  th { 
         background-color: #e6f0d4ff; 
     }
     .trash-checkbox-th { background-color: white; cursor: pointer; width: 5%;}
@@ -543,19 +477,19 @@
     .trash-date-cell { background-color: white; cursor: pointer; width: 33%; padding-left: 4%; }
 
 
-    .email-trash th > button {
+    .blg-entry-trash th > button {
         color: navy;
     }
-    .email-trash th > button:hover {
+    .blg-entry-trash th > button:hover {
         color: green;
         background-color: #f7fddcff;
     }
 
-    .email-editor-body {
+    .blg-entry-editor-body {
         border: solid 1px rgb(13, 43, 13);
     }
 
-    .mail-properties {
+    .blg-entry-properties {
         display: grid;
         grid-template-columns: 20% 1fr;
         gap: 12px 16px;
@@ -566,7 +500,7 @@
         /* max-width: 600px; */
     }
 
-    .edit-mail-properties {
+    .edit-blg-entry-properties {
         display: grid;
         grid-template-columns: 20% 1fr;
         gap: 12px 16px;
@@ -679,34 +613,6 @@
         word-break: break-word;
     }
 
-    /** contact list **/
-
-    .contact-list { 
-        background-color: white; 
-    }
-    .contact-list tr:hover td, tr:hover th {
-        background-color: #e0e0e0;
-    }
-    .contact-list > thead  th { 
-        background-color: #e6f0d4ff; 
-    }
-    .contact-checkbox-th { background-color: white; cursor: pointer; width: 5%;}
-    .contact-name-th { background-color: white; cursor: pointer; width: 25%; }
-    .contact-email-th { background-color: white; cursor: pointer; width: 33%; }
-    .contact-date-th { background-color: white; cursor: pointer; width: 33%; }
-    /* ----   */
-    .contact-checkbox-cell { background-color: white; cursor: pointer; width: 5%; }
-    .contact-name-cell { background-color: white; cursor: pointer; width: 25%; padding-left: 4%; }
-    .contact-email-cell { background-color: white; cursor: pointer; width: 33%; padding-left: 4%; }
-    .contact-date-cell { background-color: white; cursor: pointer; width: 33%; padding-left: 4%; }
-
-    .contact-list th > button {
-        color: navy;
-    }
-    .contact-list th > button:hover {
-        color: green;
-        background-color: #f7fddcff;
-    }
 
     /* attachments */
 
@@ -966,6 +872,122 @@ span {
 
 
 
+.selected-tabs-container {
+    display: flex;
+    width: 99%;
+    border-left: solid 1px navy;
+    border-bottom: solid 1px #f3efdeff;
+    border-right: solid 1px transparent;
+    padding-right: 4px;
+    padding-left: 1px;
+    padding-bottom: 0px;
+    padding-top: 2px;
+    background-color:#fffbeb;
+    overflow-x: auto;
+}
+
+
+.readers-and-comments {
+    display: grid;
+    background-color: rgb(253, 253, 252);
+    grid-template-columns: 1fr 160px;
+    gap: 2px 2px;
+    /* */
+    width: 100%;
+    border-top: 1px solid navy;
+    padding-top:0px;
+    position:absolute;
+    top:70px;
+    bottom:0;
+    border-bottom: 1px solid rgb(36, 12, 36);
+}
+
+.reader-box {
+    background-color: rgba(255, 255, 252, 1);
+    border-right: solid 1px rgba(37, 143, 5, 0.562);
+    padding-left: 1%;
+}
+
+.reader-box-blog-contents {
+    border-left: solid 3px rgba(219, 219, 219, 0.63);
+    padding:2px;
+    cursor:auto;
+    position:absolute;
+    top:54px;
+    bottom:0;
+    overflow-y: auto;
+}
+
+
+.reader-box > h3 {
+    width: 100%;
+    background-color: rgb(255, 255, 222);
+    color:rgb(29, 14, 1);
+    border-bottom: solid 1px black;
+}
+
+.reader-box > h5 {
+    width: 100%;
+    background-color: rgb(255, 255, 222);
+    color:rgb(29, 14, 1);
+    border-bottom: solid 1px black;
+    padding-top:5px;
+}
+
+.reader-box > div {
+    text-wrap: pretty;
+}
+
+/* Base tab button style */
+.selected-tabs-container > button {
+    /* Reset default button appearance */
+    background: transparent;
+    border: 1px solid transparent;
+    outline: none;
+    cursor: pointer;
+
+    border-right: 1px solid rgb(15, 65, 15);
+    border-top: 1px solid rgba(233, 233, 233, 0.62);
+    border-left: 2px solid rgba(221, 220, 220, 0.719);
+    margin-left: 1px;
+
+    /* Layout & Typography */
+    padding: 10px 20px;
+    font-weight: bolder;
+    color: #182433ff;
+    position: relative;
+    transition: all 0.2s ease;
+
+    /* Round only the top corners */
+    border-radius: 6px 6px 0 0; 
+
+    /* Pull button down 2px to overlap the container border */
+    margin-bottom: -2px; 
+    text-wrap: nowrap;
+}
+
+/* Hover effect for inactive tabs */
+.selected-tabs-container > button:hover {
+    color: #1e293b;
+    background-color: #ffe09dff;
+    border-top: 1px solid rgb(15, 65, 15);
+    border-left: 2px solid rgba(15, 65, 15, 0.64);
+}
+
+/* The Active Tab State */
+.selected-tabs-container > button.active {
+  color: #3b82f6; /* Accent color */
+  background-color: #ffffff;
+  border-color: #e2e8f0 #e2e8f0 #ffffff; /* Top, Left/Right, Bottom */
+}
+
+/* Focus styles for keyboard accessibility */
+.selected-tabs-container > button:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: -2px;
+}
+
+
 
 .search_control_banner {
     display: flex;
@@ -1043,25 +1065,21 @@ span {
     // window._x_share_tweet_view = tweet_view
 
     //
-    import inbox_template from "./tpl/partial/inbox_list.js";
-    import sent_template from "./tpl/partial/sent_list.js";
+    import blg_list_template from "./tpl/partial/blg_list.js";
+    import published_template from "./tpl/partial/published_list.js";
+    //
     import draft_template from "./tpl/partial/draft_list.js";
-    import spam_template from "./tpl/partial/spam_list.js";
-    import notify_template from "./tpl/partial/notify_list.js";
     import trash_template from "./tpl/partial/trash_list.js";
-    import contacts_template from "./tpl/partial/contact_list.js";
+    //
     import attachment_view_template from "./tpl/partial/attachment_view.js"
     import attachment_edit_template from "./tpl/partial/attachment_edit.js"
 
     
-    let mail_imports = {
-        "inbox" : inbox_template,
-        'sent' : sent_template,
+    let blg_entry_imports = {
+        "blg_list" : blg_list_template,
+        "published" : published_template,
         'drafts' : draft_template,
-        'spam' : spam_template,
-        'notify' : notify_template,
         'trash' : trash_template,
-        'contacts' : contacts_template
     }
 
     let attachment_imports = {
@@ -1069,15 +1087,16 @@ span {
         'edit' : attachment_edit_template
     }
 
+    //  ['blg_list','drafts', 'published', 'trash' ]
     //
-    let mail_classes = ['inbox','sent','drafts','spam','notify','trash', 'contacts']
-    let mail_management = {}
+    let blg_entry_classes = ['blg_list','drafts', 'published', 'trash' ]
+    let blg_entry_management = {}
 
-    for ( let mtype of mail_classes ) {
+    for ( let mtype of blg_entry_classes ) {
         let store = new Mikado.Array();
-        let mail_template = mail_imports[mtype]
-        let view = new Mikado(mail_template, { observe: store });
-        mail_management[mtype] = {
+        let blg_entry_template = blg_entry_imports[mtype]
+        let view = new Mikado(blg_entry_template, { observe: store });
+        blg_entry_management[mtype] = {
             "view" : view,
             "store" : store,
             "root" : null,
@@ -1100,8 +1119,8 @@ span {
         }
     }
 
-    window._x_share_mail_managers = mail_management
-    window._x_share_mail_classes = ['inbox','sent','drafts','spam','notify','trash', 'contacts']
+    window._x_share_blg_entry_managers = blg_entry_management
+    window._x_share_blg_entry_classes = ['blg_list','drafts', 'published','trash']
 
     window._x_share_attachment_managers = attachment_management
     window._x_share_attachment_classes = ['view','edit']
@@ -1112,7 +1131,7 @@ span {
 <nav id="mainNav" >
 
 <div class="follow-menu">
-    <span id="mail-type-title">inbox</span>
+    <span id="blg-entry-type-title">blog</span>
 </div>
 
 <style>
@@ -1148,33 +1167,28 @@ span {
     </div>
     </summary>
     <!-- MAIL MENU CONTROL -->
-    <div class="mail-go-container" >
+    <div class="nav-go-container" >
         <blockquote id="expanded-menu" onclick="close_if_open()">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" >
                 <path class="heroicon-ui" d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"/>
             </svg>
-            <h4><button onclick="toggle_ul(event,'messages')">messages <span id="ardn-messages" style="display:inline-block">&#x25BC;</span><span id="arrt-messages" style="display:none">&#x25BA;</span></button></h4>
-            <ul id="ul-messages">
-                <li><button onclick="mail_create()" >write new</button></li>
-                <li><button onclick="mail_switch_to('drafts')" >drafts</button></li>
-                <li><button onclick="mail_switch_to('sent')" >sent</button></li>
-            </ul>
-            <h4><button onclick="toggle_ul(event,'received')">received <span id="ardn-received" style="display:inline-block">&#x25BC;</span><span id="arrt-received" style="display:none">&#x25BA;</span></button></h4>
-            <ul id="ul-received">
-                <li><button onclick="mail_switch_to('inbox')" >inbox</button></li>
-                <li><button onclick="mail_switch_to('notify')" >notfication</button></li>
+            <h4><button onclick="toggle_ul(event,'blog')">blog <span id="ardn-blog" style="display:inline-block;color:darkgreen;">&#x25BC;</span><span id="arrt-blog" style="display:none;color:darkgreen;">&#x25BA;</span></button></h4>
+            <ul id="ul-blog">
+                <li><button onclick="blg_entry_switch_to('blg_list')" >blog</button></li>
              </ul>
-            <h4><button onclick="toggle_ul(event,'filtered')">filtered <span id="ardn-filtered" style="display:inline-block">&#x25BC;</span><span id="arrt-filtered" style="display:none">&#x25BA;</span></button></h4>
-            <ul id="ul-filtered">
-                <li><button onclick="mail_switch_to('spam')" >spam</button></li>
-                <li><button onclick="mail_switch_to('trash')" >trash</button></li>
+            <h4><button onclick="toggle_ul(event,'messages')">messages <span id="ardn-messages" style="display:inline-block;color:darkgreen">&#x25BC;</span><span id="arrt-messages" style="display:none;color:darkgreen;">&#x25BA;</span></button></h4>
+            <ul id="ul-messages">
+                <li><button onclick="blg_entry_create()" >write new</button></li>
+                <li><button onclick="blg_entry_switch_to('drafts')" >drafts</button></li>
+                <li><button onclick="blg_entry_switch_to('published')" >published</button></li>
             </ul>
-            <h4><button onclick="toggle_ul(event,'manage')">manage <span id="ardn-manage" style="display:inline-block">&#x25BC;</span><span id="arrt-manage" style="display:none">&#x25BA;</span></button></h4>
+            <h4><button onclick="toggle_ul(event,'filtered')">filtered <span id="ardn-filtered" style="display:inline-block;color:darkgreen">&#x25BC;</span><span id="arrt-filtered" style="display:none;color:darkgreen;">&#x25BA;</span></button></h4>
+            <ul id="ul-filtered">
+                <li><button onclick="blg_entry_switch_to('trash')" >trash</button></li>
+            </ul>
+            <h4><button onclick="toggle_ul(event,'manage')">manage <span id="ardn-manage" style="display:inline-block;color:darkgreen">&#x25BC;</span><span id="arrt-manage" style="display:none;color:darkgreen;">&#x25BA;</span></button></h4>
             <ul id="ul-manage">
-                <li><button onclick="contacts_ui()" >contacts</button></li>
-                <li><button onclick="contact_create()" >add_contact</button></li>
-                <li><button onclick="search_ui('contacts')" >search contacts</button></li>
-                <li><button onclick="search_ui('messages')" >search messages</button></li>
+                <li><button onclick="search_ui('messages')" >search blogs</button></li>
                 <li><button onclick="manage_prefs()" >preferences</button></li>
             </ul>
         </blockquote>
@@ -1211,7 +1225,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
             
             this.search_ordering = SeachControl.search_order.UPDATE
             //
-            this.mtype = "inbox"
+            this.mtype = "blg_list"
             //
             // the buffer tracked by the Mikado class will be this buffer.
             // this will be set up like a mail manager
@@ -1231,12 +1245,21 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
             this.a_count_el = document.getElementById("acticle-count")
             this.a_count_maxer = document.getElementById("blg-ctl-number-field")
             this.a_count_slider = document.getElementById("blg-ctl-slider")
-
         }
 
 
+        setup_box_delta(count) {
+            this.a_box_delta_field = document.getElementById("blg-ctl-box_delta")
+            if ( this.a_box_delta_field ) {
+                if ( count && (count >= this.a_box_delta_field.min) && (count <= this.a_box_delta_field.max) ) {
+                    this.box_delta = count
+                }
+                this.a_box_delta_field.value = this.box_delta
+            }
+        }
 
-        setup_article_count(n) {
+
+        setup_article_count(n,box_delta) {
             this.a_count_el = document.getElementById("acticle-count")
             this.a_count_maxer = document.getElementById("blg-ctl-number-field")
             this.a_count_slider = document.getElementById("blg-ctl-slider")
@@ -1250,6 +1273,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
             if ( this.a_count_slider ) {
                 this.a_count_slider.setAttribute('max',n)
             }
+            this.setup_box_delta(box_delta)
         }
 
 
@@ -1275,13 +1299,13 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 
         async handleClick_add(ev) {
             // use existing search details
-            await add_mails(this.mtype,this.box_delta)
+            await add_blg_enties(this.mtype,this.box_delta)
             this.on_display_count = get_store_length(this.mtype)
         }
 
         async handleClick_fetch(event) {
             // put in search details
-            await add_mails(this.mtype,this.box_delta)
+            await add_blg_enties(this.mtype,this.box_delta)
             this.on_display_count = get_store_length(this.mtype)
         }
 
@@ -1289,9 +1313,9 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
         handle_keyDown(event) {
         }
 
-        async update_mail_display_at_index(a_index_base) {
+        async update_blg_entry_display_at_index(a_index_base) {
             this.article_index = a_index_base*this.on_display_count
-            await add_mails_replace(this.mtype,this.article_index,this.on_display_count)
+            await add_blg_enties_replace(this.mtype,this.article_index,this.on_display_count)
         }
 
         handleClick_first(event) {
@@ -1305,7 +1329,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
                 a_index_base = 1
             }
             //
-            this.update_mail_display_at_index(a_index_base)
+            this.update_blg_entry_display_at_index(a_index_base)
         }
 
         handleClick_last(event) {
@@ -1319,7 +1343,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
                 a_index_base = parseInt(this.a_count_maxer.max)
             }
             //
-            this.update_mail_display_at_index(a_index_base)
+            this.update_blg_entry_display_at_index(a_index_base)
         }
 
 
@@ -1341,7 +1365,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
                 }
                 //
                 a_index_base = a_value
-                this.update_mail_display_at_index(a_index_base)
+                this.update_blg_entry_display_at_index(a_index_base)
             }
         }
 
@@ -1363,7 +1387,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 <div class="search_control_banner">
     <div class="blg-ctrl-panel blg-window-size-ctrl"  >
         <span style="color:navy;font-weight:bold">Boxes</span>
-        <input type=number class="blg-ctl-number-field" value="4" min=1 max=4 onchange="g_searcher.box_detla_updata(event)">
+        <input type=number id="blg-ctl-box_delta" class="blg-ctl-number-field" value=4 min=1 max=4 onchange="g_searcher.box_detla_updata(event)">
 
         <button class="blg-ctl-button" onclick="g_searcher.handleClick_remove(event)">
             -
@@ -1406,86 +1430,56 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 
 
 <!-- MAIL DISPLAY -->
-<main id="mail-main"  class="big-list-container">
-    <div id="inbox-mail" style="display:block" >
-        <div id="list-mail-inbox" class="grid-container" style="width:96%" >
+<main id="grid-main"  class="big-list-container">
+    <div id="blg_list-entries" style="display:block" >
+        <div id="list-entities-blg_list" class="grid-container" style="width:96%" >
 
         </div>
     </div>
-    <div id="notify-mail" style="display:none" >
-        <div id="list-mail-notify" class="email-notify" style="width:96%" >
+    <div id="drafts-entries" style="display:none" >
+        <div id="list-entities-drafts" class="blg-entry-drafts" style="width:96%" >
 
         </div>
     </div>
-    <div id="sent-mail" style="display:none" >
-        <div id="list-mail-sent" class="email-sent" style="width:96%" >
+    <div id="published-entries" style="display:none" >
+        <div id="list-entities-published" class="blg-entry-drafts" style="width:96%" >
 
         </div>
     </div>
-    <div id="drafts-mail" style="display:none" >
-        <div id="list-mail-drafts" class="email-drafts" style="width:96%" >
+    <div id="trash-entries" style="display:none" >
+        <div id="list-entities-trash" class="blg-entry-drafts" style="width:96%" >
 
         </div>
     </div>
-    <div id="spam-mail" style="display:none" >
-        <div id="list-mail-spam" class="email-spam" style="width:96%" >
-
-        </div>
-    </div>
-    <div id="trash-mail" style="display:none" >
-        <div id="list-mail-trash" class="email-trash" style="width:96%" >
-
-        </div>
-    </div>
-
-    <div id="human-contacts" style="display:none" >
-        <div id="list-contacts" class="contact-list" style="width:96%" >
-
-        </div>
-    </div>
-
 </main>
 
 
-<div id="email_view" class="right_fade_able" style="z-index:124" >
+<div id="blg_entry_view" class="right_fade_able" style="z-index:124" >
 	<div class="togglebar" >
-		<span class="closer_x" onmousedown="closefader(event,'email_view');void_current_edit_email()">X</span>
+		<span class="closer_x" onmousedown="closefader(event,'blg_entry_view');void_current_edit_blg_entry()">X</span>
 	</div>
 	<div class="sizerbar" > S </div>
 	<div class="fade_able_content" >
-        <div class="ops-button-containers">
-            <span id="mail_view_category" class="show-cat" >inbox: </span>&nbsp;&nbsp;
-            <button id="mail_view_move" onclick="single_mail_ops(event);">ops</button>
+
+        <div id="selected-tabs" class="selected-tabs-container" >
+            <button>selected</button><button>but_not</button><button>yet again no</button><button>speedy thoughts</button>
         </div>
-        <div class="mail-properties">
-            <div class="field-label">From:</div>
-            <div id="view-email-sender" class="field-value">sender@example.com</div>
+        <!-- <div id="selected-tab" style="color: {{ data.active ? 'green' : 'black' }}; {{ data.value ? '' : 'display: none;' }}"></div> -->
+        <div class="readers-and-comments" >
+            <div class="reader-box" style="min-width: 350px;min-height: 300px;">
+                <h3>title</h3>
+                <div id="blg_entry_message_contents" class="reader-box-blog-contents" >
 
-            <div class="field-label">To:</div>
-            <div id="view-email-recipient" class="field-value">recipient@example.com</div>
-
-            <div class="field-label">cc:</div>
-            <div id="view-email-cc" class="field-value"></div>
-
-            <div class="field-label">Subject:</div>
-            <div id="view-email-subject" class="field-value">Project Update &amp; Next Steps</div>
-
-            <div class="field-label">Date:</div>
-            <div id="view-email-date" class="field-value">September 14, 2026, 12:51 PM</div>
-        </div>
-        <div class="attachments-controls">
-            <button onclick="toggle_ul(event,'attachments')">attachments <span id="ardn-attachments" style="display:none">&#x25BC;</span><span id="arrt-attachments" style="display:inline-block">&#x25BA;</span></button>
-            <ul id="ul-attachments" class="ul-attachments-list" style="display:none" >
-                <li><button id="attach-128" onclick="show_attachment(128)">first attachment</button></li>
-                <li><button id="attach-129" onclick="show_attachment(129)">second attachment</button></li>
-                <li><button id="attach-130" onclick="show_attachment(130)">third attachment</button></li>
-            </ul>
-        </div>
-		<div class="message-box" style="min-width: 400px;min-height: 300px;">
-            <div id="email_message_contents" >
-                This is the email to view
+                </div>
             </div>
-		</div>
+            <div class="reader-box" style="min-width: 150px;min-height: 300px;padding-top:0px;">
+                <h5>comments</h5>
+                <div id="blg_entry_message_comments" >
+                    comments go here.
+                </div>
+            </div>
+        </div>
+
 	</div>
 </div>
 
@@ -1508,41 +1502,41 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 </style>
 
 
-<div id="email_edit" class="right_fade_able" style="z-index:124" >
+<div id="blg_entry_edit" class="right_fade_able" style="z-index:124" >
 	<div class="togglebar" >
-		<span class="closer_x" onmousedown="closefader(event,'email_edit');mail_edit_mode_reset(event);void_current_edit_email();">X</span>
+		<span class="closer_x" onmousedown="closefader(event,'blg_entry_edit');blg_entry_edit_mode_reset(event);void_current_edit_blg_entry();">X</span>
 	</div>
 	<div class="sizerbar" > S </div>
 	<div class="fade_able_content" >
         <div  class="ops-button-containers">
             <span id="drafts_view_category" class="show-cat">drafts: </span>&nbsp;&nbsp;
-            <button id="mail_edit_mode_send" onclick="do_send_mail_closefader(event)">send</button>
+            <button id="blg_entry_edit_mode_send" onclick="do_send_blg_entry_closefader(event)">send</button>
             <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-            <button id="mail_edit_mode_save" onclick="edit_mail_save(event);" >save</button>
-            <button id="mail_edit_mode_cancel" onclick="mail_edit_mode_reset(event);closefader(event,'email_edit');" >cancel</button>
+            <button id="blg_entry_edit_mode_save" onclick="edit_blg_entry_save(event);" >save</button>
+            <button id="blg_entry_edit_mode_cancel" onclick="blg_entry_edit_mode_reset(event);closefader(event,'blg_entry_edit');" >cancel</button>
             <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-            <button id="mail_ops" onclick="single_mail_ops(event);">ops</button>
+            <button id="blg_entry_ops" onclick="single_blg_entry_ops(event);">ops</button>
         </div>
-        <div class="edit-mail-properties">
+        <div class="edit-blg-entry-properties">
             <div class="field-label">From:</div>
-            <div class="field-value"><input id="edit-email-sender" type="email" /></div>
+            <div class="field-value"><input id="edit-blg-entry-sender" type="email" /></div>
             
             <div class="field-label">To:</div>
-            <div class="field-value"><input id="edit-email-recipient" type="email" /></div>
+            <div class="field-value"><input id="edit-blg-entry-recipient" type="email" /></div>
 
             <div class="field-label">cc:</div>
-            <div id="view-email-cc" class="field-value"><input id="edit-email-cc" type="email" /></div>
+            <div id="view-blg-entry-cc" class="field-value"><input id="edit-blg-entry-cc" type="email" /></div>
 
             <div class="field-label">bcc:</div>
-            <div id="view-email-bcc" class="field-value"><input id="edit-email-bcc" type="email" /></div>
+            <div id="view-blg-entry-bcc" class="field-value"><input id="edit-blg-entry-bcc" type="email" /></div>
 
             <div class="field-label">Subject:</div>
-            <div class="field-value"></label><input id="edit-email-subject" type="text" /></div>
+            <div class="field-value"></label><input id="edit-blg-entry-subject" type="text" /></div>
 
             <div class="field-label">Last edit:</div>
-            <div id="edit-email-date" class="field-value">September 14, 2026, 12:51 PM</div>
+            <div id="edit-blg-entry-date" class="field-value">September 14, 2026, 12:51 PM</div>
         </div>
-        <div id="edit-email-attachments" class="attachments-controls file-dropper-handler" dropzone="true" >
+        <div id="edit-blg-entry-attachments" class="attachments-controls file-dropper-handler" dropzone="true" >
             <label for="fileInput" class="custom-button">
             add &#128206;
             </label>
@@ -1556,7 +1550,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
             </table>
         </div>
 		<div class="message-box" style="min-width: 400px;min-height: 300px;">
-            <div class="email-editor-body" id="email_message_contents_edit" contenteditable="true" >
+            <div class="blg-entry-editor-body" id="blg_entry_message_contents_edit" contenteditable="true" >
                 This is the email to view
             </div>
 		</div>
@@ -1597,7 +1591,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
             <div id="edit-contact-date" class="field-value">September 14, 2026, 12:51 PM</div>
         </div>
 		<div class="message-box" style="min-width: 400px;min-height: 300px;">
-            <div class="email-editor-body" id="contact_contents_edit" contenteditable="true" >
+            <div class="blg-entry-editor-body" id="contact_contents_edit" contenteditable="true" >
                 Contact record info
             </div>
 		</div>
@@ -1617,60 +1611,48 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 </div>
 
 <!--
-* Drafts can delete, move to trash, or be sent (sending moves to sent).
-* Sent can move to archive, or copy to drafts.
-* Inbox can move to trash, to spam, or notify
-* Spam can move to trash, to inbox, or notify
-* Notify can move to trash, to inbox, or to spam
-* Trash can permanently delete a message, or move to inbox, or notify
+* Drafts can delete, move to trash, or be published (sending moves to published).
+* published can move to archive, or copy to drafts.
+* blg_list can move to trash, to spam, or notify
+* Spam can move to trash, to blg_list, or notify
+* Notify can move to trash, to blg_list, or to spam
+* Trash can permanently delete a message, or move to blg_list, or notify
 -->
-<dialog id="email-ops-modal" style="min-width: 300px;">
-    <div id="email-ops-drafts" style="display: none;" >
-        <button onclick="prep_send_email_list('drafts')">send</button>
-        <button onclick="prep_email_list_move_to('drafts','trash')">move to trash</button>
+<dialog id="blg-entry-ops-modal" style="min-width: 300px;">
+    <div id="blg-entry-ops-drafts" style="display: none;" >
+        <button onclick="prep_send_blg_entry_list('drafts')">send</button>
+        <button onclick="prep_blg_entry_list_move_to('drafts','trash')">move to trash</button>
     </div>
-    <div id="email-ops-sent" style="display: none;" >
-        <button onclick="prep_email_list_move_to('sent','archive')">archive</button>
-        <button onclick="prep_email_list_copy_to('sent','drafts')">copy to drafts</button>
+    <div id="blg-entry-ops-published" style="display: none;" >
+        <button onclick="prep_blg_entry_list_move_to('published','archive')">archive</button>
+        <button onclick="prep_blg_entry_list_copy_to('published','drafts')">copy to drafts</button>
     </div>
-    <div id="email-ops-inbox" style="display: none;" >
-        <button onclick="prep_email_list_reply_to('inbox')">reply</button>
-        <button onclick="prep_email_list_reply_all('inbox')">reply all</button>
+    <div id="blg-entry-ops-blg_list" style="display: none;" >
+        <button onclick="prep_blg_entry_list_reply_to('blg_list')">reply</button>
+        <button onclick="prep_blg_entry_list_reply_all('blg_list')">reply all</button>
         &nbsp;|&nbsp;
-        <button onclick="prep_email_list_move_to('inbox','trash')">move to trash</button>
-        <button onclick="prep_email_list_move_to('inbox','spam')">move to spam</button>
-        <button onclick="prep_email_list_move_to('inbox','notfify')">move to notify</button>
+        <button onclick="prep_blg_entry_list_move_to('blg_list','trash')">move to trash</button>
+        <button onclick="prep_blg_entry_list_move_to('blg_list','spam')">move to spam</button>
+        <button onclick="prep_blg_entry_list_move_to('blg_list','notfify')">move to notify</button>
     </div>
-    <div id="email-ops-spam" style="display: none;" >
-        <button onclick="prep_email_list_move_to('spam','trash')">move to trash</button>
-        <button onclick="prep_email_list_move_to('spam','inbox')">move to inbox</button>
-        <button onclick="prep_email_list_move_to('spam','notfify')">move to notify</button>
-    </div>
-    <div id="email-ops-notify" style="display: none;" >
-        <button onclick="prep_email_list_move_to('notify','trash')">move to trash</button>
-        <button onclick="prep_email_list_move_to('notify','inbox')">move to inbox</button>
-        <button onclick="prep_email_list_move_to('notify','spam')">move to spam</button>
-    </div>
-    <div id="email-ops-trash" style="display: none;" >
-        <button onclick="prep_email_list_delete('trash')">delete</button>
-        <button onclick="prep_email_list_move_to('trash','inbox')">move to inbox</button>
-        <button onclick="prep_email_list_move_to('trash','notfify')">move to notify</button>
+    <div id="blg-entry-ops-trash" style="display: none;" >
+        <button onclick="prep_blg_entry_list_delete('trash')">delete</button>
     </div>
     <div class="select-all-ops-properties-on-ops">
         <div class="field-label">Select All:</div>
-        <div class="field-value"><input id="select-all-op-on-ops" type="checkbox" onchange="toggle_current_select_all(event)" value="inbox" /></div>
+        <div class="field-value"><input id="select-all-op-on-ops" type="checkbox" onchange="toggle_current_select_all(event)" value="blg_list" /></div>
     </div>
     <form method="dialog">
         <p id="chosen_operation"><u>Please select an action to perform.</u></p>
         <!-- Cancel button: closes modal, returnValue is "cancel" -->
         <button type="submit" formmethod="dialog" value="cancel">Cancel</button>
         <!-- Close/Confirm button: closes modal, returnValue is "confirm" or selected value -->
-        <button id="email-ops-modal-ok" type="submit" value="confirm" disabled>OK</button>
+        <button id="blg-entry-ops-modal-ok" type="submit" value="confirm" disabled>OK</button>
     </form>
 </dialog>
 
 <dialog id="contact-ops-modal" style="min-width: 300px;">
-    <div id="email-ops-drafts" style="display: block;" >
+    <div id="blg-entry-ops-drafts" style="display: block;" >
         <button onclick="prep_compose_for_contacts()">compose a message</button>
         <!-- <button onclick="prep_instant_message_contacts()">instant message</button> -->
         <button onclick="prep_edit_contacts()">edit contacts</button>
@@ -1686,21 +1668,21 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 </dialog>
 
 <dialog id="search-ops-modal" style="min-width: 300px;">
-    <div class="mail-properties" >
+    <div class="blg-entry-properties" >
         <div class="field-label">search:</div>
         <div class="field-value"><input id="search-list-patterns" type="text" /></div>
 
-        <div id="mail_type_select_label" class="field-label" style="display: none;">mail type:</div>
-        <div id="mail_type_select" class="field-value" style="display: none;">
-            <select id="mail_type_selector" onchange="mail_switch_to_event(event)" >  
+        <div id="blg_entry_type_select_label" class="field-label" style="display: none;">mail type:</div>
+        <div id="blg_entry_type_select" class="field-value" style="display: none;">
+            <select id="blg_entry_type_selector" onchange="blg_entry_switch_to_event(event)" >  
                 <option value="all-messages">all messages</option>
                  <optgroup label="received">
-                    <option value="inbox">inbox</option>
+                    <option value="blg_list">blog</option>
                     <option value="notify">notify</option>
                 </optgroup>
                  <optgroup label="composed">
                     <option value="drafts">drafts</option>
-                    <option value="sent">sent</option>
+                    <option value="published">published</option>
                 </optgroup>
                  <optgroup label="no interest">
                     <option value="spam">spam</option>
@@ -1711,9 +1693,9 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
     </div>
     <div>
         testing...
-        <button onclick="add_mails()">add mails</button>
-        <button onclick="sort_mail()">sort mails</button>
-        <button onclick="reverse_mail()">reverse mails</button>
+        <button onclick="add_blg_enties()">add mails</button>
+        <button onclick="sort_blg_entries()">sort mails</button>
+        <button onclick="reverse_blg_entries()">reverse mails</button>
         <button onclick="add_contacts()">add contacts</button>
     </div>
     <form method="dialog">
@@ -1730,7 +1712,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
         <p id="chosen_contact_operation"><u>Would you like to select all messages?</u></p>
         <div class="select-all-ops-properties">
             <div class="field-label">Select All:</div>
-            <div class="field-value"><input id="select-all-op" type="checkbox" onchange="toggle_current_select_all(event)" value="inbox" /></div>
+            <div class="field-value"><input id="select-all-op" type="checkbox" onchange="toggle_current_select_all(event)" value="blg_list" /></div>
         </div>
         <!-- Cancel button: closes modal, returnValue is "cancel" -->
         <button type="submit" formmethod="dialog" value="cancel">Cancel</button>
@@ -1781,16 +1763,16 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 </script>
 <script type="module">
 
-    const mail_managers = window._x_share_mail_managers
+    const blg_entry_managers = window._x_share_blg_entry_managers
     //
-    let mail_main = document.getElementById("mail-main")
+    let blg_entry_main = document.getElementById("grid-main")
 
 
-    for ( let mtype in mail_managers ) {
-        let a_manager = mail_managers[mtype]
-        a_manager.root = ('contacts' === mtype) ? document.getElementById(`list-contacts`) : document.getElementById(`list-mail-${mtype}`)
+    for ( let mtype in blg_entry_managers ) {
+        let a_manager = blg_entry_managers[mtype]
+        a_manager.root = document.getElementById(`list-entities-${mtype}`)
         //
-        a_manager.container_el = ('contacts' === mtype) ? document.getElementById(`human-contacts`) : document.getElementById(`${mtype}-mail`)
+        a_manager.container_el = document.getElementById(`${mtype}-entries`)   // blg_list-entries
         if ( a_manager.root ) {
             a_manager?.view?.mount(a_manager.root)
         }
@@ -1818,8 +1800,8 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
     /**
      * 
      */
-    function store_of_mail_manager(mtype) {
-        let mobj = mail_managers[mtype]
+    function store_of_blg_entry_manager(mtype) {
+        let mobj = blg_entry_managers[mtype]
         if ( mobj ) {
             if ( mobj.store ){
                 return mobj.store
@@ -1828,7 +1810,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
         return false
     }
 
-    window.store_of_mail_manager = store_of_mail_manager
+    window.store_of_blg_entry_manager = store_of_blg_entry_manager
 
 
 
@@ -1846,8 +1828,8 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
     
 
     /** --------------------------- */
-    let g_current_mtype = "inbox"
-    window._current_mtype = "inbox"
+    let g_current_mtype = "blg_list"
+    window._current_mtype = "blg_list"
 
     //  MAIL IDENTIFIER -- need something better
     window.largest_id = 20
@@ -1861,7 +1843,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 
     let pre_date = new Date((date.getTime() - (3600*24*2)))
     //
-    let mail_proto = {
+    let blg_entry_proto = {
                         "id" : 1,
                         "sender" : "richard@myhost.local", 
                         "category" : "cecks",
@@ -1883,85 +1865,85 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
                         "text" : "", "_count_edits" : 0, "_saved_updates" : []  }
 
 
-    window._x_test_mail_proto = mail_proto
+    window._x_test_blg_entry_proto = blg_entry_proto
 
     //
     // testing
-    window.add_mails = async (mtype,box_count) => {
+    window.add_blg_enties = async (mtype,box_count) => {
         //
         if ( mtype === undefined ) mtype = g_current_mtype
         if ( mtype === "contacts" ) {
             add_contacts()
             return
         }
-        let mail_store = store_of_mail_manager(mtype)
+        let blg_entry_store = store_of_blg_entry_manager(mtype)
         //
-        if ( mail_store ) {
-            let new_mail_bunch = await load_a_bunch_of_emails(mtype)
+        if ( blg_entry_store ) {
+            let new_blg_entry_bunch = await load_a_bunch_of_emails(mtype)
             if ( (box_count !== undefined) && (parseInt(box_count) !== NaN) ) {
-                new_mail_bunch = new_mail_bunch.slice(0,box_count)
+                new_blg_entry_bunch = new_blg_entry_bunch.slice(0,box_count)
             }
-            if ( new_mail_bunch && new_mail_bunch.length ) {
-                for ( let m of new_mail_bunch ) {
-                    mail_store.unshift(m)
+            if ( new_blg_entry_bunch && new_blg_entry_bunch.length ) {
+                for ( let m of new_blg_entry_bunch ) {
+                    blg_entry_store.unshift(m)
                 }
             } else {
-                if ( new_mail_bunch ) {
-                    mail_store.set(new_mail_bunch)
+                if ( new_blg_entry_bunch ) {
+                    blg_entry_store.set(new_blg_entry_bunch)
                 }
             }
         }
 
-        sort_mail(mtype)
+        sort_blg_entries(mtype)
     }
 
 
     window.get_store_length = (mtype) => {
-        let mail_store = store_of_mail_manager(mtype)
-        if ( mail_store ) {
-            return mail_store.length
+        let blg_entry_store = store_of_blg_entry_manager(mtype)
+        if ( blg_entry_store ) {
+            return blg_entry_store.length
         }
         return 0
     }
 
-    window.add_mails_replace = async (mtype,article_index,fetch_count) => {
+    window.add_blg_enties_replace = async (mtype,article_index,fetch_count) => {
         if ( mtype === undefined ) mtype = g_current_mtype
         if ( mtype === "contacts" ) {
             add_contacts()
             return
         }
-        let mail_store = store_of_mail_manager(mtype)
+        let blg_entry_store = store_of_blg_entry_manager(mtype)
         //
-        if ( mail_store ) {
-            let total_mail_bunch = []
+        if ( blg_entry_store ) {
+            let total_blg_entry_bunch = []
             let remaining_fetch_count = fetch_count
             while ( remaining_fetch_count > 0 ) {
-                let new_mail_bunch = await load_a_bunch_of_emails(mtype)
-                let returned_count = new_mail_bunch.length
+                let new_blg_entry_bunch = await load_a_bunch_of_emails(mtype)
+                let returned_count = new_blg_entry_bunch.length
                 remaining_fetch_count -= returned_count
                 while ( remaining_fetch_count < 0 ) {
-                    new_mail_bunch.pop()
+                    new_blg_entry_bunch.pop()
                     remaining_fetch_count++
                 }
-                if ( new_mail_bunch.length ) {
-                    total_mail_bunch = total_mail_bunch.concat(new_mail_bunch)
+                if ( new_blg_entry_bunch.length ) {
+                    total_blg_entry_bunch = total_blg_entry_bunch.concat(new_blg_entry_bunch)
                 }
             }
 
-            if ( total_mail_bunch ) {
-                mail_store.set(total_mail_bunch)
+            if ( total_blg_entry_bunch ) {
+                blg_entry_store.set(total_blg_entry_bunch)
             }
 
         }
 
-        sort_mail(mtype)
+        sort_blg_entries(mtype)
     }
 
 
 
     // useful
     window.add_contacts = async () => {
-        let contact_store = store_of_mail_manager('contacts')
+        let contact_store = store_of_blg_entry_manager('contacts')
         if ( contact_store ) {
             let new_contact_bunch = await load_a_bunch_of_contacts()
             if ( new_contact_bunch && new_contact_bunch.length ) {
@@ -1974,52 +1956,52 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
                 }
             }
         }
-        sort_mail('contacts')
+        sort_blg_entries('contacts')
         return true
     }
 
 
 
     // useful (mail and contacts)
-    window.add_emails_to_list = (mtype,email_list) => {
+    window.add_emails_to_list = (mtype,blg_entry_list) => {
 
 
-        for ( let email of email_list ) {
-                email.created_when = _x_test_mail_proto.created_when
-                email.updated_when = _x_test_mail_proto.updated_when
-                email.description = _x_test_mail_proto.description
-                email.score = _x_test_mail_proto.score
-                email.keys =_x_test_mail_proto.keys
+        for ( let email of blg_entry_list ) {
+                email.created_when = _x_test_blg_entry_proto.created_when
+                email.updated_when = _x_test_blg_entry_proto.updated_when
+                email.description = _x_test_blg_entry_proto.description
+                email.score = _x_test_blg_entry_proto.score
+                email.keys =_x_test_blg_entry_proto.keys
         }
 
 
         if ( mtype === undefined ) return false
-        let mail_store = store_of_mail_manager(mtype)
-        if ( mail_store ) {
-            if ( mail_store.length ) {
-                for ( let m of email_list ) {
-                    mail_store.unshift(m)
+        let blg_entry_store = store_of_blg_entry_manager(mtype)
+        if ( blg_entry_store ) {
+            if ( blg_entry_store.length ) {
+                for ( let m of blg_entry_list ) {
+                    blg_entry_store.unshift(m)
                     m.category = mtype
                 }
             } else {
-                mail_store.set(email_list)
-                for ( let m of email_list ) {
+                blg_entry_store.set(blg_entry_list)
+                for ( let m of blg_entry_list ) {
                     m.category = mtype
                 }
             }
         }
-        sort_mail(mtype)
+        sort_blg_entries(mtype)
         return true
     }
 
 
-    window.delete_emails_from_list = (mtype,email_ids_list) => {
+    window.delete_emails_from_list = (mtype,blg_entry_ids_list) => {
         if ( mtype === undefined ) return false
-        let mail_store = store_of_mail_manager(mtype)
-        if ( mail_store ) {
-            mail_store.filter((email)=>{
+        let blg_entry_store = store_of_blg_entry_manager(mtype)
+        if ( blg_entry_store ) {
+            blg_entry_store.filter((email)=>{
                 let mid = email.id
-                if ( email_ids_list.indexOf(mid) >= 0 ) {
+                if ( blg_entry_ids_list.indexOf(mid) >= 0 ) {
                     return false
                 }
                 return true
@@ -2031,10 +2013,10 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
     //
     window.get_list_of_objects = (mtype,id_list) => {
         if ( mtype === undefined ) return false
-        let mail_store = store_of_mail_manager(mtype)
-        if ( mail_store ) {
+        let blg_entry_store = store_of_blg_entry_manager(mtype)
+        if ( blg_entry_store ) {
             let obj_list = []
-            mail_store.forEach((obj) => {
+            blg_entry_store.forEach((obj) => {
                 if ( id_list.includes(obj.id) )  {
                     obj_list.push(obj)
                 }
@@ -2048,14 +2030,14 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 
     window.add_empty_draft = (id) => {
         let mtype = "drafts"
-        let mail_store = store_of_mail_manager(mtype)
-        let new_mail = structuredClone(mail_proto)
+        let blg_entry_store = store_of_blg_entry_manager(mtype)
+        let new_mail = structuredClone(blg_entry_proto)
         new_mail.id = id
         new_mail._count_edits = 0
         new_mail._saved_updates = []
         //
-        if ( mail_store ) {
-            mail_store.unshift(new_mail)
+        if ( blg_entry_store ) {
+            blg_entry_store.unshift(new_mail)
             return new_mail
         }
         return false
@@ -2063,14 +2045,14 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 
     window.add_empty_contact = (id) => {
         let mtype = "contacts"
-        let mail_store = store_of_mail_manager(mtype)
+        let blg_entry_store = store_of_blg_entry_manager(mtype)
         let new_contact = structuredClone(contact_proto)
         new_contact.id = id
         new_contact._count_edits = 0
         new_contact._saved_updates = []
         //
-        if ( mail_store ) {
-            mail_store.unshift(new_contact)
+        if ( blg_entry_store ) {
+            blg_entry_store.unshift(new_contact)
             return new_contact
         }
         return false
@@ -2079,29 +2061,29 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 
     window.swap_two = (mtype) => {
         if ( mtype === undefined ) mtype = g_current_mtype
-        let mail_store = store_of_mail_manager(mtype)
-        if ( mail_store ) mail_store.swap(2,5)
+        let blg_entry_store = store_of_blg_entry_manager(mtype)
+        if ( blg_entry_store ) blg_entry_store.swap(2,5)
     }
 
     window.delete_two = (mtype) => {
         if ( mtype === undefined ) mtype = g_current_mtype
-        let mail_store = store_of_mail_manager(mtype)
-        if ( mail_store ) mail_store.splice(3,2)
+        let blg_entry_store = store_of_blg_entry_manager(mtype)
+        if ( blg_entry_store ) blg_entry_store.splice(3,2)
     }
 
     window.delete_last_count = (mtype,count) => {
         if ( mtype === undefined ) mtype = g_current_mtype
-        let mail_store = store_of_mail_manager(mtype)
-        if ( mail_store ) {
-            let n = mail_store.length
-            mail_store.splice(n-count-1,count)
+        let blg_entry_store = store_of_blg_entry_manager(mtype)
+        if ( blg_entry_store ) {
+            let n = blg_entry_store.length
+            blg_entry_store.splice(n-count-1,count)
         }
     }
 
-    window.sort_mail = (mtype) => {
+    window.sort_blg_entries = (mtype) => {
         if ( mtype === undefined ) mtype = g_current_mtype
-        let mail_store = store_of_mail_manager(mtype)
-        if ( mail_store ) mail_store.sort((a,b) => {
+        let blg_entry_store = store_of_blg_entry_manager(mtype)
+        if ( blg_entry_store ) blg_entry_store.sort((a,b) => {
             if ( a.timestamp < b.timestamp ) return 1
             if ( a.timestamp > b.timestamp ) return -1
             return 0
@@ -2110,34 +2092,34 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 
     window.sort_one_or_more = (mtype) => {
         if ( mtype === undefined ) mtype = g_current_mtype
-        let mail_store = store_of_mail_manager(mtype)
-        if ( mail_store ) {
-            if ( mail_store.length === 1 ) {
-                let obj = mail_store.pop()
-                mail_store.push(obj)
+        let blg_entry_store = store_of_blg_entry_manager(mtype)
+        if ( blg_entry_store ) {
+            if ( blg_entry_store.length === 1 ) {
+                let obj = blg_entry_store.pop()
+                blg_entry_store.push(obj)
             } else {
-                sort_mail(mtype)
+                sort_blg_entries(mtype)
             }
         }
     }
 
     window.reverse_mail = (mtype) => {
         if ( mtype === undefined ) mtype = g_current_mtype
-        let mail_store = store_of_mail_manager(mtype)
-        if ( mail_store ) mail_store.reverse()
+        let blg_entry_store = store_of_blg_entry_manager(mtype)
+        if ( blg_entry_store ) blg_entry_store.reverse()
     }
 
-    let mtype_title = document.getElementById("mail-type-title")
+    let mtype_title = document.getElementById("blg-entry-type-title")
 
-    window.mail_switch_to  = (mtype) => {
+    window.blg_entry_switch_to  = (mtype) => {
         if ( mtype === undefined ) mtype = g_current_mtype
-        for ( let one_mtype in mail_managers ) {
-            let mobj = mail_managers[one_mtype]
+        for ( let one_mtype in blg_entry_managers ) {
+            let mobj = blg_entry_managers[one_mtype]
             if ( mobj.container_el ) {
                 mobj.container_el.style.display = "none"
             }
         }
-        let mobj = mail_managers[mtype]
+        let mobj = blg_entry_managers[mtype]
         if ( mobj ) {
             if ( mobj.container_el ) {
                 mobj.container_el.style.display = "block"
@@ -2150,23 +2132,23 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
         }
     }
 
-    window.mail_switch_to_event = (event) => {
+    window.blg_entry_switch_to_event = (event) => {
         let sel_el = event.target
         if ( sel_el ) {
             if ( sel_el.value === "all-messages") return
-            mail_switch_to(sel_el.value)
+            blg_entry_switch_to(sel_el.value)
         }
     }
 
     window.contacts_ui = () => {
-        for ( let one_mtype in mail_managers ) {
-            let mobj = mail_managers[one_mtype]
+        for ( let one_mtype in blg_entry_managers ) {
+            let mobj = blg_entry_managers[one_mtype]
             if ( mobj.container_el ) {
                 mobj.container_el.style.display = "none"
             }
         }
         let mtype = "contacts"
-        let mobj = mail_managers[mtype]
+        let mobj = blg_entry_managers[mtype]
         if ( mobj ) {
             if ( mobj.container_el ) {
                 mobj.container_el.style.display = "block"
@@ -2183,18 +2165,18 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 
     // useful (mail and contacts)
     window.add_atts_to_list = (atype,att_list) => {
-        if ( atype === undefined ) return false
-        let atts_store = store_of_attachment_manager(atype)
-        if ( atts_store ) {
-            if ( atts_store.length ) {
-                for ( let a of att_list ) {
-                    atts_store.unshift(a)
-                }
-            } else {
-                atts_store.set(att_list)
-            }
-        }
-        // sort_attachments(atype)
+        // if ( atype === undefined ) return false
+        // let atts_store = store_of_attachment_manager(atype)
+        // if ( atts_store ) {
+        //     if ( atts_store.length ) {
+        //         for ( let a of att_list ) {
+        //             atts_store.unshift(a)
+        //         }
+        //     } else {
+        //         atts_store.set(att_list)
+        //     }
+        // }
+        // // sort_attachments(atype)
         return true
     }
 
@@ -2226,7 +2208,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
     
     window.indicate_page_on_window_banner = (mtype) => {
         if ( mtype !== 'drafts' ) {
-            let wb_var = document.getElementById("mail_view_category")
+            let wb_var = document.getElementById("blg_entry_view_category")
             if ( wb_var ) {
                 wb_var.innerText = `${mtype}: `
             }
@@ -2264,11 +2246,11 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 
 
     function get_text_from_store(mtype,msg_id) {
-        let mail_store = store_of_mail_manager(mtype)
+        let blg_entry_store = store_of_blg_entry_manager(mtype)
         let clear_text = "message not found"
-        if ( mail_store ) {
+        if ( blg_entry_store ) {
             let the_msg = false
-            mail_store.forEach(msg => {
+            blg_entry_store.forEach(msg => {
                 if ( msg.id === msg_id ) {
                     the_msg = msg
                 }
@@ -2282,11 +2264,11 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 
 
     function get_message_from_store(mtype,msg_id) {
-        let mail_store = store_of_mail_manager(mtype)
+        let blg_entry_store = store_of_blg_entry_manager(mtype)
         //
-        if ( mail_store ) {
+        if ( blg_entry_store ) {
             let the_msg = false
-            mail_store.forEach(msg => {
+            blg_entry_store.forEach(msg => {
                 if ( msg.id === msg_id ) {
                     the_msg = msg
                 }
@@ -2301,11 +2283,11 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 
     // ---- ---- ---- ---- ---- ---- ---- ---- ----
     //
-    // ['inbox','sent','spam','notify','trash'], ['drafts']
+    // ['blg_list','drafts', 'published', 'trash' ]
     //
     /*
-    // inbox_check_select
-    // sent_check_select
+    // blg_list_check_select
+    // published_check_select
     // spam_check_select
     // notify_check_select
     // drafts_check_select
@@ -2342,8 +2324,8 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
         return dialog
     }
 
-    function setup_email_ops_dialog() {
-        let diag = setup_modal_response('email-ops-modal')
+    function setup_blg_entry_ops_dialog() {
+        let diag = setup_modal_response('blg-entry-ops-modal')
         diag._cancel_action = () => {
             disable_ok_button()
             disable_selall_ok_button()
@@ -2383,7 +2365,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 
     let g_all_list_view_check_box_patterns = {}
     function setup_checkbox_pattern_tracking() {
-        let mtypes = window._x_share_mail_classes
+        let mtypes = window._x_share_blg_entry_classes
         for ( let mtype of mtypes ) {
             g_all_list_view_check_box_patterns[mtype] = []
         }
@@ -2558,26 +2540,26 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
     // EDIT WINDOW  ['drafts'] and create
 
     // change support
-    function update_mail_properties_edit(mtype,msg_id) {
+    function update_blg_entry_properties_edit(mtype,msg_id) {
         //
         let message = get_message_from_store(mtype,msg_id)
         if ( message ) {
             g_current_edit_email = message
             //
-            let m_prop_el = document.getElementById("edit-email-sender")
+            let m_prop_el = document.getElementById("edit-blg-entry-sender")
             if ( m_prop_el ) { m_prop_el.value = message.sender }
-            m_prop_el = document.getElementById("edit-email-recipient")
+            m_prop_el = document.getElementById("edit-blg-entry-recipient")
             if ( m_prop_el ) { m_prop_el.value = message.recipient }
             //
-            m_prop_el = document.getElementById("edit-email-cc")
+            m_prop_el = document.getElementById("edit-blg-entry-cc")
             if ( m_prop_el ) { m_prop_el.value = message.cc }
             //
-            m_prop_el = document.getElementById("edit-email-subject")
+            m_prop_el = document.getElementById("edit-blg-entry-subject")
             if ( m_prop_el ) { m_prop_el.value = message.subject }
-            m_prop_el = document.getElementById("edit-email-date")
+            m_prop_el = document.getElementById("edit-blg-entry-date")
             if ( m_prop_el ) { m_prop_el.innerHTML = message.date }
             //
-            store_current_email_undo_stack()
+            store_current_blg_entry_undo_stack()
             if ( message.attachments ) {
                 clear_atts_list('edit')
                 add_atts_to_list('edit',message.attachments)
@@ -2589,7 +2571,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
     }
 
 
-    function unload_email_for_undo(email) {
+    function unload_blg_entry_for_undo(email) {
         if ( email ) {
             let id = email.id
             let sender = email.sender
@@ -2605,7 +2587,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
     }
 
 
-    function reload_email_by_undo(email,old_values) {
+    function reload_blg_entry_by_undo(email,old_values) {
         if ( email ) {
             email.id = old_values.id
             email.sender = old_values.sender
@@ -2633,10 +2615,10 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
         return true
     }
 
-    function store_current_email_undo_stack() {
+    function store_current_blg_entry_undo_stack() {
         if ( g_current_edit_email ) {
             const email = g_current_edit_email
-            let save_email = unload_email_for_undo(g_current_edit_email)
+            let save_email = unload_blg_entry_for_undo(g_current_edit_email)
             if ( unequal_objects(save_email,email._saved_updates[0]) ) {
                 email._saved_updates.unshift(save_email)
             }
@@ -2705,7 +2687,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
         } else return
         let m_prop_el = document.getElementById(date_el_id)
         if ( m_prop_el ) { m_prop_el.innerHTML = message.date }
-        if ( date_el_id === "edit-email-date" ) {
+        if ( date_el_id === "edit-blg-entry-date" ) {
             sort_one_or_more('drafts')
         } else {
             sort_one_or_more('contacts')
@@ -2718,67 +2700,67 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
     let g_current_edit_contact = false
     function setup_edit_response() {
         //
-        let msg_editor = document.getElementById("email_message_contents_edit")
+        let msg_editor = document.getElementById("blg_entry_message_contents_edit")
         if ( msg_editor ) {
             msg_editor.addEventListener('input', (event) => {
                 if ( g_current_edit_email ) {
                     g_current_edit_email.text = event.target.innerHTML
-                    update_just_date(g_current_edit_email,"edit-email-date")
+                    update_just_date(g_current_edit_email,"edit-blg-entry-date")
                     g_current_edit_email.dirty = true
                 }
             });
         }
         //
-        let m_prop_el = document.getElementById("edit-email-sender")
+        let m_prop_el = document.getElementById("edit-blg-entry-sender")
         if ( m_prop_el ) {
             m_prop_el.addEventListener('change', (event) => {
                 if ( g_current_edit_email ) {
                     g_current_edit_email.sender = event.target.value
-                    update_just_date(g_current_edit_email,"edit-email-date")
+                    update_just_date(g_current_edit_email,"edit-blg-entry-date")
                     g_current_edit_email.dirty = true
                 }
             });
         }
         //
-        m_prop_el = document.getElementById("edit-email-recipient")
+        m_prop_el = document.getElementById("edit-blg-entry-recipient")
         if ( m_prop_el ) {
             m_prop_el.addEventListener('change', (event) => {
                 if ( g_current_edit_email ) {
                     g_current_edit_email.recipient = event.target.value
-                    update_just_date(g_current_edit_email,"edit-email-date")
+                    update_just_date(g_current_edit_email,"edit-blg-entry-date")
                     g_current_edit_email.dirty = true
                 }
             });
         }
         //
-        m_prop_el = document.getElementById("edit-email-cc")
+        m_prop_el = document.getElementById("edit-blg-entry-cc")
         if ( m_prop_el ) {
             m_prop_el.addEventListener('change', (event) => {
                 if ( g_current_edit_email ) {
                     g_current_edit_email.cc = event.target.value
-                    update_just_date(g_current_edit_email,"edit-email-date")
+                    update_just_date(g_current_edit_email,"edit-blg-entry-date")
                     g_current_edit_email.dirty = true
                 }
             });
         }
         //
-        m_prop_el = document.getElementById("edit-email-bcc")
+        m_prop_el = document.getElementById("edit-blg-entry-bcc")
         if ( m_prop_el ) {
             m_prop_el.addEventListener('change', (event) => {
                 if ( g_current_edit_email ) {
                     g_current_edit_email.bcc = event.target.value
-                    update_just_date(g_current_edit_email,"edit-email-date")
+                    update_just_date(g_current_edit_email,"edit-blg-entry-date")
                     g_current_edit_email.dirty = true
                 }
             });
         }
         //
-        m_prop_el = document.getElementById("edit-email-subject")
+        m_prop_el = document.getElementById("edit-blg-entry-subject")
         if ( m_prop_el ) {
             m_prop_el.addEventListener('change', (event) => {
                 if ( g_current_edit_email ) {
                     g_current_edit_email.subject = event.target.value
-                    update_just_date(g_current_edit_email,"edit-email-date")
+                    update_just_date(g_current_edit_email,"edit-blg-entry-date")
                     g_current_edit_email.dirty = true
                 }
             });
@@ -2824,10 +2806,10 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
     }
 
  
-    function mail_create() {
-        mail_switch_to('drafts')
-        let sect_box = `#email_edit`
-        let msg_view = document.getElementById("email_message_contents_edit")
+    function blg_entry_create() {
+        blg_entry_switch_to('drafts')
+        let sect_box = `#blg_entry_edit`
+        let msg_view = document.getElementById("blg_entry_message_contents_edit")
         if ( msg_view ) {
            let id = get_next_id()
             let draft = add_empty_draft(id)
@@ -2840,14 +2822,14 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
                 <br> will be adding text here`
                 //
                 g_current_edit_email = draft
-                update_mail_properties_edit("drafts",msg_id)
+                update_blg_entry_properties_edit("drafts",msg_id)
             }
         }
         pinBox(sect_box)
     }
 
     function contact_create() {
-        mail_switch_to('contacts')
+        blg_entry_switch_to('contacts')
         let sect_box = `#contact_view`
         let msg_view = document.getElementById("contact_contents_edit")
         if ( msg_view ) {
@@ -2871,10 +2853,10 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 
 
     function edit_from_draft(msg_id) {
-        let sect_box = `#email_edit`
-        let msg_view = document.getElementById("email_message_contents_edit")
+        let sect_box = `#blg_entry_edit`
+        let msg_view = document.getElementById("blg_entry_message_contents_edit")
         if ( msg_view ) {
-            update_mail_properties_edit("drafts",msg_id)
+            update_blg_entry_properties_edit("drafts",msg_id)
             let clear_text = get_text_from_store("drafts",msg_id)
             msg_view.innerHTML = clear_text
         }
@@ -2883,22 +2865,22 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 
 
     // 
-    // VIEW WINDOW ['inbox','sent','spam','notify','trash']
+    // VIEW WINDOW ['blg_list','drafts', 'published', 'trash' ]
     //
 
     // item view support
-    function update_mail_properties_view(mtype,msg_id) {
+    function update_blg_entry_properties_view(mtype,msg_id) {
         //
         let message = get_message_from_store(mtype,msg_id)
         if ( message ) {
             g_current_edit_email = message
-            let m_prop_el = document.getElementById("view-email-sender")
+            let m_prop_el = document.getElementById("view-blg-entry-sender")
             if ( m_prop_el ) { m_prop_el.innerHTML = message.sender }
-            m_prop_el = document.getElementById("view-email-recipient")
+            m_prop_el = document.getElementById("view-blg-entry-recipient")
             if ( m_prop_el ) { m_prop_el.innerHTML = message.recipient }
-            m_prop_el = document.getElementById("view-email-subject")
+            m_prop_el = document.getElementById("view-blg-entry-subject")
             if ( m_prop_el ) { m_prop_el.innerHTML = message.subject }
-            m_prop_el = document.getElementById("view-email-date")
+            m_prop_el = document.getElementById("view-blg-entry-date")
             if ( m_prop_el ) { m_prop_el.innerHTML = message.date }
             if ( message.attachments ) {
                 clear_atts_list('view')
@@ -2911,15 +2893,15 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 
     //
 
-    function view_from_inbox(event,msg_id) {
+    function view_from_blog_entries(event,msg_id) {
         if (event.target.type === 'checkbox') {
             return; // Do nothing if the checkbox was clicked
         }
-        let sect_box = `#email_view`
-        let msg_view = document.getElementById("email_message_contents")
+        let sect_box = `#blg_entry_view`
+        let msg_view = document.getElementById("blg_entry_message_contents")
         if ( msg_view ) {
-            update_mail_properties_view("inbox",msg_id)
-            let clear_text = get_text_from_store("inbox",msg_id)
+            update_blg_entry_properties_view("blg_list",msg_id)
+            let clear_text = get_text_from_store("blg_list",msg_id)
             msg_view.innerHTML = `picked message id = ${msg_id} <br> ${clear_text}`
         }
         pinBox(sect_box)
@@ -2927,32 +2909,32 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 
     //
     function view_from_notify(msg_id) {
-        let sect_box = `#email_view`
-        let msg_view = document.getElementById("email_message_contents")
+        let sect_box = `#blg_entry_view`
+        let msg_view = document.getElementById("blg_entry_message_contents")
         if ( msg_view ) {
-            update_mail_properties_view("notify",msg_id)
+            update_blg_entry_properties_view("notify",msg_id)
             let clear_text = get_text_from_store("notify",msg_id)
             msg_view.innerHTML = `picked message id = ${msg_id} <br> ${clear_text}`
         }
         pinBox(sect_box)
     }
     //
-    function view_from_sent(msg_id) {
-        let sect_box = `#email_view`
-        let msg_view = document.getElementById("email_message_contents")
+    function view_from_published(msg_id) {
+        let sect_box = `#blg_entry_view`
+        let msg_view = document.getElementById("blg_entry_message_contents")
         if ( msg_view ) {
-            update_mail_properties_view("sent",msg_id)
-            let clear_text = get_text_from_store("sent",msg_id)
+            update_blg_entry_properties_view("published",msg_id)
+            let clear_text = get_text_from_store("published",msg_id)
             msg_view.innerHTML = `picked message id = ${msg_id} <br> ${clear_text}`
         }
         pinBox(sect_box)
     }
     //
     function view_from_spam(msg_id) {
-        let sect_box = `#email_view`
-        let msg_view = document.getElementById("email_message_contents")
+        let sect_box = `#blg_entry_view`
+        let msg_view = document.getElementById("blg_entry_message_contents")
         if ( msg_view ) {
-            update_mail_properties_view("spam",msg_id)
+            update_blg_entry_properties_view("spam",msg_id)
             let clear_text = get_text_from_store("spam",msg_id)
             msg_view.innerHTML = `picked message id = ${msg_id} <br> ${clear_text}`
         }
@@ -2960,10 +2942,10 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
     }
     //
     function view_from_trash(msg_id) {
-        let sect_box = `#email_view`
-        let msg_view = document.getElementById("email_message_contents")
+        let sect_box = `#blg_entry_view`
+        let msg_view = document.getElementById("blg_entry_message_contents")
         if ( msg_view ) {
-            update_mail_properties_view("trash",msg_id)
+            update_blg_entry_properties_view("trash",msg_id)
             let clear_text = get_text_from_store("trash",msg_id)
             msg_view.innerHTML = `picked message id = ${msg_id} <br> ${clear_text}`
         }
@@ -3046,7 +3028,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
     
 
     function set_banner_search_selector(mtype) {
-        let ts_banner_selector = document.getElementById("banner_mail_type_selector")
+        let ts_banner_selector = document.getElementById("banner_blg_entry_type_selector")
         if ( ts_banner_selector ) {
             if ( mtype === 'contacts' ) {
                 ts_banner_selector.style.display = 'none'
@@ -3060,20 +3042,20 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 
     function search_ui(mtype) {
         //
-        let type_select = document.getElementById("mail_type_select")
-        let ts_label = document.getElementById("mail_type_select_label")
-        let ts_selector = document.getElementById("mail_type_selector")
-        let ts_banner_selector = document.getElementById("banner_mail_type_selector")
+        let type_select = document.getElementById("blg_entry_type_select")
+        let ts_label = document.getElementById("blg_entry_type_select_label")
+        let ts_selector = document.getElementById("blg_entry_type_selector")
+        let ts_banner_selector = document.getElementById("banner_blg_entry_type_selector")
 
         if ( mtype === 'contacts' ) {
-            mail_switch_to('contacts')
+            blg_entry_switch_to('contacts')
             if ( type_select && ts_label ) {
                 type_select.style.display = "none"
                 ts_label.style.display = "none"
             }
         } else if ( mtype === 'messages' ) {
             let mtype = window._current_mtype
-            if ( mtype === 'contacts' ) mtype = 'inbox'
+            if ( mtype === 'contacts' ) mtype = 'blg_list'
             if ( type_select  && ts_label ) {
                 type_select.style.display = "inline"
                 ts_label.style.display = "inline"
@@ -3082,7 +3064,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
                     if ( ts_banner_selector ) ts_banner_selector.value = mtype
                 }
             }
-            mail_switch_to(mtype)
+            blg_entry_switch_to(mtype)
         }
         //
         open_search_box()
@@ -3092,14 +3074,14 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
     /**
      * Perform operations on a list.
      * 
-     *  ['inbox','sent','drafts','spam','notify','trash']
+     *  ['blg_list','drafts', 'published', 'trash' ]
      * 
      * Some lists may allow movement to another list.
      * 
-     * Drafts can delete, move to trash, or be sent (sending moves to sent).
-     * Sent can move to archive, or copy to drafts.
-     * Spam can move to trash, to inbox, or notify
-     * Notify can move to trash, to inbox, or to spam
+     * Drafts can delete, move to trash, or be published (sending moves to published).
+     * published can move to archive, or copy to drafts.
+     * Spam can move to trash, to blg_list, or notify
+     * Notify can move to trash, to blg_list, or to spam
      * Trash can permanently delete a message.
      * 
      * 
@@ -3115,10 +3097,10 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
         delete_emails_from_server(from,id_list)
     }
 
-    const email_op_message_el = document.getElementById("chosen_operation")
+    const blg_entry_op_message_el = document.getElementById("chosen_operation")
     const contact_op_message_el = document.getElementById("chosen_contact_operation")
     //
-    const email_op_dialog = document.getElementById('email-ops-modal');
+    const blg_entry_op_dialog = document.getElementById('blg-entry-ops-modal');
     const contact_op_dialog = document.getElementById('contact-ops-modal');
     const search_op_dialog = document.getElementById('search-ops-modal');
     const select_all_op_dialog = document.getElementById('select-all-ops-modal');
@@ -3130,14 +3112,14 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
         if ( category === "contacts" ) {
             contact_op_message_el.innerHTML = msg
         } else {
-            email_op_message_el.innerHTML = msg
+            blg_entry_op_message_el.innerHTML = msg
         }
     }
 
     function show_op_buttons(display_this_one) {
-        let mtypes = window._x_share_mail_classes
+        let mtypes = window._x_share_blg_entry_classes
         for ( let mtype of mtypes ) {
-            let mops = document.getElementById(`email-ops-${mtype}`)
+            let mops = document.getElementById(`blg-entry-ops-${mtype}`)
             if ( mops ) {
                 mops.style.display = "none"
             }
@@ -3153,27 +3135,27 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
         select_all_op_cb_on_ops.checked = false
     }
 
-    let g_current_email_list_for_op = []
+    let g_current_blg_entry_list_for_op = []
 
     async function collect_emails_list_for_op(mtype) {
         let m_list = await get_checked_messages(mtype)
         if ( m_list) {
-            g_current_email_list_for_op = m_list.map(id => parseInt(id))
+            g_current_blg_entry_list_for_op = m_list.map(id => parseInt(id))
         }
     }
 
-    async function do_op_modal(mtype,mail_id_list_set = false) {
+    async function do_op_modal(mtype,blg_entry_id_list_set = false) {
         disable_ok_button()
         disable_selall_ok_button()
-        let m_list = mail_id_list_set ? false : await get_checked_messages_or_ask_for_all(mtype)
-        if ( m_list || mail_id_list_set ) {
-            if ( !(mail_id_list_set) ) {
-                g_current_email_list_for_op = m_list.map(id => parseInt(id))
+        let m_list = blg_entry_id_list_set ? false : await get_checked_messages_or_ask_for_all(mtype)
+        if ( m_list || blg_entry_id_list_set ) {
+            if ( !(blg_entry_id_list_set) ) {
+                g_current_blg_entry_list_for_op = m_list.map(id => parseInt(id))
             }
-            const dialog = document.getElementById('email-ops-modal');
+            const dialog = document.getElementById('blg-entry-ops-modal');
             if ( dialog ) {
                 reset_op_starter_message('email',"<u>Please select an action to perform.</u>")
-                show_op_buttons(`email-ops-${mtype}`)
+                show_op_buttons(`blg-entry-ops-${mtype}`)
                 dialog.showModal();
             }
         }
@@ -3186,21 +3168,21 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
             let mtype = window._current_mtype
             restore_checkbox_pattern(mtype)
             if ( g_var_restoreable_checkbox_ids ) {
-                g_current_email_list_for_op = g_var_restoreable_checkbox_ids
+                g_current_blg_entry_list_for_op = g_var_restoreable_checkbox_ids
                 g_var_restoreable_checkbox_ids = false
             }
             reset_select_all_op_cb()
         }
     }
 
-    function single_mail_ops(event) {
+    function single_blg_entry_ops(event) {
         disable_ok_button()
-        let save_emails_for_ops = g_current_email_list_for_op
+        let save_emails_for_ops = g_current_blg_entry_list_for_op
         let mtype = window._current_mtype
         let email = g_current_edit_email
         if ( email && (typeof mtype === "string") && (mtype !== 'contact') ) {
             let id = email.id
-            g_current_email_list_for_op = [id]
+            g_current_blg_entry_list_for_op = [id]
             g_var_restoreable_checkbox_ids = save_emails_for_ops
             g_var_restoreable_mtype = mtype
             do_op_modal(mtype,true)
@@ -3231,7 +3213,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 
 
 
-    async function is_ready_to_send_email(email) {
+    async function is_ready_to_send_blg_entry(email) {
         // is_ready_to_send_email
         if ( email ) {
             // ---- ---- ---- ---- ---- ---- ---- ----
@@ -3269,26 +3251,26 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
     }
 
 
-    async function send_email_list(from) {
-        let id_list = g_current_email_list_for_op
+    async function send_blg_entry_list(from) {
+        let id_list = g_current_blg_entry_list_for_op
         let object_list = get_list_of_objects(from,id_list)
         if ( object_list && object_list.length ) {
             if ( await send_emails(object_list) ) {
-                add_objects_to_list('sent',object_list)
+                add_objects_to_list('published',object_list)
                 delete_objects_from_list(from,id_list)
             }
         }
     }
 
-    async function do_send_mail(event) {
+    async function do_send_blg_entries(event) {
         let email = g_current_edit_email
         if ( email ) {
-            if ( await is_ready_to_send_email(email) ) {
-                let save_email_list_for_op = g_current_email_list_for_op
-                g_current_email_list_for_op = [email.id]
-                await send_email_list('drafts')
-                g_current_email_list_for_op = save_email_list_for_op
-                mail_switch_to('sent')
+            if ( await is_ready_to_send_blg_entry(email) ) {
+                let save_blg_entry_list_for_op = g_current_blg_entry_list_for_op
+                g_current_blg_entry_list_for_op = [email.id]
+                await send_blg_entry_list('drafts')
+                g_current_blg_entry_list_for_op = save_blg_entry_list_for_op
+                blg_entry_switch_to('published')
                 return true
             }
         }
@@ -3296,17 +3278,17 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
     }
 
 
-    async function do_send_mail_closefader(event) {
+    async function do_send_blg_entry_closefader(event) {
         event.preventDefault()
-        let status = await do_send_mail(event)
+        let status = await do_send_blg_entries(event)
         if ( status ) {
-            closefader(event,'email_edit')
+            closefader(event,'blg_entry_edit')
         }
     }
 
 
-    function email_list_move_to(from,to) {
-        let id_list = g_current_email_list_for_op
+    function blg_entry_list_move_to(from,to) {
+        let id_list = g_current_blg_entry_list_for_op
         let object_list = get_list_of_objects(from,id_list)
         if ( object_list && object_list.length ) {
             add_objects_to_list(to,object_list)
@@ -3314,16 +3296,16 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
         }
     }
 
-    function email_list_copy_to(from,to) {
-        let id_list = g_current_email_list_for_op
+    function blg_entry_list_copy_to(from,to) {
+        let id_list = g_current_blg_entry_list_for_op
         let object_list = get_list_of_objects(from,id_list)
         if ( object_list && object_list.length ) {
             add_objects_to_list(to,object_list)
         }
     }
 
-    function email_list_delete(from) {
-        let id_list = g_current_email_list_for_op
+    function blg_entry_list_delete(from) {
+        let id_list = g_current_blg_entry_list_for_op
         if ( id_list && id_list.length ) {
             delete_objects_from_list(from,id_list)
         }
@@ -3331,40 +3313,40 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 
 
 
-    function increment_email_save_count() {
+    function increment_blg_entry_save_count() {
         if ( g_current_edit_email ) {
             g_current_edit_email._count_edits++
             g_current_edit_email.dirty = false
         }
     }
 
-    function mail_edit_mode_reset(event) {
+    function blg_entry_edit_mode_reset(event) {
         if ( g_current_edit_email && g_current_edit_email.dirty ) {
             let revert_email = g_current_edit_email
             let previous_values = revert_email._saved_updates.shift()  // this is the last saved version, does not undo more{
             if ( previous_values ) {
-                reload_email_by_undo(revert_email,previous_values)
+                reload_blg_entry_by_undo(revert_email,previous_values)
                 sort_one_or_more('drafts')
             }
         } else if ( g_current_edit_email && (g_current_edit_email._count_edits === 0) ) {
-            let save_checked_emails = g_current_email_list_for_op
-            g_current_email_list_for_op = [g_current_edit_email.id]
-            email_list_delete('drafts')
+            let save_checked_emails = g_current_blg_entry_list_for_op
+            g_current_blg_entry_list_for_op = [g_current_edit_email.id]
+            blg_entry_list_delete('drafts')
         }
     }
 
-    function edit_mail_save(event) {
-        increment_email_save_count()
-        save_mail(g_current_edit_email)
+    function edit_blg_entry_save(event) {
+        increment_blg_entry_save_count()
+        save_blg_entries(g_current_edit_email)
     }
 
-    function void_current_edit_email() {
+    function void_current_edit_blg_entry() {
         g_current_edit_email = false
     }
 
 
     function disable_ok_button() {
-        let ok_btn = document.getElementById("email-ops-modal-ok")
+        let ok_btn = document.getElementById("blg-entry-ops-modal-ok")
         if ( ok_btn ) {
             ok_btn.disabled = true
         }
@@ -3372,7 +3354,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 
 
     function enable_ok_button() {
-        let ok_btn = document.getElementById("email-ops-modal-ok")
+        let ok_btn = document.getElementById("blg-entry-ops-modal-ok")
         if ( ok_btn ) {
             ok_btn.disabled = false
         }
@@ -3401,10 +3383,10 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
             enable_ok_button()
         } else {
             if ( g_current_edit_email !== false ) {
-                if ( g_current_email_list_for_op.length === 0 ) {
-                    g_current_email_list_for_op.unshift(g_current_edit_email.id)   
+                if ( g_current_blg_entry_list_for_op.length === 0 ) {
+                    g_current_blg_entry_list_for_op.unshift(g_current_edit_email.id)   
                 }
-                if ( g_current_email_list_for_op[0] == g_current_edit_email.id ) {
+                if ( g_current_blg_entry_list_for_op[0] == g_current_edit_email.id ) {
                     enable_ok_button()
                 }
             }
@@ -3416,8 +3398,8 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
         let checkedBoxes = document.querySelectorAll(`.${mtype}_check_select:checked`);
         if ( checkedBoxes.length === 0 ) {
             if ( g_current_edit_email !== false ) {
-                if ( g_current_email_list_for_op.length === 0 ) {
-                    g_current_email_list_for_op.unshift(g_current_edit_email.id)   
+                if ( g_current_blg_entry_list_for_op.length === 0 ) {
+                    g_current_blg_entry_list_for_op.unshift(g_current_edit_email.id)   
                 }
                 return
             }
@@ -3426,41 +3408,41 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
     }
 
 
-    function prep_send_email_list(from) {
-        if ( email_op_message_el ) {
-            email_op_message_el.innerText = "Send selected emails?"
-            email_op_dialog._acceptance_action = () => {
+    function prep_send_blg_entry_list(from) {
+        if ( blg_entry_op_message_el ) {
+            blg_entry_op_message_el.innerText = "Send selected emails?"
+            blg_entry_op_dialog._acceptance_action = () => {
                 if ( confirm("This decision if final. Proceed?") ) {
-                    send_email_list(from)
+                    send_blg_entry_list(from)
                 }
             }
             enable_ok_button_if_any_selected(from)
         }
     }
-    function prep_email_list_move_to(from,to) {
-        if ( email_op_message_el ) {
-            email_op_message_el.innerText = `Move these emails from ${from} to ${to}?`
-            email_op_dialog._acceptance_action = () => {
-                email_list_move_to(from,to)
+    function prep_blg_entry_list_move_to(from,to) {
+        if ( blg_entry_op_message_el ) {
+            blg_entry_op_message_el.innerText = `Move these emails from ${from} to ${to}?`
+            blg_entry_op_dialog._acceptance_action = () => {
+                blg_entry_list_move_to(from,to)
             }
             enable_ok_button_if_any_selected(from)
         }
     }
-    function prep_email_list_copy_to(from,to) {
-        if ( email_op_message_el ) {
-            email_op_message_el.innerText = `Clopy these emails from ${from} to ${to}?`
-            email_op_dialog._acceptance_action = () => {
-                email_list_copy_to(from,to)
+    function prep_blg_entry_list_copy_to(from,to) {
+        if ( blg_entry_op_message_el ) {
+            blg_entry_op_message_el.innerText = `Clopy these emails from ${from} to ${to}?`
+            blg_entry_op_dialog._acceptance_action = () => {
+                blg_entry_list_copy_to(from,to)
             }
             enable_ok_button_if_any_selected(from)
         }
     }
-    function prep_email_list_delete(from) {
-        if ( email_op_message_el ) {
-            email_op_message_el.innerText = `Permanently delete these emails?`
-            email_op_dialog._acceptance_action = () => {
+    function prep_blg_entry_list_delete(from) {
+        if ( blg_entry_op_message_el ) {
+            blg_entry_op_message_el.innerText = `Permanently delete these emails?`
+            blg_entry_op_dialog._acceptance_action = () => {
                 if ( confirm("This action cannot be undone. Proceed?") ) {
-                    email_list_delete(from)
+                    blg_entry_list_delete(from)
                 }
             }
             enable_ok_button_if_any_selected(from)
@@ -3469,20 +3451,20 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 
 
 
-    function prep_email_list_reply_to(from) {
-        if ( email_op_message_el ) {
-            email_op_message_el.innerText = `Reply to these emails?`
-            email_op_dialog._acceptance_action = () => {
+    function prep_blg_entry_list_reply_to(from) {
+        if ( blg_entry_op_message_el ) {
+            blg_entry_op_message_el.innerText = `Reply to these emails?`
+            blg_entry_op_dialog._acceptance_action = () => {
                 reply_to_emails(from)
             }
             enable_ok_button_if_any_selected(from)
         }
     }
 
-    function prep_email_list_reply_all(from) {
-        if ( email_op_message_el ) {
-            email_op_message_el.innerText = `Reply to all readers of these emails?`
-            email_op_dialog._acceptance_action = () => {
+    function prep_blg_entry_list_reply_all(from) {
+        if ( blg_entry_op_message_el ) {
+            blg_entry_op_message_el.innerText = `Reply to all readers of these emails?`
+            blg_entry_op_dialog._acceptance_action = () => {
                 reply_all_to_emails(from)
             }
             enable_ok_button_if_any_selected(from)
@@ -3499,7 +3481,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
      */
     function reply_to_emails(from) {
         enable_ok_button_if_any_selected(from)
-        setup_email_reply_editing(from)
+        setup_blg_entry_reply_editing(from)
     }
 
     function reply_all_to_emails(from) {
@@ -3509,10 +3491,10 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 
     /**
      */
-    function setup_email_reply_editing(from) {
+    function setup_blg_entry_reply_editing(from) {
 
     }
-    function setup_email_reply_all_editing(from) {
+    function setup_blg_entry_reply_all_editing(from) {
 
     }
     
@@ -3613,8 +3595,8 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
             if ( g_current_edit_contact._count_edits === 0 ) {    // , "_count_edits" : 0, "_saved_updates" : []
                 let del_contact = g_current_edit_contact
                 g_current_edit_contact = false
-                g_current_email_list_for_op = g_current_contact_list_for_op = [del_contact.id]
-                email_list_delete('contacts')
+                g_current_blg_entry_list_for_op = g_current_contact_list_for_op = [del_contact.id]
+                blg_entry_list_delete('contacts')
             } else if ( g_current_edit_contact.dirty ) {
                 let revert_contact = g_current_edit_contact
                 g_current_edit_contact = false
@@ -3629,10 +3611,10 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 
 
     function contact_launch_compose() {
-        mail_create()
+        blg_entry_create()
         if ( g_current_edit_contact && g_current_edit_email ) {
             g_current_edit_email.recipient = g_current_edit_contact.email
-            update_mail_properties_edit("drafts",g_current_edit_email.id)
+            update_blg_entry_properties_edit("drafts",g_current_edit_email.id)
         }
     }
 
@@ -3650,16 +3632,16 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
         if ( contact_op_message_el ) {
             contact_op_message_el.innerText = `Compose a message for selected contacts?`
             contact_op_dialog._acceptance_action = () => {
-                mail_create()
+                blg_entry_create()
                 if ( g_current_edit_contact && g_current_edit_email ) {
                     g_current_edit_email.recipient = g_current_edit_contact.email
-                    update_mail_properties_edit("drafts",g_current_edit_email.id)  // for opening the email editor for the contact
+                    update_blg_entry_properties_edit("drafts",g_current_edit_email.id)  // for opening the email editor for the contact
                 }
             }
         }
     }
 
-    // This makes a work queue that will present to user one contact edit at a time.
+    // This makes a work queue that will prepublished to user one contact edit at a time.
     //
     function prep_edit_contacts() {
 
@@ -3670,8 +3652,8 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
             contact_op_message_el.innerText = `Permanently delete these contacts?`
             contact_op_dialog._acceptance_action = () => {
                 if ( confirm("This action cannot be undone. Proceed?") ) {
-                    g_current_email_list_for_op = g_current_contact_list_for_op
-                    email_list_delete('contacts')
+                    g_current_blg_entry_list_for_op = g_current_contact_list_for_op
+                    blg_entry_list_delete('contacts')
                 }
             }
         }
@@ -4291,7 +4273,7 @@ function preventDefaults(e) {
     e.stopPropagation();
 }
 
-const dropZone = document.getElementById('edit-email-attachments');
+const dropZone = document.getElementById('edit-blg-entry-attachments');
 
 // 1. Prevent default behaviors for all drag/drop events
 ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
@@ -4616,8 +4598,8 @@ post_submit
         return new Uint8Array(hash).toBase64()
     }
 
-    function gen_json_id(mail_ob) {
-        if ( mail_obj ) {
+    function gen_json_id(blg_entry_ob) {
+        if ( blg_entry_obj ) {
             return 10
         } else {
             let current_user_name = window._current_user_account.name
@@ -4630,7 +4612,7 @@ post_submit
             this.id = 10 // get a good method for this id
             let user = window._current_user_account.name
             this.params = {
-                "mail_type" : mtype,
+                "blg_entry_type" : mtype,
                 "user" : user,
                 "params" : params,
                 "date" : Date.now()
@@ -4649,7 +4631,7 @@ post_submit
     let wss_app_port = 9990
 
 
-    // mail_proto = 
+    // blg_entry_proto = 
     // "id" : 1,
     // "sender" : "richard@myhost.local", 
     // "category" : "cecks",
@@ -4679,11 +4661,11 @@ post_submit
             let emails = rpc_result.result
 
             for ( let email of emails ) {
-                email.created_when = _x_test_mail_proto.created_when
-                email.updated_when = _x_test_mail_proto.updated_when
-                email.description = _x_test_mail_proto.description
-                email.score = _x_test_mail_proto.score
-                email.keys =_x_test_mail_proto.keys
+                email.created_when = _x_test_blg_entry_proto.created_when
+                email.updated_when = _x_test_blg_entry_proto.updated_when
+                email.description = _x_test_blg_entry_proto.description
+                email.score = _x_test_blg_entry_proto.score
+                email.keys =_x_test_blg_entry_proto.keys
             }
 
 
@@ -4761,7 +4743,7 @@ post_submit
      */
     async function send_emails(object_list) {
         // server communication
-        let data = new MailJsonRpc("sent","send-mail",object_list)
+        let data = new MailJsonRpc("published","send-mail",object_list)
 
         let port = web_page_port
         let url = `http://localhost:${port}/json/email`
@@ -4774,9 +4756,9 @@ post_submit
 
     /**
      */
-    async function save_mail(email_obj) {
+    async function save_blg_entries(blg_entry_obj) {
         // server communicate
-        let data = new MailJsonRpc("drafts","store-draft",email_obj)
+        let data = new MailJsonRpc("drafts","store-draft",blg_entry_obj)
 
         let port = web_page_port
         let url = `http://localhost:${port}/json/email`
@@ -4835,7 +4817,7 @@ class WsSocketController {
             if ( sock ) {
                 let sid = true // an actual id from the server so that it can know itself
                 let message = {
-                    "type" : "mail-ops",
+                    "type" : "blg-entry-ops",
                     "message" : {
                         "op" : "initial-messages",
                         "server_id" : sid,
@@ -4938,9 +4920,9 @@ g_ws_controller = new WsSocketController(ws_url)
 </script>
 <script>
     window.onload = () => {
-        g_searcher.setup_article_count(12)
+        g_searcher.setup_article_count(12,3)
         // initializers ----
-        setup_email_ops_dialog()
+        setup_blg_entry_ops_dialog()
         setup_contacts_ops_dialog()
         setup_search_ops_dialog()
         setup_edit_response()
