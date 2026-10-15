@@ -1146,14 +1146,27 @@ span {
 
     window._x_share_tab_controller_manager = tab_controller_management
 
+
+
+    const blg_types_to_titles = {
+        'blg_list' : "<b>Blog</b> Copious World",
+        'drafts' : "<b>Drafts</b>",
+        'published' : "<b>Published</b>",
+        'trash' : "<b>Trash</b>",
+    }
+
+    const capitalize = ([first, ...rest]) => 
+            first ? first.toUpperCase() + rest.join('') : '';
+
+    window.blog_title_map = (mtype) => {
+        let title = blg_types_to_titles[mtype]
+        return title
+    }
+
 </script>
 </head>
 <body>
 <nav id="mainNav" >
-
-<div class="follow-menu">
-    <span id="blg-entry-type-title">blog</span>
-</div>
 
 <style>
 .sum-container {
@@ -1184,7 +1197,7 @@ span {
         <path class="heroicon-ui" d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"/>
     </svg>
     <div class="sum-banner">
-        <b>Blog</b> Copious Systems 
+        <span id="section-category-title" style="color:black"><b>Blog</b> Copious World</span> 
     </div>
     </summary>
     <!-- MAIL MENU CONTROL -->
@@ -2149,7 +2162,14 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
         if ( blg_entry_store ) blg_entry_store.reverse()
     }
 
-    let mtype_title = document.getElementById("blg-entry-type-title")
+
+    // 
+    let b_section_title = document.getElementById("section-category-title")
+    function set_section_title(mtype) {
+        if ( mtype && b_section_title ) {
+            b_section_title.innerHTML = blog_title_map(mtype)
+        }
+    }
 
     window.blg_entry_switch_to  = (mtype) => {
         if ( mtype === undefined ) mtype = g_current_mtype
@@ -2164,12 +2184,12 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
             if ( mobj.container_el ) {
                 mobj.container_el.style.display = "block"
                 //
-                mtype_title.innerText = mtype
                 g_current_mtype = mtype
                 window._current_mtype = mtype
                 set_banner_search_selector(mtype)
             }            
         }
+        set_section_title(mtype)
     }
 
     window.blg_entry_switch_to_event = (event) => {
@@ -2177,27 +2197,6 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
         if ( sel_el ) {
             if ( sel_el.value === "all-messages") return
             blg_entry_switch_to(sel_el.value)
-        }
-    }
-
-    window.contacts_ui = () => {
-        for ( let one_mtype in blg_entry_managers ) {
-            let mobj = blg_entry_managers[one_mtype]
-            if ( mobj.container_el ) {
-                mobj.container_el.style.display = "none"
-            }
-        }
-        let mtype = "contacts"
-        let mobj = blg_entry_managers[mtype]
-        if ( mobj ) {
-            if ( mobj.container_el ) {
-                mobj.container_el.style.display = "block"
-                //
-                mtype_title.innerText = mtype
-                g_current_mtype = mtype
-                window._current_mtype = g_current_mtype
-                set_banner_search_selector(mtype)
-            }            
         }
     }
 
@@ -2984,8 +2983,15 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
         let msg_view = document.getElementById("blg_entry_message_contents")
         if ( msg_view ) {
             update_blg_entry_properties_view("blg_list",msg_id)
-            let clear_text = get_text_from_store("blg_list",msg_id)
-            msg_view.innerHTML = `picked message id = ${msg_id} <br> ${clear_text}`
+            let check_box_marker = document.getElementById(`grid-card-stats-checker-${msg_id}`)
+            if ( check_box_marker ) {
+                check_box_marker.checked = true
+                
+                setTimeout(() => { store_current_check_box_pattern(); do_tab_bar_tab_select(msg_id) },10)
+            } else {
+                let clear_text = get_text_from_store("blg_list",msg_id)
+                msg_view.innerHTML = `picked message id = ${msg_id} <br> ${clear_text}`
+            }
         }
         pinBox(sect_box)
     }
@@ -3008,17 +3014,6 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
         if ( msg_view ) {
             update_blg_entry_properties_view("published",msg_id)
             let clear_text = get_text_from_store("published",msg_id)
-            msg_view.innerHTML = `picked message id = ${msg_id} <br> ${clear_text}`
-        }
-        pinBox(sect_box)
-    }
-    //
-    function view_from_spam(msg_id) {
-        let sect_box = `#blg_entry_view`
-        let msg_view = document.getElementById("blg_entry_message_contents")
-        if ( msg_view ) {
-            update_blg_entry_properties_view("spam",msg_id)
-            let clear_text = get_text_from_store("spam",msg_id)
             msg_view.innerHTML = `picked message id = ${msg_id} <br> ${clear_text}`
         }
         pinBox(sect_box)
