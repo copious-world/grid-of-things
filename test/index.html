@@ -1301,12 +1301,17 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
             if ( this.a_count_el ) {
                 this.a_count_el.innerText = `${n}`
             }
+
             if ( this.a_count_maxer ) {
                 this.a_count_maxer.setAttribute('max',n)
+                this.a_count_maxer.value = 1
             }
             if ( this.a_count_slider ) {
                 this.a_count_slider.setAttribute('max',n)
+                this.a_count_slider.value = 1
             }
+
+
             this.setup_box_delta(box_delta)
         }
 
@@ -1418,6 +1423,11 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 
 </script>
 
+
+<!-- MAIL DISPLAY -->
+<main id="grid-main"  class="big-list-container">
+    <div id="blg_list-entries" style="display:block" >
+
 <div class="search_control_banner">
     <div class="blg-ctrl-panel blg-window-size-ctrl"  >
         <span style="color:navy;font-weight:bold">Boxes</span>
@@ -1462,27 +1472,53 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 	</div>
 </div>
 
-
-<!-- MAIL DISPLAY -->
-<main id="grid-main"  class="big-list-container">
-    <div id="blg_list-entries" style="display:block" >
         <div id="list-entities-blg_list" class="grid-container" style="width:96%" >
 
         </div>
     </div>
     <div id="drafts-entries" style="display:none" >
-        <div id="list-entities-drafts" class="blg-entry-drafts" style="width:96%" >
+        <div>
+            <table class="blg-entry-drafts" style="width:100%" >
+                <thead>
+                    <th class="drafts-checkbox-th"><button onclick="do_op_modal('drafts')">ops</button></th>
+                    <th class="drafts-recipient-th">sender</th>
+                    <th class="drafts-subject-th">subject</th>
+                    <th class="drafts-date-th">time</th>
+                </thead>
+            </table>
+            <table id="list-entities-drafts" class="blg-entry-drafts" style="width:100%" >
 
+            </table>
         </div>
     </div>
     <div id="published-entries" style="display:none" >
-        <div id="list-entities-published" class="blg-entry-drafts" style="width:96%" >
+        <div>
+            <table class="blg-entry-published" style="width:100%" >
+                <thead>
+                    <th class="published-checkbox-th"><button onclick="do_op_modal('published')">ops</button></th>
+                    <th class="published-recipient-th">sender</th>
+                    <th class="published-subject-th">subject</th>
+                    <th class="published-date-th">time</th>
+                </thead>
+            </table>
+            <table id="list-entities-published" class="blg-entry-published" style="width:100%" >
 
+            </table>
         </div>
     </div>
     <div id="trash-entries" style="display:none" >
-        <div id="list-entities-trash" class="blg-entry-drafts" style="width:96%" >
+        <div>
+            <table class="blg-entry-trash" style="width:100%" >
+                <thead>
+                    <th class="trash-checkbox-th"><button onclick="do_op_modal('trash')">ops</button></th>
+                    <th class="trash-recipient-th">sender</th>
+                    <th class="trash-subject-th">subject</th>
+                    <th class="trash-date-th">time</th>
+                </thead>
+            </table>
+            <table id="list-entities-trash" class="blg-entry-trash" style="width:100%" >
 
+            </table>
         </div>
     </div>
 </main>
@@ -1548,7 +1584,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 	<div class="fade_able_content" >
         <div  class="ops-button-containers">
             <span id="drafts_view_category" class="show-cat">drafts: </span>&nbsp;&nbsp;
-            <button id="blg_entry_edit_mode_send" onclick="do_send_blg_entry_closefader(event)">send</button>
+            <button id="blg_entry_edit_mode_send" onclick="do_publish_blg_entry_closefader(event)">publish</button>
             <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
             <button id="blg_entry_edit_mode_save" onclick="edit_blg_entry_save(event);" >save</button>
             <button id="blg_entry_edit_mode_cancel" onclick="blg_entry_edit_mode_reset(event);closefader(event,'blg_entry_edit');" >cancel</button>
@@ -1556,17 +1592,17 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
             <button id="blg_entry_ops" onclick="single_blg_entry_ops(event);">ops</button>
         </div>
         <div class="edit-blg-entry-properties">
-            <div class="field-label">From:</div>
+            <div class="field-label">Author:</div>
             <div class="field-value"><input id="edit-blg-entry-sender" type="email" /></div>
             
-            <div class="field-label">To:</div>
-            <div class="field-value"><input id="edit-blg-entry-recipient" type="email" /></div>
+            <!-- <div class="field-label">To:</div>
+            <div class="field-value"><input id="edit-blg-entry-recipient" type="email" /></div> -->
 
-            <div class="field-label">cc:</div>
+            <!-- <div class="field-label">cc:</div>
             <div id="view-blg-entry-cc" class="field-value"><input id="edit-blg-entry-cc" type="email" /></div>
 
             <div class="field-label">bcc:</div>
-            <div id="view-blg-entry-bcc" class="field-value"><input id="edit-blg-entry-bcc" type="email" /></div>
+            <div id="view-blg-entry-bcc" class="field-value"><input id="edit-blg-entry-bcc" type="email" /></div> -->
 
             <div class="field-label">Subject:</div>
             <div class="field-value"></label><input id="edit-blg-entry-subject" type="text" /></div>
@@ -1589,48 +1625,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
         </div>
 		<div class="message-box" style="min-width: 400px;min-height: 300px;">
             <div class="blg-entry-editor-body" id="blg_entry_message_contents_edit" contenteditable="true" >
-                This is the email to view
-            </div>
-		</div>
-	</div>
-</div>
-
-
-<div id="contact_view" class="right_fade_able" style="z-index:124" >
-	<div class="togglebar" >
-		<span class="closer_x" onmousedown="closefader(event,'contact_view');contact_edit_mode_reset(event)">X</span>
-	</div>
-	<div class="sizerbar" > S </div>
-	<div class="fade_able_content" >
-        <div class="ops-button-containers" >
-            <button id="contact_edit_mode_select" onclick="contact_edit_mode_toggle(event)">edit</button>
-            <button id="contact_edit_mode_cancel" onclick="contact_edit_mode_reset(event)"  style="display: none;">cancel</button>
-            <button id="contact_launch_compose" onclick="contact_launch_compose(event)">compose message</button>
-            <button id="contact_remove" onclick="remove_one_contact(event);closefader(event,'contact_view')">remove contact</button>
-        </div>
-        <div id="contact-properties-view" class="contact-properties" style="display: grid;">
-            <div class="field-label">Name:</div>
-            <div id="view-contact-name" class="field-value">Sender Upper</div>
-            
-            <div class="field-label">Email:</div>
-            <div id="view-contact-email" class="field-value">contact@example.com</div>
-
-            <div class="field-label">Date:</div>
-            <div id="view-contact-date" class="field-value">September 14, 2026, 12:51 PM</div>
-        </div>
-        <div id="contact-properties-edit" class="contact-properties" style="display: none;">
-            <div class="field-label">Name:</div>
-            <div class="field-value"><input id="edit-contact-name" type="text" /></div>
-            
-            <div class="field-label">Email:</div>
-            <div class="field-value"><input id="edit-contact-email" type="email" /></div>
-
-            <div class="field-label">Date:</div>
-            <div id="edit-contact-date" class="field-value">September 14, 2026, 12:51 PM</div>
-        </div>
-		<div class="message-box" style="min-width: 400px;min-height: 300px;">
-            <div class="blg-entry-editor-body" id="contact_contents_edit" contenteditable="true" >
-                Contact record info
+                This is the blog entry to view
             </div>
 		</div>
 	</div>
@@ -1658,7 +1653,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 -->
 <dialog id="blg-entry-ops-modal" style="min-width: 300px;">
     <div id="blg-entry-ops-drafts" style="display: none;" >
-        <button onclick="prep_send_blg_entry_list('drafts')">send</button>
+        <button onclick="prep_publish_blg_entry_list('drafts')">publish</button>
         <button onclick="prep_blg_entry_list_move_to('drafts','trash')">move to trash</button>
     </div>
     <div id="blg-entry-ops-published" style="display: none;" >
@@ -1666,12 +1661,12 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
         <button onclick="prep_blg_entry_list_copy_to('published','drafts')">copy to drafts</button>
     </div>
     <div id="blg-entry-ops-blg_list" style="display: none;" >
-        <button onclick="prep_blg_entry_list_reply_to('blg_list')">reply</button>
-        <button onclick="prep_blg_entry_list_reply_all('blg_list')">reply all</button>
+        <!-- <button onclick="prep_blg_entry_list_reply_to('blg_list')">reply</button>
+        <button onclick="prep_blg_entry_list_reply_all('blg_list')">reply all</button> -->
         &nbsp;|&nbsp;
         <button onclick="prep_blg_entry_list_move_to('blg_list','trash')">move to trash</button>
-        <button onclick="prep_blg_entry_list_move_to('blg_list','spam')">move to spam</button>
-        <button onclick="prep_blg_entry_list_move_to('blg_list','notfify')">move to notify</button>
+        <!-- <button onclick="prep_blg_entry_list_move_to('blg_list','spam')">move to spam</button>
+        <button onclick="prep_blg_entry_list_move_to('blg_list','notfify')">move to notify</button> -->
     </div>
     <div id="blg-entry-ops-trash" style="display: none;" >
         <button onclick="prep_blg_entry_list_delete('trash')">delete</button>
@@ -1689,21 +1684,6 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
     </form>
 </dialog>
 
-<dialog id="contact-ops-modal" style="min-width: 300px;">
-    <div id="blg-entry-ops-drafts" style="display: block;" >
-        <button onclick="prep_compose_for_contacts()">compose a message</button>
-        <!-- <button onclick="prep_instant_message_contacts()">instant message</button> -->
-        <button onclick="prep_edit_contacts()">edit contacts</button>
-        <button onclick="prep_contact_delete()">delete contacts</button>
-    </div>
-    <form method="dialog">
-        <p id="chosen_contact_operation"><u>Please select an action to perform.</u></p>
-        <!-- Cancel button: closes modal, returnValue is "cancel" -->
-        <button type="submit" formmethod="dialog" value="cancel">Cancel</button>
-        <!-- Close/Confirm button: closes modal, returnValue is "confirm" or selected value -->
-        <button type="submit" value="confirm" >OK</button>
-    </form>
-</dialog>
 
 <dialog id="search-ops-modal" style="min-width: 300px;">
     <div class="blg-entry-properties" >
@@ -1728,13 +1708,6 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
                 </optgroup>
             </select>
         </div>
-    </div>
-    <div>
-        testing...
-        <button onclick="add_blg_enties()">add mails</button>
-        <button onclick="sort_blg_entries()">sort mails</button>
-        <button onclick="reverse_blg_entries()">reverse mails</button>
-        <button onclick="add_contacts()">add contacts</button>
     </div>
     <form method="dialog">
         <!-- Cancel button: closes modal, returnValue is "cancel" -->
@@ -1925,14 +1898,14 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
     window.add_blg_enties = async (mtype,box_count) => {
         //
         if ( mtype === undefined ) mtype = g_current_mtype
-        if ( mtype === "contacts" ) {
-            add_contacts()
-            return
-        }
+        // if ( mtype === "contacts" ) {
+        //     add_contacts()
+        //     return
+        // }
         let blg_entry_store = store_of_blg_entry_manager(mtype)
         //
         if ( blg_entry_store ) {
-            let new_blg_entry_bunch = await load_a_bunch_of_emails(mtype)
+            let new_blg_entry_bunch = await load_a_bunch_of_entries(mtype)
             if ( (box_count !== undefined) && (parseInt(box_count) !== NaN) ) {
                 new_blg_entry_bunch = new_blg_entry_bunch.slice(0,box_count)
             }
@@ -1961,17 +1934,17 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 
     window.add_blg_enties_replace = async (mtype,article_index,fetch_count) => {
         if ( mtype === undefined ) mtype = g_current_mtype
-        if ( mtype === "contacts" ) {
-            add_contacts()
-            return
-        }
+        // if ( mtype === "contacts" ) {
+        //     add_contacts()
+        //     return
+        // }
         let blg_entry_store = store_of_blg_entry_manager(mtype)
         //
         if ( blg_entry_store ) {
             let total_blg_entry_bunch = []
             let remaining_fetch_count = fetch_count
             while ( remaining_fetch_count > 0 ) {
-                let new_blg_entry_bunch = await load_a_bunch_of_emails(mtype)
+                let new_blg_entry_bunch = await load_a_bunch_of_entries(mtype)
                 let returned_count = new_blg_entry_bunch.length
                 remaining_fetch_count -= returned_count
                 while ( remaining_fetch_count < 0 ) {
@@ -1995,28 +1968,28 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 
 
     // useful
-    window.add_contacts = async () => {
-        let contact_store = store_of_blg_entry_manager('contacts')
-        if ( contact_store ) {
-            let new_contact_bunch = await load_a_bunch_of_contacts()
-            if ( new_contact_bunch && new_contact_bunch.length ) {
-                for ( let c of new_contact_bunch ) {
-                    contact_store.unshift(c)
-                }
-            } else {
-                if ( new_contact_bunch ) {
-                    contact_store.set(new_contact_bunch)
-                }
-            }
-        }
-        sort_blg_entries('contacts')
-        return true
-    }
+    // window.add_contacts = async () => {
+    //     let contact_store = store_of_blg_entry_manager('contacts')
+    //     if ( contact_store ) {
+    //         let new_contact_bunch = await load_a_bunch_of_contacts()
+    //         if ( new_contact_bunch && new_contact_bunch.length ) {
+    //             for ( let c of new_contact_bunch ) {
+    //                 contact_store.unshift(c)
+    //             }
+    //         } else {
+    //             if ( new_contact_bunch ) {
+    //                 contact_store.set(new_contact_bunch)
+    //             }
+    //         }
+    //     }
+    //     sort_blg_entries('contacts')
+    //     return true
+    // }
 
 
 
     // useful (mail and contacts)
-    window.add_emails_to_list = (mtype,blg_entry_list) => {
+    window.add_entries_to_list = (mtype,blg_entry_list) => {
 
 
         for ( let email of blg_entry_list ) {
@@ -2048,7 +2021,8 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
     }
 
 
-    window.delete_emails_from_list = (mtype,blg_entry_ids_list) => {
+
+    window.delete_entries_from_list = (mtype,blg_entry_ids_list) => {
         if ( mtype === undefined ) return false
         let blg_entry_store = store_of_blg_entry_manager(mtype)
         if ( blg_entry_store ) {
@@ -2336,38 +2310,43 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 
     function setup_modal_response(dialog_id) {
         const dialog = document.getElementById(dialog_id);
-        dialog._acceptance_action = false
-        dialog._cancel_action = false
-        let self = dialog
-        dialog.addEventListener('close', () => {
-            const action = dialog.returnValue;
-            switch (action) {
-                case "confirm" : {
-                    if ( dialog._acceptance_action ) {
-                        dialog._acceptance_action()
-                        dialog._acceptance_action = false
+        if ( dialog ) {
+            dialog._acceptance_action = false
+            dialog._cancel_action = false
+            let self = dialog
+            dialog.addEventListener('close', () => {
+                const action = dialog.returnValue;
+                switch (action) {
+                    case "confirm" : {
+                        if ( dialog._acceptance_action ) {
+                            dialog._acceptance_action()
+                            dialog._acceptance_action = false
+                        }
+                        break;
                     }
-                    break;
-                }
-                case "cancel" : {
-                    if ( dialog._cancel_action ) {
-                        dialog._cancel_action()
-                        dialog._cancel_action = false
+                    case "cancel" : {
+                        if ( dialog._cancel_action ) {
+                            dialog._cancel_action()
+                            dialog._cancel_action = false
+                        }
+                        break
                     }
-                    break
                 }
-            }
-            restore_check_box_selections(self,action)  // if the dialog was used for a single email in view or drafts
-        });
-        disable_ok_button()
-        return dialog
+                restore_check_box_selections(self,action)  // if the dialog was used for a single email in view or drafts
+            });
+            disable_ok_button()
+            return dialog
+        }
+        return false
     }
 
     function setup_blg_entry_ops_dialog() {
         let diag = setup_modal_response('blg-entry-ops-modal')
-        diag._cancel_action = () => {
-            disable_ok_button()
-            disable_selall_ok_button()
+        if ( diag ) {
+            diag._cancel_action = () => {
+                disable_ok_button()
+                disable_selall_ok_button()
+            }
         }
     }
 
@@ -2590,7 +2569,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
                 disable_ok_button_if_no_selection(mtype)
             }
         }
-        collect_emails_list_for_op(mtype)
+        collect_entries_list_for_op(mtype)
     }
 
 
@@ -2630,11 +2609,12 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
             //
             let m_prop_el = document.getElementById("edit-blg-entry-sender")
             if ( m_prop_el ) { m_prop_el.value = message.sender }
-            m_prop_el = document.getElementById("edit-blg-entry-recipient")
-            if ( m_prop_el ) { m_prop_el.value = message.recipient }
+
+            // m_prop_el = document.getElementById("edit-blg-entry-recipient")
+            // if ( m_prop_el ) { m_prop_el.value = message.recipient }
             //
-            m_prop_el = document.getElementById("edit-blg-entry-cc")
-            if ( m_prop_el ) { m_prop_el.value = message.cc }
+            // m_prop_el = document.getElementById("edit-blg-entry-cc")
+            // if ( m_prop_el ) { m_prop_el.value = message.cc }
             //
             m_prop_el = document.getElementById("edit-blg-entry-subject")
             if ( m_prop_el ) { m_prop_el.value = message.subject }
@@ -2804,38 +2784,38 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
             });
         }
         //
-        m_prop_el = document.getElementById("edit-blg-entry-recipient")
-        if ( m_prop_el ) {
-            m_prop_el.addEventListener('change', (event) => {
-                if ( g_current_edit_email ) {
-                    g_current_edit_email.recipient = event.target.value
-                    update_just_date(g_current_edit_email,"edit-blg-entry-date")
-                    g_current_edit_email.dirty = true
-                }
-            });
-        }
+        // m_prop_el = document.getElementById("edit-blg-entry-recipient")
+        // if ( m_prop_el ) {
+        //     m_prop_el.addEventListener('change', (event) => {
+        //         if ( g_current_edit_email ) {
+        //             g_current_edit_email.recipient = event.target.value
+        //             update_just_date(g_current_edit_email,"edit-blg-entry-date")
+        //             g_current_edit_email.dirty = true
+        //         }
+        //     });
+        // }
         //
-        m_prop_el = document.getElementById("edit-blg-entry-cc")
-        if ( m_prop_el ) {
-            m_prop_el.addEventListener('change', (event) => {
-                if ( g_current_edit_email ) {
-                    g_current_edit_email.cc = event.target.value
-                    update_just_date(g_current_edit_email,"edit-blg-entry-date")
-                    g_current_edit_email.dirty = true
-                }
-            });
-        }
-        //
-        m_prop_el = document.getElementById("edit-blg-entry-bcc")
-        if ( m_prop_el ) {
-            m_prop_el.addEventListener('change', (event) => {
-                if ( g_current_edit_email ) {
-                    g_current_edit_email.bcc = event.target.value
-                    update_just_date(g_current_edit_email,"edit-blg-entry-date")
-                    g_current_edit_email.dirty = true
-                }
-            });
-        }
+        // m_prop_el = document.getElementById("edit-blg-entry-cc")
+        // if ( m_prop_el ) {
+        //     m_prop_el.addEventListener('change', (event) => {
+        //         if ( g_current_edit_email ) {
+        //             g_current_edit_email.cc = event.target.value
+        //             update_just_date(g_current_edit_email,"edit-blg-entry-date")
+        //             g_current_edit_email.dirty = true
+        //         }
+        //     });
+        // }
+        // //
+        // m_prop_el = document.getElementById("edit-blg-entry-bcc")
+        // if ( m_prop_el ) {
+        //     m_prop_el.addEventListener('change', (event) => {
+        //         if ( g_current_edit_email ) {
+        //             g_current_edit_email.bcc = event.target.value
+        //             update_just_date(g_current_edit_email,"edit-blg-entry-date")
+        //             g_current_edit_email.dirty = true
+        //         }
+        //     });
+        // }
         //
         m_prop_el = document.getElementById("edit-blg-entry-subject")
         if ( m_prop_el ) {
@@ -2848,43 +2828,44 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
             });
         }
 
-        // contacts 
-        //
-        let contact_editor = document.getElementById("contact_contents_edit")
-        if ( contact_editor ) {
-            contact_editor.addEventListener('input', (event) => {
-                if ( g_current_edit_contact ) {
-                    g_current_edit_contact.text = event.target.innerHTML
-                    update_just_date(g_current_edit_contact,"edit-contact-date")
-                    update_just_date(g_current_edit_contact,"view-contact-date")
-                    g_current_edit_contact.dirty = true
-                }
-            });
-        }
-        //
-        let c_prop_el = document.getElementById("edit-contact-name")
-        if ( c_prop_el ) {
-            c_prop_el.addEventListener('change', (event) => {
-                if ( g_current_edit_contact ) {
-                    g_current_edit_contact.name = event.target.value
-                    update_just_date(g_current_edit_contact,"edit-contact-date")
-                    update_just_date(g_current_edit_contact,"view-contact-date")
-                    g_current_edit_contact.dirty = true
-                }
-            });
-        }
-        //
-        c_prop_el = document.getElementById("edit-contact-email")
-        if ( c_prop_el ) {
-            c_prop_el.addEventListener('change', (event) => {
-                if ( g_current_edit_contact ) {
-                    g_current_edit_contact.email = event.target.value
-                    update_just_date(g_current_edit_contact,"edit-contact-date")
-                    update_just_date(g_current_edit_contact,"view-contact-date")
-                    g_current_edit_contact.dirty = true
-                }
-            });
-        }
+        // // contacts 
+        // //
+        // let contact_editor = document.getElementById("contact_contents_edit")
+        // if ( contact_editor ) {
+        //     contact_editor.addEventListener('input', (event) => {
+        //         if ( g_current_edit_contact ) {
+        //             g_current_edit_contact.text = event.target.innerHTML
+        //             update_just_date(g_current_edit_contact,"edit-contact-date")
+        //             update_just_date(g_current_edit_contact,"view-contact-date")
+        //             g_current_edit_contact.dirty = true
+        //         }
+        //     });
+        // }
+        // //
+        // let c_prop_el = document.getElementById("edit-contact-name")
+        // if ( c_prop_el ) {
+        //     c_prop_el.addEventListener('change', (event) => {
+        //         if ( g_current_edit_contact ) {
+        //             g_current_edit_contact.name = event.target.value
+        //             update_just_date(g_current_edit_contact,"edit-contact-date")
+        //             update_just_date(g_current_edit_contact,"view-contact-date")
+        //             g_current_edit_contact.dirty = true
+        //         }
+        //     });
+        // }
+        // //
+        // c_prop_el = document.getElementById("edit-contact-email")
+        // if ( c_prop_el ) {
+        //     c_prop_el.addEventListener('change', (event) => {
+        //         if ( g_current_edit_contact ) {
+        //             g_current_edit_contact.email = event.target.value
+        //             update_just_date(g_current_edit_contact,"edit-contact-date")
+        //             update_just_date(g_current_edit_contact,"view-contact-date")
+        //             g_current_edit_contact.dirty = true
+        //         }
+        //     });
+        // }
+
     }
 
  
@@ -2910,28 +2891,6 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
         pinBox(sect_box)
     }
 
-    function contact_create() {
-        blg_entry_switch_to('contacts')
-        let sect_box = `#contact_view`
-        let msg_view = document.getElementById("contact_contents_edit")
-        if ( msg_view ) {
-           let id = get_next_id()
-            let contact = add_empty_contact(id)
-            if ( contact ) {
-                let c_id = contact.id
-                contact.text = ""
-                let clear_text = contact.text
-                msg_view.innerHTML = `adding message id = ${c_id}
-                <br> ${clear_text}
-                <br> will be adding text here`
-                //
-                g_current_edit_contact = contact
-                update_contact_properties_view(c_id)
-                contact_edit_mode_toggle(true)
-            }
-        }
-        pinBox(sect_box)
-    }
 
 
     function edit_from_draft(msg_id) {
@@ -3113,21 +3072,6 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
     /**
      * 
      */
-    function view_from_contacts(cid) {
-        let sect_box = `#contact_view`
-        let msg_view = document.getElementById("contact_contents_edit")
-        if ( msg_view ) {
-            update_contact_properties_view(cid)
-            let clear_text = get_text_from_store("contacts",cid)
-            msg_view.innerHTML = `picked contact id = ${cid} <br> ${clear_text}`
-        }
-        pinBox(sect_box)
-    }
-
-
-    /**
-     * 
-     */
     function manage_prefs() {
         let sect_box = `#preferences`
         pinBox(sect_box)
@@ -3205,13 +3149,13 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
      */
 
     async function add_objects_to_list(to,object_list) {
-        add_emails_to_list(to,object_list)
-        add_emails_to_server(to,object_list)
+        add_entries_to_list(to,object_list)
+        add_entries_to_server(to,object_list)
     }
 
     async function delete_objects_from_list(from,id_list) {
-        delete_emails_from_list(from,id_list)
-        delete_emails_from_server(from,id_list)
+        delete_entries_from_list(from,id_list)
+        delete_entries_from_server(from,id_list)
     }
 
     const blg_entry_op_message_el = document.getElementById("chosen_operation")
@@ -3254,7 +3198,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 
     let g_current_blg_entry_list_for_op = []
 
-    async function collect_emails_list_for_op(mtype) {
+    async function collect_entries_list_for_op(mtype) {
         let m_list = await get_checked_messages(mtype)
         if ( m_list) {
             g_current_blg_entry_list_for_op = m_list.map(id => parseInt(id))
@@ -3294,13 +3238,13 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 
     function single_blg_entry_ops(event) {
         disable_ok_button()
-        let save_emails_for_ops = g_current_blg_entry_list_for_op
+        let save_entries_for_ops = g_current_blg_entry_list_for_op
         let mtype = window._current_mtype
         let email = g_current_edit_email
         if ( email && (typeof mtype === "string") && (mtype !== 'contact') ) {
             let id = email.id
             g_current_blg_entry_list_for_op = [id]
-            g_var_restoreable_checkbox_ids = save_emails_for_ops
+            g_var_restoreable_checkbox_ids = save_entries_for_ops
             g_var_restoreable_mtype = mtype
             do_op_modal(mtype,true)
         }
@@ -3330,7 +3274,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 
 
 
-    async function is_ready_to_send_blg_entry(email) {
+    async function is_ready_to_publish_blg_entry(email) {
         // is_ready_to_send_email
         if ( email ) {
             // ---- ---- ---- ---- ---- ---- ---- ----
@@ -3368,24 +3312,24 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
     }
 
 
-    async function send_blg_entry_list(from) {
+    async function publish_blg_entry_list(from) {
         let id_list = g_current_blg_entry_list_for_op
         let object_list = get_list_of_objects(from,id_list)
         if ( object_list && object_list.length ) {
-            if ( await send_emails(object_list) ) {
+            if ( await publish_items(object_list) ) {
                 add_objects_to_list('published',object_list)
                 delete_objects_from_list(from,id_list)
             }
         }
     }
 
-    async function do_send_blg_entries(event) {
+    async function do_publish_blg_entries(event) {
         let email = g_current_edit_email
         if ( email ) {
-            if ( await is_ready_to_send_blg_entry(email) ) {
+            if ( await is_ready_to_publish_blg_entry(email) ) {
                 let save_blg_entry_list_for_op = g_current_blg_entry_list_for_op
                 g_current_blg_entry_list_for_op = [email.id]
-                await send_blg_entry_list('drafts')
+                await publish_blg_entry_list('drafts')
                 g_current_blg_entry_list_for_op = save_blg_entry_list_for_op
                 blg_entry_switch_to('published')
                 return true
@@ -3395,9 +3339,9 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
     }
 
 
-    async function do_send_blg_entry_closefader(event) {
+    async function do_publish_blg_entry_closefader(event) {
         event.preventDefault()
-        let status = await do_send_blg_entries(event)
+        let status = await do_publish_blg_entries(event)
         if ( status ) {
             closefader(event,'blg_entry_edit')
         }
@@ -3446,7 +3390,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
                 sort_one_or_more('drafts')
             }
         } else if ( g_current_edit_email && (g_current_edit_email._count_edits === 0) ) {
-            let save_checked_emails = g_current_blg_entry_list_for_op
+            let save_checked_entries = g_current_blg_entry_list_for_op
             g_current_blg_entry_list_for_op = [g_current_edit_email.id]
             blg_entry_list_delete('drafts')
         }
@@ -3525,12 +3469,12 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
     }
 
 
-    function prep_send_blg_entry_list(from) {
+    function prep_publish_blg_entry_list(from) {
         if ( blg_entry_op_message_el ) {
-            blg_entry_op_message_el.innerText = "Send selected emails?"
+            blg_entry_op_message_el.innerText = "Publish selected entries?"
             blg_entry_op_dialog._acceptance_action = () => {
                 if ( confirm("This decision if final. Proceed?") ) {
-                    send_blg_entry_list(from)
+                    publish_blg_entry_list(from)
                 }
             }
             enable_ok_button_if_any_selected(from)
@@ -3538,7 +3482,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
     }
     function prep_blg_entry_list_move_to(from,to) {
         if ( blg_entry_op_message_el ) {
-            blg_entry_op_message_el.innerText = `Move these emails from ${from} to ${to}?`
+            blg_entry_op_message_el.innerText = `Move these entries from ${from} to ${to}?`
             blg_entry_op_dialog._acceptance_action = () => {
                 blg_entry_list_move_to(from,to)
             }
@@ -3547,7 +3491,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
     }
     function prep_blg_entry_list_copy_to(from,to) {
         if ( blg_entry_op_message_el ) {
-            blg_entry_op_message_el.innerText = `Clopy these emails from ${from} to ${to}?`
+            blg_entry_op_message_el.innerText = `Clopy these entries from ${from} to ${to}?`
             blg_entry_op_dialog._acceptance_action = () => {
                 blg_entry_list_copy_to(from,to)
             }
@@ -3556,7 +3500,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
     }
     function prep_blg_entry_list_delete(from) {
         if ( blg_entry_op_message_el ) {
-            blg_entry_op_message_el.innerText = `Permanently delete these emails?`
+            blg_entry_op_message_el.innerText = `Permanently delete these entries?`
             blg_entry_op_dialog._acceptance_action = () => {
                 if ( confirm("This action cannot be undone. Proceed?") ) {
                     blg_entry_list_delete(from)
@@ -3570,9 +3514,9 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 
     function prep_blg_entry_list_reply_to(from) {
         if ( blg_entry_op_message_el ) {
-            blg_entry_op_message_el.innerText = `Reply to these emails?`
+            blg_entry_op_message_el.innerText = `Reply to these entries?`
             blg_entry_op_dialog._acceptance_action = () => {
-                reply_to_emails(from)
+                reply_to_entries(from)
             }
             enable_ok_button_if_any_selected(from)
         }
@@ -3580,9 +3524,9 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 
     function prep_blg_entry_list_reply_all(from) {
         if ( blg_entry_op_message_el ) {
-            blg_entry_op_message_el.innerText = `Reply to all readers of these emails?`
+            blg_entry_op_message_el.innerText = `Reply to all readers of these entries?`
             blg_entry_op_dialog._acceptance_action = () => {
-                reply_all_to_emails(from)
+                reply_all_to_entries(from)
             }
             enable_ok_button_if_any_selected(from)
         }
@@ -3596,12 +3540,12 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
      * OR when the draft is saved (checkpoint save)
      * 
      */
-    function reply_to_emails(from) {
+    function reply_to_entries(from) {
         enable_ok_button_if_any_selected(from)
         setup_blg_entry_reply_editing(from)
     }
 
-    function reply_all_to_emails(from) {
+    function reply_all_to_entries(from) {
         enable_ok_button_if_any_selected(from)
     }
     
@@ -3702,79 +3646,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
         }
     }
 
-
     // ---- ---- ---- ---- ---- ---- ---- ---- ----
-    
-    function contact_edit_mode_reset(event) {
-        contact_edit_mode_toggle(false)
-        //
-        if ( g_current_edit_contact ) {
-            if ( g_current_edit_contact._count_edits === 0 ) {    // , "_count_edits" : 0, "_saved_updates" : []
-                let del_contact = g_current_edit_contact
-                g_current_edit_contact = false
-                g_current_blg_entry_list_for_op = g_current_contact_list_for_op = [del_contact.id]
-                blg_entry_list_delete('contacts')
-            } else if ( g_current_edit_contact.dirty ) {
-                let revert_contact = g_current_edit_contact
-                g_current_edit_contact = false
-                restore_contact_values(revert_contact)
-            }
-            if ( event.target.className !== "closer_x" ) {
-                closefader(false,'contact_view')
-            }
-        }
-        //
-    }
-
-
-    function contact_launch_compose() {
-        blg_entry_create()
-        if ( g_current_edit_contact && g_current_edit_email ) {
-            g_current_edit_email.recipient = g_current_edit_contact.email
-            update_blg_entry_properties_edit("drafts",g_current_edit_email.id)
-        }
-    }
-
-    function remove_one_contact() {
-        if ( g_current_edit_contact ) {
-            if ( confirm("This action cannot be undone. Proceed?") ) {
-                delete_emails_from_list('contacts',[g_current_edit_contact.id])
-                remove_contact_from_server(g_current_edit_contact)
-            }
-        }
-    }
-
-
-    function prep_compose_for_contacts() {
-        if ( contact_op_message_el ) {
-            contact_op_message_el.innerText = `Compose a message for selected contacts?`
-            contact_op_dialog._acceptance_action = () => {
-                blg_entry_create()
-                if ( g_current_edit_contact && g_current_edit_email ) {
-                    g_current_edit_email.recipient = g_current_edit_contact.email
-                    update_blg_entry_properties_edit("drafts",g_current_edit_email.id)  // for opening the email editor for the contact
-                }
-            }
-        }
-    }
-
-    // This makes a work queue that will prepublished to user one contact edit at a time.
-    //
-    function prep_edit_contacts() {
-
-    }
-
-    function prep_contact_delete() {
-        if ( contact_op_message_el ) {
-            contact_op_message_el.innerText = `Permanently delete these contacts?`
-            contact_op_dialog._acceptance_action = () => {
-                if ( confirm("This action cannot be undone. Proceed?") ) {
-                    g_current_blg_entry_list_for_op = g_current_contact_list_for_op
-                    blg_entry_list_delete('contacts')
-                }
-            }
-        }
-    }
 
 
     // attachments
@@ -4766,7 +4638,7 @@ post_submit
 
 
     // TALK TO THE SERVER
-    async function load_a_bunch_of_emails(mtype) {
+    async function load_a_bunch_of_entries(mtype) {
         let data = new MailJsonRpc(mtype,"get-mail")
 
         let port = web_page_port
@@ -4775,9 +4647,9 @@ post_submit
         if ( rpc_result && (rpc_result.error === undefined) ) {
             console.log(rpc_result)
             if ( rpc_result.result === undefined ) return []
-            let emails = rpc_result.result
+            let entries = rpc_result.result
 
-            for ( let email of emails ) {
+            for ( let email of entries ) {
                 email.created_when = _x_test_blg_entry_proto.created_when
                 email.updated_when = _x_test_blg_entry_proto.updated_when
                 email.description = _x_test_blg_entry_proto.description
@@ -4786,7 +4658,7 @@ post_submit
             }
 
 
-            return emails
+            return entries
         }
         return []
     }
@@ -4808,7 +4680,7 @@ post_submit
     // * add_objects_to_list
     // * delete_objects_from_list
     // * remove_one_contact
-    // * send_emails
+    // * publish_items
     // * save_mail -- to drafts
     // * save_contact
 
@@ -4825,7 +4697,7 @@ post_submit
 
     /**
      */
-    async function add_emails_to_server(to,object_list) {
+    async function add_entries_to_server(to,object_list) {
         // server communication
         let data = new MailJsonRpc(to,"store-mail",object_list)
         //
@@ -4841,7 +4713,7 @@ post_submit
 
     /**
      */
-    async function delete_emails_from_server(from,id_list) {
+    async function delete_entries_from_server(from,id_list) {
         // server communication
         let data = new MailJsonRpc(from,"remove-mail",id_list)
         //
@@ -4858,7 +4730,7 @@ post_submit
 
     /**
      */
-    async function send_emails(object_list) {
+    async function publish_items(object_list) {
         // server communication
         let data = new MailJsonRpc("published","send-mail",object_list)
 
@@ -4961,30 +4833,24 @@ class WsSocketController {
                     case "initial-messages":
                     case "all-updates" : {
                         let message_map = data.data
-                        if ( window.add_emails_to_list === undefined ) {
+                        if ( window.add_entries_to_list === undefined ) {
                             setTimeout(() => {
                                 if ( typeof message_map === "object" ) {
                                     for ( let [ky,mlist] of Object.entries(message_map) ) {
-                                        window.add_emails_to_list(ky,mlist)
+                                        window.add_entries_to_list(ky,mlist)
                                     }
                                 }                                
                             },100)
                         } else {
                             if ( typeof message_map === "object" ) {
                                 for ( let [ky,mlist] of Object.entries(message_map) ) {
-                                    window.add_emails_to_list(ky,mlist)
+                                    window.add_entries_to_list(ky,mlist)
                                 }
                             }
                         }
                         break
                     }
-                    case "emails" : {
-                        break;
-                    }
-                    case "contacts" : {
-                        break;
-                    }
-                    case "nofify" : {
+                    case "entries" : {
                         break;
                     }
                     case "no-delivery" : {

@@ -1,0 +1,5259 @@
+<!doctype html>
+<html>
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="author" content="Richard Leddy" />
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+<meta id="theme-color" name="theme-color" content="#452770">
+
+<link rel="canonical" href="http://www.copious.world">
+
+<title>Copious World</title>
+<meta name="description" content="An entry point into the our world of AI, IoT, and Communities built around songs, etc.">
+<link rel="icon" type="image/svg+xml" href="/copiousLogo.svg" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700" />
+
+<link rel="stylesheet" href="./blg_entries_styles.css" />
+
+<style>
+
+.fade_able {
+	position:absolute;
+	visibility:hidden;
+	top : 10px; left : 10px;
+	height:80%;
+	width: 40%;
+	z-index:101;
+	border: rgba(252, 190, 190, 0.4) 2px solid;
+	background-color: white;
+	overflow:hidden;
+    box-shadow: 8px 8px 2px 1px rgb(0 0 255 / 0.2);
+}
+
+@media screen and (max-width: 1100px) {
+    .right_fade_able {
+        position:absolute;
+        visibility:hidden;
+        top : 10px; left : 10px;
+        height:80%;
+        width: 90%;
+        z-index:101;
+        border: rgba(252, 190, 190, 0.4) 2px solid;
+        background-color: white;
+        overflow:hidden;
+        box-shadow: 8px 8px 2px 1px rgb(0 0 255 / 0.2);
+    }
+}
+@media screen and (min-width: 1100px) {
+    .right_fade_able {
+        position:absolute;
+        visibility:hidden;
+        top : 10px; left : 20%;
+        height:80%;
+        width: 60%;
+        z-index:101;
+        border: rgba(252, 190, 190, 0.4) 2px solid;
+        background-color: white;
+        overflow:hidden;
+        box-shadow: 8px 8px 2px 1px rgb(0 0 255 / 0.2);
+    }
+}
+
+
+.fadeable-wide {
+	width: 60%;
+}
+
+@media screen and (max-width: 1040px) {
+	.fade_able {
+		width: 60%;
+	}
+    .fadeable-wide {
+	    width: 60%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+	.fade_able {
+		width: 90%;
+	}
+    .fadeable-wide {
+	    width: 90%;
+    }
+}
+
+
+.fade_able_content {
+	height:100%;
+	width: 100%;
+	overflow:auto;
+    cursor: pointer;
+}
+
+
+
+.togglebar {
+	height: fit-content;
+	visibility:inherit;
+	background-color: navy;
+	text-align:right;
+    cursor: move;
+}
+
+.togglebar:hover { 
+	background-color: darkgreen;
+}
+
+
+.togglebar-sect {
+	height:16px;
+	visibility:inherit;
+	background-color: navy;
+	text-align:center;
+    vertical-align:middle;
+    cursor: pointer;
+    font-weight: bold;
+    font-size:200%;
+    color: navy;
+    padding-bottom: 3px;
+    padding-top:0;
+}
+
+.togglebar-sect:hover { 
+	background-color: darkgreen;
+    color: orange;
+}
+
+
+.closer_x {
+	padding-left:2px;
+	padding-right:2px;
+	color:rgb(216, 159, 37);
+	font-weight:bolder;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+	border: solid 1px rgb(255, 102, 0);
+	cursor:pointer;
+	height: 24px;
+	min-height: 24px;
+	max-height: 24px;
+    font-weight: bolder;
+	background-color: rgba(92, 92, 117, 0.815);
+}
+
+.closer_x:hover {
+	padding-left:2px;
+	padding-right:2px;
+	color:purple;
+	font-weight:bolder;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+	border: solid 1px rgb(44, 129, 44);
+	cursor:pointer;
+	height: inherit;
+    font-weight: bolder;
+	background-color: rgb(248, 245, 219);
+}
+
+
+.sizerbar {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 1000; /* Adjust as needed to be above other content */
+    height:10px;
+    width: 10px;
+	visibility:inherit;
+	background-color: navy;
+	text-align:center;
+    cursor: nesw-resize;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+	border: solid 1px rgb(44, 129, 44);
+	cursor:pointer;
+    font-weight: bolder;
+}
+
+.sizerbar:hover {
+	padding-left:2px;
+	padding-right:2px;
+	color:purple;
+    cursor: nesw-resize;
+	background-color: rgb(248, 245, 219);
+}
+
+.op-button {
+    padding:2px;
+    width:fit-content;
+    font-size: small;
+	border-color: rgb(248, 245, 219);
+}
+
+.flows-bash-cmd {
+    background-color:rgb(255, 255, 234);
+    border:1px solid rgb(51, 25, 51);
+    padding:2px;
+    color:rgb(53, 15, 15);
+    font-weight: 550;
+}
+
+.flows-bash-cmd-the-cmd {
+    color:rgb(9, 39, 9);
+    font-weight: 600;
+}
+
+
+.report-window-styles {
+    border : solid 1px rgb(43, 11, 43);
+    padding : 3px;
+    background-color: rgb(255, 253, 225);
+}
+
+</style>
+
+<style>
+
+    html {
+        interpolate-size: allow-keywords;
+    }
+
+    summary {
+        list-style: none; /* Modern standard way */
+    }
+    summary::-webkit-details-marker {
+        display: none; /* Safari and older Chrome support */
+    }
+
+    /* 
+    details[open] summary::after {
+        background-color: rgba(235, 235, 187, 1);
+    } */
+
+    /* 1. Target the wrapper element containing the content inside <details> */
+    details::details-content {
+        width: 0;
+        overflow: hidden;
+    }
+
+    /* 2. Target the content when the parent <details> is open */
+    details[open]::details-content {
+        width: auto;
+    }
+
+
+    .nav-go-container {
+        padding: 6px;
+        padding-right: 16px;
+        /*  -- */
+    }
+
+    .nav-go-container > blockquote {
+        border: solid 1px rgb(8, 22, 8);
+        background-color: white;
+        box-shadow: 3px 3px rgba(128, 128, 128, 0.377);
+        margin: 0;             /* Prevents default browser spacing */
+        position: absolute;
+        top: 0;
+        left:0;
+        height: calc(100vh - 40px);
+        overflow-y: auto;
+        transition: width 0.3s ease-out, content-visibility 0.3s allow-discrete;
+        display: none;
+    }
+
+    details[open]  .nav-go-container > blockquote {
+        display: block;
+        width: 200px;
+        @starting-style { width: 0; }
+    }
+
+
+    .nav-go-container ul {
+        width: calc(100% - 24px);
+        list-style-type: none; /* Removes the dots */
+        padding-left: 10px;
+        padding-right: 10px;
+        margin: 0;             /* Prevents default browser spacing */
+    }
+
+    .nav-go-container ul > li {
+        border-bottom: 1px solid rgb(5, 36, 5);
+    }
+
+    .nav-go-container ul > li > button {
+        width: 100%;
+        background-color: white;
+        border:none;
+        margin-bottom: 2%;
+        font-weight: bold;
+        font-size: 105%;
+        text-wrap: nowrap;
+    }
+
+    .nav-go-container ul > li > button:hover {
+        background-color: rgba(221, 255, 177, 0.57);
+        color: rgba(255, 123, 0, 0.86)
+    }
+
+
+    .follow-menu {
+        float: inline-end;
+        padding-right:20%;
+        font-weight: bold;
+        font-size: 1.15em;
+        width: 50%;
+    }
+
+    .search-band {
+        padding:4px;
+        text-align: center;
+        background-color: rgba(255, 255, 225, 1);
+        border-bottom: solid 1px rgb(7, 7, 39);
+    }
+    .search-band > span {
+        font-weight: bolder;
+    }
+    .search-band > input {
+        font-weight: normal;
+        width: 20%;
+    }
+    .search-band > button {
+        font-weight: normal;
+        width: fit-content;
+        text-wrap: nowrap;
+        border:none;
+        border-bottom: 1px dotted rgba(102, 102, 95, 0.356);
+        background-color: transparent;
+        box-shadow: 2px 2px rgba(186, 186, 201, 0.31);
+    }
+
+    h4 {
+        padding-left: 8%;
+        font-style: italic;
+        color: rgb(50, 88, 40);
+        width: calc(100% - 20px);
+        background-color: rgba(250, 250, 179, 0.84);
+    }
+
+    h4 > button {
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+        font: inherit;
+        text-wrap: nowrap;
+    }
+
+
+
+    /** list styling **/
+
+
+    .blog_check_select {
+        border:solid 1px rgba(255, 0, 0, 0.438);
+    }
+    .published_check_select {
+        border:solid 1px rgba(255, 0, 0, 0.438);
+    }
+    .drafts_check_select {
+        border:solid 1px rgba(255, 0, 0, 0.438);
+    }
+    .source_check_select {
+        border:solid 1px rgba(255, 0, 0, 0.438);
+    }
+    .trash_check_select {
+        border:solid 1px rgba(255, 0, 0, 0.438);
+    }
+
+    /* drafts list */
+    .blg-entry-drafts {
+        background-color: white;
+    }
+    .blg-entry-drafts tr:hover td, tr:hover th {
+        background-color: #e0e0e0;
+    }
+    .blg-entry-drafts > thead  th { 
+        background-color: #e6f0d4ff; 
+    }
+    .drafts-checkbox-th { background-color: white; cursor: pointer; width: 5%;}
+    .drafts-recipient-th { background-color: white; cursor: pointer; width: 25%; }
+    .drafts-subject-th { background-color: white; cursor: pointer; width: 33%; }
+    .drafts-date-th { background-color: white; cursor: pointer; width: 33%; }
+    /* ----   */
+    .ed-checkbox-cell { background-color: white; cursor: pointer; width: 5%; }
+    .ed-recipient-cell { background-color: white; cursor: pointer; width: 25%; padding-left: 4%; }
+    .ed-subject-cell { background-color: white; cursor: pointer; width: 33%; padding-left: 4%; }
+    .ed-date-cell { background-color: white; cursor: pointer; width: 33%; padding-left: 4%; }
+
+    .blg-entry-drafts th > button {
+        color: navy;
+    }
+    .blg-entry-drafts th > button:hover {
+        color: green;
+        background-color: #f7fddcff;
+    }
+
+    /* published list */
+    .blg-entry-published {
+        background-color: white;
+    }
+    .blg-entry-published tr:hover td, tr:hover th {
+        background-color: #e0e0e0;
+    }
+    .blg-entry-published > thead  th { 
+        background-color: #e6f0d4ff; 
+    }
+    .published-checkbox-th { background-color: white; cursor: pointer; width: 5%;}
+    .published-recipient-th { background-color: white; cursor: pointer; width: 25%; }
+    .published-subject-th { background-color: white; cursor: pointer; width: 33%; }
+    .published-date-th { background-color: white; cursor: pointer; width: 33%; }
+    /* ----   */
+    .published-checkbox-cell { background-color: white; cursor: pointer; width: 5%; }
+    .published-recipient-cell { background-color: white; cursor: pointer; width: 25%; padding-left: 4%; }
+    .published-subject-cell { background-color: white; cursor: pointer; width: 33%; padding-left: 4%; }
+    .published-date-cell { background-color: white; cursor: pointer; width: 33%; padding-left: 4%; }
+
+    .blg-entry-published th > button {
+        color: navy;
+    }
+    .blg-entry-published th > button:hover {
+        color: green;
+        background-color: #f7fddcff;
+    }
+
+    /* blog list */
+    .blg-entry { 
+        background-color: white; 
+    }
+    .blg-entry tr:hover td, tr:hover th {
+        background-color: #e0e0e0;
+    }
+    .blg-entry > thead  th { 
+        background-color: #e6f0d4ff; 
+    }
+    .blg-checkbox-th { background-color: white; cursor: pointer; width: 5%;}
+    .blg-recipient-th { background-color: white; cursor: pointer; width: 25%; }
+    .blg-subject-th { background-color: white; cursor: pointer; width: 33%; }
+    .blg-date-th { background-color: white; cursor: pointer; width: 33%; }
+    /* ----   */
+    .blg-checkbox-cell { background-color: white; cursor: pointer; width: 5%; }
+    .blg-recipient-cell { background-color: white; cursor: pointer; width: 25%; padding-left: 4%; }
+    .blg-subject-cell { background-color: white; cursor: pointer; width: 33%; padding-left: 4%; }
+    .blg-date-cell { background-color: white; cursor: pointer; width: 33%; padding-left: 4%; }
+
+    .blg-entry th > button {
+        color: navy;
+    }
+    .blg-entry th > button:hover {
+        color: green;
+        background-color: #f7fddcff;
+    }
+
+
+    /* trash list */
+    .blg-entry-trash { 
+        background-color: white; 
+    }
+    .blg-entry-trash tr:hover td, tr:hover th {
+        background-color: #e0e0e0;
+    }
+    .blg-entry-trash > thead  th { 
+        background-color: #e6f0d4ff; 
+    }
+    .trash-checkbox-th { background-color: white; cursor: pointer; width: 5%;}
+    .trash-recipient-th { background-color: white; cursor: pointer; width: 25%; }
+    .trash-subject-th { background-color: white; cursor: pointer; width: 33%; }
+    .trash-date-th { background-color: white; cursor: pointer; width: 33%; }
+    /* ----   */
+    .trash-checkbox-cell { background-color: white; cursor: pointer; width: 5%; }
+    .trash-recipient-cell { background-color: white; cursor: pointer; width: 25%; padding-left: 4%; }
+    .trash-subject-cell { background-color: white; cursor: pointer; width: 33%; padding-left: 4%; }
+    .trash-date-cell { background-color: white; cursor: pointer; width: 33%; padding-left: 4%; }
+
+
+    .blg-entry-trash th > button {
+        color: navy;
+    }
+    .blg-entry-trash th > button:hover {
+        color: green;
+        background-color: #f7fddcff;
+    }
+
+    .blg-entry-editor-body {
+        border: solid 1px rgb(13, 43, 13);
+    }
+
+    .blg-entry-properties {
+        display: grid;
+        grid-template-columns: 20% 1fr;
+        gap: 12px 16px;
+        align-items: center;
+        padding: 16px;
+        background: #f9f9f9;
+        /* border-radius: 8px; */
+        /* max-width: 600px; */
+    }
+
+    .edit-blg-entry-properties {
+        display: grid;
+        grid-template-columns: 20% 1fr;
+        gap: 12px 16px;
+        align-items: center;
+        padding: 16px;
+        background: #f9f9f9;
+    }
+    
+
+    .contact-properties {
+        display: grid;
+        grid-template-columns: 20% 1fr;
+        gap: 12px 16px;
+        align-items: center;
+        padding: 16px;
+        background: #f9f9f9;
+        /* border-radius: 8px; */
+        /* max-width: 600px; */
+    }
+
+    .select-all-ops-properties {
+        display: grid;
+        grid-template-columns: 50% 1fr;
+        gap: 12px 16px;
+        align-items: center;
+        padding: 16px;
+        background: #f9f9f9;
+        /* border-radius: 8px;
+        max-width: 600px; */
+    }
+
+    .select-all-ops-properties-on-ops {
+        display: grid;
+        grid-template-columns: 50% 1fr;
+        gap: 12px 16px;
+        align-items: center;
+        padding: 2px;
+        border-top:solid 1px rgb(9, 37, 9);
+        border-bottom:solid 1px rgb(9, 37, 9);
+        background: #fffef7ff;
+        margin-top: 6px;
+    }
+
+    .style-confirm-properties {
+        display: grid;
+        grid-template-columns: 50% 1fr;
+        gap: 6px 66px;
+        align-items: center;
+        padding: 4px;
+        background: #fff6d9ff;
+    }
+
+    .attachments-controls {
+        background-color: rgb(243, 239, 219);
+        border-bottom: 1px solid rgb(9, 54, 9);
+        border-top: 1px solid rgb(9, 54, 9);
+        padding:4px;
+        font-style: italic;
+        color: rgb(50, 88, 40);
+        user-select: none;
+        cursor: arrow;
+    }
+
+    .attachments-controls > button {
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+        font: inherit;
+        text-wrap: nowrap;
+    }
+
+    .attachments-controls a:hover {
+        color:rgb(168, 53, 0);
+        font-weight: 600;
+    }
+
+    .file-dropper-handler.drag-over {
+        cursor: grab;
+        border: solid 1px rgb(255, 94, 0);
+        background-color: rgb(248, 255, 230);
+    }
+
+
+    .ops-button-containers {
+        background: #e9ebf0ff;
+        width: 100%;
+        border-bottom: 1px solid black;
+        margin-bottom: 8px;
+    }
+
+    .field-label {
+        font-weight: bold;
+        color: #555;
+        text-align: right;
+    }
+
+    .select-all-ops-properties-on-ops .field-label {
+        font-size:smaller;
+        color: #1f1c2eff;
+    }
+
+    .style-confirm-properties .field-label {
+        font-size:smaller;
+        color: #1f1c2eff;
+    }
+    
+
+    .field-value {
+        color: #222;
+        word-break: break-word;
+    }
+
+
+    /* attachments */
+
+    .ul-attachments-list > li {
+        border-bottom: 1px solid rgba(228, 227, 219, 0.445);
+    }
+
+    .ul-attachments-list > li > button {
+        border: none;
+        border-bottom: 1px solid transparent;
+        font-weight: bold;
+    }
+    .ul-attachments-list > li > button:hover {
+        border-bottom: 1px solid navy;
+    }
+
+    .edit-attachments-cell-2 > button {
+        cursor: pointer;
+        border: none;
+        border-bottom: 1px dotted rgba(246, 255, 116, 1);
+        font-weight: bold;
+    }
+
+    .edit-attachments-cell-2 > button:hover {
+        color: rgba(87, 26, 26, 1);
+        background-color: rgb(251, 255, 242);
+    }
+
+    .edit-attachments-cell-3 > button {
+        cursor: pointer;
+        border: none;
+        border-bottom: 1px dotted rgba(255, 230, 116, 1);
+        font-weight: bold;
+    }
+
+    .edit-attachments-cell-3 > button:hover {
+        color: rgba(194, 0, 0, 1);
+        background-color: rgba(254, 255, 191, 1);
+    }
+
+    .show-cat {
+        font-weight: bold;
+        color: rgb(9, 9, 59);
+    }
+
+
+/* Container layout using CSS Grid */
+/* .item-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+} */
+
+
+
+.element-poster {
+    padding: 4px;
+    border: solid 1px darkgrey;
+    background-color: white;
+    height: 170px;
+    box-shadow: 5px 7px #888888;
+    cursor:pointer;
+}
+
+
+.grid-container {
+    display: grid;
+    grid-column-gap: 25px;
+    grid-row-gap: 10px;
+    grid-template-columns: auto auto auto;
+    grid-auto-rows: minmax(170px, auto); 
+    background-color: rgb(250, 250, 242);
+    padding: 10px;
+}
+
+@media (min-width: 1500px) { 
+    .grid-container {
+        display: grid;
+        grid-column-gap: 25px;
+        grid-row-gap: 10px;
+        grid-template-columns: auto auto auto auto;
+        grid-auto-rows: minmax(170px, auto); 
+        background-color:  rgb(250, 250, 242);
+        padding: 10px;
+    }
+}
+
+@media (max-width: 900px) { 
+    .grid-container {
+        display: grid;
+        grid-column-gap: 25px;
+        grid-row-gap: 10px;
+        grid-template-columns: auto auto;
+        grid-auto-rows: minmax(170px, auto); 
+        background-color: rgb(250, 250, 242);
+        padding: 10px;
+    }
+}
+
+@media (max-width: 600px) { 
+    .grid-container {
+        display: grid;
+        grid-column-gap: 25px;
+        grid-row-gap: 10px;
+        grid-template-columns: auto;
+        grid-auto-rows: minmax(170px, auto); 
+        background-color: rgb(250, 250, 242);
+        padding: 10px;
+    }
+}
+
+
+
+/* Individual Grid Component Card Styling */
+.grid-card {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+
+    font-size: clamp(0.6rem, 2.2cqw, 0.90rem);
+    /* Scales padding/height proportionally with container width */
+    padding: clamp(0.5rem, 0.8cqw, 1.5rem);
+    /* padding: 16px; */
+
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease;
+
+    overflow-y: hidden;
+    height:fit-content;
+    max-height: 140px;
+    
+    /* height:inherit; */
+}
+
+.grid-card-stats {
+    font-size:0.65em;
+    vertical-align: top;
+}
+.thng-created {
+    vertical-align: top;
+    margin-top: 3px;
+    font-size:0.65em;
+    background-color: rgb(90, 107, 57);
+    max-width:30%;
+    font-weight: bolder;
+}
+.thng-updated {
+    vertical-align: top;
+    margin-top: 3px;
+    font-size:0.65em;
+    background-color: rgb(30, 36, 124);
+    max-width:30%;
+    font-weight: bolder;
+}
+
+.thng-score {
+    vertical-align: top;
+    margin-top: 3px;
+    background-color: rgb(247, 247, 225);
+    color: rgb(4, 4, 104);
+    font-size: 0.60em;
+    font-weight: bold;
+    border: solid 1px rgb(233, 233, 164);
+}
+
+.grid-card > h3 {
+    margin-bottom:0px
+}
+.grid-card > h6 {
+    background-color: rgba(245, 245, 245, 0.59);
+    border: 1px rgba(128, 128, 128, 0.466) solid;
+    color: rgb(166, 166, 173);
+    border-radius: 0.2em;
+    padding: 0.2em 0.5em;
+    margin: 4px;
+    margin-top: 0px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width:94%;
+}
+
+
+.grid-card:hover {
+    transform: translateY(-4px);
+    cursor: pointer;
+}
+
+.card-title {
+    margin-top: 0;
+    color: #333;
+}
+
+
+
+
+span {
+    display: inline-block;
+    padding: 0.2em 0.5em;
+    margin: 0 0.2em 0.2em 0;
+    text-align: center;
+    border-radius: 0.2em;
+    color: white;
+}
+
+.blg-item-title {
+    color:black;
+    display: unset;
+    border-bottom: 1px darkslateblue solid;
+}
+
+.blg-item-subject {
+    color:black;
+    display: unset;
+}
+
+.teaser {
+    margin-top: 2px;
+    border-top: 1px solid black;
+    vertical-align: top;
+    font-size: 70%;
+    color:rgba(129, 129, 129);
+    background-color:rgb(250, 248, 248);
+    max-height: 60px;
+    overflow-y: hidden;
+    text-overflow: ellipsis;
+    width:98%;
+}
+
+
+.teaser .card-desc {
+    margin-top: 0px;
+    padding-top: 0px;
+    color: #051601ff;
+    font-size: 0.9rem;
+    vertical-align: top;
+}
+
+@media (max-width: 1200px) {
+    .teaser {
+        max-height: 40px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .teaser {
+        max-height: 30px;
+    }
+}
+
+@media (max-width: 900px) {
+    .teaser {
+        max-height: 24px;
+    }
+}
+
+@media (max-width: 700px) {
+    .teaser {
+        max-height: 20px;
+    }
+}
+
+@media (max-width: 600px) { 
+    .teaser {
+        max-height: 40px;
+    }
+}
+
+
+
+.selected-tabs-container {
+    display: flex;
+    width: 99%;
+    border-left: solid 1px navy;
+    border-bottom: solid 1px #f3efdeff;
+    border-right: solid 1px transparent;
+    padding-right: 4px;
+    padding-left: 1px;
+    padding-bottom: 0px;
+    padding-top: 2px;
+    background-color:#fffbeb;
+    overflow-x: auto;
+}
+
+
+.selected-tab-bar-el {
+    font-weight: bolder;
+}
+
+.selected-tab-bar-source {
+    font-weight: bolder;
+}
+
+
+.readers-and-comments {
+    display: grid;
+    background-color: rgb(253, 253, 252);
+    grid-template-columns: 1fr 160px;
+    gap: 2px 2px;
+    /* */
+    width: 100%;
+    border-top: 1px solid navy;
+    padding-top:0px;
+    position:absolute;
+    top:70px;
+    bottom:0;
+    border-bottom: 1px solid rgb(36, 12, 36);
+}
+
+.reader-box {
+    background-color: rgba(255, 255, 252, 1);
+    border-right: solid 1px rgba(37, 143, 5, 0.562);
+    padding-left: 1%;
+}
+
+.reader-box-blog-contents {
+    border-left: solid 3px rgba(219, 219, 219, 0.63);
+    padding:2px;
+    cursor:auto;
+    position:absolute;
+    top:54px;
+    bottom:0;
+    overflow-y: auto;
+}
+
+
+.reader-box > h3 {
+    width: 100%;
+    background-color: rgb(255, 255, 222);
+    color:rgb(29, 14, 1);
+    border-bottom: solid 1px black;
+}
+
+.reader-box > h5 {
+    width: 100%;
+    background-color: rgb(255, 255, 222);
+    color:rgb(29, 14, 1);
+    border-bottom: solid 1px black;
+    padding-top:5px;
+}
+
+.reader-box > div {
+    text-wrap: pretty;
+}
+
+/* Base tab button style */
+.selected-tabs-container > button {
+    /* Reset default button appearance */
+    background: transparent;
+    border: 1px solid transparent;
+    outline: none;
+    cursor: pointer;
+
+    border-right: 1px solid rgb(15, 65, 15);
+    border-top: 1px solid rgba(233, 233, 233, 0.62);
+    border-left: 2px solid rgba(221, 220, 220, 0.719);
+    margin-left: 1px;
+
+    /* Layout & Typography */
+    padding: 10px 20px;
+    font-weight: bolder;
+    color: #182433ff;
+    position: relative;
+    transition: all 0.2s ease;
+
+    /* Round only the top corners */
+    border-radius: 6px 6px 0 0; 
+
+    /* Pull button down 2px to overlap the container border */
+    margin-bottom: -2px; 
+    text-wrap: nowrap;
+}
+
+/* Hover effect for inactive tabs */
+.selected-tabs-container > button:hover {
+    color: #1e293b;
+    background-color: #ffe09dff;
+    border-top: 1px solid rgb(15, 65, 15);
+    border-left: 2px solid rgba(15, 65, 15, 0.64);
+}
+
+/* The Active Tab State */
+.selected-tabs-container > button.active {
+  color: #3b82f6; /* Accent color */
+  background-color: #ffffff;
+  border-color: #e2e8f0 #e2e8f0 #ffffff; /* Top, Left/Right, Bottom */
+}
+
+/* Focus styles for keyboard accessibility */
+.selected-tabs-container > button:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: -2px;
+}
+
+
+
+.big-list-container {
+    width: 100%;
+    overflow-y: auto;
+    z-index: 0;
+    bottom:0;
+    height:calc(100dvh - 52px);
+    max-height:calc(100dvh - 52px);
+    border-bottom: solid 2px rgb(255, 145, 0);
+}
+
+
+.blog-with-search {
+    z-index: 0;
+    margin-top:0px;
+    width: 100%;
+    height:calc(100dvh - 54px);
+    max-height:calc(100dvh - 54px);
+
+    overflow: hidden;
+}
+
+
+
+
+.split-panel {
+    width: 100%;
+    display: flex;
+    height: calc(100dvh - 80px);
+}
+
+.entities-left {
+    border-right: 1px solid rgba(189, 185, 185, 0.555);
+    overflow-y: auto;
+    height: calc(100dvh - 82px);
+}
+
+.entities-right {
+    flex-grow: 1; 
+    overflow-y: auto;
+    height: calc(100dvh - 82px);
+}
+
+.gutter {
+  width: 6px;
+  background-color: #64748b;
+  cursor: col-resize;
+  transition: background-color 0.2s;
+}
+
+.gutter:hover {
+  background-color: #334155; /* Highlights divider on hover */
+}
+
+
+
+.search_control_banner {
+    display: flex;
+    flex-wrap: wrap;
+    width: 99%;
+    border: solid 2px navy;
+    padding-right: 4px;
+    background-color:#EFEFEF;
+}
+
+.search_control_banner-source {
+    display: flex;
+    flex-wrap: wrap;
+    width: 99%;
+    border: solid 2px navy;
+    padding-right: 4px;
+    background-color:#EFEFEF;
+}
+
+
+.search_control_banner > div {
+    flex: 1 1;
+}
+
+.blg-ctrl-panel {
+    padding:0px;
+    padding-left:6px;
+    padding-right:4px;
+    margin:0px;
+    border: none;
+    white-space: nowrap; /* forces text to stay on one line */
+    min-height: 100%;
+}
+
+.blg-window-size-ctrl  {
+    vertical-align:middle;
+    background-color:#EFFFFE;
+}
+
+
+.blg-search-field {
+    padding-top: 2px;
+    vertical-align:middle;
+    background-color:#e4f7be;
+}
+
+.blg-window-position {
+    vertical-align:top;
+    background-color:rgb(255, 255, 195);
+}
+
+.blg-window-ordering {
+    background-color:rgb(224, 230, 170);
+}
+
+
+.blg-ctl-button {
+    max-width: 20px;
+    border-radius: 6px;
+}
+
+.blg-ctl-slider {
+    height: 100%;
+    vertical-align: top;
+}
+
+.blg-ctl-number-field {
+    max-width: 60px;
+}
+
+.report-number {
+    color: black;
+}
+
+
+</style>
+
+<script type="module">
+
+    import Mikado from "./mikado.bundle.module.min.js";
+
+    //
+    // import tweet_template from "./tpl/partial/user.js";
+    // const tweet_view = new Mikado(tweet_template, {/* options */});
+    // window._x_share_tweet_view = tweet_view
+
+    //
+    import blg_list_template from "./tpl/partial/blg_list.js";
+    import source_list_template from "./tpl/partial/source_list.js";
+    import published_template from "./tpl/partial/published_list.js";
+    //
+    import draft_template from "./tpl/partial/draft_list.js";
+    import trash_template from "./tpl/partial/trash_list.js";
+    //
+    import attachment_view_template from "./tpl/partial/attachment_view.js"
+    import attachment_edit_template from "./tpl/partial/attachment_edit.js"
+    //
+    import widget_controller from "./tpl/partial/selected_entries_tab.js"
+    import source_tab_controller from "./tpl/partial/selected_source_tab.js"
+
+    
+    let blg_entry_imports = {
+        "blog" : blg_list_template,
+        "published" : published_template,
+        "source" : source_list_template,
+        'drafts' : draft_template,
+        'trash' : trash_template,
+    }
+
+    let attachment_imports = {
+        'view' : attachment_view_template,
+        'edit' : attachment_edit_template
+    }
+
+    let tab_imports = {
+        "widgets" : widget_controller,
+        "source" : source_tab_controller
+    }
+
+    //  ['blog','drafts', 'published', 'source', 'trash' ]
+    //
+    let blg_entry_classes = [ 'blog', 'drafts', 'published', 'source', 'trash' ]
+    let blg_entry_management = {}
+
+    for ( let mtype of blg_entry_classes ) {
+        let store = new Mikado.Array();
+        let blg_entry_template = blg_entry_imports[mtype]
+        let view = new Mikado(blg_entry_template, { observe: store });
+        blg_entry_management[mtype] = {
+            "view" : view,
+            "store" : store,
+            "root" : null,
+            "container_el" : null
+        }
+    }
+
+    let attachment_classes = ['view','edit']
+    let attachment_management = {}
+
+    for ( let mtype of attachment_classes ) {
+        let store = new Mikado.Array();
+        let attachment_template = attachment_imports[mtype]
+        let view = new Mikado(attachment_template, { observe: store });
+        attachment_management[mtype] = {
+            "view" : view,
+            "store" : store,
+            "root" : null,
+            "container_el" : null
+        }
+    }
+
+    let tab_controller_management = false
+    // if ( tab_controller ) {
+    //     let blog_view_store = new Mikado.Array()
+    //     let view = new Mikado(tab_controller, { observe: blog_view_store });
+    //     tab_controller_management = {
+    //         "view" : view,
+    //         "store" : blog_view_store,
+    //         "root" : null,
+    //         "container_el" : null
+    //     }
+    // }
+
+    let tab_classes = [ "source", "widgets" ]
+    let tab_management = {}
+
+    for ( let ttype of tab_classes ) {
+        let store = new Mikado.Array();
+        let tab_template = tab_imports[ttype]
+        let view = new Mikado(tab_template, { observe: store });
+        tab_management[ttype] = {
+            "view" : view,
+            "store" : store,
+            "root" : null,
+            "container_el" : null
+        }
+    }
+
+    
+    window._x_share_blg_entry_managers = blg_entry_management
+    window._x_share_blg_entry_classes = ['blog','drafts', 'published', 'source','trash']
+
+    window._x_share_attachment_managers = attachment_management
+    window._x_share_attachment_classes = ['view','edit']
+
+    window._x_share_tab_controller_managers = tab_management
+
+
+
+    const blg_types_to_titles = {
+        'blog' : "<b>Blog</b> Copious World",
+        'drafts' : "<b>Drafts</b>",
+        'published' : "<b>Published</b>",
+        'source' : "<b>source</b>",
+        'trash' : "<b>Trash</b>",
+    }
+
+    const capitalize = ([first, ...rest]) => 
+            first ? first.toUpperCase() + rest.join('') : '';
+
+    window.blog_title_map = (mtype) => {
+        let title = blg_types_to_titles[mtype]
+        return title
+    }
+
+</script>
+</head>
+<body>
+<nav id="mainNav" >
+
+<style>
+.sum-container {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  /* Optional: fix the container height so it never changes */
+  overflow: hidden; /* prevents overflow spill */
+  width: 28%;
+}
+
+.icon {
+  flex-shrink: 0; /* keeps the icon from squishing */
+  margin-right: 8px;
+}
+
+.sum-banner {
+  white-space: nowrap; /* forces text to stay on one line */
+  text-overflow: ellipsis; /* optional: adds '...' if the window gets too small */
+  overflow: hidden;
+  padding-left: 10%;
+}
+
+</style>
+<details id="squash_container" class="squash_m">
+    <summary class="sum-container">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" class="icon">
+        <path class="heroicon-ui" d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"/>
+    </svg>
+    <div class="sum-banner">
+        <span id="section-category-title" style="color:black"><b>Blog</b> Copious World</span> 
+    </div>
+    </summary>
+    <!-- MAIL MENU CONTROL -->
+    <div class="nav-go-container" >
+        <blockquote id="expanded-menu" onclick="close_if_open()">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" >
+                <path class="heroicon-ui" d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"/>
+            </svg>
+            <h4><button onclick="toggle_ul(event,'blog')">blog <span id="ardn-blog" style="display:inline-block;color:darkgreen;">&#x25BC;</span><span id="arrt-blog" style="display:none;color:darkgreen;">&#x25BA;</span></button></h4>
+            <ul id="ul-blog">
+                <li><button onclick="blg_entry_switch_to('blog')" >blog</button></li>
+             </ul>
+            <h4><button onclick="toggle_ul(event,'messages')">messages <span id="ardn-messages" style="display:inline-block;color:darkgreen">&#x25BC;</span><span id="arrt-messages" style="display:none;color:darkgreen;">&#x25BA;</span></button></h4>
+            <ul id="ul-messages">
+                <li><button onclick="blg_entry_create()" >write new</button></li>
+                <li><button onclick="blg_entry_switch_to('drafts')" >drafts</button></li>
+                <li><button onclick="blg_entry_switch_to('published')" >published</button></li>
+            </ul>
+            <h4><button onclick="toggle_ul(event,'filtered')">filtered <span id="ardn-filtered" style="display:inline-block;color:darkgreen">&#x25BC;</span><span id="arrt-filtered" style="display:none;color:darkgreen;">&#x25BA;</span></button></h4>
+            <ul id="ul-filtered">
+                <li><button onclick="blg_entry_switch_to('trash')" >trash</button></li>
+            </ul>
+            <h4><button onclick="toggle_ul(event,'manage')">manage <span id="ardn-manage" style="display:inline-block;color:darkgreen">&#x25BC;</span><span id="arrt-manage" style="display:none;color:darkgreen;">&#x25BA;</span></button></h4>
+            <ul id="ul-manage">
+                <li><button onclick="search_ui('messages')" >search blogs</button></li>
+                <li><button onclick="manage_prefs()" >preferences</button></li>
+            </ul>
+        </blockquote>
+    </div>
+</details>
+
+<!-- 
+/*
+Source - https://stackoverflow.com/a/71646714
+Posted by TrojanName
+Retrieved 2026-09-09, License - CC BY-SA 4.0
+*/ -->
+
+</nav>
+
+
+<script>
+
+    class SeachControl {					
+        
+        static search_order = Object.freeze({
+                UPDATE: 'update',
+                SCORE: 'score',
+                UPDATE: 'created',
+                HISTORY: 'history'
+            });
+
+        constructor(mtype) {
+            this.box_delta = 4
+            this.search_topic = ""
+            this.article_index = 0
+            this.article_count = 0
+            this.on_display_count = 0
+            
+            this.search_ordering = SeachControl.search_order.UPDATE
+            //
+            this.mtype = mtype ? mtype : "blog"
+            //
+            // the buffer tracked by the Mikado class will be this buffer.
+            // this will be set up like a mail manager
+            this.data_store = false  // will contain some multiple of box delta unless there are too few results
+            // searches will get some look ahead data if possible and may be expected to have more entries than 
+            // the data store (which is on view)
+            // This table will contain the fully loaded data objects
+            this.loaded_data = {}
+            this.loaded_data_ids = []   // Search will return a bunch of ids (or id, score pairs)
+            // The window in data_store will contain this part of the loaded data placed into data_store
+            // The ariticle index will be a index to all entries that can be retrieved.
+            // The ariticle index the zero of this window.
+            // 
+            this.loaded_data_start = 0;
+            this.loaded_data_end = 0;
+            //
+            this.a_count_el = document.getElementById("blg-acticle-count")
+            this.a_count_maxer = document.getElementById("blg-ctl-number-field")
+            this.a_count_slider = document.getElementById("blg-ctl-slider")
+        }
+
+
+        setup_box_delta(count) {
+            this.a_box_delta_field = document.getElementById("blg-ctl-box_delta")
+            if ( this.a_box_delta_field ) {
+                if ( count && (count >= this.a_box_delta_field.min) && (count <= this.a_box_delta_field.max) ) {
+                    this.box_delta = count
+                }
+                this.a_box_delta_field.value = this.box_delta
+            }
+        }
+
+
+        setup_article_count(n,box_delta) {
+            this.a_count_el = document.getElementById("blg-acticle-count")
+            this.a_count_maxer = document.getElementById("blg-ctl-number-field")
+            this.a_count_slider = document.getElementById("blg-ctl-slider")
+            
+
+            if ( this.a_count_el ) {
+                this.a_count_el.innerText = `${n}`
+            }
+            if ( this.a_count_maxer ) {
+                this.a_count_maxer.setAttribute('max',n)
+                this.a_count_maxer.value = 1
+            }
+            if ( this.a_count_slider ) {
+                this.a_count_slider.setAttribute('max',n)
+                this.a_count_slider.value = 1
+            }
+            this.setup_box_delta(box_delta)
+        }
+
+
+        set_box_delta(a_amount) {
+            this.box_delta = a_amount
+        }
+
+        handleClick_remove(ev) {
+        }
+
+        box_detla_updata(ev) {
+            let a_amount = ev?.target?.value
+            if ( a_amount !== false ) {
+                this.set_box_delta(parseInt(a_amount))
+            }
+        }
+
+        handleClick_remove(ev) {
+            let remove_count = this.box_delta
+            delete_last_count(this.mtype,remove_count)
+            this.on_display_count = get_store_length(this.mtype)
+        }
+
+        async handleClick_add(ev) {
+            // use existing search details
+            await add_blg_enties(this.mtype,this.box_delta)
+            this.on_display_count = get_store_length(this.mtype)
+        }
+
+        async handleClick_fetch(event) {
+            // put in search details
+            await add_blg_enties(this.mtype,this.box_delta)
+            this.on_display_count = get_store_length(this.mtype)
+        }
+
+
+        handle_keyDown(event) {
+        }
+
+        async update_blg_entry_display_at_index(a_index_base) {
+            this.article_index = a_index_base*this.on_display_count
+            await add_blg_enties_replace(this.mtype,this.article_index,this.on_display_count)
+        }
+
+        handleClick_first(event) {
+            let a_index_base = 0
+            if ( this.a_count_maxer ) {
+                this.a_count_maxer.value = 1
+                a_index_base = 1
+            }
+            if ( this.a_count_slider ) {
+                this.a_count_slider.value = 1
+                a_index_base = 1
+            }
+            //
+            this.update_blg_entry_display_at_index(a_index_base)
+        }
+
+        handleClick_last(event) {
+            let a_index_base = 0
+            if ( this.a_count_maxer ) {
+                this.a_count_maxer.value = this.a_count_maxer.max
+                a_index_base = parseInt(this.a_count_maxer.max)
+            }
+            if ( this.a_count_slider ) {
+                this.a_count_slider.value = this.a_count_slider.max
+                a_index_base = parseInt(this.a_count_maxer.max)
+            }
+            //
+            this.update_blg_entry_display_at_index(a_index_base)
+        }
+
+
+        handle_index_changed(event) {
+            let a_index_base = 0
+            let a_value = event?.target?.value
+            if ( a_value !== false ) {
+                if ( parseInt(a_value) > parseInt(this.a_count_maxer.max) ) {
+                    a_value = this.a_count_maxer.max
+                }
+                if ( parseInt(a_value) < parseInt(this.a_count_maxer.min) ) {
+                    a_value = this.a_count_maxer.min
+                }
+                if ( this.a_count_maxer ) {
+                    this.a_count_maxer.value = a_value
+                }
+                if ( this.a_count_slider ) {
+                    this.a_count_slider.value = a_value
+                }
+                //
+                a_index_base = a_value
+                this.update_blg_entry_display_at_index(a_index_base)
+            }
+        }
+
+
+        handle_order_change(event) {
+        }
+
+        detailed_search(event) {
+            detailed_search(event)
+        }
+
+    }
+
+    let g_searcher = new SeachControl("blog")
+    let g_source_searcher = new SeachControl("source")
+
+    function switch_left_right_search(direction) {
+        let search_bar_right = document.getElementById("right-search-panel")
+        let search_bar_left = document.getElementById("left-search-panel")
+        if ( direction === "left" ) {
+            search_bar_right.style.display = "none"
+            search_bar_left.style.display = "flex"
+        } else {
+            search_bar_right.style.display = "flex"
+            search_bar_left.style.display = "none"
+        }
+    }
+
+</script>
+
+
+<!-- MAIL DISPLAY -->
+<main id="grid-main"  class="big-list-container">
+
+    <div id="blog-entries" class="blog-with-search" style="display:block" >
+
+        <div id="right-search-panel" class="search_control_banner">
+            <div class="blg-ctrl-panel blg-window-size-ctrl"  >
+                <span style="color:navy;font-weight:bold">Boxes</span>
+                <input type=number id="blg-ctl-box_delta" class="blg-ctl-number-field" value=4 min=1 max=4 onchange="g_searcher.box_detla_updata(event)">
+
+                <button class="blg-ctl-button" onclick="g_searcher.handleClick_remove(event)">
+                    -
+                </button>
+
+                <button class="blg-ctl-button"  onclick="g_searcher.handleClick_add(event)">
+                    +
+                </button>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <button onclick="switch_left_right_search('left')">right -> left</button>&nbsp;&nbsp;widgets&nbsp;&rArr;
+            </div>
+
+            <div class="blg-ctrl-panel blg-search-field"  >
+                <button onclick="g_searcher.handleClick_fetch(event)">
+                    search
+                </button>
+                <div style="display:inline-block;">
+                &nbsp;<input type=text  value="" onkeypress="g_searcher.handle_keyDown(event)" >
+                </div>
+            </div>
+
+            <div class="blg-ctrl-panel blg-window-position" >
+                <button class="blg-ctl-button" onclick="g_searcher.handleClick_first(event)">&le;</button>
+                <input id="blg-ctl-slider" class="blg-ctl-slider" type=range  min=1 max=10 onchange="g_searcher.handle_index_changed(event)" >
+                <button class="blg-ctl-button" onclick="g_searcher.handleClick_last(event)">&ge;</button>
+                <input id="blg-ctl-number-field" type=number class="blg-ctl-number-field"  min=1 max=10 onchange="g_searcher.handle_index_changed(event)" >
+                of<span class="report-number" id="blg-acticle-count" >10</span>
+            </div>
+
+            <div class="blg-ctrl-panel blg-window-ordering" >
+                    <label style="color:navy;font-weight:bold;font-size: 0.89em;" >&nbsp;sort by &nbsp;<select  value="update" onchange="g_searcher.handle_order_change(event)">
+                            <option value="update">update time</option>
+                            <option value="score">score</option>
+                            <option value="created">create time</option>
+                            <option value="history">update oldest</option>
+                    </select></label>
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <button onclick="g_searcher.detailed_search(event)">detailed search</button>
+            </div>
+        </div>
+
+
+        <div id="left-search-panel" class="search_control_banner" style="display:none" >
+            <div class="blg-ctrl-panel blg-window-size-ctrl"  >
+                <span style="color:navy;font-weight:bold">Boxes</span>
+                <input type=number id="source-ctl-box_delta" class="blg-ctl-number-field" value=4 min=1 max=4 onchange="g_source_searcher.box_detla_updata(event)">
+
+                <button class="blg-ctl-button" onclick="g_source_searcher.handleClick_remove(event)">
+                    -
+                </button>
+
+                <button class="blg-ctl-button"  onclick="g_source_searcher.handleClick_add(event)">
+                    +
+                </button>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <button onclick="switch_left_right_search('right')">left -> right</button>&nbsp;&nbsp;sources&nbsp;&lArr;
+            </div>
+
+            <div class="blg-ctrl-panel blg-search-field"  >
+                <button onclick="g_source_searcher.handleClick_fetch(event)">
+                    search
+                </button>
+                <div style="display:inline-block;">
+                &nbsp;<input type=text  value="" onkeypress="g_source_searcher.handle_keyDown(event)" >
+                </div>
+            </div>
+
+            <div class="blg-ctrl-panel blg-window-position" >
+                <button class="blg-ctl-button" onclick="g_source_searcher.handleClick_first(event)">&le;</button>
+                <input id="source-ctl-slider" class="blg-ctl-slider" type=range  min=1 max=10 onchange="g_source_searcher.handle_index_changed(event)" >
+                <button class="blg-ctl-button" onclick="g_source_searcher.handleClick_last(event)">&ge;</button>
+                <input id="source-ctl-number-field" type=number class="blg-ctl-number-field"  min=1 max=10 onchange="g_source_searcher.handle_index_changed(event)" >
+                of<span class="report-number" id="source-acticle-count" >10</span>
+            </div>
+
+            <div class="blg-ctrl-panel blg-window-ordering" >
+                    <label style="color:navy;font-weight:bold;font-size: 0.89em;" >&nbsp;sort by &nbsp;<select  value="update" onchange="g_source_searcher.handle_order_change(event)">
+                            <option value="update">update time</option>
+                            <option value="score">score</option>
+                            <option value="created">create time</option>
+                            <option value="history">update oldest</option>
+                    </select></label>
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <button onclick="g_source_searcher.detailed_search(event)">detailed search</button>
+            </div>
+        </div>
+
+
+        <div class="split-panel" >
+            <div id="list-entities-source" class="grid-container entities-left" style="width:42%" >
+hardware choices here
+            </div>
+            <div class="gutter" id="gutter"></div>
+            <div id="list-entities-blog" class="grid-container entities-right" style="width:42%" >
+            </div>
+        </div>
+
+    </div>
+
+
+    <div id="drafts-entries" style="display:none" >
+        <div>
+            <table class="blg-entry-drafts" style="width:100%" >
+                <thead>
+                    <th class="drafts-checkbox-th"><button onclick="do_op_modal('drafts')">ops</button></th>
+                    <th class="drafts-recipient-th">sender</th>
+                    <th class="drafts-subject-th">subject</th>
+                    <th class="drafts-date-th">time</th>
+                </thead>
+            </table>
+            <table id="list-entities-drafts" class="blg-entry-drafts" style="width:100%" >
+
+            </table>
+        </div>
+    </div>
+    <div id="published-entries" style="display:none" >
+        <div>
+            <table class="blg-entry-published" style="width:100%" >
+                <thead>
+                    <th class="published-checkbox-th"><button onclick="do_op_modal('published')">ops</button></th>
+                    <th class="published-recipient-th">sender</th>
+                    <th class="published-subject-th">subject</th>
+                    <th class="published-date-th">time</th>
+                </thead>
+            </table>
+            <table id="list-entities-published" class="blg-entry-published" style="width:100%" >
+
+            </table>
+        </div>
+    </div>
+    <div id="trash-entries" style="display:none" >
+        <div>
+            <table class="blg-entry-trash" style="width:100%" >
+                <thead>
+                    <th class="trash-checkbox-th"><button onclick="do_op_modal('trash')">ops</button></th>
+                    <th class="trash-recipient-th">sender</th>
+                    <th class="trash-subject-th">subject</th>
+                    <th class="trash-date-th">time</th>
+                </thead>
+            </table>
+            <table id="list-entities-trash" class="blg-entry-trash" style="width:100%" >
+
+            </table>
+        </div>
+    </div>
+</main>
+
+
+
+
+
+<div id="source_entry_view" class="right_fade_able" style="z-index:124" >
+	<div class="togglebar" >
+		<span class="closer_x" onmousedown="closefader(event,'source_entry_view');">X</span>
+	</div>
+	<div class="sizerbar" > S </div>
+	<div class="fade_able_content" >
+
+        <div id="selected-source-tabs" class="selected-tabs-container" >
+            <button class="selected-tab-bar-source" style="color:darkgreen" onclick="activate_source_selected(event,1)">selected</button>
+            <button class="selected-tab-bar-source" style="color:darkgreen" onclick="activate_source_selected(event,2)">but_not</button>
+            <button class="selected-tab-bar-source" style="color:darkgreen" onclick="activate_source_selected(event,3)">yet again no</button>
+            <button class="selected-tab-bar-source" style="color:darkgreen" onclick="activate_source_selected(event,4)">speedy thoughts</button>
+        </div>
+        <!-- <div id="selected-tab" style="color: {{ data.active ? 'green' : 'black' }}; {{ data.value ? '' : 'display: none;' }}"></div> -->
+        <div class="readers-and-comments" >
+            <div class="reader-box" style="min-width: 350px;min-height: 300px;">
+                <h3 id="source_entry_message_title">title</h3>
+                <div id="source_entry_message_contents" class="reader-box-blog-contents" >
+
+                </div>
+            </div>
+            <div class="reader-box" style="min-width: 150px;min-height: 300px;padding-top:0px;">
+                <h5>comments</h5>
+                <div id="source_entry_message_comments" >
+                    comments go here.
+                </div>
+            </div>
+        </div>
+
+	</div>
+</div>
+
+<div id="blg_entry_view" class="right_fade_able" style="z-index:124" >
+	<div class="togglebar" >
+		<span class="closer_x" onmousedown="closefader(event,'blg_entry_view');void_current_edit_blg_entry()">X</span>
+	</div>
+	<div class="sizerbar" > S </div>
+	<div class="fade_able_content" >
+
+        <div id="selected-tabs" class="selected-tabs-container" >
+            <button class="selected-tab-bar-el" style="color:darkgreen" onclick="activate_this_selected(event,1)">selected</button>
+            <button class="selected-tab-bar-el" style="color:darkgreen" onclick="activate_this_selected(event,2)">but_not</button>
+            <button class="selected-tab-bar-el" style="color:darkgreen" onclick="activate_this_selected(event,3)">yet again no</button>
+            <button class="selected-tab-bar-el" style="color:darkgreen" onclick="activate_this_selected(event,4)">speedy thoughts</button>
+        </div>
+        <!-- <div id="selected-tab" style="color: {{ data.active ? 'green' : 'black' }}; {{ data.value ? '' : 'display: none;' }}"></div> -->
+        <div class="readers-and-comments" >
+            <div class="reader-box" style="min-width: 350px;min-height: 300px;">
+                <h3 id="blg_entry_message_title">title</h3>
+                <div id="blg_entry_message_contents" class="reader-box-blog-contents" >
+
+                </div>
+            </div>
+            <div class="reader-box" style="min-width: 150px;min-height: 300px;padding-top:0px;">
+                <h5>comments</h5>
+                <div id="blg_entry_message_comments" >
+                    comments go here.
+                </div>
+            </div>
+        </div>
+
+	</div>
+</div>
+
+
+
+<!-- Style the label to look exactly like a button using CSS -->
+<style>
+  .custom-button {
+    display: inline-block;
+    padding: 2px 4px;
+    border-radius: 2px;
+    cursor: pointer;
+    font-family: sans-serif;
+    border:solid 1px transparent;
+  }
+  .custom-button:hover {
+    color: rgb(94, 5, 5);
+    background-color: #e9fff8ff;
+    border:dotted 1px rgb(255, 169, 57);
+  }
+</style>
+
+
+<div id="blg_entry_edit" class="right_fade_able" style="z-index:124" >
+	<div class="togglebar" >
+		<span class="closer_x" onmousedown="closefader(event,'blg_entry_edit');blg_entry_edit_mode_reset(event);void_current_edit_blg_entry();">X</span>
+	</div>
+	<div class="sizerbar" > S </div>
+	<div class="fade_able_content" >
+        <div  class="ops-button-containers">
+            <span id="drafts_view_category" class="show-cat">drafts: </span>&nbsp;&nbsp;
+            <button id="blg_entry_edit_mode_send" onclick="do_publish_blg_entry_closefader(event)">publish</button>
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <button id="blg_entry_edit_mode_save" onclick="edit_blg_entry_save(event);" >save</button>
+            <button id="blg_entry_edit_mode_cancel" onclick="blg_entry_edit_mode_reset(event);closefader(event,'blg_entry_edit');" >cancel</button>
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <button id="blg_entry_ops" onclick="single_blg_entry_ops(event);">ops</button>
+        </div>
+        <div class="edit-blg-entry-properties">
+            <div class="field-label">Author:</div>
+            <div class="field-value"><input id="edit-blg-entry-sender" type="email" /></div>
+            
+            <!-- <div class="field-label">To:</div>
+            <div class="field-value"><input id="edit-blg-entry-recipient" type="email" /></div> -->
+
+            <!-- <div class="field-label">cc:</div>
+            <div id="view-blg-entry-cc" class="field-value"><input id="edit-blg-entry-cc" type="email" /></div>
+
+            <div class="field-label">bcc:</div>
+            <div id="view-blg-entry-bcc" class="field-value"><input id="edit-blg-entry-bcc" type="email" /></div> -->
+
+            <div class="field-label">Subject:</div>
+            <div class="field-value"></label><input id="edit-blg-entry-subject" type="text" /></div>
+
+            <div class="field-label">Last edit:</div>
+            <div id="edit-blg-entry-date" class="field-value">September 14, 2026, 12:51 PM</div>
+        </div>
+        <div id="edit-blg-entry-attachments" class="attachments-controls file-dropper-handler" dropzone="true" >
+            <label for="fileInput" class="custom-button">
+            add &#128206;
+            </label>
+            <input type="file" id="fileInput" style="display: none;" onchange="onFileSelected(event)" />
+
+            <button onclick="toggle_table(event,'edit-attachments')">attachments <span id="ardn-edit-attachments" style="display:none">&#x25BC;</span><span id="arrt-edit-attachments" style="display:inline-block">&#x25BA;</span></button>
+            <table id="table-edit-attachments" style="display:none" >
+                <tr><td class="edit-attachments-cell-1">first attachment</td> <td class="edit-attachments-cell-2">view</td><td class="edit-attachments-cell-3">delete</td></tr>
+                <tr><td class="edit-attachments-cell-1">second attachment</td> <td class="edit-attachments-cell-2">view</td><td class="edit-attachments-cell-3">delete</td></tr>
+                <tr><td class="edit-attachments-cell-1">third attachment</td> <td class="edit-attachments-cell-2">view</td><td class="edit-attachments-cell-3">delete</td></tr>
+            </table>
+        </div>
+		<div class="message-box" style="min-width: 400px;min-height: 300px;">
+            <div class="blg-entry-editor-body" id="blg_entry_message_contents_edit" contenteditable="true" >
+                This is the blog entry to view
+            </div>
+		</div>
+	</div>
+</div>
+
+
+
+<div id="preferences" class="right_fade_able" style="z-index:124" >
+	<div class="togglebar" >
+		<span class="closer_x" onmousedown="closefader(event,'preferences')">X</span>
+	</div>
+	<div class="sizerbar" > S </div>
+	<div class="fade_able_content" >
+        update a user's preferences
+	</div>
+</div>
+
+<!--
+* Drafts can delete, move to trash, or be published (sending moves to published).
+* published can move to archive, or copy to drafts.
+* blog can move to trash, to spam, or source
+* Spam can move to trash, to blog, or source
+* source can move to trash, to blog, or to spam
+* Trash can permanently delete a message, or move to blog, or source
+-->
+<dialog id="blg-entry-ops-modal" style="min-width: 300px;">
+    <div id="blg-entry-ops-drafts" style="display: none;" >
+        <button onclick="prep_publish_blg_entry_list('drafts')">publish</button>
+        <button onclick="prep_blg_entry_list_move_to('drafts','trash')">move to trash</button>
+    </div>
+    <div id="blg-entry-ops-published" style="display: none;" >
+        <button onclick="prep_blg_entry_list_move_to('published','archive')">archive</button>
+        <button onclick="prep_blg_entry_list_copy_to('published','drafts')">copy to drafts</button>
+    </div>
+    <div id="blg-entry-ops-blog" style="display: none;" >
+        <!-- <button onclick="prep_blg_entry_list_reply_to('blog')">reply</button>
+        <button onclick="prep_blg_entry_list_reply_all('blog')">reply all</button> -->
+        &nbsp;|&nbsp;
+        <button onclick="prep_blg_entry_list_move_to('blog','trash')">move to trash</button>
+        <!-- <button onclick="prep_blg_entry_list_move_to('blog','spam')">move to spam</button>
+        <button onclick="prep_blg_entry_list_move_to('blog','notfify')">move to source</button> -->
+    </div>
+    <div id="blg-entry-ops-trash" style="display: none;" >
+        <button onclick="prep_blg_entry_list_delete('trash')">delete</button>
+    </div>
+    <div class="select-all-ops-properties-on-ops">
+        <div class="field-label">Select All:</div>
+        <div class="field-value"><input id="select-all-op-on-ops" type="checkbox" onchange="toggle_current_select_all(event)" value="blog" /></div>
+    </div>
+    <form method="dialog">
+        <p id="chosen_operation"><u>Please select an action to perform.</u></p>
+        <!-- Cancel button: closes modal, returnValue is "cancel" -->
+        <button type="submit" formmethod="dialog" value="cancel">Cancel</button>
+        <!-- Close/Confirm button: closes modal, returnValue is "confirm" or selected value -->
+        <button id="blg-entry-ops-modal-ok" type="submit" value="confirm" disabled>OK</button>
+    </form>
+</dialog>
+
+
+<dialog id="search-ops-modal" style="min-width: 300px;">
+    <div class="blg-entry-properties" >
+        <div class="field-label">search:</div>
+        <div class="field-value"><input id="search-list-patterns" type="text" /></div>
+
+        <div id="blg_entry_type_select_label" class="field-label" style="display: none;">mail type:</div>
+        <div id="blg_entry_type_select" class="field-value" style="display: none;">
+            <select id="blg_entry_type_selector" onchange="blg_entry_switch_to_event(event)" >  
+                <option value="all-messages">all messages</option>
+                 <optgroup label="received">
+                    <option value="blog">blog</option>
+                    <option value="source">source</option>
+                </optgroup>
+                 <optgroup label="composed">
+                    <option value="drafts">drafts</option>
+                    <option value="published">published</option>
+                </optgroup>
+                 <optgroup label="no interest">
+                    <option value="spam">spam</option>
+                    <option value="trash">trash</option>
+                </optgroup>
+            </select>
+        </div>
+    </div>
+    <form method="dialog">
+        <!-- Cancel button: closes modal, returnValue is "cancel" -->
+        <button type="submit" formmethod="dialog" value="cancel">Cancel</button>
+        <!-- Close/Confirm button: closes modal, returnValue is "confirm" or selected value -->
+        <button type="submit" value="confirm">search</button>
+    </form>
+</dialog>
+
+
+<dialog id="select-all-ops-modal" style="min-width: 300px;">
+    <form method="dialog">
+        <p id="chosen_contact_operation"><u>Would you like to select all messages?</u></p>
+        <div class="select-all-ops-properties">
+            <div class="field-label">Select All:</div>
+            <div class="field-value"><input id="select-all-op" type="checkbox" onchange="toggle_current_select_all(event)" value="blog" /></div>
+        </div>
+        <!-- Cancel button: closes modal, returnValue is "cancel" -->
+        <button type="submit" formmethod="dialog" value="cancel">Cancel</button>
+        <!-- Close/Confirm button: closes modal, returnValue is "confirm" or selected value -->
+        <button id="sel-all-ops-modal-ok" type="submit" value="confirm" disabled>OK</button>
+    </form>
+</dialog>
+
+
+<dialog id="style-confirm-modal" style="min-width: 300px;">
+    <form method="dialog">
+        <div id="blocking-confirmation" >
+            <h5>error: empty fields not allowed</h5>
+            <div id="list-blocking-confirmation" class="style-confirm-properties">
+
+            </div>
+        </div>
+        <h5></h5>
+        <div id="warn-confirmation">
+            <h5>warning: empty fields may be awkward</h5>
+            <div id="list-warn-confirmation" class="style-confirm-properties">
+
+            </div>
+        </div>
+        <!-- Cancel button: closes modal, returnValue is "cancel" -->
+        <button type="submit" formmethod="dialog" value="cancel">Cancel</button>
+        <!-- Close/Confirm button: closes modal, returnValue is "confirm" or selected value -->
+        <button id="style-confirm-modal-ok" type="submit" value="confirm" disabled>Continue</button>
+    </form>
+</dialog>
+
+
+</body>
+</html>
+<script>
+    function noop(event) {
+        console.log(event?.target?.id)
+    }
+
+
+    class Attachment {
+        constructor(id,title,data) {
+            this.id = id
+            this.title = title
+            this.data = data
+        }
+    }
+</script>
+<script type="module">
+
+    const blg_entry_managers = window._x_share_blg_entry_managers
+    //
+    let blg_entry_main = document.getElementById("grid-main")
+
+
+    for ( let mtype in blg_entry_managers ) {
+        let a_manager = blg_entry_managers[mtype]
+        a_manager.root = document.getElementById(`list-entities-${mtype}`)
+        //
+        a_manager.container_el = document.getElementById(`${mtype}-entries`)   // blog-entries
+        if ( a_manager.root ) {
+            a_manager?.view?.mount(a_manager.root)
+        }
+    }
+
+    // attachments
+
+    const view_ul_attachments = document.getElementById("ul-attachments")
+    const edit_attachments_el = document.getElementById("table-edit-attachments")
+
+    const attachment_managers = window._x_share_attachment_managers
+    const attach_types = window._x_share_attachment_classes
+    
+    // ['view','edit']
+    for ( let atype in attachment_managers ) {
+        let a_manager = attachment_managers[atype]
+        a_manager.root = (atype === 'view') ? view_ul_attachments : edit_attachments_el
+        //
+        if ( a_manager.root ) {
+            a_manager?.view?.mount(a_manager.root)
+        }
+    }
+
+    const tab_controller_el = document.getElementById("selected-tabs")
+    const tab_controller_sources_el = document.getElementById("selected-source-tabs")
+    //
+    const tab_controller_managers = window._x_share_tab_controller_managers
+    // ['source','widgets']
+    for ( let ttype in tab_controller_managers ) {
+        let a_manager = tab_controller_managers[ttype]
+        a_manager.root = (ttype === 'widgets') ? tab_controller_el : tab_controller_sources_el
+        //
+        if ( a_manager.root ) {
+            a_manager?.view?.mount(a_manager.root)
+        }
+    }
+
+
+    // const tab_controller_manager = window._x_share_tab_controller_manager
+    // if ( tab_controller_manager ) {
+    //     tab_controller_manager.root = tab_controller_el
+    //     tab_controller_manager?.view?.mount(tab_controller_manager.root)
+    // }
+
+
+    /**
+     * 
+     */
+    function store_of_blg_entry_manager(mtype) {
+        let mobj = blg_entry_managers[mtype]
+        if ( mobj ) {
+            if ( mobj.store ){
+                return mobj.store
+            }            
+        }
+        return false
+    }
+
+    window.store_of_blg_entry_manager = store_of_blg_entry_manager
+
+
+
+    function store_of_attachment_manager(atype) {
+        let aobj = attachment_managers[atype]
+        if ( aobj ) {
+            if ( aobj.store ){
+                return aobj.store
+            }            
+        }
+        return false
+    }
+
+    window.store_of_attachment_manager = store_of_attachment_manager
+
+    function store_of_tab_controller(ttype) {
+        let tobj = tab_controller_managers[ttype]
+        if ( tobj ) {
+            if ( tobj.store ){
+                return tobj.store
+            }            
+        }
+        return false
+    }
+    
+    window.store_of_tab_controller = store_of_tab_controller
+
+    /** --------------------------- */
+    let g_current_mtype = "blog"
+    window._current_mtype = "blog"
+
+    //  MAIL IDENTIFIER -- need something better
+    window.largest_id = 20
+
+    window.get_next_id = () => {
+        window.largest_id++
+        return window.largest_id
+    }
+
+    let date = new Date()
+
+    let pre_date = new Date((date.getTime() - (3600*24*2)))
+    //
+    let blg_entry_proto = {
+                        "id" : 1,
+                        "sender" : "richard@myhost.local", 
+                        "category" : "cecks",
+                        "subject" : "much to do with tests", 
+                        "recipient" : "blog",
+                        "cc" : "", "bcc" : "",
+                        "date" : date.toLocaleString(), 
+                        "timestamp" : date.getTime(),
+                        "created_when" : date.toLocaleString(),
+                        "updated_when" : pre_date.toLocaleString(),
+                        "description" : "this is a test",
+                        "score" : 1.0,
+                        "keys" : "sensless,common,often",
+                        "text" : "edit this message",
+                        "_count_edits" : 0, "_saved_updates" : []
+                    }
+
+    let contact_proto = { "id" : 1, "email" : "", "name" : "", "date" : date.toLocaleString(), "timestamp" : date.getTime(),
+                        "text" : "", "_count_edits" : 0, "_saved_updates" : []  }
+
+
+    window._x_test_blg_entry_proto = blg_entry_proto
+
+    //
+    // testing
+    window.add_blg_enties = async (mtype,box_count) => {
+        //
+        if ( mtype === undefined ) mtype = g_current_mtype
+        // if ( mtype === "contacts" ) {
+        //     add_contacts()
+        //     return
+        // }
+        let blg_entry_store = store_of_blg_entry_manager(mtype)
+        //
+        if ( blg_entry_store ) {
+            let new_blg_entry_bunch = await load_a_bunch_of_entries(mtype)
+            if ( (box_count !== undefined) && (parseInt(box_count) !== NaN) ) {
+                new_blg_entry_bunch = new_blg_entry_bunch.slice(0,box_count)
+            }
+            if ( new_blg_entry_bunch && new_blg_entry_bunch.length ) {
+                for ( let m of new_blg_entry_bunch ) {
+                    blg_entry_store.unshift(m)
+                }
+            } else {
+                if ( new_blg_entry_bunch ) {
+                    blg_entry_store.set(new_blg_entry_bunch)
+                }
+            }
+        }
+
+        sort_blg_entries(mtype)
+    }
+
+
+    window.get_store_length = (mtype) => {
+        let blg_entry_store = store_of_blg_entry_manager(mtype)
+        if ( blg_entry_store ) {
+            return blg_entry_store.length
+        }
+        return 0
+    }
+
+    window.add_blg_enties_replace = async (mtype,article_index,fetch_count) => {
+        if ( mtype === undefined ) mtype = g_current_mtype
+        // if ( mtype === "contacts" ) {
+        //     add_contacts()
+        //     return
+        // }
+        let blg_entry_store = store_of_blg_entry_manager(mtype)
+        //
+        if ( blg_entry_store ) {
+            let total_blg_entry_bunch = []
+            let remaining_fetch_count = fetch_count
+            while ( remaining_fetch_count > 0 ) {
+                let new_blg_entry_bunch = await load_a_bunch_of_entries(mtype)
+                let returned_count = new_blg_entry_bunch.length
+                remaining_fetch_count -= returned_count
+                while ( remaining_fetch_count < 0 ) {
+                    new_blg_entry_bunch.pop()
+                    remaining_fetch_count++
+                }
+                if ( new_blg_entry_bunch.length ) {
+                    total_blg_entry_bunch = total_blg_entry_bunch.concat(new_blg_entry_bunch)
+                }
+            }
+
+            if ( total_blg_entry_bunch ) {
+                blg_entry_store.set(total_blg_entry_bunch)
+            }
+
+        }
+
+        sort_blg_entries(mtype)
+    }
+
+
+
+    // useful
+    // window.add_contacts = async () => {
+    //     let contact_store = store_of_blg_entry_manager('contacts')
+    //     if ( contact_store ) {
+    //         let new_contact_bunch = await load_a_bunch_of_contacts()
+    //         if ( new_contact_bunch && new_contact_bunch.length ) {
+    //             for ( let c of new_contact_bunch ) {
+    //                 contact_store.unshift(c)
+    //             }
+    //         } else {
+    //             if ( new_contact_bunch ) {
+    //                 contact_store.set(new_contact_bunch)
+    //             }
+    //         }
+    //     }
+    //     sort_blg_entries('contacts')
+    //     return true
+    // }
+
+
+
+    // useful (mail and contacts)
+    window.add_entries_to_list = (mtype,blg_entry_list) => {
+
+
+        for ( let email of blg_entry_list ) {
+                email.created_when = _x_test_blg_entry_proto.created_when
+                email.updated_when = _x_test_blg_entry_proto.updated_when
+                email.description = _x_test_blg_entry_proto.description
+                email.score = _x_test_blg_entry_proto.score
+                email.keys =_x_test_blg_entry_proto.keys
+        }
+
+
+        if ( mtype === undefined ) return false
+        let blg_entry_store = store_of_blg_entry_manager(mtype)
+        if ( blg_entry_store ) {
+            if ( blg_entry_store.length ) {
+                for ( let m of blg_entry_list ) {
+                    blg_entry_store.unshift(m)
+                    m.category = mtype
+                }
+            } else {
+                blg_entry_store.set(blg_entry_list)
+                for ( let m of blg_entry_list ) {
+                    m.category = mtype
+                }
+            }
+        }
+        sort_blg_entries(mtype)
+        return true
+    }
+
+
+
+    window.delete_entries_from_list = (mtype,blg_entry_ids_list) => {
+        if ( mtype === undefined ) return false
+        let blg_entry_store = store_of_blg_entry_manager(mtype)
+        if ( blg_entry_store ) {
+            blg_entry_store.filter((email)=>{
+                let mid = email.id
+                if ( blg_entry_ids_list.indexOf(mid) >= 0 ) {
+                    return false
+                }
+                return true
+            })
+        }
+        return true
+    }
+
+    //
+    window.get_list_of_objects = (mtype,id_list) => {
+        if ( mtype === undefined ) return false
+        let blg_entry_store = store_of_blg_entry_manager(mtype)
+        if ( blg_entry_store ) {
+            let obj_list = []
+            blg_entry_store.forEach((obj) => {
+                if ( id_list.includes(obj.id) )  {
+                    obj_list.push(obj)
+                }
+            })
+            if ( !(obj_list.length) ) return false
+            return obj_list
+        }
+        return false
+    }
+
+
+    window.add_empty_draft = (id) => {
+        let mtype = "drafts"
+        let blg_entry_store = store_of_blg_entry_manager(mtype)
+        let new_mail = structuredClone(blg_entry_proto)
+        new_mail.id = id
+        new_mail._count_edits = 0
+        new_mail._saved_updates = []
+        //
+        if ( blg_entry_store ) {
+            blg_entry_store.unshift(new_mail)
+            return new_mail
+        }
+        return false
+    }
+
+    window.add_empty_contact = (id) => {
+        let mtype = "contacts"
+        let blg_entry_store = store_of_blg_entry_manager(mtype)
+        let new_contact = structuredClone(contact_proto)
+        new_contact.id = id
+        new_contact._count_edits = 0
+        new_contact._saved_updates = []
+        //
+        if ( blg_entry_store ) {
+            blg_entry_store.unshift(new_contact)
+            return new_contact
+        }
+        return false
+    }
+ 
+
+    window.swap_two = (mtype) => {
+        if ( mtype === undefined ) mtype = g_current_mtype
+        let blg_entry_store = store_of_blg_entry_manager(mtype)
+        if ( blg_entry_store ) blg_entry_store.swap(2,5)
+    }
+
+    window.delete_two = (mtype) => {
+        if ( mtype === undefined ) mtype = g_current_mtype
+        let blg_entry_store = store_of_blg_entry_manager(mtype)
+        if ( blg_entry_store ) blg_entry_store.splice(3,2)
+    }
+
+    window.delete_last_count = (mtype,count) => {
+        if ( mtype === undefined ) mtype = g_current_mtype
+        let blg_entry_store = store_of_blg_entry_manager(mtype)
+        if ( blg_entry_store ) {
+            let n = blg_entry_store.length
+            blg_entry_store.splice(n-count-1,count)
+        }
+    }
+
+    window.sort_blg_entries = (mtype) => {
+        if ( mtype === undefined ) mtype = g_current_mtype
+        let blg_entry_store = store_of_blg_entry_manager(mtype)
+        if ( blg_entry_store ) blg_entry_store.sort((a,b) => {
+            if ( a.timestamp < b.timestamp ) return 1
+            if ( a.timestamp > b.timestamp ) return -1
+            return 0
+        })
+    }
+
+    window.sort_one_or_more = (mtype) => {
+        if ( mtype === undefined ) mtype = g_current_mtype
+        let blg_entry_store = store_of_blg_entry_manager(mtype)
+        if ( blg_entry_store ) {
+            if ( blg_entry_store.length === 1 ) {
+                let obj = blg_entry_store.pop()
+                blg_entry_store.push(obj)
+            } else {
+                sort_blg_entries(mtype)
+            }
+        }
+    }
+
+    window.reverse_mail = (mtype) => {
+        if ( mtype === undefined ) mtype = g_current_mtype
+        let blg_entry_store = store_of_blg_entry_manager(mtype)
+        if ( blg_entry_store ) blg_entry_store.reverse()
+    }
+
+
+    // 
+    let b_section_title = document.getElementById("section-category-title")
+    function set_section_title(mtype) {
+        if ( mtype && b_section_title ) {
+            b_section_title.innerHTML = blog_title_map(mtype)
+        }
+    }
+
+    window.blg_entry_switch_to  = (mtype) => {
+        if ( mtype === undefined ) mtype = g_current_mtype
+        for ( let one_mtype in blg_entry_managers ) {
+            let mobj = blg_entry_managers[one_mtype]
+            if ( mobj.container_el ) {
+                mobj.container_el.style.display = "none"
+            }
+        }
+        let mobj = blg_entry_managers[mtype]
+        if ( mobj ) {
+            if ( mobj.container_el ) {
+                mobj.container_el.style.display = "block"
+                //
+                g_current_mtype = mtype
+                window._current_mtype = mtype
+                set_banner_search_selector(mtype)
+            }            
+        }
+        set_section_title(mtype)
+    }
+
+    window.blg_entry_switch_to_event = (event) => {
+        let sel_el = event.target
+        if ( sel_el ) {
+            if ( sel_el.value === "all-messages") return
+            blg_entry_switch_to(sel_el.value)
+        }
+    }
+
+    // attachments -------------------
+
+    // useful (mail and contacts)
+    window.add_atts_to_list = (atype,att_list) => {
+        // if ( atype === undefined ) return false
+        // let atts_store = store_of_attachment_manager(atype)
+        // if ( atts_store ) {
+        //     if ( atts_store.length ) {
+        //         for ( let a of att_list ) {
+        //             atts_store.unshift(a)
+        //         }
+        //     } else {
+        //         atts_store.set(att_list)
+        //     }
+        // }
+        // // sort_attachments(atype)
+        return true
+    }
+
+
+    window.delete_atts_from_list = (atype,atts_ids_list) => {
+        if ( atype === undefined ) return false
+        let atts_store = store_of_attachment_manager(atype)
+        if ( atts_store ) {
+            atts_store.filter((attachment)=>{
+                let aid = attachment.id
+                if ( atts_ids_list.indexOf(aid) >= 0 ) {
+                    return false
+                }
+                return true
+            })
+        }
+        return true
+    }
+
+    window.clear_atts_list = (atype) => {
+        if ( atype === undefined ) return false
+        let atts_store = store_of_attachment_manager(atype)
+        if ( atts_store ) {
+            atts_store.set([])
+        }
+    }
+
+
+    
+    window.indicate_page_on_window_banner = (mtype) => {
+        if ( mtype !== 'drafts' ) {
+            let wb_var = document.getElementById("blg_entry_view_category")
+            if ( wb_var ) {
+                wb_var.innerText = `${mtype}: `
+            }
+        }
+    }
+
+
+
+</script>
+<script>
+    const squash_container = document.getElementById("squash_container")
+    const expanded = document.getElementById("expanded-menu")
+    window.addEventListener("click",(event) => {
+        close_if_open()
+    })
+
+    function close_if_open() {
+        if ( squash_container.hasAttribute("open" ) ) {
+            squash_container.removeAttribute("open")
+
+            // 1. Kill the transition and snap back to the start
+            expanded.style.transition = 'none';
+
+            // 2. Force reflow
+            void expanded.offsetWidth;
+
+            // 3. Turn the transition back on and start the move
+            expanded.style.transition = 'width 0.3s ease-out, content-visibility 0.3s allow-discrete';
+
+        }
+    }
+
+    // ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+    // open windows
+
+
+    function get_text_from_store(mtype,msg_id) {
+        let blg_entry_store = store_of_blg_entry_manager(mtype)
+        let clear_text = "message not found"
+        if ( blg_entry_store ) {
+            let the_msg = false
+            blg_entry_store.forEach(msg => {
+                if ( msg.id === msg_id ) {
+                    the_msg = msg
+                }
+            })
+            if ( the_msg ) {
+                clear_text = the_msg.text
+            }
+        }
+        return clear_text
+    }
+
+
+    function get_message_from_store(mtype,msg_id) {
+        let blg_entry_store = store_of_blg_entry_manager(mtype)
+        //
+        if ( blg_entry_store ) {
+            let the_msg = false
+            blg_entry_store.forEach(msg => {
+                if ( msg.id === msg_id ) {
+                    the_msg = msg
+                }
+            })
+            if ( the_msg ) {
+                return the_msg
+            }
+        }
+        //
+        return false
+    }
+
+    // ---- ---- ---- ---- ---- ---- ---- ---- ----
+    //
+    // ['blog','drafts', 'published', 'source', 'trash' ]
+    //
+    /*
+    // blog_check_select
+    // published_check_select
+    // spam_check_select
+    // source_check_select
+    // drafts_check_select
+    // trash_check_select
+    // contacts_check_select
+    */
+
+    function setup_modal_response(dialog_id) {
+        const dialog = document.getElementById(dialog_id);
+        if ( dialog ) {
+            dialog._acceptance_action = false
+            dialog._cancel_action = false
+            let self = dialog
+            dialog.addEventListener('close', () => {
+                const action = dialog.returnValue;
+                switch (action) {
+                    case "confirm" : {
+                        if ( dialog._acceptance_action ) {
+                            dialog._acceptance_action()
+                            dialog._acceptance_action = false
+                        }
+                        break;
+                    }
+                    case "cancel" : {
+                        if ( dialog._cancel_action ) {
+                            dialog._cancel_action()
+                            dialog._cancel_action = false
+                        }
+                        break
+                    }
+                }
+                restore_check_box_selections(self,action)  // if the dialog was used for a single email in view or drafts
+            });
+            disable_ok_button()
+            return dialog
+        }
+        return false
+    }
+
+    function setup_blg_entry_ops_dialog() {
+        let diag = setup_modal_response('blg-entry-ops-modal')
+        if ( diag ) {
+            diag._cancel_action = () => {
+                disable_ok_button()
+                disable_selall_ok_button()
+            }
+        }
+    }
+
+    function setup_contacts_ops_dialog() {
+        setup_modal_response('contact-ops-modal')
+    }
+
+    function setup_search_ops_dialog() {
+        let search_d = setup_modal_response('search-ops-modal')
+        search_d._acceptance_action = () => {
+            // final search update -- otherwise the fields are reactive 
+        }
+    }
+
+
+    // checkbox patterns
+
+    // for saving a pattern to be restored (handle indecision about checkboxes)
+    class CheckBoxPatternEntry {
+        constructor(id,cb_el) {
+            this.data_id = id
+            this.checkbox_element = cb_el
+            this.state = cb_el.checked
+        }
+
+        set_state(state) {
+            this.state = state
+        }
+
+        sync_state_view() {
+            this.checkbox_element.checked = this.state
+        }
+    }
+
+    // CheckBoxesAndTabs
+
+    //  CHECK BOXES
+    // ---- ---- ---- ---- ---- ----
+    //
+    class CheckBoxesAndTabs {
+
+        constructor(mtype,tab_bar_id,tab_bar_class_atom) {
+            this.tab_bar_id = (tab_bar_id === undefined) ? "tab-bar-el" : tab_bar_id   // e.g. tab-bar-source
+            this.all_list_view_check_box_patterns = {}
+            this.tab_bar_class_atom = (tab_bar_class_atom === undefined) ? "el"  : tab_bar_class_atom
+            this.mtype = mtype  // a default
+            this.tab_type = (this.tab_bar_id === "tab-bar-el") ? "widgets" : "source"
+        }
+
+        // A
+        setup_checkbox_pattern_tracking() {
+            let mtypes = window._x_share_blg_entry_classes
+            for ( let mtype of mtypes ) {
+                this.all_list_view_check_box_patterns[mtype] = []
+            }
+        }
+
+        // B
+        store_current_check_box_pattern(mtype_forced) {
+            const mtype = (mtype_forced !== undefined) ? mtype_forced : window._current_mtype
+            let result_pattern = []
+            this.all_list_view_check_box_patterns[mtype] = result_pattern
+            const checkedBoxes = document.querySelectorAll(`.${mtype}_check_select`);
+            for ( let cb of checkedBoxes ) {
+                let id = cb.value
+                let cb_entry = new CheckBoxPatternEntry(id,cb)
+                result_pattern.push(cb_entry)
+            }
+            this.update_reader_selection_tab_with_checked(result_pattern,mtype_forced)
+        }
+
+        // C
+        restore_checkbox_pattern(mtype) {
+            let saved_pattern = this.all_list_view_check_box_patterns[mtype]
+            if ( saved_pattern.length ) {
+                for ( let p_entry of saved_pattern ) {
+                    p_entry.sync_state_view()
+                }
+            } else {
+                clear_check_boxes(mtype)
+            }
+        }
+
+        // D
+        do_tab_bar_tab_select(id) {
+            let tab_id = `${this.tab_bar_id}-${id}`                 // tab-bar-source-{{data.id}}
+            let sel_tab = document.getElementById(tab_id)
+            if ( sel_tab ) {
+                let event = {
+                    "target" : sel_tab
+                }
+                this.activate_this_selected(event,id)
+            }
+        }
+        
+        //  <h3 id="source_entry_message_title">title</h3>
+        //  <div id="source_entry_message_contents" class="reader-box-blog-contents" >
+
+        set_blog_view_contents(bobj,class_stem) {
+            let title_el = document.getElementById(`${class_stem}_entry_message_title`)
+            let content_el = document.getElementById(`${class_stem}_entry_message_contents`)
+            if ( title_el && content_el ) {
+                title_el.innerText = bobj.subject
+                content_el.innerHTML = bobj.text
+            }
+        }
+
+        activate_this_selected(event,id,select_stem) {
+            let class_stem = this.tab_bar_class_atom
+            if ( select_stem ) {
+                class_stem = select_stem
+            }
+            let tab_elements = document.getElementsByClassName(`selected-tab-bar-${class_stem}`)
+            for ( let el of tab_elements ) {
+                el.setAttribute('x_selected',false)
+                el.style.color = "darkgreen"
+            }
+            //
+            let current_active = event.target
+            current_active.setAttribute('x_selected',true)
+            current_active.style.color = "#ec5109ff"
+            //
+            let mtype = this.mtype ? this.mtype : window._current_mtype
+            let objects = get_list_of_objects(mtype,[id])
+            if ( objects ) this.set_blog_view_contents(objects[0],class_stem)
+        }
+
+        activate_source_selected(event,id) {
+            this.activate_this_selected(event,id,"source")
+        }
+
+
+        // E
+        update_reader_selection_tab_with_checked(cb_pattern,mtype_forced) {
+            let o_store = store_of_tab_controller(this.tab_type)
+            if ( o_store && cb_pattern ) {
+                const mtype = mtype_forced ? mtype_forced : window._current_mtype
+                let obj_store = store_of_blg_entry_manager(mtype)
+                if ( obj_store ) {
+                    let id_list = cb_pattern.map(cb_state => {
+                        if ( cb_state.state ) {
+                            return parseInt(cb_state.data_id)
+                        }
+                        return false
+                    })
+                    id_list = id_list.filter( id => (id !== false) )
+                    let objects = get_list_of_objects(mtype,id_list)
+                    if ( objects ) {
+                        let tab_objects = objects.map(obj => {
+                            return {
+                                "id" : obj.id,
+                                "subject" : obj.subject
+                            }
+                        })
+                        //
+                        o_store.set(tab_objects)
+                        this.do_tab_bar_tab_select(tab_objects[0].id)
+                    }
+                }
+            }
+        }
+
+
+        // end of methods
+    }
+
+    let g_source_tab_bar = new CheckBoxesAndTabs("source","tab-bar-source","source")
+
+
+    // A
+    let g_all_list_view_check_box_patterns = {}
+    function setup_checkbox_pattern_tracking() {
+        let mtypes = window._x_share_blg_entry_classes
+        for ( let mtype of mtypes ) {
+            g_all_list_view_check_box_patterns[mtype] = []
+        }
+    }
+
+    function update_check_box_pattern(ev,mtype) {
+        if ( mtype === "source" ) {
+            g_source_tab_bar.store_current_check_box_pattern(mtype)
+        } else {
+            store_current_check_box_pattern(mtype)
+        }
+    }
+
+    // B
+    function store_current_check_box_pattern(mtype_forced) {
+        const mtype = (mtype_forced !== undefined) ? mtype_forced : window._current_mtype
+        let result_pattern = []
+        g_all_list_view_check_box_patterns[mtype] = result_pattern
+        const checkedBoxes = document.querySelectorAll(`.${mtype}_check_select`);
+        for ( let cb of checkedBoxes ) {
+            let id = cb.value
+            let cb_entry = new CheckBoxPatternEntry(id,cb)
+            result_pattern.push(cb_entry)
+        }
+        this.update_reader_selection_tab_with_checked(result_pattern,mtype_forced)
+    }
+
+    // C
+    function restore_checkbox_pattern(mtype) {
+        let saved_pattern = g_all_list_view_check_box_patterns[mtype]
+        if ( saved_pattern.length ) {
+            for ( let p_entry of saved_pattern ) {
+                p_entry.sync_state_view()
+            }
+        } else {
+            clear_check_boxes(mtype)
+        }
+    }
+
+    // D
+    function do_tab_bar_tab_select(id) {
+        let tab_id = `tab-bar-el-${id}`
+        let sel_tab = document.getElementById(tab_id)
+        if ( sel_tab ) {
+            let event = {
+                "target" : sel_tab
+            }
+            activate_this_selected(event,id)
+        }
+    }
+
+    // E
+    function update_reader_selection_tab_with_checked(cb_pattern,mtype_forced) {
+        let o_store = store_of_tab_controller("widgets")
+        if ( o_store && cb_pattern ) {
+            const mtype = mtype_forced ? mtype_forced : window._current_mtype
+            let obj_store = store_of_blg_entry_manager(mtype)
+            if ( obj_store ) {
+                let id_list = cb_pattern.map(cb_state => {
+                    if ( cb_state.state ) {
+                        return parseInt(cb_state.data_id)
+                    }
+                    return false
+                })
+                id_list = id_list.filter( id => (id !== false) )
+                let objects = get_list_of_objects(mtype,id_list)
+                if ( objects ) {
+                    let tab_objects = objects.map(obj => {
+                        return {
+                            "id" : obj.id,
+                            "subject" : obj.subject
+                        }
+                    })
+                    //
+                    o_store.set(tab_objects)
+                    do_tab_bar_tab_select(tab_objects[0].id)
+                }
+            }
+        }
+    }
+
+
+    
+    // --------
+
+    
+    let g_select_all_response_promise = {
+        resolver : false,
+        rejector : false
+    }
+
+    function prep_select_all_modal_response() {
+        let sel_d = select_all_op_dialog
+        sel_d._acceptance_action = () => {
+            if ( g_select_all_response_promise.resolver ) {
+                g_select_all_response_promise.resolver()
+                g_select_all_response_promise = { resolver : false, rejector : false }
+            }
+        }
+        sel_d._cancel_action = () => {
+            if ( g_select_all_response_promise.rejector ) {
+                g_select_all_response_promise.rejector()
+                g_select_all_response_promise = { resolver : false, rejector : false }
+            }
+        }
+    }
+
+
+    function setup_select_all_ops_dialog() {
+        setup_modal_response('select-all-ops-modal')
+    }
+
+
+
+    async function check_all_decision(mtype) {
+        const dialog = select_all_op_dialog
+        if ( dialog ) {
+            //              -- responses set to false after call 
+            prep_select_all_modal_response()
+            //
+            let p = new Promise((resolve,reject) => {
+                g_select_all_response_promise.resolver = () => {
+                    resolve(true)
+                }
+                g_select_all_response_promise.rejector = () => {
+                    reject(false)
+                }
+            })
+            dialog.showModal()
+            try {
+                let decision = await p
+                if ( decision ) {
+                    let checkedBoxes = document.querySelectorAll(`.${mtype}_check_select:checked`);
+                    if ( checkedBoxes.length === 0 ) {
+                        checkedBoxes = document.querySelectorAll(`.${mtype}_check_select`)
+                        set_check_boxes(mtype)
+                    }
+                    const collectedIds = Array.from(checkedBoxes).map(cb => cb.value);
+                    disable_selall_ok_button()
+                    return collectedIds
+                }
+            } catch (e) {
+                clear_check_boxes(mtype)
+                disable_selall_ok_button()
+                return false
+            }
+        }
+        return false
+    }
+
+    function clear_check_boxes(mtype) {
+        const checkedBoxes = document.querySelectorAll(`.${mtype}_check_select`);
+        for ( let cb of checkedBoxes ) {
+            cb.checked = false
+        }
+    }
+    
+    function set_check_boxes(mtype) {
+        const checkedBoxes = document.querySelectorAll(`.${mtype}_check_select`);
+        for ( let cb of checkedBoxes ) {
+            cb.checked = true
+        }
+    }
+
+    // select_all_op_dialog_on_ops
+    // const select_all_op_cb
+    // const select_all_op_cb_on_ops
+
+    // SELECT ALL
+
+    function toggle_current_select_all(ev) {
+        let check_master = ev.target
+        let mtype = check_master.value
+        let checked = check_master.checked
+        //
+        select_all_op_cb_on_ops.checked = checked
+        select_all_op_cb.checked = checked
+        if ( checked ) {
+            enable_selall_ok_button()
+        } else {
+            disable_selall_ok_button()
+        }
+        //
+        if ( checked ) {
+            set_check_boxes(mtype)
+        } else {
+            restore_checkbox_pattern(mtype)
+            if ( check_master === select_all_op_cb_on_ops ) {
+                disable_ok_button_if_no_selection(mtype)
+            }
+        }
+        collect_entries_list_for_op(mtype)
+    }
+
+
+    function get_checked_messages(mtype) {
+        const checkedBoxes = document.querySelectorAll(`.${mtype}_check_select:checked`);
+        const collectedIds = Array.from(checkedBoxes).map(cb => cb.value);
+        return collectedIds
+    }
+
+
+    async function get_checked_messages_or_ask_for_all(mtype) {
+        const check_master = document.getElementById("select-all-op")
+        if ( select_all_op_cb && select_all_op_cb_on_ops ) {
+            select_all_op_cb.value = mtype;
+            select_all_op_cb.checked = false
+            select_all_op_cb_on_ops.value = mtype;
+            select_all_op_cb_on_ops.checked = false
+        }
+        const collectedIds = get_checked_messages(mtype)
+        if (collectedIds.length ) {
+            return collectedIds
+        } else {        // alternate with promise
+            let all_collected_ids = await check_all_decision(mtype)
+            if ( all_collected_ids && all_collected_ids.length ) return all_collected_ids
+            return false
+        }
+    }
+    
+    // EDIT WINDOW  ['drafts'] and create
+
+    // change support
+    function update_blg_entry_properties_edit(mtype,msg_id) {
+        //
+        let message = get_message_from_store(mtype,msg_id)
+        if ( message ) {
+            g_current_edit_email = message
+            //
+            let m_prop_el = document.getElementById("edit-blg-entry-sender")
+            if ( m_prop_el ) { m_prop_el.value = message.sender }
+
+            // m_prop_el = document.getElementById("edit-blg-entry-recipient")
+            // if ( m_prop_el ) { m_prop_el.value = message.recipient }
+            //
+            // m_prop_el = document.getElementById("edit-blg-entry-cc")
+            // if ( m_prop_el ) { m_prop_el.value = message.cc }
+            //
+            m_prop_el = document.getElementById("edit-blg-entry-subject")
+            if ( m_prop_el ) { m_prop_el.value = message.subject }
+            m_prop_el = document.getElementById("edit-blg-entry-date")
+            if ( m_prop_el ) { m_prop_el.innerHTML = message.date }
+            //
+            store_current_blg_entry_undo_stack()
+            if ( message.attachments ) {
+                clear_atts_list('edit')
+                add_atts_to_list('edit',message.attachments)
+            }
+        } else {
+            alert("no message")
+        }
+        //
+    }
+
+
+    function unload_blg_entry_for_undo(email) {
+        if ( email ) {
+            let id = email.id
+            let sender = email.sender
+            let recipient = email.recipient
+            let cc = email.cc
+            let subject = email.subject
+            let text = email.text
+            let date = email.date
+            let timestamp = email.timestamp
+            email.dirty = false
+            return { id, sender, recipient, cc, subject, text, date, timestamp }
+        }
+    }
+
+
+    function reload_blg_entry_by_undo(email,old_values) {
+        if ( email ) {
+            email.id = old_values.id
+            email.sender = old_values.sender
+            email.recipient = old_values.recipient
+            email.cc = old_values.cc
+            email.subject = old_values.subject
+            email.text = old_values.text
+            email.date = old_values.date
+            email.timestamp = old_values.timestamp
+            email.dirty = false
+        }
+    }
+
+    function unequal_objects(save_email,stored_email) {
+        if ( save_email && stored_email ) {
+            if ( save_email.id !== stored_email.id ) return true
+            if ( save_email.sender !== stored_email.sender ) return true
+            if ( save_email.recipient !== stored_email.recipient ) return true
+            if ( save_email.cc !== stored_email.cc ) return true
+            if ( save_email.subject !== stored_email.subject ) return true
+            if ( save_email.text !== stored_email.text ) return true
+            if ( save_email.date !== stored_email.date ) return true
+            if ( save_email.timestamp !== stored_email.timestamp ) return true
+        }
+        return true
+    }
+
+    function store_current_blg_entry_undo_stack() {
+        if ( g_current_edit_email ) {
+            const email = g_current_edit_email
+            let save_email = unload_blg_entry_for_undo(g_current_edit_email)
+            if ( unequal_objects(save_email,email._saved_updates[0]) ) {
+                email._saved_updates.unshift(save_email)
+            }
+        }
+    }
+
+    function update_contact_properties_view(cid) {
+        let contact = get_message_from_store('contacts',cid)
+        if ( contact ) {
+            g_current_edit_contact = contact
+            //
+            let m_prop_el = document.getElementById("view-contact-name")
+            if ( m_prop_el ) { m_prop_el.innerHTML = contact.name }
+            m_prop_el = document.getElementById("view-contact-email")
+            if ( m_prop_el ) { m_prop_el.innerHTML = contact.email }
+            //
+            m_prop_el = document.getElementById("edit-contact-name")
+            if ( m_prop_el ) { m_prop_el.value = contact.name }
+            m_prop_el = document.getElementById("edit-contact-email")
+            if ( m_prop_el ) { m_prop_el.value = contact.email }
+            //
+            m_prop_el = document.getElementById("view-contact-date")
+            if ( m_prop_el ) { m_prop_el.innerHTML = contact.date }
+            m_prop_el = document.getElementById("edit-contact-date")
+            if ( m_prop_el ) { m_prop_el.innerHTML = contact.date }
+            //
+        } else {
+            alert("no message")
+        }
+    }
+
+
+    function unload_contact_for_undo(contact) {
+        if ( contact ) {
+            let name = contact.name
+            let email = contact.email
+            let date = contact.date
+            let text = contact.text
+            let id = contact.id
+            let timestamp = contact.timestamp
+            contact.dirty = false
+            return { id, name, email, text, date, timestamp }
+        }
+    }
+
+
+    function reload_contact_by_undo(contact,old_values) {
+        if ( contact ) {
+            contact.name = old_values.name
+            contact.email = old_values.email
+            contact.date = old_values.date
+            contact.text = old_values.text
+            contact.id = old_values.id
+            contact.imestamp = old_values.timestamp
+        }
+    }
+
+
+
+
+    function update_just_date(message,date_el_id) {
+        let date = new Date()
+        if ( message ) {  
+            message.date = date.toLocaleString()
+            message.timestamp = date.getTime()
+        } else return
+        let m_prop_el = document.getElementById(date_el_id)
+        if ( m_prop_el ) { m_prop_el.innerHTML = message.date }
+        if ( date_el_id === "edit-blg-entry-date" ) {
+            sort_one_or_more('drafts')
+        } else {
+            sort_one_or_more('contacts')
+        }
+    }
+
+    // ---- ---- ---- ---- ---- ---- ---- ----
+    //
+    //
+    let g_current_edit_email = false
+    let g_current_edit_contact = false
+    function setup_edit_response() {
+        //
+        let msg_editor = document.getElementById("blg_entry_message_contents_edit")
+        if ( msg_editor ) {
+            msg_editor.addEventListener('input', (event) => {
+                if ( g_current_edit_email ) {
+                    g_current_edit_email.text = event.target.innerHTML
+                    update_just_date(g_current_edit_email,"edit-blg-entry-date")
+                    g_current_edit_email.dirty = true
+                }
+            });
+        }
+        //
+        let m_prop_el = document.getElementById("edit-blg-entry-sender")
+        if ( m_prop_el ) {
+            m_prop_el.addEventListener('change', (event) => {
+                if ( g_current_edit_email ) {
+                    g_current_edit_email.sender = event.target.value
+                    update_just_date(g_current_edit_email,"edit-blg-entry-date")
+                    g_current_edit_email.dirty = true
+                }
+            });
+        }
+        //
+        // m_prop_el = document.getElementById("edit-blg-entry-recipient")
+        // if ( m_prop_el ) {
+        //     m_prop_el.addEventListener('change', (event) => {
+        //         if ( g_current_edit_email ) {
+        //             g_current_edit_email.recipient = event.target.value
+        //             update_just_date(g_current_edit_email,"edit-blg-entry-date")
+        //             g_current_edit_email.dirty = true
+        //         }
+        //     });
+        // }
+        //
+        // m_prop_el = document.getElementById("edit-blg-entry-cc")
+        // if ( m_prop_el ) {
+        //     m_prop_el.addEventListener('change', (event) => {
+        //         if ( g_current_edit_email ) {
+        //             g_current_edit_email.cc = event.target.value
+        //             update_just_date(g_current_edit_email,"edit-blg-entry-date")
+        //             g_current_edit_email.dirty = true
+        //         }
+        //     });
+        // }
+        // //
+        // m_prop_el = document.getElementById("edit-blg-entry-bcc")
+        // if ( m_prop_el ) {
+        //     m_prop_el.addEventListener('change', (event) => {
+        //         if ( g_current_edit_email ) {
+        //             g_current_edit_email.bcc = event.target.value
+        //             update_just_date(g_current_edit_email,"edit-blg-entry-date")
+        //             g_current_edit_email.dirty = true
+        //         }
+        //     });
+        // }
+        //
+        m_prop_el = document.getElementById("edit-blg-entry-subject")
+        if ( m_prop_el ) {
+            m_prop_el.addEventListener('change', (event) => {
+                if ( g_current_edit_email ) {
+                    g_current_edit_email.subject = event.target.value
+                    update_just_date(g_current_edit_email,"edit-blg-entry-date")
+                    g_current_edit_email.dirty = true
+                }
+            });
+        }
+
+        // // contacts 
+        // //
+        // let contact_editor = document.getElementById("contact_contents_edit")
+        // if ( contact_editor ) {
+        //     contact_editor.addEventListener('input', (event) => {
+        //         if ( g_current_edit_contact ) {
+        //             g_current_edit_contact.text = event.target.innerHTML
+        //             update_just_date(g_current_edit_contact,"edit-contact-date")
+        //             update_just_date(g_current_edit_contact,"view-contact-date")
+        //             g_current_edit_contact.dirty = true
+        //         }
+        //     });
+        // }
+        // //
+        // let c_prop_el = document.getElementById("edit-contact-name")
+        // if ( c_prop_el ) {
+        //     c_prop_el.addEventListener('change', (event) => {
+        //         if ( g_current_edit_contact ) {
+        //             g_current_edit_contact.name = event.target.value
+        //             update_just_date(g_current_edit_contact,"edit-contact-date")
+        //             update_just_date(g_current_edit_contact,"view-contact-date")
+        //             g_current_edit_contact.dirty = true
+        //         }
+        //     });
+        // }
+        // //
+        // c_prop_el = document.getElementById("edit-contact-email")
+        // if ( c_prop_el ) {
+        //     c_prop_el.addEventListener('change', (event) => {
+        //         if ( g_current_edit_contact ) {
+        //             g_current_edit_contact.email = event.target.value
+        //             update_just_date(g_current_edit_contact,"edit-contact-date")
+        //             update_just_date(g_current_edit_contact,"view-contact-date")
+        //             g_current_edit_contact.dirty = true
+        //         }
+        //     });
+        // }
+
+    }
+
+ 
+    function blg_entry_create() {
+        blg_entry_switch_to('drafts')
+        let sect_box = `#blg_entry_edit`
+        let msg_view = document.getElementById("blg_entry_message_contents_edit")
+        if ( msg_view ) {
+           let id = get_next_id()
+            let draft = add_empty_draft(id)
+            if ( draft ) {
+                let msg_id = draft.id
+                draft.text = ""
+                let clear_text = draft.text
+                msg_view.innerHTML = `adding message id = ${msg_id}
+                <br> ${clear_text}
+                <br> will be adding text here`
+                //
+                g_current_edit_email = draft
+                update_blg_entry_properties_edit("drafts",msg_id)
+            }
+        }
+        pinBox(sect_box)
+    }
+
+
+
+    function edit_from_draft(msg_id) {
+        let sect_box = `#blg_entry_edit`
+        let msg_view = document.getElementById("blg_entry_message_contents_edit")
+        if ( msg_view ) {
+            update_blg_entry_properties_edit("drafts",msg_id)
+            let clear_text = get_text_from_store("drafts",msg_id)
+            msg_view.innerHTML = clear_text
+        }
+        pinBox(sect_box)
+    }
+
+
+    // 
+    // VIEW WINDOW ['blog','drafts', 'published', 'source', 'trash' ]
+    //
+
+    // item view support
+    function update_blg_entry_properties_view(mtype,msg_id) {
+        //
+        let message = get_message_from_store(mtype,msg_id)
+        if ( message ) {
+            g_current_edit_email = message
+            if ( message.attachments ) {
+                clear_atts_list('view')
+                add_atts_to_list('view',message.attachments)
+            }
+            indicate_page_on_window_banner(mtype)
+        }
+        //
+    }
+
+    //
+
+    function view_from_blog_entries(event,msg_id) {
+        if (event.target.type === 'checkbox') {
+            return; // Do nothing if the checkbox was clicked
+        }
+        let sect_box = `#blg_entry_view`
+        let msg_view = document.getElementById("blg_entry_message_contents")
+        if ( msg_view ) {
+            update_blg_entry_properties_view("blog",msg_id)
+            let check_box_marker = document.getElementById(`grid-card-stats-checker-${msg_id}`)
+            if ( check_box_marker ) {
+                check_box_marker.checked = true
+                
+                setTimeout(() => { store_current_check_box_pattern(); do_tab_bar_tab_select(msg_id) },10)
+            } else {
+                let clear_text = get_text_from_store("blog",msg_id)
+                msg_view.innerHTML = `picked message id = ${msg_id} <br> ${clear_text}`
+            }
+        }
+        pinBox(sect_box)
+    }
+
+
+//
+// source_entry_message_contents
+// source_entry_message_title
+// source_entry_message_comments
+
+
+    // item view support
+    function update_source_entry_properties_view(mtype,msg_id) {
+        //
+        let message = get_message_from_store(mtype,msg_id)
+        if ( message ) {
+            g_current_edit_email = message
+            if ( message.attachments ) {
+                clear_atts_list('view')
+                add_atts_to_list('view',message.attachments)
+            }
+            indicate_page_on_window_banner(mtype)
+        }
+        //
+    }
+
+    function view_from_source_entries(event,msg_id) {
+        if (event.target.type === 'checkbox') {
+            return; // Do nothing if the checkbox was clicked
+        }
+        let sect_box = `#source_entry_view`
+        let msg_view = document.getElementById("source_entry_message_contents")
+        if ( msg_view ) {
+            update_source_entry_properties_view("source",msg_id)
+            let check_box_marker = document.getElementById(`source-card-stats-checker-${msg_id}`)
+            if ( check_box_marker ) {
+                check_box_marker.checked = true
+                
+                setTimeout(() => { g_source_tab_bar.store_current_check_box_pattern("source"); g_source_tab_bar.do_tab_bar_tab_select(msg_id) },10)
+            } else {
+                let clear_text = get_text_from_store("source",msg_id)
+                msg_view.innerHTML = `picked message id = ${msg_id} <br> ${clear_text}`
+            }
+        }
+        pinBox(sect_box)
+    }
+
+
+
+    //
+    function view_from_published(msg_id) {
+        let sect_box = `#blg_entry_view`
+        let msg_view = document.getElementById("blg_entry_message_contents")
+        if ( msg_view ) {
+            update_blg_entry_properties_view("published",msg_id)
+            let clear_text = get_text_from_store("published",msg_id)
+            msg_view.innerHTML = `picked message id = ${msg_id} <br> ${clear_text}`
+        }
+        pinBox(sect_box)
+    }
+    //
+    function view_from_trash(msg_id) {
+        let sect_box = `#blg_entry_view`
+        let msg_view = document.getElementById("blg_entry_message_contents")
+        if ( msg_view ) {
+            update_blg_entry_properties_view("trash",msg_id)
+            let clear_text = get_text_from_store("trash",msg_id)
+            msg_view.innerHTML = `picked message id = ${msg_id} <br> ${clear_text}`
+        }
+        pinBox(sect_box)
+    }
+
+
+    function toggle_ul(ev,category) {
+        ev.preventDefault = true
+        ev.cancelBubble = true
+
+        let dn_ar = document.getElementById(`ardn-${category}`)
+        let rt_ar = document.getElementById(`arrt-${category}`)
+        let mul = document.getElementById(`ul-${category}`)
+        if ( dn_ar && rt_ar && mul ) {
+            if ( rt_ar.style.display === "none" ) {
+                rt_ar.style.display = "inline-block"
+                dn_ar.style.display = "none"
+                mul.style.display = "none"
+            } else {
+                rt_ar.style.display = "none"
+                dn_ar.style.display = "inline-block"
+                mul.style.display = "block"
+            }
+        }
+    }
+
+
+    function toggle_table(ev,category) {
+        ev.preventDefault = true
+        ev.cancelBubble = true
+
+        let dn_ar = document.getElementById(`ardn-${category}`)
+        let rt_ar = document.getElementById(`arrt-${category}`)
+        let mul = document.getElementById(`table-${category}`)
+        if ( dn_ar && rt_ar && mul ) {
+            if ( rt_ar.style.display === "none" ) {
+                rt_ar.style.display = "inline-block"
+                dn_ar.style.display = "none"
+                mul.style.display = "none"
+            } else {
+                rt_ar.style.display = "none"
+                dn_ar.style.display = "inline-block"
+                mul.style.display = "block"
+            }
+        }
+    }
+
+
+
+    /**
+     * 
+     */
+    function activate_this_selected(event,id) {
+        //
+        let tab_elements = document.getElementsByClassName("selected-tab-bar-el")
+        for ( let el of tab_elements ) {
+            el.setAttribute('x_selected',false)
+            el.style.color = "darkgreen"
+        }
+        //
+        let current_active = event.target
+        current_active.setAttribute('x_selected',true)
+        current_active.style.color = "#ec5109ff"
+        //
+        let mtype = window._current_mtype
+        let objects = get_list_of_objects(mtype,[id])
+        if ( objects ) set_blog_view_contents(objects[0])
+    }
+
+
+    function activate_source_selected(event,id)  {
+        g_source_tab_bar.activate_source_selected(event,id)
+    }
+
+    /**
+     * 
+     */
+    function set_blog_view_contents(bobj) {
+        let title_el = document.getElementById("blg_entry_message_title")
+        let content_el = document.getElementById("blg_entry_message_contents")
+        if ( title_el && content_el ) {
+            title_el.innerText = bobj.subject
+            content_el.innerHTML = bobj.text
+        }
+    }
+
+
+
+    /**
+     * 
+     */
+    function manage_prefs() {
+        let sect_box = `#preferences`
+        pinBox(sect_box)
+    }
+
+
+    function detailed_search(ev) {
+        let mtype = window._current_mtype
+        if ( mtype === 'contacts'  ) {
+            search_ui(mtype)
+        } else {
+            search_ui('messages')
+        }   
+    }
+    
+
+    function set_banner_search_selector(mtype) {
+        let ts_banner_selector = document.getElementById("banner_blg_entry_type_selector")
+        if ( ts_banner_selector ) {
+            if ( mtype === 'contacts' ) {
+                ts_banner_selector.style.display = 'none'
+            } else {
+                ts_banner_selector.style.display = 'inline'
+                ts_banner_selector.value = mtype
+            }
+        }
+    }
+
+
+    function search_ui(mtype) {
+        //
+        let type_select = document.getElementById("blg_entry_type_select")
+        let ts_label = document.getElementById("blg_entry_type_select_label")
+        let ts_selector = document.getElementById("blg_entry_type_selector")
+        let ts_banner_selector = document.getElementById("banner_blg_entry_type_selector")
+
+        if ( mtype === 'contacts' ) {
+            blg_entry_switch_to('contacts')
+            if ( type_select && ts_label ) {
+                type_select.style.display = "none"
+                ts_label.style.display = "none"
+            }
+        } else if ( mtype === 'messages' ) {
+            let mtype = window._current_mtype
+            if ( mtype === 'contacts' ) mtype = 'blog'
+            if ( type_select  && ts_label ) {
+                type_select.style.display = "inline"
+                ts_label.style.display = "inline"
+                if ( mtype && mtype.length ) {
+                    ts_selector.value = mtype
+                    if ( ts_banner_selector ) ts_banner_selector.value = mtype
+                }
+            }
+            blg_entry_switch_to(mtype)
+        }
+        //
+        open_search_box()
+    }
+
+
+    /**
+     * Perform operations on a list.
+     * 
+     *  ['blog','drafts', 'published', 'source', 'trash' ]
+     * 
+     * Some lists may allow movement to another list.
+     * 
+     * Drafts can delete, move to trash, or be published (sending moves to published).
+     * published can move to archive, or copy to drafts.
+     * Spam can move to trash, to blog, or source
+     * source can move to trash, to blog, or to spam
+     * Trash can permanently delete a message.
+     * 
+     * 
+     */
+
+    async function add_objects_to_list(to,object_list) {
+        add_entries_to_list(to,object_list)
+        add_entries_to_server(to,object_list)
+    }
+
+    async function delete_objects_from_list(from,id_list) {
+        delete_entries_from_list(from,id_list)
+        delete_entries_from_server(from,id_list)
+    }
+
+    const blg_entry_op_message_el = document.getElementById("chosen_operation")
+    const contact_op_message_el = document.getElementById("chosen_contact_operation")
+    //
+    const blg_entry_op_dialog = document.getElementById('blg-entry-ops-modal');
+    const contact_op_dialog = document.getElementById('contact-ops-modal');
+    const search_op_dialog = document.getElementById('search-ops-modal');
+    const select_all_op_dialog = document.getElementById('select-all-ops-modal');
+    //
+    const select_all_op_cb = document.getElementById('select-all-op');
+    const select_all_op_cb_on_ops = document.getElementById('select-all-op-on-ops');
+
+    function reset_op_starter_message(category,msg) {
+        if ( category === "contacts" ) {
+            contact_op_message_el.innerHTML = msg
+        } else {
+            blg_entry_op_message_el.innerHTML = msg
+        }
+    }
+
+    function show_op_buttons(display_this_one) {
+        let mtypes = window._x_share_blg_entry_classes
+        for ( let mtype of mtypes ) {
+            let mops = document.getElementById(`blg-entry-ops-${mtype}`)
+            if ( mops ) {
+                mops.style.display = "none"
+            }
+        }
+        let mops = document.getElementById(display_this_one)
+        if ( mops ) {
+            mops.style.display = "block"
+        }
+    }
+
+    function reset_select_all_op_cb() {
+        select_all_op_cb.checked = false
+        select_all_op_cb_on_ops.checked = false
+    }
+
+    let g_current_blg_entry_list_for_op = []
+
+    async function collect_entries_list_for_op(mtype) {
+        let m_list = await get_checked_messages(mtype)
+        if ( m_list) {
+            g_current_blg_entry_list_for_op = m_list.map(id => parseInt(id))
+        }
+    }
+
+    async function do_op_modal(mtype,blg_entry_id_list_set = false) {
+        disable_ok_button()
+        disable_selall_ok_button()
+        let m_list = blg_entry_id_list_set ? false : await get_checked_messages_or_ask_for_all(mtype)
+        if ( m_list || blg_entry_id_list_set ) {
+            if ( !(blg_entry_id_list_set) ) {
+                g_current_blg_entry_list_for_op = m_list.map(id => parseInt(id))
+            }
+            const dialog = document.getElementById('blg-entry-ops-modal');
+            if ( dialog ) {
+                reset_op_starter_message('email',"<u>Please select an action to perform.</u>")
+                show_op_buttons(`blg-entry-ops-${mtype}`)
+                dialog.showModal();
+            }
+        }
+    }
+
+    let g_var_restoreable_checkbox_ids = false
+    let g_var_restoreable_mtype = false
+    function restore_check_box_selections(which_dialog,action) {
+        if ( (which_dialog !== select_all_op_dialog) || ((which_dialog === select_all_op_dialog) && (action === 'cancel')) ) {
+            let mtype = window._current_mtype
+            restore_checkbox_pattern(mtype)
+            if ( g_var_restoreable_checkbox_ids ) {
+                g_current_blg_entry_list_for_op = g_var_restoreable_checkbox_ids
+                g_var_restoreable_checkbox_ids = false
+            }
+            reset_select_all_op_cb()
+        }
+    }
+
+    function single_blg_entry_ops(event) {
+        disable_ok_button()
+        let save_entries_for_ops = g_current_blg_entry_list_for_op
+        let mtype = window._current_mtype
+        let email = g_current_edit_email
+        if ( email && (typeof mtype === "string") && (mtype !== 'contact') ) {
+            let id = email.id
+            g_current_blg_entry_list_for_op = [id]
+            g_var_restoreable_checkbox_ids = save_entries_for_ops
+            g_var_restoreable_mtype = mtype
+            do_op_modal(mtype,true)
+        }
+    }
+
+
+    let g_current_contact_list_for_op = []
+    async function do_contact_op_modal() {
+        let m_list = await get_checked_messages_or_ask_for_all('contacts')
+        if ( m_list ) {
+            g_current_contact_list_for_op = m_list.map(id => parseInt(id))
+            const dialog = contact_op_dialog;
+            if ( dialog ) {
+                reset_op_starter_message('contacts',"<u>Please select an action to perform.</u>")
+                dialog.showModal();
+            }
+        }
+    }
+
+
+    function open_search_box() {
+        const dialog = search_op_dialog
+        if ( dialog ) {
+            dialog.showModal();
+        }
+    }
+
+
+
+    async function is_ready_to_publish_blg_entry(email) {
+        // is_ready_to_send_email
+        if ( email ) {
+            // ---- ---- ---- ---- ---- ---- ---- ----
+            let recipient = email.recipient
+            let sender = email.sender
+            let subject = email.subject
+            let text = email.text
+            let ready = true
+            // ---- ---- ---- ---- ---- ---- ---- ----
+            ready &&= (recipient.length !== 0)
+            ready &&= (sender.length !== 0)
+            ready &&= (subject.length !== 0)
+            ready &&= (text.length !== 0)
+
+            if ( !ready ) {
+                let user_should_see = {}
+                if (sender.length === 0) {
+                    user_should_see.sender = true  // not optional
+                }
+                if (recipient.length === 0) {
+                    user_should_see.recipient = true  // not optional
+                }
+                if (subject.length === 0) {
+                    user_should_see.subject = true  // not optional
+                }
+                if (text.length === 0) {
+                    user_should_see.text = false  //    optional
+                }
+                ready = await g_confirmation_modal.stylish_confirm(user_should_see)
+            }
+
+            return ready
+        }
+        return false
+    }
+
+
+    async function publish_blg_entry_list(from) {
+        let id_list = g_current_blg_entry_list_for_op
+        let object_list = get_list_of_objects(from,id_list)
+        if ( object_list && object_list.length ) {
+            if ( await publish_items(object_list) ) {
+                add_objects_to_list('published',object_list)
+                delete_objects_from_list(from,id_list)
+            }
+        }
+    }
+
+    async function do_publish_blg_entries(event) {
+        let email = g_current_edit_email
+        if ( email ) {
+            if ( await is_ready_to_publish_blg_entry(email) ) {
+                let save_blg_entry_list_for_op = g_current_blg_entry_list_for_op
+                g_current_blg_entry_list_for_op = [email.id]
+                await publish_blg_entry_list('drafts')
+                g_current_blg_entry_list_for_op = save_blg_entry_list_for_op
+                blg_entry_switch_to('published')
+                return true
+            }
+        }
+        return false
+    }
+
+
+    async function do_publish_blg_entry_closefader(event) {
+        event.preventDefault()
+        let status = await do_publish_blg_entries(event)
+        if ( status ) {
+            closefader(event,'blg_entry_edit')
+        }
+    }
+
+
+    function blg_entry_list_move_to(from,to) {
+        let id_list = g_current_blg_entry_list_for_op
+        let object_list = get_list_of_objects(from,id_list)
+        if ( object_list && object_list.length ) {
+            add_objects_to_list(to,object_list)
+            delete_objects_from_list(from,id_list)
+        }
+    }
+
+    function blg_entry_list_copy_to(from,to) {
+        let id_list = g_current_blg_entry_list_for_op
+        let object_list = get_list_of_objects(from,id_list)
+        if ( object_list && object_list.length ) {
+            add_objects_to_list(to,object_list)
+        }
+    }
+
+    function blg_entry_list_delete(from) {
+        let id_list = g_current_blg_entry_list_for_op
+        if ( id_list && id_list.length ) {
+            delete_objects_from_list(from,id_list)
+        }
+    }
+
+
+
+    function increment_blg_entry_save_count() {
+        if ( g_current_edit_email ) {
+            g_current_edit_email._count_edits++
+            g_current_edit_email.dirty = false
+        }
+    }
+
+    function blg_entry_edit_mode_reset(event) {
+        if ( g_current_edit_email && g_current_edit_email.dirty ) {
+            let revert_email = g_current_edit_email
+            let previous_values = revert_email._saved_updates.shift()  // this is the last saved version, does not undo more{
+            if ( previous_values ) {
+                reload_blg_entry_by_undo(revert_email,previous_values)
+                sort_one_or_more('drafts')
+            }
+        } else if ( g_current_edit_email && (g_current_edit_email._count_edits === 0) ) {
+            let save_checked_entries = g_current_blg_entry_list_for_op
+            g_current_blg_entry_list_for_op = [g_current_edit_email.id]
+            blg_entry_list_delete('drafts')
+        }
+    }
+
+    function edit_blg_entry_save(event) {
+        increment_blg_entry_save_count()
+        save_blg_entries(g_current_edit_email)
+    }
+
+    function void_current_edit_blg_entry() {
+        g_current_edit_email = false
+    }
+
+    function void_current_edit_source_entry() {
+    }
+
+
+    function disable_ok_button() {
+        let ok_btn = document.getElementById("blg-entry-ops-modal-ok")
+        if ( ok_btn ) {
+            ok_btn.disabled = true
+        }
+    }
+
+
+    function enable_ok_button() {
+        let ok_btn = document.getElementById("blg-entry-ops-modal-ok")
+        if ( ok_btn ) {
+            ok_btn.disabled = false
+        }
+    }
+
+
+
+    function disable_selall_ok_button() {
+        let ok_btn = document.getElementById("sel-all-ops-modal-ok")
+        if ( ok_btn ) {
+            ok_btn.disabled = true
+        }
+    }
+
+
+    function enable_selall_ok_button() {
+        let ok_btn = document.getElementById("sel-all-ops-modal-ok")
+        if ( ok_btn ) {
+            ok_btn.disabled = false
+        }
+    }
+
+    function enable_ok_button_if_any_selected(mtype) {
+        let checkedBoxes = document.querySelectorAll(`.${mtype}_check_select:checked`);
+        if ( checkedBoxes.length > 0 ) {
+            enable_ok_button()
+        } else {
+            if ( g_current_edit_email !== false ) {
+                if ( g_current_blg_entry_list_for_op.length === 0 ) {
+                    g_current_blg_entry_list_for_op.unshift(g_current_edit_email.id)   
+                }
+                if ( g_current_blg_entry_list_for_op[0] == g_current_edit_email.id ) {
+                    enable_ok_button()
+                }
+            }
+        }
+    }
+
+
+    function disable_ok_button_if_no_selection(mtype) {
+        let checkedBoxes = document.querySelectorAll(`.${mtype}_check_select:checked`);
+        if ( checkedBoxes.length === 0 ) {
+            if ( g_current_edit_email !== false ) {
+                if ( g_current_blg_entry_list_for_op.length === 0 ) {
+                    g_current_blg_entry_list_for_op.unshift(g_current_edit_email.id)   
+                }
+                return
+            }
+            disable_ok_button()
+        } 
+    }
+
+
+    function prep_publish_blg_entry_list(from) {
+        if ( blg_entry_op_message_el ) {
+            blg_entry_op_message_el.innerText = "Publish selected entries?"
+            blg_entry_op_dialog._acceptance_action = () => {
+                if ( confirm("This decision if final. Proceed?") ) {
+                    publish_blg_entry_list(from)
+                }
+            }
+            enable_ok_button_if_any_selected(from)
+        }
+    }
+    function prep_blg_entry_list_move_to(from,to) {
+        if ( blg_entry_op_message_el ) {
+            blg_entry_op_message_el.innerText = `Move these entries from ${from} to ${to}?`
+            blg_entry_op_dialog._acceptance_action = () => {
+                blg_entry_list_move_to(from,to)
+            }
+            enable_ok_button_if_any_selected(from)
+        }
+    }
+    function prep_blg_entry_list_copy_to(from,to) {
+        if ( blg_entry_op_message_el ) {
+            blg_entry_op_message_el.innerText = `Clopy these entries from ${from} to ${to}?`
+            blg_entry_op_dialog._acceptance_action = () => {
+                blg_entry_list_copy_to(from,to)
+            }
+            enable_ok_button_if_any_selected(from)
+        }
+    }
+    function prep_blg_entry_list_delete(from) {
+        if ( blg_entry_op_message_el ) {
+            blg_entry_op_message_el.innerText = `Permanently delete these entries?`
+            blg_entry_op_dialog._acceptance_action = () => {
+                if ( confirm("This action cannot be undone. Proceed?") ) {
+                    blg_entry_list_delete(from)
+                }
+            }
+            enable_ok_button_if_any_selected(from)
+        }
+    }
+
+
+
+    function prep_blg_entry_list_reply_to(from) {
+        if ( blg_entry_op_message_el ) {
+            blg_entry_op_message_el.innerText = `Reply to these entries?`
+            blg_entry_op_dialog._acceptance_action = () => {
+                reply_to_entries(from)
+            }
+            enable_ok_button_if_any_selected(from)
+        }
+    }
+
+    function prep_blg_entry_list_reply_all(from) {
+        if ( blg_entry_op_message_el ) {
+            blg_entry_op_message_el.innerText = `Reply to all readers of these entries?`
+            blg_entry_op_dialog._acceptance_action = () => {
+                reply_all_to_entries(from)
+            }
+            enable_ok_button_if_any_selected(from)
+        }
+    }
+
+
+    /**
+     * These functions setup the mail draft (like create draft, that will allow for editing followed by a send)
+     * 
+     * Server communication happens when these are send from drafts...
+     * OR when the draft is saved (checkpoint save)
+     * 
+     */
+    function reply_to_entries(from) {
+        enable_ok_button_if_any_selected(from)
+        setup_blg_entry_reply_editing(from)
+    }
+
+    function reply_all_to_entries(from) {
+        enable_ok_button_if_any_selected(from)
+    }
+    
+
+    /**
+     */
+    function setup_blg_entry_reply_editing(from) {
+
+    }
+    function setup_blg_entry_reply_all_editing(from) {
+
+    }
+    
+
+
+    // attachments
+    // -------------------------------------------------
+
+    async function onFileSelected(e) {
+        if ( e.target.files.length ) {
+            attachment_drop_file_handler(e.target.files)
+        }
+    }
+
+    async function onFilesSelected(e) {
+        if ( e.target.files && e.target.files[0] ) {
+            let file_proper = e.target.files[0]            //
+            //let upload_size = file_proper.size
+            let [fname,blob] = await drop_one(e.target.files)
+            file_proper.blob = blob
+            // store as attachment
+            let att = new Attachment(get_next_id(),fname,file_proper)
+            add_atts_to_list('edit',[att])
+        }
+    }
+
+    function show_attachment(a_id) {
+        alert(`showing ${a_id}`)
+    }
+
+    function remove_attachment(a_id) {
+        delete_atts_from_list('edit',[a_id])
+    }
+
+
+
+    async function attachment_drop_file_handler(files) {
+        if ( files && files.length ) {
+            let files_blobs_tripples = await drop(files)
+
+            files_blobs_tripples.forEach(async file_tripple => {
+                let [fname,file_proper,blob] = file_tripple
+                file_proper.blob = blob
+                // store as attachment
+                let att = new Attachment(get_next_id(),fname,file_proper)
+                add_atts_to_list('edit',[att])
+            });
+        }
+    }
+
+
+    window._x_app_handle_files = attachment_drop_file_handler
+
+</script>
+<script>
+
+    class StylishConfirmModalOps {
+
+        constructor() {
+            this.style_confirm_modal = document.getElementById("style-confirm-modal")
+            this.stylish_confirm_ok_btn = document.getElementById("style-confirm-modal-ok")
+            this.stylish_blocking_div = document.getElementById("blocking-confirmation")
+            this.stylish_warn_div = document.getElementById("warn-confirmation")
+            this.stylish_confirm_blockers = document.getElementById("list-blocking-confirmation")
+            this.stylish_confirm_optional = document.getElementById("list-warn-confirmation")
+            this.setup_modal_confirmation_response()
+
+            this.dialog_promise = false
+            this.resolver = () => {}
+            this.rejector = () => {}
+        }
+
+        setup_modal_confirmation_response() {
+            const dialog = this.style_confirm_modal
+            if ( dialog ) {
+                dialog.addEventListener('close', () => {
+                    const action = dialog.returnValue;
+                    switch (action) {
+                        case "confirm" : {
+                            if ( this.dialog_promise  ) {
+                                this.resolver()
+                            }
+                            break;
+                        }
+                        case "cancel" : {
+                            if ( this.dialog_promise  ) {
+                                this.rejector()
+                            }
+                            break
+                        }
+                    }
+                });
+            }
+        }
+
+
+        async show_stylish_confirmation() {
+            if ( this.style_confirm_modal ) {
+                this.dialog_promise = new Promise((resolve,reject) => {
+                    this.resolver = () => { resolve(true) }
+                    this.rejector = () => { reject(false) } 
+                })
+                this.style_confirm_modal.showModal();
+                try {
+                    await this.dialog_promise
+                    return true
+                } catch(e) {
+                    return false
+                }
+            }
+            return false
+        }
+
+        async stylish_confirm(required_and_warn) {
+            if ( typeof required_and_warn === "object" ) {
+                this.stylish_confirm_ok_btn.disabled = true
+                this.stylish_blocking_div.style.display = "none"
+                this.stylish_warn_div.style.display = "none"
+                //
+                let blockers = []
+                let optionals = []
+                for ( let [field_name,is_blocking] of Object.entries(required_and_warn) ) {
+                    if ( is_blocking ) {
+                        blockers.push(field_name)
+                    } else {
+                        optionals.push(field_name)
+                    }
+                }
+                if ( blockers.length ) {
+                    this.stylish_blocking_div.style.display = "block"
+                }
+                if ( optionals.length ) {
+                    this.stylish_warn_div.style.display = "block"
+                }
+                if ( blockers.length === 0 ) {
+                    this.stylish_confirm_ok_btn.disabled = false
+                }
+                let blocker_list = ""
+                let warning_list = ""
+                for ( let blocker of blockers ) {
+                    blocker_list += `<div class="field-label">${blocker}</div><div class="field-value">empty</div>`
+                }
+                for ( let option of optionals ) {
+                    warning_list += `<div class="field-label">${option}</div><div class="field-value">empty</div>`
+                }
+                if ( blocker_list.length ) {
+                    this.stylish_confirm_blockers.innerHTML = blocker_list
+                }
+                if ( warning_list.length ) {
+                    this.stylish_confirm_optional.innerHTML = warning_list
+                }
+
+                return await this.show_stylish_confirmation()
+            }
+            return false
+        }
+
+
+    }
+
+
+    window.g_confirmation_modal = new StylishConfirmModalOps()
+
+    
+</script>
+<script>
+
+// https://github.com/omgovich/colord
+
+//let all_windows = {}
+
+const g_fader_interval = 50
+
+// ---->>>
+
+// === ---------------------------------------  === ---------------------------------------  === --------------------------------------- 
+// ANIMATION
+// -- -- -- -- -- -- -- -- -- -- -- -- -- 
+//
+
+var g_apparition = null;
+var g_current_pin = null;
+var g_fade_scheduled = null;
+var g_defade_scheduled = null;
+
+
+function hideFader(fdr) {
+	fdr.style.visibility = "hidden"
+    fdr.style.display = "none"
+	// fdr.style.zIndex = -10
+	stopDefade()
+	stopFade()
+	g_apparition = null;
+	g_current_pin = null;
+}
+
+function closefader(ev,whichFader) {
+    if (ev) ev.stopPropagation()
+	clear_pin_time()
+	let fdr = document.querySelector('#' + whichFader);
+	hideFader(fdr)
+}
+
+function closesolid(whichSolid) {
+	let sld = document.querySelector('#' + whichSolid);
+	sld.style.visibility = "hidden"
+	sld.style.display = "none";
+}
+// ---- ---- ---- ---- ---- ----
+
+let g_pin_time = false
+function newest_pin(pinned) {
+	g_pin_time = Date.now()
+	setTimeout(() => { g_pin_time = false }, 5500 )
+}
+
+function recent_pin(pinned) {
+	if ( g_pin_time === false ) {
+		return false
+	}
+	let check_time = Date.now()
+	if ( (check_time - g_pin_time)  > 5000 ) {
+		g_pin_time = false
+		return false
+	}
+	return true
+}
+
+function clear_pin_time() {
+	g_pin_time = false
+}
+
+
+function unpin_current(timeless) {
+	if ( g_current_pin && !timeless && recent_pin(g_current_pin) ) {
+		return false
+	}
+	if ( g_current_pin != null ) {
+        g_current_pin.style.visibility = "hidden";
+		g_current_pin.style.display = "none";
+//		g_current_pin.style.zIndex = -10
+	}
+	return true
+}
+function fade_apparition(btn,evt) {
+	if ( g_apparition !== null ) {
+		var fader = g_apparition;
+		//if ( evt ) console.log(fader.offsetWidth + "," + evt.clientX + "," + window.innerWidth)
+		if ( ( evt !== undefined )&& (fader.offsetWidth >= evt.clientX) ) {
+			return;
+		}
+		stopDefade()
+		g_defade_scheduled = setInterval(() => { lowerAlpha(fader); },g_fader_interval);
+	}
+}
+function stopDefade() {
+	if ( g_defade_scheduled != null ) {
+		clearInterval(g_defade_scheduled);
+	}
+}
+function stopFade() {
+	if ( g_fade_scheduled != null ) {
+		clearInterval(g_fade_scheduled);
+	}
+}
+function pin_ItsAlive(pinned) {
+	newest_pin(pinned)
+	if ( pinned && (typeof pinned.openAction === 'function')) {
+		pinned.openAction()
+	}
+	g_apparition = null;
+}
+// ---- ---- ---- ---- ---- ----
+function raiseAlpha(aGhost) {
+	if ( aGhost.style.opacity == 1.0 ) {
+		stopDefade()
+		pinBoxElem(aGhost)
+	} else {
+		aGhost.style.opacity = parseFloat(aGhost.style.opacity) + 0.025;
+	}
+}
+function lowerAlpha(aGhost) {
+	if ( aGhost.style.opacity <= 0.2 ) {
+		hideFader(aGhost)
+	} else {
+		aGhost.style.opacity = parseFloat(aGhost.style.opacity) - 0.1;
+	}
+}
+// ---- ---- ---- ---- ---- ----
+function replaceApparition(newGhost) {
+	if ( !unpin_current() ) {
+		return
+	}
+	if ( g_apparition !== null ) {
+		stopDefade()
+		stopFade()
+        g_apparition.style.display = "none"
+		g_apparition.style.visibility = "hidden";
+//		newGhost.style.zIndex = -10
+	}
+	if ( newGhost !== null ) {
+		newGhost.style.opacity = "0.0"
+        newGhost.style.display = "block"
+		newGhost.style.visibility = "visible"
+//		newGhost.style.zIndex = 200
+		g_apparition = newGhost
+		g_defade_scheduled = setInterval(() => { raiseAlpha(newGhost); },50);
+	}
+}
+
+// ---- ---- ---- ---- ---- ----
+function pinBoxElem(thisPin) {
+	clear_pin_time()
+	// if ( g_current_pin !== thisPin ) unpin_current();
+	g_current_pin = thisPin;
+	stopDefade()
+	thisPin.style.opacity = "0.0"
+    thisPin.style.display = "block"
+	thisPin.style.visibility = "visible"
+//	thisPin.style.zIndex = 200
+	//
+	thisPin.style.opacity = "1.0"
+	pin_ItsAlive(g_current_pin);
+}
+
+function pinBox(selector) {
+    // if ( selector in all_windows ) {
+    //     let winbox = all_windows[selector]
+    //     winbox.show()
+    //     winbox.focus()
+    //     return
+    // }
+	let thisPin = document.querySelector(selector);
+	pinBoxElem(thisPin)
+}
+
+// ---- ---- ---- ---- ---- ----
+function defadeBox(selector) {
+	replaceApparition(document.querySelector(selector));
+}
+
+
+
+let draggers = {}
+let current_dragger = false
+
+let dragger_z_map = {}
+function rotate_z_index(drag_Node) {
+    //
+    let zs = Object.keys(dragger_z_map)
+    let z = zs[zs.length-1]
+    let waz = parseInt(drag_Node.style.zIndex)
+    while ( waz < z ) {
+        let demoted = dragger_z_map[waz+1]
+        dragger_z_map[waz] = demoted
+        demoted.style.zIndex = waz
+        waz++
+    }
+    dragger_z_map[z] = drag_Node
+    drag_Node.style.zIndex = z
+    //
+}
+
+function manage_z_index(drag_bars) {
+
+    let minz = 10000
+
+    for ( let db of drag_bars ) {
+        let pnode = db.parentNode
+        let z = parseInt(pnode.style.zIndex)
+        if ( z < minz ) {
+            minz = z
+        }
+    }
+
+    let z = minz
+    for ( let db of drag_bars ) {
+        let pnode = db.parentNode
+        pnode.style.zIndex = z
+        dragger_z_map[z] = pnode
+        z++
+    }
+
+}
+
+
+function add_dragging() {
+
+    let drag_bars = document.getElementsByClassName("togglebar")
+    manage_z_index(drag_bars)
+    for ( let db of drag_bars ) {
+
+        let cname = db.parentNode.className
+        if ( cname.indexOf(' ') > 0 ) {
+            cname = cname.split(' ')[0]
+        }
+
+        if ( cname === 'solid_able' ) {
+            if ( db.parentNode.id === "intergalactic-explain" ) {
+                cname = "fade_able"
+            }
+        }
+
+        if ( ["fade_able","right_fade_able"].indexOf(cname) >= 0 ) {
+            let drag_Node = db.parentNode
+            draggers[drag_Node.id] = {
+                "offsetX" : 0,
+                "offsetY" : 0,
+                "isDragging" : false,
+                "dragged" : drag_Node,
+                "drag_control" : db
+            }
+
+            db.onmousedown = (e) => {
+                let drag_Node = e.target.parentNode;
+                if ( !draggers[drag_Node.id] ) return
+                rotate_z_index(drag_Node)
+                e.preventDefault()
+                draggers[drag_Node.id].isDragging = true;
+                // Calculate the offset between the mouse position and the div's top-left corner
+                draggers[drag_Node.id].offsetX = e.clientX - drag_Node.getBoundingClientRect().left;
+                draggers[drag_Node.id].offsetY = e.clientY - drag_Node.getBoundingClientRect().top;
+                db.style.cursor = 'grabbing';
+                current_dragger = drag_Node.id
+            }
+
+            db.onmouseup = (ev) => {
+                if ( current_dragger ) {
+                    let dragger_stats = draggers[current_dragger]
+                    let drag_bar = dragger_stats.drag_control
+                    drag_bar.style.cursor = 'move';
+                }
+            }
+        }
+    }
+
+    document.addEventListener('mousemove', (e) => {
+        if (!current_dragger) return;
+
+        if ( current_dragger ) {
+            let dragger_stats = draggers[current_dragger]
+            let drag_Node = dragger_stats.dragged
+            // Calculate new position based on mouse movement and offsetif 
+            if ( drag_Node ) {
+                let mouseX = e.clientX
+                let mouseY = e.clientY
+                //
+                let newX = mouseX - dragger_stats.offsetX;
+                let newY = mouseY - dragger_stats.offsetY;
+                //
+                if ( newX > 5 && newX < window.innerWidth ) {
+                    drag_Node.style.left = `${newX}px`;
+                }
+                //
+                let stopper = document.getElementsByTagName("footer")[0]
+                let stoRect = stopper ? stopper.getBoundingClientRect() : false
+                let maxY = stoRect ? stoRect.top : 500
+                //
+                if ( (newY > 5) && (newY < window.innerHeight) && (newY < maxY )) {
+                    drag_Node.style.top = `${newY}px`;
+                }
+            }
+        }
+
+    });
+
+    document.addEventListener('mouseup', () => {
+        if ( current_dragger ) {
+            let dragger_stats = draggers[current_dragger]
+            let drag_bar = dragger_stats.drag_control
+            drag_bar.style.cursor = 'move';
+        }
+        current_dragger = false
+    });
+
+}
+add_dragging()
+
+
+
+
+
+let resizers = {}
+let current_resizer = false
+
+function window_resize_event(e) {
+    if (!current_resizer) return;
+
+    if ( current_resizer ) {
+        let resizer_stats = resizers[current_resizer]
+        let pnode = resizer_stats.dragged
+        // Calculate new position based on mouse movement and offsetif 
+        if ( pnode ) {
+            const newX = e.clientX;
+            const newY = e.clientY;
+            //
+            let brect = pnode.getBoundingClientRect()
+            let resizer = resizer_stats.drag_control
+            let resize_rect = resizer.getBoundingClientRect()
+            let r_h_delta = resize_rect.width
+            let r_v_detla = resize_rect.height
+            let newW = newX - brect.left + r_h_delta/2
+            let newH = newY - brect.top + r_v_detla/2
+            //
+            if ( newW > 60 ) {
+                pnode.style.width = `${newW}px`;
+            }
+            if ( newH > 60 ) {
+                pnode.style.height = `${newH}px`;
+            }
+        }
+    }
+}
+
+
+function add_resizing() {
+    let sizer_bobs = document.getElementsByClassName("sizerbar")
+    for ( let sb of sizer_bobs ) {
+        let pnode = sb.parentNode
+
+        resizers[pnode.id] = {
+            "isDragging" : false,
+            "dragged" : pnode,
+            "drag_control" : sb
+        }
+
+        sb.onmousedown = (e) => {
+            let pnode = e.target.parentNode;
+            if ( !resizers[pnode.id] ) return
+            e.preventDefault()
+            resizers[pnode.id].isDragging = true;
+            current_resizer = pnode.id
+        }
+
+        sb.onmouseout = (e) => {
+            window_resize_event(e)
+        }
+  
+    }
+
+
+    document.addEventListener('mousemove', (e) => {
+        window_resize_event(e)
+    });
+
+
+    document.addEventListener('mouseup', () => {
+        current_resizer = false
+    });
+
+    window.addEventListener('mouseup',() => {
+        current_resizer = false
+    })
+
+}
+
+add_resizing() 
+
+
+
+
+// <div id="flow_display_button_ref">${dir_buttons}</div>
+// <div id="flow_display_below_button_ref" class="file-browsers">
+
+document.addEventListener('mousemove',(e) => {
+    if ( !current_resizer ) return
+    let ref_obj = document.getElementById("flow_display_button_ref")
+    let above_ref = document.getElementById("directory_section-breadcrumb")
+    let need_ref_obj = document.getElementById("flow_display_below_button_ref")
+    if ( above_ref && ref_obj && need_ref_obj ) {
+        let refrect = ref_obj.getBoundingClientRect()
+        let aboverect = above_ref.getBoundingClientRect()
+        need_ref_obj.style.top = `${(refrect.height + aboverect.height + 22)}px`
+    }
+})
+
+</script>
+<script>
+
+    // general client stuff...
+    // 
+    function drop_one(file) {
+        if ( !file ) {
+            throw new Error("drop-one: no file passed")
+        }
+        let p = new Promise((resolve,reject) => {
+            var reader = new FileReader();
+            let fname = file.name
+            reader.onload = (e) => {
+                let blob64 = e.target.result
+                resolve([fname,file,blob64])
+            };
+            reader.readAsDataURL(file)
+        })
+        return p
+    }
+
+    // 
+    function drop(files) {
+        //
+        let promises = [];
+        //
+        [...files].forEach(async file_proper => {
+            promises.push(drop_one(file_proper))
+        });
+        //
+    	return Promise.all(promises)
+    }
+
+
+</script>
+<script>
+
+function preventDefaults(e) {
+    e.preventDefault();
+    e.stopPropagation();
+}
+
+const dropZone = document.getElementById('edit-blg-entry-attachments');
+
+// 1. Prevent default behaviors for all drag/drop events
+['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+    dropZone.addEventListener(eventName, preventDefaults, false);
+});
+
+// 3. Handle the drop event itself
+dropZone.addEventListener('drop', handleDrop, false);
+
+function handleDrop(e) {
+    // Access the dropped files via DataTransfer
+    const dt = e.dataTransfer;
+    const files = dt.files;
+
+    if (files.length > 0) {
+        window._x_app_handle_files(files);
+    }
+}
+
+</script>
+<script>
+// MODULE: POST FETCH (windowized)
+
+
+// $>> may include interface helpers for displaying success and error
+
+
+
+//$>>	fetchUrl
+// //
+// fetch with GET method
+/**
+ * 
+ * Assume the endpoint is a complete URL (URI)
+ * Each of the methods (helpers) pick a set of parameters useful for calls made the most often.
+ * 
+ * The server should return an object, and this will parse it as JSON
+ * 
+ * @param {string} endpoint 
+ * @returns {object|boolean}  - returns false on error otherwise an object delivered from the server.
+ */
+async function fetchUrl(endpoint) {
+	let myRequest = new Request(endpoint);
+	try {
+		const body = await fetch(myRequest, {
+									method: 'GET', // *GET, POST, PUT, DELETE, etc.
+									mode: 'cors', // no-cors, *cors, same-origin
+									cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+									credentials: 'omit', // include, *same-origin, omit
+									redirect: 'follow', // manual, *follow, error
+									referrerPolicy: 'no-referrer', // no-referrer, *client
+								});
+		//
+		let infoObj = await body.json();
+		return(infoObj)
+		//
+	} catch (e) {
+		console.log(e.message)
+		return(false)
+	}
+}
+
+
+
+
+//$>>	fetchEndPoint
+/**
+ * 
+ * Requests an object from the including page's host.
+ * This is a simple object file fetch.
+ * It expects the server to return a string that can be parsed as JSON, or else there will be an error.
+ * The end point string should be some part of the local host API.
+ * If the port is passed, will be used to identify the server on the 
+ * 
+ * This method constructs the full URL(URI)
+ * 
+ * fetch with GET method * 
+ * @param {string} endpoint 
+ * @param {string} port -- optionals
+ * @returns {object|boolean}
+ */
+async function fetchEndPoint(endpoint,port) {
+	port = !(port) ? '' : ( port.length ? `:${port}`   : '')
+	let myRequest = new Request(`${location.protocol}//${location.hostname}${port}/${endpoint}`);
+	try {
+		const body = await fetch(myRequest, {
+									method: 'GET', // *GET, POST, PUT, DELETE, etc.
+									mode: 'cors', // no-cors, *cors, same-origin
+									cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+									credentials: 'omit', // include, *same-origin, omit
+									redirect: 'follow', // manual, *follow, error
+									referrerPolicy: 'no-referrer', // no-referrer, *client
+								});
+		//
+		let infoObj = await body.json();
+		return(infoObj)
+		//
+	} catch (e) {
+		console.log(e.message)
+		return(false)
+	}
+}
+
+
+//$>>	fetchTextFile
+/**
+ * Requests a string from the including page's host.
+ * This is a simple text file fetch.
+ * It expects the server to return a string, or else there will be an error.
+ * The end point string should be some part of the local host API.
+ * If the port is passed, will be used to identify the server on the 
+ * 
+ * This method constructs the full URL(URI)
+ * 
+ * fetch with GET method
+ * 
+ * @param {string} endpoint 
+ * @param {string} port -- optional
+ * @returns {string}
+ */
+async function fetchTextFile(endpoint,port) {
+	port = !(port) ? '' : ( port.length ? `:${port}`   : '')
+	let myRequest = new Request(`${location.protocol}//${location.hostname}${port}/${endpoint}`);
+	try {
+		const body = await fetch(myRequest, {
+									method: 'GET', // *GET, POST, PUT, DELETE, etc.
+									mode: 'cors', // no-cors, *cors, same-origin
+									cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+									credentials: 'omit', // include, *same-origin, omit
+									redirect: 'follow', // manual, *follow, error
+									referrerPolicy: 'no-referrer', // no-referrer, *client
+								});
+		//
+		let html = await body.text();
+		return(html)
+		//
+	} catch (e) {
+		console.log(e.message)
+		return(false)
+	}
+}
+
+
+//$>>	postData
+/**
+ * 
+ * call fetch with method POST tyr to help with parameters..  If data is FromData set do_stringify to false
+ * default content type 'application/json'
+ * User 'cors', Default cres = omit, If ctype == 'multipart/form-data' be sure to use FormData -- lets fetch set content type.
+ * RETURNS: parsed JSON object or an empty object. ... Check for fields
+ * @param {string} url 
+ * @param {object} data 
+ * @param {string} creds - (optional)
+ * @param {boolean} do_stringify 
+ * @param {string} ctype - content type
+ * @returns {object}
+ */
+async function postData(url = '', data = {}, creds = 'omit', do_stringify = true, ctype) {
+	let content_type = 'application/json'
+	if ( ctype !== undefined ) {
+		content_type = ctype            // ctype is content type
+	}
+	let options = {
+		method: 'POST', // *GET, POST, PUT, DELETE, etc.
+		mode: 'cors', // no-cors, *cors, same-origin
+		cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+		credentials: creds, // include, *same-origin, omit
+		headers: {
+			'Content-Type': content_type
+		},
+		redirect: 'follow', // manual, *follow, error
+		referrerPolicy: 'no-referrer', // no-referrer, *client
+		body: (do_stringify ? JSON.stringify(data)  : data)	// body data type must match "Content-Type" header
+	}
+
+	if ( ctype === 'multipart/form-data') {
+		delete options.headers['Content-Type']  // content type will be set automatically with a boundary
+	}
+
+	// Default options are marked with *
+	const response = await fetch(url, options);
+	if ( response.ok == false ) {
+		console.log(response.status + ': ' + response.statusText)
+		return {}
+	} else {
+		return await response.json(); // parses JSON response into native JavaScript objects
+	}
+}
+
+
+
+//$>>	postDataWithRefer
+
+/**
+ * call fetch with method POST try to help with parameters..  If data is FromData set do_stringify to false
+ * default content type 'application/json'
+ * User 'cors', Default cres = omit, If ctype == 'multipart/form-data' be sure to use FormData -- lets fetch set content type.
+ * 
+ * @param {string} url 
+ * @param {object} data 
+ * @param {string} creds 
+ * @param {boolean} do_stringify 
+ * @param {string} ctype 
+ * @returns {object} - parsed JSON object or an empty object. ... Check for fields
+ */
+async function postDataWithRefer(url = '', data = {}, creds = 'omit', do_stringify = true, ctype) {
+	let content_type = 'application/json'
+	if ( ctype !== undefined ) {
+		content_type = ctype            // ctype is content type
+	}
+	let options = {
+		method: 'POST', // *GET, POST, PUT, DELETE, etc.
+		mode: 'cors', // no-cors, *cors, same-origin
+		cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+		credentials: creds, // include, *same-origin, omit
+		headers: {
+			'Content-Type': content_type
+		},
+		redirect: 'error', // manual, *follow, error
+		referrerPolicy: 'origin', // no-referrer, origin
+		body: (do_stringify ? JSON.stringify(data)  : data)	// body data type must match "Content-Type" header
+	}
+
+	if ( ctype === 'multipart/form-data') {
+		delete options.headers['Content-Type']  // content type will be set automatically with a boundary
+	}
+
+	// Default options are marked with *
+	const response = await fetch(url, options);
+	if ( response.ok == false ) {
+		console.log(response.status + ': ' + response.statusText)
+		return {}
+	} else {
+		return await response.json(); // parses JSON response into native JavaScript objects
+	}
+}
+
+
+//$>>	post_submit
+
+/**
+ * Takes in a list of names of form fields each having a "value" member.
+ * The list is used to contsuct a JSON object which will be the body of the request.
+ * 
+ * This method then calls postData with the url found in the field with id "post_url"
+ * 
+ * If visusl indicators have been programmed with respect to this method.
+ * If the `hide_interface_box` has been defined, then it will be called.
+ * Similarly, `show_box` for ids 'success-box' and 'error-box'
+ * 
+ * @param {Array} fields 
+ */
+async function post_submit(fields) {
+	if ( !(Array.isArray(fields)) ) return
+	let bdy = {}
+	fields.forEach(element => {
+		let fld = document.getElementById(element)
+		if ( fld ) {
+			bdy[element] = fld.value
+		}
+	});
+	let url = bdy.post_url
+	if ( url ) {
+		delete bdy.post_url
+		//
+		let resp = await postData(url, bdy)
+		//
+		if ( resp && typeof hide_interface_box === "function" ) hide_interface_box()
+		if ( resp && (resp.OK === 'true') ) {
+			if( typeof show_box === "function" ) show_box('success-box')
+		} else {
+			if( typeof show_box === "function" ) show_box('error-box')
+		}
+	}
+}
+
+
+
+//$>>	make_host_request
+
+/**
+ * 
+ * This method wraps postData for the one use case that object (JSON) returned 
+ * by the host has a field "OK", which may have string values "true"  or "false"
+ * 
+ * @param {string} endpoint 
+ * @param {object} data 
+ * @returns {object|boolean}
+ */
+async function make_host_request(endpoint,data) {
+	try {
+		let resp = await postData(endpoint, data ) //,'include')
+		if ( resp.OK === "true" ) {
+			return resp.data
+		} else {
+			return false
+		}
+	} catch (e) {
+		return false
+	}
+}
+
+
+
+
+//$$EXPORTABLE::
+/*
+fetchEndPoint
+fetchTextFile
+fetchUrl
+postData
+post_submit
+*/
+
+</script>
+<script>
+
+    async function hash_of(string) {
+        let buf = new TextEncoder()
+        string = buf.encode(string)
+        let hash = await window.crypto.subtle.digest('SHA-256',string)
+        return new Uint8Array(hash).toBase64()
+    }
+
+    function gen_json_id(blg_entry_ob) {
+        if ( blg_entry_obj ) {
+            return 10
+        } else {
+            let current_user_name = window._current_user_account.name
+            return hash_of(current_user_name + Date.now())
+        }
+    }
+
+    class MailJsonRpc {
+        constructor(mtype,method,params) {
+            this.id = 10 // get a good method for this id
+            let user = window._current_user_account.name
+            this.params = {
+                "blg_entry_type" : mtype,
+                "user" : user,
+                "params" : params,
+                "date" : Date.now()
+            }
+            this.method = method
+            this.jsonrpc = '2.0'
+        }
+    }
+
+    window._current_user_account = {
+        "name" : "testing",
+        "password" : "testing"
+    }
+
+    let web_page_port = 9989
+    let wss_app_port = 9990
+
+
+    // blg_entry_proto = 
+    // "id" : 1,
+    // "sender" : "richard@myhost.local", 
+    // "category" : "cecks",
+    // "subject" : "much to do with tests", 
+    // "recipient" : "blog",
+    // "cc" : "", "bcc" : "",
+    // "date" : date.toLocaleString(), 
+    // "timestamp" : date.getTime(),
+    // "created_when" : date.toLocaleString(),
+    // "updated_when" : pre_date.toLocaleString(),
+    // "description" : "this is a test",
+    // "score" : 1.0,
+    // "text" : "edit this message",
+    // "_count_edits" : 0, "_saved_updates" : []
+
+
+    // TALK TO THE SERVER
+    async function load_a_bunch_of_entries(mtype) {
+        let data = new MailJsonRpc(mtype,"get-mail")
+
+        let port = web_page_port
+        let url = `http://localhost:${port}/json/email`
+        let rpc_result = await postData(url, data)
+        if ( rpc_result && (rpc_result.error === undefined) ) {
+            console.log(rpc_result)
+            if ( rpc_result.result === undefined ) return []
+            let entries = rpc_result.result
+
+            for ( let email of entries ) {
+                email.created_when = _x_test_blg_entry_proto.created_when
+                email.updated_when = _x_test_blg_entry_proto.updated_when
+                email.description = _x_test_blg_entry_proto.description
+                email.score = _x_test_blg_entry_proto.score
+                email.keys =_x_test_blg_entry_proto.keys
+            }
+
+
+            return entries
+        }
+        return []
+    }
+
+    async function load_a_bunch_of_contacts() {
+        let data = new MailJsonRpc('contacts',"get-contacts")
+
+        let port = web_page_port
+        let url = `http://localhost:${port}/json/email`
+        let rpc_result = await postData(url, data)
+        if ( rpc_result && (rpc_result.error === undefined) ) {
+            console.log(rpc_result)
+            if ( rpc_result.result === undefined ) return []
+            return rpc_result.result
+        }
+        return []
+    }
+
+    // * add_objects_to_list
+    // * delete_objects_from_list
+    // * remove_one_contact
+    // * publish_items
+    // * save_mail -- to drafts
+    // * save_contact
+
+    /* 
+    "get-mail"
+    "store-mail"
+    "remove-mail"
+    "send-mail"
+    "store-draft"
+    "get-contacts"
+    "store-contact"
+    "remove-contact"
+    */
+
+    /**
+     */
+    async function add_entries_to_server(to,object_list) {
+        // server communication
+        let data = new MailJsonRpc(to,"store-mail",object_list)
+        //
+        let port = web_page_port
+        let url = `http://localhost:${port}/json/email`
+        let rpc_result = await postData(url, data)
+        if ( rpc_result && (rpc_result.error === undefined) ) {
+            console.log(rpc_result)
+            return true
+        }
+        return false
+    }
+
+    /**
+     */
+    async function delete_entries_from_server(from,id_list) {
+        // server communication
+        let data = new MailJsonRpc(from,"remove-mail",id_list)
+        //
+        let port = web_page_port
+        let url = `http://localhost:${port}/json/email`
+        let rpc_result = await postData(url, data)
+        if ( rpc_result && (rpc_result.error === undefined) ) {
+            console.log(rpc_result)
+            return true
+        }
+        return false
+    }
+
+
+    /**
+     */
+    async function publish_items(object_list) {
+        // server communication
+        let data = new MailJsonRpc("published","send-mail",object_list)
+
+        let port = web_page_port
+        let url = `http://localhost:${port}/json/email`
+        let rpc_result = await postData(url, data)
+        if ( rpc_result && (rpc_result.error === undefined) ) {
+            return true
+        }
+        return false
+    }
+
+    /**
+     */
+    async function save_blg_entries(blg_entry_obj) {
+        // server communicate
+        let data = new MailJsonRpc("drafts","store-draft",blg_entry_obj)
+
+        let port = web_page_port
+        let url = `http://localhost:${port}/json/email`
+        let rpc_result = await postData(url, data)
+        if ( rpc_result && (rpc_result.error === undefined) ) {
+            return true
+        }
+        return false
+    }
+
+
+    /**
+     */
+    async function remove_contact_from_server(a_contact) {
+        // server communication
+        let data = new MailJsonRpc("contacts","remove-contact",a_contact)
+
+        let port = web_page_port
+        let url = `http://localhost:${port}/json/email`
+        let rpc_result = await postData(url, data)
+        if ( rpc_result && (rpc_result.error === undefined) ) {
+            return true
+        }
+        return false
+    }
+    
+    /**
+     */
+    async function save_contact(edited_contact) {
+        // server communication
+        let data = new MailJsonRpc("contacts","store-contact",edited_contact)
+
+        let port = web_page_port
+        let url = `http://localhost:${port}/json/email`
+        let rpc_result = await postData(url, data)
+        if ( rpc_result && (rpc_result.error === undefined) ) {
+            return true
+        }
+        return false
+    }
+
+</script>
+<script>
+//
+let ws_url = `http://localhost:${wss_app_port}`
+let g_ws_controller = null
+
+class WsSocketController {
+    constructor(url) {
+        this.url = url
+        this.socket = new WebSocket(url);
+
+        // Connection successfully opened
+        let sock = this.socket
+        this.socket.onopen = (event) => {
+            if ( sock ) {
+                let sid = true // an actual id from the server so that it can know itself
+                let message = {
+                    "type" : "blg-entry-ops",
+                    "message" : {
+                        "op" : "initial-messages",
+                        "server_id" : sid,
+                        "concern" : "copious",
+                        "data" : {
+                            "user_name" : window._current_user_account.name
+                        }
+                    }
+                }
+                let msg_as_str = JSON.stringify(message)
+                sock.send(msg_as_str)
+            }
+            // statusSpan.textContent = 'Connected';
+            // statusSpan.style.color = 'green';
+        };
+
+        // Listen for incoming messages from server
+        this.socket.onmessage = (event) => {
+            let msg = JSON.parse(event.data)
+            let data = msg.data
+            // 
+            if ( data.op ) {
+                switch ( data.op ) {
+                    case "initial-messages":
+                    case "all-updates" : {
+                        let message_map = data.data
+                        if ( window.add_entries_to_list === undefined ) {
+                            setTimeout(() => {
+                                if ( typeof message_map === "object" ) {
+                                    for ( let [ky,mlist] of Object.entries(message_map) ) {
+                                        window.add_entries_to_list(ky,mlist)
+                                    }
+                                }                                
+                            },100)
+                        } else {
+                            if ( typeof message_map === "object" ) {
+                                for ( let [ky,mlist] of Object.entries(message_map) ) {
+                                    window.add_entries_to_list(ky,mlist)
+                                }
+                            }
+                        }
+                        break
+                    }
+                    case "entries" : {
+                        break;
+                    }
+                    case "no-delivery" : {
+                        break;
+                    }
+                    case "proc-status": {
+                        console.log(data.data)
+                        break
+                    }
+                }
+            }
+        };
+
+        // Connection closed
+        this.socket.onclose = (event) => {
+            // statusSpan.textContent = 'Disconnected';
+            // statusSpan.style.color = 'red';
+            this.socket = null;
+        };
+
+        // Handle errors
+        this.socket.onerror = (error) => {
+            console.log(error)
+        };
+
+
+        window.addEventListener('close',() => {
+            this.socket.close();
+        })
+    }
+
+    // Send Message to Server
+    sendMessage(text) {
+        if (text && socket && (socket.readyState === WebSocket.OPEN )) {
+            this.socket.send(text);
+        }
+    }
+
+
+    sendObject(obj) {
+        let text = JSON.stringify(obj)
+        this.sendMessage(text)
+    }
+
+}
+
+g_ws_controller = new WsSocketController(ws_url)
+
+
+</script>
+<script>
+    window.onload = () => {
+        g_searcher.setup_article_count(12,3)
+        // initializers ----
+        setup_blg_entry_ops_dialog()
+        setup_contacts_ops_dialog()
+        setup_search_ops_dialog()
+        setup_edit_response()
+        setup_select_all_ops_dialog()
+        setup_checkbox_pattern_tracking()
+    }
+
+
+
+const leftPanel = document.getElementById('list-entities-source');
+const gutter = document.getElementById('gutter');
+const container = leftPanel.parentElement;
+
+gutter.addEventListener('mousedown', function (e) {
+  e.preventDefault();
+  
+  // Track the mouse movements when clicked
+  document.addEventListener('mousemove', resizePanels);
+  document.addEventListener('mouseup', stopResize);
+});
+
+function resizePanels(e) {
+  // Calculate container bounding box
+  const containerRect = container.getBoundingClientRect();
+  
+  // Compute new width based on mouse position relative to container
+  let newLeftWidth = e.clientX - containerRect.left;
+  
+  // Optional bounds: prevent panels from shrinking too small
+  const minWidth = 100; 
+  if (newLeftWidth < minWidth) newLeftWidth = minWidth;
+  if (newLeftWidth > containerRect.width - minWidth) newLeftWidth = containerRect.width - minWidth;
+  
+  // Apply changes
+  leftPanel.style.width = `${newLeftWidth}px`;
+}
+
+function stopResize() {
+  // Clean up listeners when mouse button is released
+  document.removeEventListener('mousemove', resizePanels);
+  document.removeEventListener('mouseup', stopResize);
+}
+
+
+</script>
