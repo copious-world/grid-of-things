@@ -358,7 +358,7 @@
     /** list styling **/
 
 
-    .blg_list_check_select {
+    .blog_check_select {
         border:solid 1px rgba(255, 0, 0, 0.438);
     }
     .published_check_select {
@@ -893,12 +893,13 @@ span {
 
 
 .readers-and-comments {
-    display: grid;
-    background-color: rgb(253, 253, 252);
+    display: flex;
+    /* display: grid; */
     grid-template-columns: 1fr 160px;
     gap: 2px 2px;
     /* */
     width: 100%;
+    background-color: rgb(253, 253, 252);
     border-top: 1px solid navy;
     padding-top:0px;
     position:absolute;
@@ -906,6 +907,35 @@ span {
     bottom:0;
     border-bottom: 1px solid rgb(36, 12, 36);
 }
+
+
+
+
+.split-panel {
+    width: 100%;
+    display: flex;
+    height: calc(100dvh - 80px);
+}
+
+.entities-left {
+    width: 64%;
+}
+
+.entities-right {
+    flex-grow: 1; 
+}
+
+.gutter {
+  width: 6px;
+  background-color: #64748b;
+  cursor: col-resize;
+  transition: background-color 0.2s;
+}
+
+.gutter:hover {
+  background-color: #334155; /* Highlights divider on hover */
+}
+
 
 .reader-box {
     background-color: rgba(255, 255, 252, 1);
@@ -1070,7 +1100,7 @@ span {
     // window._x_share_tweet_view = tweet_view
 
     //
-    import blg_list_template from "./tpl/partial/blg_list.js";
+    import blog_template from "./tpl/partial/blg_list.js";
     import published_template from "./tpl/partial/published_list.js";
     //
     import draft_template from "./tpl/partial/draft_list.js";
@@ -1083,7 +1113,7 @@ span {
 
     
     let blg_entry_imports = {
-        "blg_list" : blg_list_template,
+        "blog" : blog_template,
         "published" : published_template,
         'drafts' : draft_template,
         'trash' : trash_template,
@@ -1094,9 +1124,9 @@ span {
         'edit' : attachment_edit_template
     }
 
-    //  ['blg_list','drafts', 'published', 'trash' ]
+    //  ['blog','drafts', 'published', 'trash' ]
     //
-    let blg_entry_classes = ['blg_list','drafts', 'published', 'trash' ]
+    let blg_entry_classes = ['blog','drafts', 'published', 'trash' ]
     let blg_entry_management = {}
 
     for ( let mtype of blg_entry_classes ) {
@@ -1139,7 +1169,7 @@ span {
     }
 
     window._x_share_blg_entry_managers = blg_entry_management
-    window._x_share_blg_entry_classes = ['blg_list','drafts', 'published','trash']
+    window._x_share_blg_entry_classes = ['blog','drafts', 'published','trash']
 
     window._x_share_attachment_managers = attachment_management
     window._x_share_attachment_classes = ['view','edit']
@@ -1149,7 +1179,7 @@ span {
 
 
     const blg_types_to_titles = {
-        'blg_list' : "<b>Blog</b> Copious World",
+        'blog' : "<b>Blog</b> Copious World",
         'drafts' : "<b>Drafts</b>",
         'published' : "<b>Published</b>",
         'trash' : "<b>Trash</b>",
@@ -1208,7 +1238,7 @@ span {
             </svg>
             <h4><button onclick="toggle_ul(event,'blog')">blog <span id="ardn-blog" style="display:inline-block;color:darkgreen;">&#x25BC;</span><span id="arrt-blog" style="display:none;color:darkgreen;">&#x25BA;</span></button></h4>
             <ul id="ul-blog">
-                <li><button onclick="blg_entry_switch_to('blg_list')" >blog</button></li>
+                <li><button onclick="blg_entry_switch_to('blog')" >blog</button></li>
              </ul>
             <h4><button onclick="toggle_ul(event,'messages')">messages <span id="ardn-messages" style="display:inline-block;color:darkgreen">&#x25BC;</span><span id="arrt-messages" style="display:none;color:darkgreen;">&#x25BA;</span></button></h4>
             <ul id="ul-messages">
@@ -1259,7 +1289,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
             
             this.search_ordering = SeachControl.search_order.UPDATE
             //
-            this.mtype = "blg_list"
+            this.mtype = "blog"
             //
             // the buffer tracked by the Mikado class will be this buffer.
             // this will be set up like a mail manager
@@ -1426,7 +1456,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 
 <!-- MAIL DISPLAY -->
 <main id="grid-main"  class="big-list-container">
-    <div id="blg_list-entries" style="display:block" >
+    <div id="blog-entries" style="display:block" >
 
 <div class="search_control_banner">
     <div class="blg-ctrl-panel blg-window-size-ctrl"  >
@@ -1472,7 +1502,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 	</div>
 </div>
 
-        <div id="list-entities-blg_list" class="grid-container" style="width:96%" >
+        <div id="list-entities-blog" class="grid-container" style="width:96%" >
 
         </div>
     </div>
@@ -1539,13 +1569,14 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
         </div>
         <!-- <div id="selected-tab" style="color: {{ data.active ? 'green' : 'black' }}; {{ data.value ? '' : 'display: none;' }}"></div> -->
         <div class="readers-and-comments" >
-            <div class="reader-box" style="min-width: 350px;min-height: 300px;">
+            <div id="reader-box-container" class="reader-box entities-left" style="min-width: 350px;min-height: 300px;">
                 <h3 id="blg_entry_message_title">title</h3>
                 <div id="blg_entry_message_contents" class="reader-box-blog-contents" >
 
                 </div>
             </div>
-            <div class="reader-box" style="min-width: 150px;min-height: 300px;padding-top:0px;">
+            <div class="gutter" id="gutter"></div>
+            <div class="reader-box entities-right" style="min-width: 150px;min-height: 300px;padding-top:0px;">
                 <h5>comments</h5>
                 <div id="blg_entry_message_comments" >
                     comments go here.
@@ -1646,10 +1677,10 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 <!--
 * Drafts can delete, move to trash, or be published (sending moves to published).
 * published can move to archive, or copy to drafts.
-* blg_list can move to trash, to spam, or notify
-* Spam can move to trash, to blg_list, or notify
-* Notify can move to trash, to blg_list, or to spam
-* Trash can permanently delete a message, or move to blg_list, or notify
+* blog can move to trash, to spam, or notify
+* Spam can move to trash, to blog, or notify
+* Notify can move to trash, to blog, or to spam
+* Trash can permanently delete a message, or move to blog, or notify
 -->
 <dialog id="blg-entry-ops-modal" style="min-width: 300px;">
     <div id="blg-entry-ops-drafts" style="display: none;" >
@@ -1660,20 +1691,20 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
         <button onclick="prep_blg_entry_list_move_to('published','archive')">archive</button>
         <button onclick="prep_blg_entry_list_copy_to('published','drafts')">copy to drafts</button>
     </div>
-    <div id="blg-entry-ops-blg_list" style="display: none;" >
-        <!-- <button onclick="prep_blg_entry_list_reply_to('blg_list')">reply</button>
-        <button onclick="prep_blg_entry_list_reply_all('blg_list')">reply all</button> -->
+    <div id="blg-entry-ops-blog" style="display: none;" >
+        <!-- <button onclick="prep_blg_entry_list_reply_to('blog')">reply</button>
+        <button onclick="prep_blg_entry_list_reply_all('blog')">reply all</button> -->
         &nbsp;|&nbsp;
-        <button onclick="prep_blg_entry_list_move_to('blg_list','trash')">move to trash</button>
-        <!-- <button onclick="prep_blg_entry_list_move_to('blg_list','spam')">move to spam</button>
-        <button onclick="prep_blg_entry_list_move_to('blg_list','notfify')">move to notify</button> -->
+        <button onclick="prep_blg_entry_list_move_to('blog','trash')">move to trash</button>
+        <!-- <button onclick="prep_blg_entry_list_move_to('blog','spam')">move to spam</button>
+        <button onclick="prep_blg_entry_list_move_to('blog','notfify')">move to notify</button> -->
     </div>
     <div id="blg-entry-ops-trash" style="display: none;" >
         <button onclick="prep_blg_entry_list_delete('trash')">delete</button>
     </div>
     <div class="select-all-ops-properties-on-ops">
         <div class="field-label">Select All:</div>
-        <div class="field-value"><input id="select-all-op-on-ops" type="checkbox" onchange="toggle_current_select_all(event)" value="blg_list" /></div>
+        <div class="field-value"><input id="select-all-op-on-ops" type="checkbox" onchange="toggle_current_select_all(event)" value="blog" /></div>
     </div>
     <form method="dialog">
         <p id="chosen_operation"><u>Please select an action to perform.</u></p>
@@ -1695,7 +1726,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
             <select id="blg_entry_type_selector" onchange="blg_entry_switch_to_event(event)" >  
                 <option value="all-messages">all messages</option>
                  <optgroup label="received">
-                    <option value="blg_list">blog</option>
+                    <option value="blog">blog</option>
                     <option value="notify">notify</option>
                 </optgroup>
                  <optgroup label="composed">
@@ -1723,7 +1754,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
         <p id="chosen_contact_operation"><u>Would you like to select all messages?</u></p>
         <div class="select-all-ops-properties">
             <div class="field-label">Select All:</div>
-            <div class="field-value"><input id="select-all-op" type="checkbox" onchange="toggle_current_select_all(event)" value="blg_list" /></div>
+            <div class="field-value"><input id="select-all-op" type="checkbox" onchange="toggle_current_select_all(event)" value="blog" /></div>
         </div>
         <!-- Cancel button: closes modal, returnValue is "cancel" -->
         <button type="submit" formmethod="dialog" value="cancel">Cancel</button>
@@ -1783,7 +1814,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
         let a_manager = blg_entry_managers[mtype]
         a_manager.root = document.getElementById(`list-entities-${mtype}`)
         //
-        a_manager.container_el = document.getElementById(`${mtype}-entries`)   // blg_list-entries
+        a_manager.container_el = document.getElementById(`${mtype}-entries`)   // blog-entries
         if ( a_manager.root ) {
             a_manager?.view?.mount(a_manager.root)
         }
@@ -1854,8 +1885,8 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
     window.store_of_tab_controller = store_of_tab_controller
 
     /** --------------------------- */
-    let g_current_mtype = "blg_list"
-    window._current_mtype = "blg_list"
+    let g_current_mtype = "blog"
+    window._current_mtype = "blog"
 
     //  MAIL IDENTIFIER -- need something better
     window.largest_id = 20
@@ -2296,10 +2327,10 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 
     // ---- ---- ---- ---- ---- ---- ---- ---- ----
     //
-    // ['blg_list','drafts', 'published', 'trash' ]
+    // ['blog','drafts', 'published', 'trash' ]
     //
     /*
-    // blg_list_check_select
+    // blog_check_select
     // published_check_select
     // spam_check_select
     // notify_check_select
@@ -2906,7 +2937,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 
 
     // 
-    // VIEW WINDOW ['blg_list','drafts', 'published', 'trash' ]
+    // VIEW WINDOW ['blog','drafts', 'published', 'trash' ]
     //
 
     // item view support
@@ -2941,14 +2972,14 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
         let sect_box = `#blg_entry_view`
         let msg_view = document.getElementById("blg_entry_message_contents")
         if ( msg_view ) {
-            update_blg_entry_properties_view("blg_list",msg_id)
+            update_blg_entry_properties_view("blog",msg_id)
             let check_box_marker = document.getElementById(`grid-card-stats-checker-${msg_id}`)
             if ( check_box_marker ) {
                 check_box_marker.checked = true
                 
                 setTimeout(() => { store_current_check_box_pattern(); do_tab_bar_tab_select(msg_id) },10)
             } else {
-                let clear_text = get_text_from_store("blg_list",msg_id)
+                let clear_text = get_text_from_store("blog",msg_id)
                 msg_view.innerHTML = `picked message id = ${msg_id} <br> ${clear_text}`
             }
         }
@@ -3116,7 +3147,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
             }
         } else if ( mtype === 'messages' ) {
             let mtype = window._current_mtype
-            if ( mtype === 'contacts' ) mtype = 'blg_list'
+            if ( mtype === 'contacts' ) mtype = 'blog'
             if ( type_select  && ts_label ) {
                 type_select.style.display = "inline"
                 ts_label.style.display = "inline"
@@ -3135,14 +3166,14 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
     /**
      * Perform operations on a list.
      * 
-     *  ['blg_list','drafts', 'published', 'trash' ]
+     *  ['blog','drafts', 'published', 'trash' ]
      * 
      * Some lists may allow movement to another list.
      * 
      * Drafts can delete, move to trash, or be published (sending moves to published).
      * published can move to archive, or copy to drafts.
-     * Spam can move to trash, to blg_list, or notify
-     * Notify can move to trash, to blg_list, or to spam
+     * Spam can move to trash, to blog, or notify
+     * Notify can move to trash, to blog, or to spam
      * Trash can permanently delete a message.
      * 
      * 
@@ -4901,6 +4932,45 @@ g_ws_controller = new WsSocketController(ws_url)
 
 
 </script>
+<script>
+
+const leftPanel = document.getElementById('reader-box-container');
+const gutter = document.getElementById('gutter');
+const container = leftPanel.parentElement;
+
+gutter.addEventListener('mousedown', function (e) {
+  e.preventDefault();
+  
+  // Track the mouse movements when clicked
+  document.addEventListener('mousemove', resizePanels);
+  document.addEventListener('mouseup', stopResize);
+});
+
+function resizePanels(e) {
+  // Calculate container bounding box
+  const containerRect = container.getBoundingClientRect();
+  
+  // Compute new width based on mouse position relative to container
+  let newLeftWidth = e.clientX - containerRect.left;
+  
+  // Optional bounds: prevent panels from shrinking too small
+  const minWidth = 100; 
+  if (newLeftWidth < minWidth) newLeftWidth = minWidth;
+  if (newLeftWidth > containerRect.width - minWidth) newLeftWidth = containerRect.width - minWidth;
+  
+  // Apply changes
+  leftPanel.style.width = `${newLeftWidth}px`;
+}
+
+function stopResize() {
+  // Clean up listeners when mouse button is released
+  document.removeEventListener('mousemove', resizePanels);
+  document.removeEventListener('mouseup', stopResize);
+}
+
+
+</script>
+
 <script>
     window.onload = () => {
         g_searcher.setup_article_count(12,3)

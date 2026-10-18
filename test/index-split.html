@@ -677,7 +677,8 @@
     display: grid;
     grid-column-gap: 25px;
     grid-row-gap: 10px;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+    /* grid-template-columns: auto auto auto; */
     grid-auto-rows: minmax(170px, auto); 
     background-color: rgb(250, 250, 242);
     padding: 10px;
@@ -688,7 +689,8 @@
         display: grid;
         grid-column-gap: 25px;
         grid-row-gap: 10px;
-        grid-template-columns: auto auto auto auto;
+        grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+        /* grid-template-columns: auto auto auto auto; */
         grid-auto-rows: minmax(170px, auto); 
         background-color:  rgb(250, 250, 242);
         padding: 10px;
@@ -700,7 +702,8 @@
         display: grid;
         grid-column-gap: 25px;
         grid-row-gap: 10px;
-        grid-template-columns: auto auto;
+        grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+        /* grid-template-columns: auto auto; */
         grid-auto-rows: minmax(170px, auto); 
         background-color: rgb(250, 250, 242);
         padding: 10px;
@@ -712,7 +715,8 @@
         display: grid;
         grid-column-gap: 25px;
         grid-row-gap: 10px;
-        grid-template-columns: auto;
+        /* grid-template-columns: auto; */
+        grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
         grid-auto-rows: minmax(170px, auto); 
         background-color: rgb(250, 250, 242);
         padding: 10px;
@@ -1139,9 +1143,11 @@ span {
 
     import Mikado from "./mikado.bundle.module.min.js";
 
+    window.Mikado = Mikado
+
     //
     // import tweet_template from "./tpl/partial/user.js";
-    // const tweet_view = new Mikado(tweet_template, {/* options */});
+    // const tweet_view = Mikado(tweet_template, {/* options */});
     // window._x_share_tweet_view = tweet_view
 
     //
@@ -1185,7 +1191,7 @@ span {
     for ( let mtype of blg_entry_classes ) {
         let store = new Mikado.Array();
         let blg_entry_template = blg_entry_imports[mtype]
-        let view = new Mikado(blg_entry_template, { observe: store });
+        let view = Mikado(blg_entry_template, { observe: store });
         blg_entry_management[mtype] = {
             "view" : view,
             "store" : store,
@@ -1200,7 +1206,7 @@ span {
     for ( let mtype of attachment_classes ) {
         let store = new Mikado.Array();
         let attachment_template = attachment_imports[mtype]
-        let view = new Mikado(attachment_template, { observe: store });
+        let view = Mikado(attachment_template, { observe: store });
         attachment_management[mtype] = {
             "view" : view,
             "store" : store,
@@ -1212,7 +1218,7 @@ span {
     let tab_controller_management = false
     // if ( tab_controller ) {
     //     let blog_view_store = new Mikado.Array()
-    //     let view = new Mikado(tab_controller, { observe: blog_view_store });
+    //     let view = Mikado(tab_controller, { observe: blog_view_store });
     //     tab_controller_management = {
     //         "view" : view,
     //         "store" : blog_view_store,
@@ -1227,7 +1233,7 @@ span {
     for ( let ttype of tab_classes ) {
         let store = new Mikado.Array();
         let tab_template = tab_imports[ttype]
-        let view = new Mikado(tab_template, { observe: store });
+        let view = Mikado(tab_template, { observe: store });
         tab_management[ttype] = {
             "view" : view,
             "store" : store,
@@ -5220,40 +5226,181 @@ g_ws_controller = new WsSocketController(ws_url)
     }
 
 
+</script>
+<script>
 
-const leftPanel = document.getElementById('list-entities-source');
-const gutter = document.getElementById('gutter');
-const container = leftPanel.parentElement;
+// const leftPanel = document.getElementById('list-entities-source');
+// const gutter = document.getElementById('gutter');
+// const container = leftPanel.parentElement;
 
-gutter.addEventListener('mousedown', function (e) {
-  e.preventDefault();
+// gutter.addEventListener('mousedown', function (e) {
+//   e.preventDefault();
   
-  // Track the mouse movements when clicked
-  document.addEventListener('mousemove', resizePanels);
-  document.addEventListener('mouseup', stopResize);
+//   // Track the mouse movements when clicked
+//   document.addEventListener('mousemove', resizePanels);
+//   document.addEventListener('mouseup', stopResize);
+// });
+
+// function resizePanels(e) {
+//   // Calculate container bounding box
+//   const containerRect = container.getBoundingClientRect();
+  
+//   // Compute new width based on mouse position relative to container
+//   let newLeftWidth = e.clientX - containerRect.left;
+  
+//   // Optional bounds: prevent panels from shrinking too small
+//   const minWidth = 100; 
+//   if (newLeftWidth < minWidth) newLeftWidth = minWidth;
+//   if (newLeftWidth > containerRect.width - minWidth) newLeftWidth = containerRect.width - minWidth;
+  
+//   // Apply changes
+//   leftPanel.style.width = `${newLeftWidth}px`;
+// }
+
+// function stopResize() {
+//   // Clean up listeners when mouse button is released
+//   document.removeEventListener('mousemove', resizePanels);
+//   document.removeEventListener('mouseup', stopResize);
+// }
+
+class SplitScreenWithGutter {
+    constructor(left_panel_id,gutter_id) {
+        //
+        this.leftPanel = document.getElementById(left_panel_id);
+        this.gutter = document.getElementById(gutter_id);
+        this.container = this.leftPanel.parentElement;
+        //
+        let self = this
+        this.gutter.addEventListener('mousedown', function (e) {
+            e.preventDefault();
+            // Track the mouse movements when clicked
+            self.mover = (e) => { self.resizePanels(e,self)}
+            self.stopper = (e) => { self.stopResize(self) }
+            document.addEventListener('mousemove', self.mover );
+            document.addEventListener('mouseup', self.stopper);
+        })
+        //
+    }
+
+
+    resizePanels(e,self) {
+        // Calculate container bounding box
+        const containerRect = self.container.getBoundingClientRect();
+        
+        // Compute new width based on mouse position relative to container
+        let newLeftWidth = e.clientX - containerRect.left;
+        
+        // Optional bounds: prevent panels from shrinking too small
+        const minWidth = 100; 
+        if (newLeftWidth < minWidth) newLeftWidth = minWidth;
+        if (newLeftWidth > containerRect.width - minWidth) newLeftWidth = containerRect.width - minWidth;
+        
+        // Apply changes
+        self.leftPanel.style.width = `${newLeftWidth}px`;
+    }
+
+    // Clean up listeners when mouse button is released
+    stopResize(self) {
+        document.removeEventListener('mousemove', self.mover);
+        document.removeEventListener('mouseup', self.stopper);
+    }
+}
+
+
+let g_blog_splitter = new SplitScreenWithGutter('list-entities-source','gutter')
+
+</script>
+
+
+
+
+<script>
+
+
+// <!-- The reusable blueprint -->
+// <template id="my-card-template">
+//   <div class="card">
+//     <h3 class="card-title">Default Title</h3>
+//     <p class="card-body">Default body content text.</p>
+//   </div>
+// </template>
+
+
+/*
+// <!-- Different root containers scattered across your DOM -->
+// <div id="root-alpha" class="container"></div>
+// <div id="root-beta" class="container"></div>
+// <div id="root-gamma" class="container"></div>
+
+*/
+
+// 1. Grab the template element reference
+const template = document.getElementById('my-card-template');
+
+// 2. Define the different root targets where you want instances
+const roots = [
+  { id: 'root-alpha', title: 'First Instance', body: 'This is root alpha.' },
+  { id: 'root-beta', title: 'Second Instance', body: 'This is root beta.' },
+  { id: 'root-gamma', title: 'Third Instance', body: 'This is root gamma.' }
+];
+
+// 3. Loop through each root, clone the template, modify content, and append
+roots.forEach(rootData => {
+  const targetRoot = document.getElementById(rootData.id);
+  
+  if (targetRoot) {
+    // CRITICAL: Clone the template content (true = deep copy)
+    const clone = document.importNode(template.content, true);
+    
+    // Optional: Customize data per instance before rendering
+    clone.querySelector('.card-title').textContent = rootData.title;
+    clone.querySelector('.card-body').textContent = rootData.body;
+    
+    // Inject the unique clone into this specific root
+    targetRoot.appendChild(clone);
+  }
 });
 
-function resizePanels(e) {
-  // Calculate container bounding box
-  const containerRect = container.getBoundingClientRect();
-  
-  // Compute new width based on mouse position relative to container
-  let newLeftWidth = e.clientX - containerRect.left;
-  
-  // Optional bounds: prevent panels from shrinking too small
-  const minWidth = 100; 
-  if (newLeftWidth < minWidth) newLeftWidth = minWidth;
-  if (newLeftWidth > containerRect.width - minWidth) newLeftWidth = containerRect.width - minWidth;
-  
-  // Apply changes
-  leftPanel.style.width = `${newLeftWidth}px`;
+
+
+class MyCard extends HTMLElement {
+  constructor() {
+    super();
+    // Attach an isolated Shadow DOM root to the component
+    const shadowRoot = this.attachShadow({ mode: 'open' });
+    
+    // Clone and append the template
+    const template = document.getElementById('my-card-template');
+    shadowRoot.appendChild(template.content.cloneNode(true));
+  }
 }
 
-function stopResize() {
-  // Clean up listeners when mouse button is released
-  document.removeEventListener('mousemove', resizePanels);
-  document.removeEventListener('mouseup', stopResize);
-}
+// Register the custom element tag
+customElements.define('my-card', MyCard);
 
+/*
+// <div id="root-alpha">
+//   <my-card></my-card>
+// </div>
+
+// <div id="root-beta">
+//   <my-card></my-card>
+// </div>
+
+*/
+
+
+// <div>
+//   <div>User:</div>
+//   <div>{{data.name}}</div>
+// </div>
+
+// var view = new Mikado(template, { recycle: true });
+
+// <div key="data.id">
+//   <div>User:</div>
+//   <div>{{ data.name }}</div>
+// </div>
+//var view = Mikado(template);
 
 </script>
