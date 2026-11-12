@@ -907,10 +907,11 @@ span {
 
 
 .readers-and-comments {
-    display: grid;
+    display: flex;
+    /* display: grid; */
     background-color: rgb(253, 253, 252);
-    grid-template-columns: 1fr 160px;
-    gap: 2px 2px;
+    /* grid-template-columns: 1fr 160px;
+    gap: 2px 2px; */
     /* */
     width: 100%;
     border-top: 1px solid navy;
@@ -1048,6 +1049,16 @@ span {
     flex-grow: 1; 
     overflow-y: auto;
     height: calc(100dvh - 82px);
+}
+
+
+
+.content-panel-left {
+    width: 64%;
+}
+
+.content-panel-right {
+    flex-grow: 1; 
 }
 
 .gutter {
@@ -1715,13 +1726,14 @@ hardware choices here
         </div>
         <!-- <div id="selected-tab" style="color: {{ data.active ? 'green' : 'black' }}; {{ data.value ? '' : 'display: none;' }}"></div> -->
         <div class="readers-and-comments" >
-            <div class="reader-box" style="min-width: 350px;min-height: 300px;">
+            <div id="source-left-panel" class="reader-box content-panel-left" style="min-width: 350px;min-height: 300px;">
                 <h3 id="source_entry_message_title">title</h3>
                 <div id="source_entry_message_contents" class="reader-box-blog-contents" >
 
                 </div>
             </div>
-            <div class="reader-box" style="min-width: 150px;min-height: 300px;padding-top:0px;">
+            <div id="gutter-source" class="gutter"></div>
+            <div class="reader-box content-panel-right" style="min-width: 150px;min-height: 300px;padding-top:0px;">
                 <h5>comments</h5>
                 <div id="source_entry_message_comments" >
                     comments go here.
@@ -1731,6 +1743,7 @@ hardware choices here
 
 	</div>
 </div>
+
 
 <div id="blg_entry_view" class="right_fade_able" style="z-index:124" >
 	<div class="togglebar" >
@@ -1747,13 +1760,14 @@ hardware choices here
         </div>
         <!-- <div id="selected-tab" style="color: {{ data.active ? 'green' : 'black' }}; {{ data.value ? '' : 'display: none;' }}"></div> -->
         <div class="readers-and-comments" >
-            <div class="reader-box" style="min-width: 350px;min-height: 300px;">
+            <div id="blg_entry-left-panel" class="reader-box content-panel-left" style="min-width: 350px;min-height: 300px;">
                 <h3 id="blg_entry_message_title">title</h3>
                 <div id="blg_entry_message_contents" class="reader-box-blog-contents" >
 
                 </div>
             </div>
-            <div class="reader-box" style="min-width: 150px;min-height: 300px;padding-top:0px;">
+            <div id="gutter-blg_entry"class="gutter" ></div>
+            <div class="reader-box content-panel-right" style="min-width: 150px;min-height: 300px;padding-top:0px;">
                 <h5>comments</h5>
                 <div id="blg_entry_message_comments" >
                     comments go here.
@@ -1763,7 +1777,6 @@ hardware choices here
 
 	</div>
 </div>
-
 
 
 <!-- Style the label to look exactly like a button using CSS -->
@@ -5308,6 +5321,9 @@ class SplitScreenWithGutter {
 
 
 let g_blog_splitter = new SplitScreenWithGutter('list-entities-source','gutter')
+let g_srouce_content_splitter = new SplitScreenWithGutter('source-left-panel','gutter-source')
+let g_gizmo_content_splitter = new SplitScreenWithGutter('blg_entry-left-panel','gutter-blg_entry')
+
 
 </script>
 

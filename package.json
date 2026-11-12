@@ -17,7 +17,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/copious-world/grid-of-things.git"
+        "url": "git+https://github.com/copious-world/human-page-wallet.git"
     },
     "devDependencies": {
         "rollup": "^2.55.0",
@@ -33,9 +33,9 @@
     "author": "Richard Leddy",
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/copious-world/grid-of-things/issues"
+        "url": "https://github.com/copious-world/human-page-wallet/issues"
     },
-    "homepage": "https://github.com/copious-world/grid-of-things#readme",
+    "homepage": "https://github.com/copious-world/human-page-wallet#readme",
     "dependencies": {
         "mikado": "^0.8.400"
     }

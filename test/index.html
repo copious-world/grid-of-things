@@ -4651,6 +4651,65 @@ post_submit
     let wss_app_port = 9990
 
 
+    /*
+<article id="host">
+  <template shadowrootmode="open" shadowrootslotassignment="named">
+    <style>
+      .header {
+        background-color: plum;
+      }
+      .meta {
+        background-color: green;
+      }
+      .body {
+        background-color: lightblue;
+      }
+    </style>
+
+    <h2 class="header">
+      <slot name="title"></slot>
+    </h2>
+
+    <div class="meta">
+      <slot name="meta"></slot>
+    </div>
+
+    <div class="body">
+      <slot></slot>
+    </div>
+  </template>
+
+  <p>
+    Text 1 with no slot attribute. Goes into default (unnamed) slot inside the
+    "body" div.
+  </p>
+  <span id="sl_filler_1" slot="title">Text for the title slot</span>
+  <span id="sl_filler_2"  slot="meta">Text for the meta slot</span>
+  <p>
+    Text 2 with no slot attribute. Also goes into default (unnamed) slot inside
+    the "body" div.
+  </p>
+  <button onclick="switch_slots(event)">switch it</button>
+</article>
+
+
+function switch_slots(event) {
+  let sf1 = document.getElementById("sl_filler_1")
+  let sf2 = document.getElementById("sl_filler_2")
+
+  let sf1_name = sf1.getAttribute("slot")
+  let sf2_name = sf2.getAttribute("slot")
+  let dmy = sf1_name
+  sf1_name = sf2_name
+  sf2_name = dmy
+  sf1.setAttribute("slot",sf1_name)
+  sf2.setAttribute("slot",sf2_name)
+}
+
+
+    */
+
+
     // blg_entry_proto = 
     // "id" : 1,
     // "sender" : "richard@myhost.local", 
