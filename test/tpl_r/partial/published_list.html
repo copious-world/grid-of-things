@@ -1,0 +1,7 @@
+
+  <tr>
+    <td class="published-checkbox-cell"><input type="checkbox" class="published_check_select" value="{{data.id}}" onchange="update_check_box_pattern(event)" /></td>
+    <td class="published-recipient-cell" onclick="view_from_published({{data.id}})">{{ data.recipient }}</td>
+    <td class="published-subject-cell" onclick="view_from_published({{data.id}})">{{ data.subject }}</td>
+    <td class="published-date-cell" onclick="view_from_published({{data.id}})">{{ data.date }}</td>
+  </tr>

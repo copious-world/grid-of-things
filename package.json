@@ -11,6 +11,7 @@
         "service": "node bin/index.js",
         "compile": "npx mikado-compile ./tpl/",
         "compile-test": "npx mikado-compile ./test/tpl/",
+        "cmp-rtest": "npx mikado-compile ./test/tpl_r/",
         "build": "rollup -c",
         "dev": "rollup -c -w",
         "gen-docs": "jsdoc --configure ./tools/jsdoc.conf -a all -R README.md --verbose"
