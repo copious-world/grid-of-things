@@ -10,7 +10,7 @@ let conf_args = JSON.parse(conf_args_str)
 
 
 // "$id(${canonical})"
-function convet_fname_to_abstract(fname,abstract_vname) {
+function convert_fname_to_abstract(fname,abstract_vname) {
     let fparts = fname.split('(')
     let rest = fparts[1]
     let vpart = rest.substring(0,rest.lastIndexOf(')')).trim()
@@ -62,6 +62,8 @@ function ends_from_range(a_range) {
     return rparts
 }
 
+// "$gen$imports_value_map(${entrys_entry_proto})" 
+
 function process_any_subs(pre_figured) {
     if ( pre_figured.indexOf("$gen:")  > 0 ) {
         let lines = pre_figured.split('\n')
@@ -85,6 +87,7 @@ console.log(replacer)
     }
     return pre_figured
 }
+
 
 function populate_list_template(t_vars_ky,ctype) {
     let ctype_selections = conf_args.vars[t_vars_ky]
@@ -220,11 +223,27 @@ console.log(funcall)
         let sep = ""
         if ( par_lst_var ) {
             let var_lst = vars[par_lst_var]
-            for ( let el of var_lst ) {
-                let nxt_line = loop_template.replaceAll("${el}",el)
-                replacer += sep + "\n" + nxt_line
-                sep = directive.sep ? directive.sep : ""
+            if ( Array.isArray(var_lst) ) {
+                for ( let el of var_lst ) {
+                    let nxt_line = loop_template.replaceAll("${el}",el)
+                    replacer += sep + "\n" + nxt_line
+                    sep = directive.sep ? directive.sep : ""
+                }
+            } else if ( typeof var_lst === 'object' ) {
+                let par_lst_value = directive["${val}"]
+                if ( par_lst_value ) {
+                    for ( let [el,val] of Object.entries(var_lst) ) {
+                        let nxt_line = loop_template.replaceAll("${el}",el)
+                        nxt_line = nxt_line.replaceAll("${val}",val)
+                        replacer += sep + "\n" + nxt_line
+                        sep = directive.sep ? directive.sep : ""
+                    }
+                }
             }
+
+
+
+
         } else {
 
         // "funcs" : "func_table",

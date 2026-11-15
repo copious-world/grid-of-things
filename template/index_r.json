@@ -11,6 +11,18 @@
             "template" : "\t\t\"${el}\" : ${el}_template",
             "sep" : ","
         },
+        "$gen$imports_value_map(${entrys_entry_proto})" : {
+            "${el}" : "entrys_entry_proto",
+            "${val}" : "t[${el}]",
+            "template" : "\t\t\"${el}\" : \"${val}\"",
+            "sep" : ","
+        },
+        "$gen$imports_value_map(${contact_proto})" : {
+            "${el}" : "contact_proto",
+            "${val}" : "t[${el}]",
+            "template" : "\t\t\"${el}\" : \"${val}\"",
+            "sep" : ","
+        },
         "$gen$css_select(${entrys_entry_classes})" : {
             "${el}" : "entrys_entry_classes",
             "template" : "\t.blog_check_select {\n\t\tborder:solid 1px rgba(255, 0, 0, 0.438);\n\t}"
@@ -36,6 +48,7 @@
         }
     },
     "vars" : {
+        "concern" : "copious",
         "canonical" : "http://www.copious.world",
         "logo_icon" : "copiousLogo.svg",
         "main_type" : "blog",
@@ -46,6 +59,34 @@
             "drafts" : "<b>Drafts</b>",
             "published" : "<b>Published</b>",
             "trash" : "<b>Trash</b>"
+        },
+        "entrys_entry_proto" : {
+            "id" : 1,
+            "sender" : "richard@myhost.local", 
+            "category" : "cecks",
+            "subject" : "much to do with tests", 
+            "recipient" : "blog",
+            "cc" : "", 
+            "bcc" : "",
+            "date" : "${date_local_string)", 
+            "timestamp" : "${timestamp}",
+            "created_when" : "${date_local_string)",
+            "updated_when" : "${date_local_string)",
+            "description" : "this is a test",
+            "score" : 1.0,
+            "keys" : "sensless,common,often",
+            "text" : "edit this message",
+            "_count_edits" : 0, "_saved_updates" : []
+        },
+        "contact_proto" : {
+            "id" : 1, 
+            "email" : "", 
+            "name" : "", 
+            "date" : "${date_local_string)",
+            "timestamp" : "${timestamp}",
+            "text" : "", 
+            "_count_edits" : 0, 
+            "_saved_updates" : []  
         },
         "switch_types" : ["blog", "create", "filtered", "manage"],
         "switch_links" : {
