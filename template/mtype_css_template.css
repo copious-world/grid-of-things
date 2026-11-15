@@ -1,0 +1,27 @@
+    /* ${el} list */
+    .entrys-entry-${el} {
+        background-color: white;
+    }
+    .entrys-entry-${el} tr:hover td, tr:hover th {
+        background-color: #e0e0e0;
+    }
+    .entrys-entry-${el} > thead  th { 
+        background-color: #e6f0d4ff; 
+    }
+    .${el}-checkbox-th { background-color: white; cursor: pointer; width: 5%;}
+    .${el}-recipient-th { background-color: white; cursor: pointer; width: 25%; }
+    .${el}-subject-th { background-color: white; cursor: pointer; width: 33%; }
+    .${el}-date-th { background-color: white; cursor: pointer; width: 33%; }
+    /* ----   */
+    .${el}-checkbox-cell { background-color: white; cursor: pointer; width: 5%; }
+    .${el}-recipient-cell { background-color: white; cursor: pointer; width: 25%; padding-left: 4%; }
+    .${el}-subject-cell { background-color: white; cursor: pointer; width: 33%; padding-left: 4%; }
+    .${el}-date-cell { background-color: white; cursor: pointer; width: 33%; padding-left: 4%; }
+
+    .entrys-entry-${el} th > button {
+        color: navy;
+    }
+    .entrys-entry-${el} th > button:hover {
+        color: green;
+        background-color: #f7fddcff;
+    }

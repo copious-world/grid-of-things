@@ -1,0 +1,73 @@
+{
+    "template_file" : "template/index_r.html",
+    "output_file" : "test/index_r.html",
+    "funcs" : {
+        "$gen$imports(${entrys_entry_classes})" : {
+            "${el}" : "entrys_entry_classes",
+            "template" : "\timport ${el}_template from \"./tpl_r/partial/${el}_list.js\";"
+        },
+        "$gen$imports_map(${entrys_entry_classes})" : {
+            "${el}" : "entrys_entry_classes",
+            "template" : "\t\t\"${el}\" : ${el}_template",
+            "sep" : ","
+        },
+        "$gen$css_select(${entrys_entry_classes})" : {
+            "${el}" : "entrys_entry_classes",
+            "template" : "\t.blog_check_select {\n\t\tborder:solid 1px rgba(255, 0, 0, 0.438);\n\t}"
+        },
+        "$load$imports(${entries_list_classes},body_panels_tmpl.html)" : {
+            "${el}" : "entries_list_classes",
+            "file" : "template/body_panels_tmpl.html"
+        }, 
+        "$load$category_css(${entrys_entry_classes},mtype_css_template.css)" : {
+            "${el}" : "entries_list_classes",
+            "file" : "template/mtype_css_template.css"
+        },
+        "$load_with_ops:nav_menu(main_nav_tmpl.extmpl)" : {
+            "file" : "template/main_nav_tmpl.extmpl",
+            "funcs" : "func_table",
+            "fkey" : "$tmpl_lines",
+            "${vars}" : "one_shot"
+        },
+        "$id(${canonical})" : {
+            "funcs" : "func_table",
+            "fkey" : "$id",
+            "${vars}" : "canonical"
+        }
+    },
+    "vars" : {
+        "canonical" : "http://www.copious.world",
+        "logo_icon" : "copiousLogo.svg",
+        "main_type" : "blog",
+        "entrys_entry_classes" : [ "blog", "drafts", "published", "trash" ],
+        "entries_list_classes" : [ "drafts", "published", "trash" ],
+        "entrys_types_to_titles" : {
+            "blog" : "<b>Blog</b> Copious World",
+            "drafts" : "<b>Drafts</b>",
+            "published" : "<b>Published</b>",
+            "trash" : "<b>Trash</b>"
+        },
+        "switch_types" : ["blog", "create", "filtered", "manage"],
+        "switch_links" : {
+            "blog" : "switch_to_el",
+            "create" : {
+                "write new" : "entrys_entry_create()",
+                "drafts" : "entrys_entry_switch_to($ky)",
+                "published" : "entrys_entry_switch_to($ky)"
+            }, 
+            "filtered" : {
+                "trash" : "entrys_entry_switch_to($ky)"
+            }, 
+            "manage" : {
+                "search ${main_type}" : "search_ui('${main_type}')",
+                "preferences" : "manage_prefs()"
+            }
+        }
+    },
+    "templates" : {
+        "section_switch" : "            <h4><button onclick=\"toggle_ul(event,'${ctype}')\">${ctype} <span id=\"ardn-${ctype}\" style=\"display:inline-block;color:darkgreen;\">&#x25BC;</span><span id=\"arrt-${ctype}\" style=\"display:none;color:darkgreen;\">&#x25BA;</span></button></h4>",
+        "link_panel" : "\t\t\t<ul id=\"ul-${ctype}\">\n\t\t\t\t$gen:list_els(switch_links,[${ctype}])\n\t\t\t</ul>",
+        "switch_to_el" : "<li><button onclick=\"$action('${ctype}')\" >${ctype}</button></li>",
+        "shadow_line" : "\n\t\t\t\t<div style=\"height:6px;background-color: rgba(156, 157, 165, 1);margin-bottom:6px\">&nbsp;</div>"
+    }
+}

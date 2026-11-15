@@ -15,7 +15,7 @@
 <link rel="icon" type="image/svg+xml" href="/copiousLogo.svg" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700" />
 
-<link rel="stylesheet" href="./blg_entries_styles.css" />
+<link rel="stylesheet" href="./entries_styles.css" />
 
 <style>
 
@@ -358,27 +358,57 @@
     /** list styling **/
 
 
-    .blog_check_select {
-        border:solid 1px rgba(255, 0, 0, 0.438);
-    }
-    .published_check_select {
-        border:solid 1px rgba(255, 0, 0, 0.438);
-    }
-    .drafts_check_select {
-        border:solid 1px rgba(255, 0, 0, 0.438);
-    }
-    .trash_check_select {
-        border:solid 1px rgba(255, 0, 0, 0.438);
-    }
+	.blog_check_select {
+		border:solid 1px rgba(255, 0, 0, 0.438);
+	}
+	.blog_check_select {
+		border:solid 1px rgba(255, 0, 0, 0.438);
+	}
+	.blog_check_select {
+		border:solid 1px rgba(255, 0, 0, 0.438);
+	}
+	.blog_check_select {
+		border:solid 1px rgba(255, 0, 0, 0.438);
+	}
 
-    /* drafts list */
-    .blg-entry-drafts {
-        background-color: white;
+    /* blog list */
+    .entrys-entry { 
+        background-color: white; 
     }
-    .blg-entry-drafts tr:hover td, tr:hover th {
+    .entrys-entry tr:hover td, tr:hover th {
         background-color: #e0e0e0;
     }
-    .blg-entry-drafts > thead  th { 
+    .entrys-entry > thead  th { 
+        background-color: #e6f0d4ff; 
+    }
+    .entrys-checkbox-th { background-color: white; cursor: pointer; width: 5%;}
+    .entrys-recipient-th { background-color: white; cursor: pointer; width: 25%; }
+    .entrys-subject-th { background-color: white; cursor: pointer; width: 33%; }
+    .entrys-date-th { background-color: white; cursor: pointer; width: 33%; }
+    /* ----   */
+    .entrys-checkbox-cell { background-color: white; cursor: pointer; width: 5%; }
+    .entrys-recipient-cell { background-color: white; cursor: pointer; width: 25%; padding-left: 4%; }
+    .entrys-subject-cell { background-color: white; cursor: pointer; width: 33%; padding-left: 4%; }
+    .entrys-date-cell { background-color: white; cursor: pointer; width: 33%; padding-left: 4%; }
+
+    .entrys-entry th > button {
+        color: navy;
+    }
+    .entrys-entry th > button:hover {
+        color: green;
+        background-color: #f7fddcff;
+    }
+
+
+
+    /* drafts list */
+    .entrys-entry-drafts {
+        background-color: white;
+    }
+    .entrys-entry-drafts tr:hover td, tr:hover th {
+        background-color: #e0e0e0;
+    }
+    .entrys-entry-drafts > thead  th { 
         background-color: #e6f0d4ff; 
     }
     .drafts-checkbox-th { background-color: white; cursor: pointer; width: 5%;}
@@ -386,27 +416,27 @@
     .drafts-subject-th { background-color: white; cursor: pointer; width: 33%; }
     .drafts-date-th { background-color: white; cursor: pointer; width: 33%; }
     /* ----   */
-    .ed-checkbox-cell { background-color: white; cursor: pointer; width: 5%; }
-    .ed-recipient-cell { background-color: white; cursor: pointer; width: 25%; padding-left: 4%; }
-    .ed-subject-cell { background-color: white; cursor: pointer; width: 33%; padding-left: 4%; }
-    .ed-date-cell { background-color: white; cursor: pointer; width: 33%; padding-left: 4%; }
+    .drafts-checkbox-cell { background-color: white; cursor: pointer; width: 5%; }
+    .drafts-recipient-cell { background-color: white; cursor: pointer; width: 25%; padding-left: 4%; }
+    .drafts-subject-cell { background-color: white; cursor: pointer; width: 33%; padding-left: 4%; }
+    .drafts-date-cell { background-color: white; cursor: pointer; width: 33%; padding-left: 4%; }
 
-    .blg-entry-drafts th > button {
+    .entrys-entry-drafts th > button {
         color: navy;
     }
-    .blg-entry-drafts th > button:hover {
+    .entrys-entry-drafts th > button:hover {
         color: green;
         background-color: #f7fddcff;
     }
 
     /* published list */
-    .blg-entry-published {
+    .entrys-entry-published {
         background-color: white;
     }
-    .blg-entry-published tr:hover td, tr:hover th {
+    .entrys-entry-published tr:hover td, tr:hover th {
         background-color: #e0e0e0;
     }
-    .blg-entry-published > thead  th { 
+    .entrys-entry-published > thead  th { 
         background-color: #e6f0d4ff; 
     }
     .published-checkbox-th { background-color: white; cursor: pointer; width: 5%;}
@@ -419,51 +449,22 @@
     .published-subject-cell { background-color: white; cursor: pointer; width: 33%; padding-left: 4%; }
     .published-date-cell { background-color: white; cursor: pointer; width: 33%; padding-left: 4%; }
 
-    .blg-entry-published th > button {
+    .entrys-entry-published th > button {
         color: navy;
     }
-    .blg-entry-published th > button:hover {
+    .entrys-entry-published th > button:hover {
         color: green;
         background-color: #f7fddcff;
     }
-
-    /* blog list */
-    .blg-entry { 
-        background-color: white; 
-    }
-    .blg-entry tr:hover td, tr:hover th {
-        background-color: #e0e0e0;
-    }
-    .blg-entry > thead  th { 
-        background-color: #e6f0d4ff; 
-    }
-    .blg-checkbox-th { background-color: white; cursor: pointer; width: 5%;}
-    .blg-recipient-th { background-color: white; cursor: pointer; width: 25%; }
-    .blg-subject-th { background-color: white; cursor: pointer; width: 33%; }
-    .blg-date-th { background-color: white; cursor: pointer; width: 33%; }
-    /* ----   */
-    .blg-checkbox-cell { background-color: white; cursor: pointer; width: 5%; }
-    .blg-recipient-cell { background-color: white; cursor: pointer; width: 25%; padding-left: 4%; }
-    .blg-subject-cell { background-color: white; cursor: pointer; width: 33%; padding-left: 4%; }
-    .blg-date-cell { background-color: white; cursor: pointer; width: 33%; padding-left: 4%; }
-
-    .blg-entry th > button {
-        color: navy;
-    }
-    .blg-entry th > button:hover {
-        color: green;
-        background-color: #f7fddcff;
-    }
-
 
     /* trash list */
-    .blg-entry-trash { 
-        background-color: white; 
+    .entrys-entry-trash {
+        background-color: white;
     }
-    .blg-entry-trash tr:hover td, tr:hover th {
+    .entrys-entry-trash tr:hover td, tr:hover th {
         background-color: #e0e0e0;
     }
-    .blg-entry-trash > thead  th { 
+    .entrys-entry-trash > thead  th { 
         background-color: #e6f0d4ff; 
     }
     .trash-checkbox-th { background-color: white; cursor: pointer; width: 5%;}
@@ -476,20 +477,23 @@
     .trash-subject-cell { background-color: white; cursor: pointer; width: 33%; padding-left: 4%; }
     .trash-date-cell { background-color: white; cursor: pointer; width: 33%; padding-left: 4%; }
 
-
-    .blg-entry-trash th > button {
+    .entrys-entry-trash th > button {
         color: navy;
     }
-    .blg-entry-trash th > button:hover {
+    .entrys-entry-trash th > button:hover {
         color: green;
         background-color: #f7fddcff;
     }
 
-    .blg-entry-editor-body {
+
+    /*  --- end of category css */
+
+
+    .entrys-entry-editor-body {
         border: solid 1px rgb(13, 43, 13);
     }
 
-    .blg-entry-properties {
+    .entrys-entry-properties {
         display: grid;
         grid-template-columns: 20% 1fr;
         gap: 12px 16px;
@@ -500,7 +504,7 @@
         /* max-width: 600px; */
     }
 
-    .edit-blg-entry-properties {
+    .edit-entrys-entry-properties {
         display: grid;
         grid-template-columns: 20% 1fr;
         gap: 12px 16px;
@@ -807,13 +811,13 @@ span {
     color: white;
 }
 
-.blg-item-title {
+.entrys-item-title {
     color:black;
     display: unset;
     border-bottom: 1px darkslateblue solid;
 }
 
-.blg-item-subject {
+.entrys-item-subject {
     color:black;
     display: unset;
 }
@@ -1037,7 +1041,7 @@ span {
     flex: 1 1;
 }
 
-.blg-ctrl-panel {
+.entrys-ctrl-panel {
     padding:0px;
     padding-left:6px;
     padding-right:4px;
@@ -1047,39 +1051,39 @@ span {
     min-height: 100%;
 }
 
-.blg-window-size-ctrl  {
+.entrys-window-size-ctrl  {
     vertical-align:middle;
     background-color:#EFFFFE;
 }
 
 
-.blg-search-field {
+.entrys-search-field {
     padding-top: 2px;
     vertical-align:middle;
     background-color:#e4f7be;
 }
 
-.blg-window-position {
+.entrys-window-position {
     vertical-align:top;
     background-color:rgb(255, 255, 195);
 }
 
-.blg-window-ordering {
+.entrys-window-ordering {
     background-color:rgb(224, 230, 170);
 }
 
 
-.blg-ctl-button {
+.entrys-ctl-button {
     max-width: 20px;
     border-radius: 6px;
 }
 
-.blg-ctl-slider {
+.entrys-ctl-slider {
     height: 100%;
     vertical-align: top;
 }
 
-.blg-ctl-number-field {
+.entrys-ctl-number-field {
     max-width: 60px;
 }
 
@@ -1093,30 +1097,24 @@ span {
 <script type="module">
 
     import Mikado from "./mikado.bundle.module.min.js";
-
     //
-    // import tweet_template from "./tpl_r/partial/user.js";
-    // const tweet_view = new Mikado(tweet_template, {/* options */});
-    // window._x_share_tweet_view = tweet_view
-
-    //
-    import blog_template from "./tpl_r/partial/blg_list.js";
-    import published_template from "./tpl_r/partial/published_list.js";
-    //
-    import draft_template from "./tpl_r/partial/draft_list.js";
-    import trash_template from "./tpl_r/partial/trash_list.js";
+    
+	import blog_template from "./tpl_r/partial/blog_list.js";
+	import drafts_template from "./tpl_r/partial/drafts_list.js";
+	import published_template from "./tpl_r/partial/published_list.js";
+	import trash_template from "./tpl_r/partial/trash_list.js";
     //
     import attachment_view_template from "./tpl_r/partial/attachment_view.js"
     import attachment_edit_template from "./tpl_r/partial/attachment_edit.js"
     //
     import tab_controller from "./tpl_r/partial/selected_entries_tab.js"
 
-    
-    let blg_entry_imports = {
-        "blog" : blog_template,
-        "published" : published_template,
-        'drafts' : draft_template,
-        'trash' : trash_template,
+
+    let entrys_entry_imports = { 
+		"blog" : blog_template,
+		"drafts" : drafts_template,
+		"published" : published_template,
+		"trash" : trash_template
     }
 
     let attachment_imports = {
@@ -1124,16 +1122,16 @@ span {
         'edit' : attachment_edit_template
     }
 
-    //  ['blog','drafts', 'published', 'trash' ]
+    //  ["blog","drafts","published","trash"]
     //
-    let blg_entry_classes = ['blog','drafts', 'published', 'trash' ]
-    let blg_entry_management = {}
+    let entrys_entry_classes = ["blog","drafts","published","trash"]
+    let entrys_entry_management = {}
 
-    for ( let mtype of blg_entry_classes ) {
+    for ( let mtype of entrys_entry_classes ) {
         let store = new Mikado.Array();
-        let blg_entry_template = blg_entry_imports[mtype]
-        let view = new Mikado(blg_entry_template, { observe: store });
-        blg_entry_management[mtype] = {
+        let entrys_entry_template = entrys_entry_imports[mtype]
+        let view = new Mikado(entrys_entry_template, { observe: store });
+        entrys_entry_management[mtype] = {
             "view" : view,
             "store" : store,
             "root" : null,
@@ -1168,8 +1166,8 @@ span {
         }
     }
 
-    window._x_share_blg_entry_managers = blg_entry_management
-    window._x_share_blg_entry_classes = ['blog','drafts', 'published','trash']
+    window._x_share_entrys_entry_managers = entrys_entry_management
+    window._x_share_entrys_entry_classes = ["blog","drafts","published","trash"]
 
     window._x_share_attachment_managers = attachment_management
     window._x_share_attachment_classes = ['view','edit']
@@ -1177,19 +1175,18 @@ span {
     window._x_share_tab_controller_manager = tab_controller_management
 
 
-
-    const blg_types_to_titles = {
-        'blog' : "<b>Blog</b> Copious World",
-        'drafts' : "<b>Drafts</b>",
-        'published' : "<b>Published</b>",
-        'trash' : "<b>Trash</b>",
-    }
+    const entrys_types_to_titles = {
+    "blog": "<b>Blog</b> Copious World",
+    "drafts": "<b>Drafts</b>",
+    "published": "<b>Published</b>",
+    "trash": "<b>Trash</b>"
+}
 
     const capitalize = ([first, ...rest]) => 
             first ? first.toUpperCase() + rest.join('') : '';
 
     window.blog_title_map = (mtype) => {
-        let title = blg_types_to_titles[mtype]
+        let title = entrys_types_to_titles[mtype]
         return title
     }
 
@@ -1240,25 +1237,14 @@ span {
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" >
                 <path class="heroicon-ui" d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"/>
             </svg>
-            <h4><button onclick="toggle_ul(event,'blog')">blog <span id="ardn-blog" style="display:inline-block;color:darkgreen;">&#x25BC;</span><span id="arrt-blog" style="display:none;color:darkgreen;">&#x25BA;</span></button></h4>
-            <ul id="ul-blog">
-                <li><button onclick="blg_entry_switch_to('blog')" >blog</button></li>
-             </ul>
-            <h4><button onclick="toggle_ul(event,'messages')">messages <span id="ardn-messages" style="display:inline-block;color:darkgreen">&#x25BC;</span><span id="arrt-messages" style="display:none;color:darkgreen;">&#x25BA;</span></button></h4>
-            <ul id="ul-messages">
-                <li><button onclick="blg_entry_create()" >write new</button></li>
-                <li><button onclick="blg_entry_switch_to('drafts')" >drafts</button></li>
-                <li><button onclick="blg_entry_switch_to('published')" >published</button></li>
-            </ul>
-            <h4><button onclick="toggle_ul(event,'filtered')">filtered <span id="ardn-filtered" style="display:inline-block;color:darkgreen">&#x25BC;</span><span id="arrt-filtered" style="display:none;color:darkgreen;">&#x25BA;</span></button></h4>
-            <ul id="ul-filtered">
-                <li><button onclick="blg_entry_switch_to('trash')" >trash</button></li>
-            </ul>
-            <h4><button onclick="toggle_ul(event,'manage')">manage <span id="ardn-manage" style="display:inline-block;color:darkgreen">&#x25BC;</span><span id="arrt-manage" style="display:none;color:darkgreen;">&#x25BA;</span></button></h4>
-            <ul id="ul-manage">
-                <li><button onclick="search_ui('messages')" >search blogs</button></li>
-                <li><button onclick="manage_prefs()" >preferences</button></li>
-            </ul>
+
+            
+do i in [0..3] {
+$template:section_switch(${switch_types[i]})
+$template:link_panel(${switch_types[i]})
+}
+
+            
         </blockquote>
     </div>
 </details>
@@ -1311,13 +1297,13 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
             this.loaded_data_end = 0;
             //
             this.a_count_el = document.getElementById("acticle-count")
-            this.a_count_maxer = document.getElementById("blg-ctl-number-field")
-            this.a_count_slider = document.getElementById("blg-ctl-slider")
+            this.a_count_maxer = document.getElementById("entrys-ctl-number-field")
+            this.a_count_slider = document.getElementById("entrys-ctl-slider")
         }
 
 
         setup_box_delta(count) {
-            this.a_box_delta_field = document.getElementById("blg-ctl-box_delta")
+            this.a_box_delta_field = document.getElementById("entrys-ctl-box_delta")
             if ( this.a_box_delta_field ) {
                 if ( count && (count >= this.a_box_delta_field.min) && (count <= this.a_box_delta_field.max) ) {
                     this.box_delta = count
@@ -1329,8 +1315,8 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 
         setup_article_count(n,box_delta) {
             this.a_count_el = document.getElementById("acticle-count")
-            this.a_count_maxer = document.getElementById("blg-ctl-number-field")
-            this.a_count_slider = document.getElementById("blg-ctl-slider")
+            this.a_count_maxer = document.getElementById("entrys-ctl-number-field")
+            this.a_count_slider = document.getElementById("entrys-ctl-slider")
 
             if ( this.a_count_el ) {
                 this.a_count_el.innerText = `${n}`
@@ -1372,13 +1358,13 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 
         async handleClick_add(ev) {
             // use existing search details
-            await add_blg_entries(this.mtype,this.box_delta)
+            await add_entrys_entries(this.mtype,this.box_delta)
             this.on_display_count = get_store_length(this.mtype)
         }
 
         async handleClick_fetch(event) {
             // put in search details
-            await add_blg_entries(this.mtype,this.box_delta)
+            await add_entrys_entries(this.mtype,this.box_delta)
             this.on_display_count = get_store_length(this.mtype)
         }
 
@@ -1386,9 +1372,9 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
         handle_keyDown(event) {
         }
 
-        async update_blg_entry_display_at_index(a_index_base) {
+        async update_entrys_entry_display_at_index(a_index_base) {
             this.article_index = a_index_base*this.on_display_count
-            await add_blg_entries_replace(this.mtype,this.article_index,this.on_display_count)
+            await add_entrys_entries_replace(this.mtype,this.article_index,this.on_display_count)
         }
 
         handleClick_first(event) {
@@ -1402,7 +1388,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
                 a_index_base = 1
             }
             //
-            this.update_blg_entry_display_at_index(a_index_base)
+            this.update_entrys_entry_display_at_index(a_index_base)
         }
 
         handleClick_last(event) {
@@ -1416,7 +1402,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
                 a_index_base = parseInt(this.a_count_maxer.max)
             }
             //
-            this.update_blg_entry_display_at_index(a_index_base)
+            this.update_entrys_entry_display_at_index(a_index_base)
         }
 
 
@@ -1438,7 +1424,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
                 }
                 //
                 a_index_base = a_value
-                this.update_blg_entry_display_at_index(a_index_base)
+                this.update_entrys_entry_display_at_index(a_index_base)
             }
         }
 
@@ -1463,20 +1449,20 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
     <div id="blog-entries" style="display:block" >
 
 <div class="search_control_banner">
-    <div class="blg-ctrl-panel blg-window-size-ctrl"  >
+    <div class="entrys-ctrl-panel entrys-window-size-ctrl"  >
         <span style="color:navy;font-weight:bold">Boxes</span>
-        <input type=number id="blg-ctl-box_delta" class="blg-ctl-number-field" value=4 min=1 max=4 onchange="g_searcher.box_detla_updata(event)">
+        <input type=number id="entrys-ctl-box_delta" class="entrys-ctl-number-field" value=4 min=1 max=4 onchange="g_searcher.box_detla_updata(event)">
 
-        <button class="blg-ctl-button" onclick="g_searcher.handleClick_remove(event)">
+        <button class="entrys-ctl-button" onclick="g_searcher.handleClick_remove(event)">
             -
         </button>
 
-        <button class="blg-ctl-button"  onclick="g_searcher.handleClick_add(event)">
+        <button class="entrys-ctl-button"  onclick="g_searcher.handleClick_add(event)">
             +
         </button>
     </div>
 
-    <div class="blg-ctrl-panel blg-search-field"  >
+    <div class="entrys-ctrl-panel entrys-search-field"  >
         <button onclick="g_searcher.handleClick_fetch(event)">
             search
         </button>
@@ -1486,15 +1472,15 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
     </div>
 
 
-    <div class="blg-ctrl-panel blg-window-position" >
-        <button class="blg-ctl-button" onclick="g_searcher.handleClick_first(event)">&le;</button>
-        <input id="blg-ctl-slider" class="blg-ctl-slider" type=range  min=1 max=10 onchange="g_searcher.handle_index_changed(event)" >
-        <button class="blg-ctl-button" onclick="g_searcher.handleClick_last(event)">&ge;</button>
-        <input id="blg-ctl-number-field" type=number class="blg-ctl-number-field"  min=1 max=10 onchange="g_searcher.handle_index_changed(event)" >
+    <div class="entrys-ctrl-panel entrys-window-position" >
+        <button class="entrys-ctl-button" onclick="g_searcher.handleClick_first(event)">&le;</button>
+        <input id="entrys-ctl-slider" class="entrys-ctl-slider" type=range  min=1 max=10 onchange="g_searcher.handle_index_changed(event)" >
+        <button class="entrys-ctl-button" onclick="g_searcher.handleClick_last(event)">&ge;</button>
+        <input id="entrys-ctl-number-field" type=number class="entrys-ctl-number-field"  min=1 max=10 onchange="g_searcher.handle_index_changed(event)" >
         of<span class="report-number" id="acticle-count" >10</span>
     </div>
 
-    <div class="blg-ctrl-panel blg-window-ordering" >
+    <div class="entrys-ctrl-panel entrys-window-ordering" >
 			<label style="color:navy;font-weight:bold;font-size: 0.89em;" >&nbsp;sort by &nbsp;<select  value="update" onchange="g_searcher.handle_order_change(event)">
 					<option value="update">update time</option>
 					<option value="score">score</option>
@@ -1510,9 +1496,12 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 
         </div>
     </div>
+
+    
+
     <div id="drafts-entries" style="display:none" >
         <div>
-            <table class="blg-entry-drafts" style="width:100%" >
+            <table class="entrys-entry-drafts" style="width:100%" >
                 <thead>
                     <th class="drafts-checkbox-th"><button onclick="do_op_modal('drafts')">ops</button></th>
                     <th class="drafts-recipient-th">sender</th>
@@ -1520,14 +1509,17 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
                     <th class="drafts-date-th">time</th>
                 </thead>
             </table>
-            <table id="list-entities-drafts" class="blg-entry-drafts" style="width:100%" >
+            <table id="list-entities-drafts" class="entrys-entry-drafts" style="width:100%" >
 
             </table>
         </div>
     </div>
+
+
+
     <div id="published-entries" style="display:none" >
         <div>
-            <table class="blg-entry-published" style="width:100%" >
+            <table class="entrys-entry-published" style="width:100%" >
                 <thead>
                     <th class="published-checkbox-th"><button onclick="do_op_modal('published')">ops</button></th>
                     <th class="published-recipient-th">sender</th>
@@ -1535,14 +1527,17 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
                     <th class="published-date-th">time</th>
                 </thead>
             </table>
-            <table id="list-entities-published" class="blg-entry-published" style="width:100%" >
+            <table id="list-entities-published" class="entrys-entry-published" style="width:100%" >
 
             </table>
         </div>
     </div>
+
+
+
     <div id="trash-entries" style="display:none" >
         <div>
-            <table class="blg-entry-trash" style="width:100%" >
+            <table class="entrys-entry-trash" style="width:100%" >
                 <thead>
                     <th class="trash-checkbox-th"><button onclick="do_op_modal('trash')">ops</button></th>
                     <th class="trash-recipient-th">sender</th>
@@ -1550,17 +1545,21 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
                     <th class="trash-date-th">time</th>
                 </thead>
             </table>
-            <table id="list-entities-trash" class="blg-entry-trash" style="width:100%" >
+            <table id="list-entities-trash" class="entrys-entry-trash" style="width:100%" >
 
             </table>
         </div>
     </div>
+
+
+
+
 </main>
 
 
-<div id="blg_entry_view" class="right_fade_able" style="z-index:124" >
+<div id="entrys_entry_view" class="right_fade_able" style="z-index:124" >
 	<div class="togglebar" >
-		<span class="closer_x" onmousedown="closefader(event,'blg_entry_view');void_current_edit_blg_entry()">X</span>
+		<span class="closer_x" onmousedown="closefader(event,'entrys_entry_view');void_current_edit_entrys_entry()">X</span>
 	</div>
 	<div class="sizerbar" > S </div>
 	<div class="fade_able_content" >
@@ -1574,15 +1573,15 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
         <!-- <div id="selected-tab" style="color: {{ data.active ? 'green' : 'black' }}; {{ data.value ? '' : 'display: none;' }}"></div> -->
         <div class="readers-and-comments" >
             <div id="reader-box-container" class="reader-box entities-left" style="min-width: 350px;min-height: 300px;">
-                <h3 id="blg_entry_message_title">title</h3>
-                <div id="blg_entry_message_contents" class="reader-box-blog-contents" >
+                <h3 id="entrys_entry_message_title">title</h3>
+                <div id="entrys_entry_message_contents" class="reader-box-blog-contents" >
 
                 </div>
             </div>
             <div class="gutter" id="gutter"></div>
             <div class="reader-box entities-right" style="min-width: 150px;min-height: 300px;padding-top:0px;">
                 <h5>comments</h5>
-                <div id="blg_entry_message_comments" >
+                <div id="entrys_entry_message_comments" >
                     comments go here.
                 </div>
             </div>
@@ -1611,41 +1610,41 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 </style>
 
 
-<div id="blg_entry_edit" class="right_fade_able" style="z-index:124" >
+<div id="entrys_entry_edit" class="right_fade_able" style="z-index:124" >
 	<div class="togglebar" >
-		<span class="closer_x" onmousedown="closefader(event,'blg_entry_edit');blg_entry_edit_mode_reset(event);void_current_edit_blg_entry();">X</span>
+		<span class="closer_x" onmousedown="closefader(event,'entrys_entry_edit');entrys_entry_edit_mode_reset(event);void_current_edit_entrys_entry();">X</span>
 	</div>
 	<div class="sizerbar" > S </div>
 	<div class="fade_able_content" >
         <div  class="ops-button-containers">
             <span id="drafts_view_category" class="show-cat">drafts: </span>&nbsp;&nbsp;
-            <button id="blg_entry_edit_mode_send" onclick="do_publish_blg_entry_closefader(event)">publish</button>
+            <button id="entrys_entry_edit_mode_send" onclick="do_publish_entrys_entry_closefader(event)">publish</button>
             <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-            <button id="blg_entry_edit_mode_save" onclick="edit_blg_entry_save(event);" >save</button>
-            <button id="blg_entry_edit_mode_cancel" onclick="blg_entry_edit_mode_reset(event);closefader(event,'blg_entry_edit');" >cancel</button>
+            <button id="entrys_entry_edit_mode_save" onclick="edit_entrys_entry_save(event);" >save</button>
+            <button id="entrys_entry_edit_mode_cancel" onclick="entrys_entry_edit_mode_reset(event);closefader(event,'entrys_entry_edit');" >cancel</button>
             <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-            <button id="blg_entry_ops" onclick="single_blg_entry_ops(event);">ops</button>
+            <button id="entrys_entry_ops" onclick="single_entrys_entry_ops(event);">ops</button>
         </div>
-        <div class="edit-blg-entry-properties">
+        <div class="edit-entrys-entry-properties">
             <div class="field-label">Author:</div>
-            <div class="field-value"><input id="edit-blg-entry-sender" type="email" /></div>
+            <div class="field-value"><input id="edit-entrys-entry-sender" type="email" /></div>
             
             <!-- <div class="field-label">To:</div>
-            <div class="field-value"><input id="edit-blg-entry-recipient" type="email" /></div> -->
+            <div class="field-value"><input id="edit-entrys-entry-recipient" type="email" /></div> -->
 
             <!-- <div class="field-label">cc:</div>
-            <div id="view-blg-entry-cc" class="field-value"><input id="edit-blg-entry-cc" type="email" /></div>
+            <div id="view-entrys-entry-cc" class="field-value"><input id="edit-entrys-entry-cc" type="email" /></div>
 
             <div class="field-label">bcc:</div>
-            <div id="view-blg-entry-bcc" class="field-value"><input id="edit-blg-entry-bcc" type="email" /></div> -->
+            <div id="view-entrys-entry-bcc" class="field-value"><input id="edit-entrys-entry-bcc" type="email" /></div> -->
 
             <div class="field-label">Subject:</div>
-            <div class="field-value"></label><input id="edit-blg-entry-subject" type="text" /></div>
+            <div class="field-value"></label><input id="edit-entrys-entry-subject" type="text" /></div>
 
             <div class="field-label">Last edit:</div>
-            <div id="edit-blg-entry-date" class="field-value">September 14, 2026, 12:51 PM</div>
+            <div id="edit-entrys-entry-date" class="field-value">September 14, 2026, 12:51 PM</div>
         </div>
-        <div id="edit-blg-entry-attachments" class="attachments-controls file-dropper-handler" dropzone="true" >
+        <div id="edit-entrys-entry-attachments" class="attachments-controls file-dropper-handler" dropzone="true" >
             <label for="fileInput" class="custom-button">
             add &#128206;
             </label>
@@ -1659,7 +1658,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
             </table>
         </div>
 		<div class="message-box" style="min-width: 400px;min-height: 300px;">
-            <div class="blg-entry-editor-body" id="blg_entry_message_contents_edit" contenteditable="true" >
+            <div class="entrys-entry-editor-body" id="entrys_entry_message_contents_edit" contenteditable="true" >
                 This is the blog entry to view
             </div>
 		</div>
@@ -1686,25 +1685,25 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 * Notify can move to trash, to blog, or to spam
 * Trash can permanently delete a message, or move to blog, or notify
 -->
-<dialog id="blg-entry-ops-modal" style="min-width: 300px;">
-    <div id="blg-entry-ops-drafts" style="display: none;" >
-        <button onclick="prep_publish_blg_entry_list('drafts')">publish</button>
-        <button onclick="prep_blg_entry_list_move_to('drafts','trash')">move to trash</button>
+<dialog id="entrys-entry-ops-modal" style="min-width: 300px;">
+    <div id="entrys-entry-ops-drafts" style="display: none;" >
+        <button onclick="prep_publish_entrys_entry_list('drafts')">publish</button>
+        <button onclick="prep_entrys_entry_list_move_to('drafts','trash')">move to trash</button>
     </div>
-    <div id="blg-entry-ops-published" style="display: none;" >
-        <button onclick="prep_blg_entry_list_move_to('published','archive')">archive</button>
-        <button onclick="prep_blg_entry_list_copy_to('published','drafts')">copy to drafts</button>
+    <div id="entrys-entry-ops-published" style="display: none;" >
+        <button onclick="prep_entrys_entry_list_move_to('published','archive')">archive</button>
+        <button onclick="prep_entrys_entry_list_copy_to('published','drafts')">copy to drafts</button>
     </div>
-    <div id="blg-entry-ops-blog" style="display: none;" >
-        <!-- <button onclick="prep_blg_entry_list_reply_to('blog')">reply</button>
-        <button onclick="prep_blg_entry_list_reply_all('blog')">reply all</button> -->
+    <div id="entrys-entry-ops-blog" style="display: none;" >
+        <!-- <button onclick="prep_entrys_entry_list_reply_to('blog')">reply</button>
+        <button onclick="prep_entrys_entry_list_reply_all('blog')">reply all</button> -->
         &nbsp;|&nbsp;
-        <button onclick="prep_blg_entry_list_move_to('blog','trash')">move to trash</button>
-        <!-- <button onclick="prep_blg_entry_list_move_to('blog','spam')">move to spam</button>
-        <button onclick="prep_blg_entry_list_move_to('blog','notfify')">move to notify</button> -->
+        <button onclick="prep_entrys_entry_list_move_to('blog','trash')">move to trash</button>
+        <!-- <button onclick="prep_entrys_entry_list_move_to('blog','spam')">move to spam</button>
+        <button onclick="prep_entrys_entry_list_move_to('blog','notfify')">move to notify</button> -->
     </div>
-    <div id="blg-entry-ops-trash" style="display: none;" >
-        <button onclick="prep_blg_entry_list_delete('trash')">delete</button>
+    <div id="entrys-entry-ops-trash" style="display: none;" >
+        <button onclick="prep_entrys_entry_list_delete('trash')">delete</button>
     </div>
     <div class="select-all-ops-properties-on-ops">
         <div class="field-label">Select All:</div>
@@ -1715,19 +1714,19 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
         <!-- Cancel button: closes modal, returnValue is "cancel" -->
         <button type="submit" formmethod="dialog" value="cancel">Cancel</button>
         <!-- Close/Confirm button: closes modal, returnValue is "confirm" or selected value -->
-        <button id="blg-entry-ops-modal-ok" type="submit" value="confirm" disabled>OK</button>
+        <button id="entrys-entry-ops-modal-ok" type="submit" value="confirm" disabled>OK</button>
     </form>
 </dialog>
 
 
 <dialog id="search-ops-modal" style="min-width: 300px;">
-    <div class="blg-entry-properties" >
+    <div class="entrys-entry-properties" >
         <div class="field-label">search:</div>
         <div class="field-value"><input id="search-list-patterns" type="text" /></div>
 
-        <div id="blg_entry_type_select_label" class="field-label" style="display: none;">mail type:</div>
-        <div id="blg_entry_type_select" class="field-value" style="display: none;">
-            <select id="blg_entry_type_selector" onchange="blg_entry_switch_to_event(event)" >  
+        <div id="entrys_entry_type_select_label" class="field-label" style="display: none;">mail type:</div>
+        <div id="entrys_entry_type_select" class="field-value" style="display: none;">
+            <select id="entrys_entry_type_selector" onchange="entrys_entry_switch_to_event(event)" >  
                 <option value="all-messages">all messages</option>
                  <optgroup label="received">
                     <option value="blog">blog</option>
@@ -1809,13 +1808,13 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 </script>
 <script type="module">
 
-    const blg_entry_managers = window._x_share_blg_entry_managers
+    const entrys_entry_managers = window._x_share_entrys_entry_managers
     //
-    let blg_entry_main = document.getElementById("grid-main")
+    let entrys_entry_main = document.getElementById("grid-main")
 
 
-    for ( let mtype in blg_entry_managers ) {
-        let a_manager = blg_entry_managers[mtype]
+    for ( let mtype in entrys_entry_managers ) {
+        let a_manager = entrys_entry_managers[mtype]
         a_manager.root = document.getElementById(`list-entities-${mtype}`)
         //
         a_manager.container_el = document.getElementById(`${mtype}-entries`)   // blog-entries
@@ -1853,8 +1852,8 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
     /**
      * 
      */
-    function store_of_blg_entry_manager(mtype) {
-        let mobj = blg_entry_managers[mtype]
+    function store_of_entrys_entry_manager(mtype) {
+        let mobj = entrys_entry_managers[mtype]
         if ( mobj ) {
             if ( mobj.store ){
                 return mobj.store
@@ -1863,8 +1862,8 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
         return false
     }
 
-    function view_of_blg_entry_manager(mtype) {
-        let mobj = blg_entry_managers[mtype]
+    function view_of_entrys_entry_manager(mtype) {
+        let mobj = entrys_entry_managers[mtype]
         if ( mobj ) {
             if ( mobj.view ){
                 return mobj.view
@@ -1873,8 +1872,8 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
         return false
     }
 
-    window.store_of_blg_entry_manager = store_of_blg_entry_manager
-    window.view_of_blg_entry_manager = view_of_blg_entry_manager
+    window.store_of_entrys_entry_manager = store_of_entrys_entry_manager
+    window.view_of_entrys_entry_manager = view_of_entrys_entry_manager
 
 
 
@@ -1915,7 +1914,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 
     let pre_date = new Date((date.getTime() - (3600*24*2)))
     //
-    let blg_entry_proto = {
+    let entrys_entry_proto = {
                         "id" : 1,
                         "sender" : "richard@myhost.local", 
                         "category" : "cecks",
@@ -1937,127 +1936,127 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
                         "text" : "", "_count_edits" : 0, "_saved_updates" : []  }
 
 
-    window._x_test_blg_entry_proto = blg_entry_proto
+    window._x_test_entrys_entry_proto = entrys_entry_proto
 
     //
     // testing
-    window.add_blg_entries = async (mtype,box_count) => {
+    window.add_entrys_entries = async (mtype,box_count) => {
         //
         if ( mtype === undefined ) mtype = g_current_mtype
         // if ( mtype === "contacts" ) {
         //     add_contacts()
         //     return
         // }
-        let blg_entry_store = store_of_blg_entry_manager(mtype)
+        let entrys_entry_store = store_of_entrys_entry_manager(mtype)
         //
-        if ( blg_entry_store ) {
-            let new_blg_entry_bunch = await load_a_bunch_of_entries(mtype)
+        if ( entrys_entry_store ) {
+            let new_entrys_entry_bunch = await load_a_bunch_of_entries(mtype)
             if ( (box_count !== undefined) && (parseInt(box_count) !== NaN) ) {
-                new_blg_entry_bunch = new_blg_entry_bunch.slice(0,box_count)
+                new_entrys_entry_bunch = new_entrys_entry_bunch.slice(0,box_count)
             }
-            if ( new_blg_entry_bunch && new_blg_entry_bunch.length ) {
-                for ( let m of new_blg_entry_bunch ) {
-                    blg_entry_store.unshift(m)
+            if ( new_entrys_entry_bunch && new_entrys_entry_bunch.length ) {
+                for ( let m of new_entrys_entry_bunch ) {
+                    entrys_entry_store.unshift(m)
                 }
             } else {
-                if ( new_blg_entry_bunch ) {
-                    blg_entry_store.set(new_blg_entry_bunch)
+                if ( new_entrys_entry_bunch ) {
+                    entrys_entry_store.set(new_entrys_entry_bunch)
                 }
             }
         }
 
-        sort_blg_entries(mtype)
+        sort_entrys_entries(mtype)
     }
 
-    let test_new_blg_entry_bunch = []
+    let test_new_entrys_entry_bunch = []
     window.add_blog_el = () => {        // for testing
-        let blg_entry_view = view_of_blg_entry_manager("blog")
+        let entrys_entry_view = view_of_entrys_entry_manager("blog")
         //
         let box_count = 1
-        if ( blg_entry_view ) {
-            let bentry = structuredClone(blg_entry_proto)
-            test_new_blg_entry_bunch.push(bentry)
+        if ( entrys_entry_view ) {
+            let bentry = structuredClone(entrys_entry_proto)
+            test_new_entrys_entry_bunch.push(bentry)
             bentry.check_me = "CHECKS"
             //
-            blg_entry_view.render(test_new_blg_entry_bunch)
+            entrys_entry_view.render(test_new_entrys_entry_bunch)
             // //
             // if ( (box_count !== undefined) && (parseInt(box_count) !== NaN) ) {
-            //     new_blg_entry_bunch = new_blg_entry_bunch.slice(0,box_count)
+            //     new_entrys_entry_bunch = new_entrys_entry_bunch.slice(0,box_count)
             // }
-            // if ( new_blg_entry_bunch && new_blg_entry_bunch.length ) {
-            //     for ( let m of new_blg_entry_bunch ) {
-            //         blg_entry_store.unshift(m)
+            // if ( new_entrys_entry_bunch && new_entrys_entry_bunch.length ) {
+            //     for ( let m of new_entrys_entry_bunch ) {
+            //         entrys_entry_store.unshift(m)
             //     }
             // } else {
-            //     if ( new_blg_entry_bunch ) {
-            //         blg_entry_store.set(new_blg_entry_bunch)
+            //     if ( new_entrys_entry_bunch ) {
+            //         entrys_entry_store.set(new_entrys_entry_bunch)
             //     }
             // }
         }
 
-        sort_blg_entries("blog")
+        sort_entrys_entries("blog")
     }
 
-    let blg_cycle = 0;
+    let entrys_cycle = 0;
     let tinytitle = ["AAA","BBB","ZZZZZ","TEXT", "T.SAURUS REX"]
     window.change_blog_el = () => {
-        // let blg_entry_store = store_of_blg_entry_manager("blog")
-        // if ( blg_entry_store && blg_entry_store.length > 0 ) {
-        if ( test_new_blg_entry_bunch.length > 0 ) {
-            let new_txt = tinytitle[blg_cycle++]
-            blg_cycle = (blg_cycle >= tinytitle.length) ? 0 : blg_cycle
+        // let entrys_entry_store = store_of_entrys_entry_manager("blog")
+        // if ( entrys_entry_store && entrys_entry_store.length > 0 ) {
+        if ( test_new_entrys_entry_bunch.length > 0 ) {
+            let new_txt = tinytitle[entrys_cycle++]
+            entrys_cycle = (entrys_cycle >= tinytitle.length) ? 0 : entrys_cycle
             let ii = Math.random()
-            ii = Math.floor(ii*test_new_blg_entry_bunch.length)
-            test_new_blg_entry_bunch[ii].check_me = new_txt
+            ii = Math.floor(ii*test_new_entrys_entry_bunch.length)
+            test_new_entrys_entry_bunch[ii].check_me = new_txt
         }
     }
 
     window.get_store_length = (mtype) => {
-        let blg_entry_store = store_of_blg_entry_manager(mtype)
-        if ( blg_entry_store ) {
-            return blg_entry_store.length
+        let entrys_entry_store = store_of_entrys_entry_manager(mtype)
+        if ( entrys_entry_store ) {
+            return entrys_entry_store.length
         }
         return 0
     }
 
-    window.add_blg_entries_replace = async (mtype,article_index,fetch_count) => {
+    window.add_entrys_entries_replace = async (mtype,article_index,fetch_count) => {
         if ( mtype === undefined ) mtype = g_current_mtype
         // if ( mtype === "contacts" ) {
         //     add_contacts()
         //     return
         // }
-        let blg_entry_store = store_of_blg_entry_manager(mtype)
+        let entrys_entry_store = store_of_entrys_entry_manager(mtype)
         //
-        if ( blg_entry_store ) {
-            let total_blg_entry_bunch = []
+        if ( entrys_entry_store ) {
+            let total_entrys_entry_bunch = []
             let remaining_fetch_count = fetch_count
             while ( remaining_fetch_count > 0 ) {
-                let new_blg_entry_bunch = await load_a_bunch_of_entries(mtype)
-                let returned_count = new_blg_entry_bunch.length
+                let new_entrys_entry_bunch = await load_a_bunch_of_entries(mtype)
+                let returned_count = new_entrys_entry_bunch.length
                 remaining_fetch_count -= returned_count
                 while ( remaining_fetch_count < 0 ) {
-                    new_blg_entry_bunch.pop()
+                    new_entrys_entry_bunch.pop()
                     remaining_fetch_count++
                 }
-                if ( new_blg_entry_bunch.length ) {
-                    total_blg_entry_bunch = total_blg_entry_bunch.concat(new_blg_entry_bunch)
+                if ( new_entrys_entry_bunch.length ) {
+                    total_entrys_entry_bunch = total_entrys_entry_bunch.concat(new_entrys_entry_bunch)
                 }
             }
 
-            if ( total_blg_entry_bunch ) {
-                blg_entry_store.set(total_blg_entry_bunch)
+            if ( total_entrys_entry_bunch ) {
+                entrys_entry_store.set(total_entrys_entry_bunch)
             }
 
         }
 
-        sort_blg_entries(mtype)
+        sort_entrys_entries(mtype)
     }
 
 
 
     // useful
     // window.add_contacts = async () => {
-    //     let contact_store = store_of_blg_entry_manager('contacts')
+    //     let contact_store = store_of_entrys_entry_manager('contacts')
     //     if ( contact_store ) {
     //         let new_contact_bunch = await load_a_bunch_of_contacts()
     //         if ( new_contact_bunch && new_contact_bunch.length ) {
@@ -2070,53 +2069,53 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
     //             }
     //         }
     //     }
-    //     sort_blg_entries('contacts')
+    //     sort_entrys_entries('contacts')
     //     return true
     // }
 
 
 
     // useful (mail and contacts)
-    window.add_entries_to_list = (mtype,blg_entry_list) => {
+    window.add_entries_to_list = (mtype,entrys_entry_list) => {
 
 
-        for ( let email of blg_entry_list ) {
-                email.created_when = _x_test_blg_entry_proto.created_when
-                email.updated_when = _x_test_blg_entry_proto.updated_when
-                email.description = _x_test_blg_entry_proto.description
-                email.score = _x_test_blg_entry_proto.score
-                email.keys =_x_test_blg_entry_proto.keys
+        for ( let entry of entrys_entry_list ) {
+                entry.created_when = _x_test_entrys_entry_proto.created_when
+                entry.updated_when = _x_test_entrys_entry_proto.updated_when
+                entry.description = _x_test_entrys_entry_proto.description
+                entry.score = _x_test_entrys_entry_proto.score
+                entry.keys =_x_test_entrys_entry_proto.keys
         }
 
 
         if ( mtype === undefined ) return false
-        let blg_entry_store = store_of_blg_entry_manager(mtype)
-        if ( blg_entry_store ) {
-            if ( blg_entry_store.length ) {
-                for ( let m of blg_entry_list ) {
-                    blg_entry_store.unshift(m)
+        let entrys_entry_store = store_of_entrys_entry_manager(mtype)
+        if ( entrys_entry_store ) {
+            if ( entrys_entry_store.length ) {
+                for ( let m of entrys_entry_list ) {
+                    entrys_entry_store.unshift(m)
                     m.category = mtype
                 }
             } else {
-                blg_entry_store.set(blg_entry_list)
-                for ( let m of blg_entry_list ) {
+                entrys_entry_store.set(entrys_entry_list)
+                for ( let m of entrys_entry_list ) {
                     m.category = mtype
                 }
             }
         }
-        sort_blg_entries(mtype)
+        sort_entrys_entries(mtype)
         return true
     }
 
 
 
-    window.delete_entries_from_list = (mtype,blg_entry_ids_list) => {
+    window.delete_entries_from_list = (mtype,entrys_entry_ids_list) => {
         if ( mtype === undefined ) return false
-        let blg_entry_store = store_of_blg_entry_manager(mtype)
-        if ( blg_entry_store ) {
-            blg_entry_store.filter((email)=>{
-                let mid = email.id
-                if ( blg_entry_ids_list.indexOf(mid) >= 0 ) {
+        let entrys_entry_store = store_of_entrys_entry_manager(mtype)
+        if ( entrys_entry_store ) {
+            entrys_entry_store.filter((entry)=>{
+                let mid = entry.id
+                if ( entrys_entry_ids_list.indexOf(mid) >= 0 ) {
                     return false
                 }
                 return true
@@ -2128,10 +2127,10 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
     //
     window.get_list_of_objects = (mtype,id_list) => {
         if ( mtype === undefined ) return false
-        let blg_entry_store = store_of_blg_entry_manager(mtype)
-        if ( blg_entry_store ) {
+        let entrys_entry_store = store_of_entrys_entry_manager(mtype)
+        if ( entrys_entry_store ) {
             let obj_list = []
-            blg_entry_store.forEach((obj) => {
+            entrys_entry_store.forEach((obj) => {
                 if ( id_list.includes(obj.id) )  {
                     obj_list.push(obj)
                 }
@@ -2145,29 +2144,29 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 
     window.add_empty_draft = (id) => {
         let mtype = "drafts"
-        let blg_entry_store = store_of_blg_entry_manager(mtype)
-        let new_mail = structuredClone(blg_entry_proto)
-        new_mail.id = id
-        new_mail._count_edits = 0
-        new_mail._saved_updates = []
+        let entrys_entry_store = store_of_entrys_entry_manager(mtype)
+        let new_entry = structuredClone(entrys_entry_proto)
+        new_entry.id = id
+        new_entry._count_edits = 0
+        new_entry._saved_updates = []
         //
-        if ( blg_entry_store ) {
-            blg_entry_store.unshift(new_mail)
-            return new_mail
+        if ( entrys_entry_store ) {
+            entrys_entry_store.unshift(new_entry)
+            return new_entry
         }
         return false
     }
 
     window.add_empty_contact = (id) => {
         let mtype = "contacts"
-        let blg_entry_store = store_of_blg_entry_manager(mtype)
+        let entrys_entry_store = store_of_entrys_entry_manager(mtype)
         let new_contact = structuredClone(contact_proto)
         new_contact.id = id
         new_contact._count_edits = 0
         new_contact._saved_updates = []
         //
-        if ( blg_entry_store ) {
-            blg_entry_store.unshift(new_contact)
+        if ( entrys_entry_store ) {
+            entrys_entry_store.unshift(new_contact)
             return new_contact
         }
         return false
@@ -2176,29 +2175,29 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 
     window.swap_two = (mtype) => {
         if ( mtype === undefined ) mtype = g_current_mtype
-        let blg_entry_store = store_of_blg_entry_manager(mtype)
-        if ( blg_entry_store ) blg_entry_store.swap(2,5)
+        let entrys_entry_store = store_of_entrys_entry_manager(mtype)
+        if ( entrys_entry_store ) entrys_entry_store.swap(2,5)
     }
 
     window.delete_two = (mtype) => {
         if ( mtype === undefined ) mtype = g_current_mtype
-        let blg_entry_store = store_of_blg_entry_manager(mtype)
-        if ( blg_entry_store ) blg_entry_store.splice(3,2)
+        let entrys_entry_store = store_of_entrys_entry_manager(mtype)
+        if ( entrys_entry_store ) entrys_entry_store.splice(3,2)
     }
 
     window.delete_last_count = (mtype,count) => {
         if ( mtype === undefined ) mtype = g_current_mtype
-        let blg_entry_store = store_of_blg_entry_manager(mtype)
-        if ( blg_entry_store ) {
-            let n = blg_entry_store.length
-            blg_entry_store.splice(n-count-1,count)
+        let entrys_entry_store = store_of_entrys_entry_manager(mtype)
+        if ( entrys_entry_store ) {
+            let n = entrys_entry_store.length
+            entrys_entry_store.splice(n-count-1,count)
         }
     }
 
-    window.sort_blg_entries = (mtype) => {
+    window.sort_entrys_entries = (mtype) => {
         if ( mtype === undefined ) mtype = g_current_mtype
-        let blg_entry_store = store_of_blg_entry_manager(mtype)
-        if ( blg_entry_store ) blg_entry_store.sort((a,b) => {
+        let entrys_entry_store = store_of_entrys_entry_manager(mtype)
+        if ( entrys_entry_store ) entrys_entry_store.sort((a,b) => {
             if ( a.timestamp < b.timestamp ) return 1
             if ( a.timestamp > b.timestamp ) return -1
             return 0
@@ -2207,21 +2206,21 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 
     window.sort_one_or_more = (mtype) => {
         if ( mtype === undefined ) mtype = g_current_mtype
-        let blg_entry_store = store_of_blg_entry_manager(mtype)
-        if ( blg_entry_store ) {
-            if ( blg_entry_store.length === 1 ) {
-                let obj = blg_entry_store.pop()
-                blg_entry_store.push(obj)
+        let entrys_entry_store = store_of_entrys_entry_manager(mtype)
+        if ( entrys_entry_store ) {
+            if ( entrys_entry_store.length === 1 ) {
+                let obj = entrys_entry_store.pop()
+                entrys_entry_store.push(obj)
             } else {
-                sort_blg_entries(mtype)
+                sort_entrys_entries(mtype)
             }
         }
     }
 
-    window.reverse_mail = (mtype) => {
+    window.reverse_entry = (mtype) => {
         if ( mtype === undefined ) mtype = g_current_mtype
-        let blg_entry_store = store_of_blg_entry_manager(mtype)
-        if ( blg_entry_store ) blg_entry_store.reverse()
+        let entrys_entry_store = store_of_entrys_entry_manager(mtype)
+        if ( entrys_entry_store ) entrys_entry_store.reverse()
     }
 
 
@@ -2233,15 +2232,15 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
         }
     }
 
-    window.blg_entry_switch_to  = (mtype) => {
+    window.entrys_entry_switch_to  = (mtype) => {
         if ( mtype === undefined ) mtype = g_current_mtype
-        for ( let one_mtype in blg_entry_managers ) {
-            let mobj = blg_entry_managers[one_mtype]
+        for ( let one_mtype in entrys_entry_managers ) {
+            let mobj = entrys_entry_managers[one_mtype]
             if ( mobj.container_el ) {
                 mobj.container_el.style.display = "none"
             }
         }
-        let mobj = blg_entry_managers[mtype]
+        let mobj = entrys_entry_managers[mtype]
         if ( mobj ) {
             if ( mobj.container_el ) {
                 mobj.container_el.style.display = "block"
@@ -2254,11 +2253,11 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
         set_section_title(mtype)
     }
 
-    window.blg_entry_switch_to_event = (event) => {
+    window.entrys_entry_switch_to_event = (event) => {
         let sel_el = event.target
         if ( sel_el ) {
             if ( sel_el.value === "all-messages") return
-            blg_entry_switch_to(sel_el.value)
+            entrys_entry_switch_to(sel_el.value)
         }
     }
 
@@ -2309,7 +2308,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
     
     window.indicate_page_on_window_banner = (mtype) => {
         if ( mtype !== 'drafts' ) {
-            let wb_var = document.getElementById("blg_entry_view_category")
+            let wb_var = document.getElementById("entrys_entry_view_category")
             if ( wb_var ) {
                 wb_var.innerText = `${mtype}: `
             }
@@ -2347,11 +2346,11 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 
 
     function get_text_from_store(mtype,msg_id) {
-        let blg_entry_store = store_of_blg_entry_manager(mtype)
+        let entrys_entry_store = store_of_entrys_entry_manager(mtype)
         let clear_text = "message not found"
-        if ( blg_entry_store ) {
+        if ( entrys_entry_store ) {
             let the_msg = false
-            blg_entry_store.forEach(msg => {
+            entrys_entry_store.forEach(msg => {
                 if ( msg.id === msg_id ) {
                     the_msg = msg
                 }
@@ -2365,11 +2364,11 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 
 
     function get_message_from_store(mtype,msg_id) {
-        let blg_entry_store = store_of_blg_entry_manager(mtype)
+        let entrys_entry_store = store_of_entrys_entry_manager(mtype)
         //
-        if ( blg_entry_store ) {
+        if ( entrys_entry_store ) {
             let the_msg = false
-            blg_entry_store.forEach(msg => {
+            entrys_entry_store.forEach(msg => {
                 if ( msg.id === msg_id ) {
                     the_msg = msg
                 }
@@ -2420,7 +2419,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
                         break
                     }
                 }
-                restore_check_box_selections(self,action)  // if the dialog was used for a single email in view or drafts
+                restore_check_box_selections(self,action)  // if the dialog was used for a single entry in view or drafts
             });
             disable_ok_button()
             return dialog
@@ -2428,8 +2427,8 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
         return false
     }
 
-    function setup_blg_entry_ops_dialog() {
-        let diag = setup_modal_response('blg-entry-ops-modal')
+    function setup_entrys_entry_ops_dialog() {
+        let diag = setup_modal_response('entrys-entry-ops-modal')
         if ( diag ) {
             diag._cancel_action = () => {
                 disable_ok_button()
@@ -2471,7 +2470,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 
     let g_all_list_view_check_box_patterns = {}
     function setup_checkbox_pattern_tracking() {
-        let mtypes = window._x_share_blg_entry_classes
+        let mtypes = window._x_share_entrys_entry_classes
         for ( let mtype of mtypes ) {
             g_all_list_view_check_box_patterns[mtype] = []
         }
@@ -2522,7 +2521,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
         let o_store = store_of_tab_controller()
         if ( o_store && cb_pattern ) {
             const mtype = window._current_mtype
-            let obj_store = store_of_blg_entry_manager(mtype)
+            let obj_store = store_of_entrys_entry_manager(mtype)
             if ( obj_store ) {
                 let id_list = cb_pattern.map(cb_state => {
                     if ( cb_state.state ) {
@@ -2689,27 +2688,27 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
     // EDIT WINDOW  ['drafts'] and create
 
     // change support
-    function update_blg_entry_properties_edit(mtype,msg_id) {
+    function update_entrys_entry_properties_edit(mtype,msg_id) {
         //
         let message = get_message_from_store(mtype,msg_id)
         if ( message ) {
-            g_current_edit_email = message
+            g_current_edit_entry = message
             //
-            let m_prop_el = document.getElementById("edit-blg-entry-sender")
+            let m_prop_el = document.getElementById("edit-entrys-entry-sender")
             if ( m_prop_el ) { m_prop_el.value = message.sender }
 
-            // m_prop_el = document.getElementById("edit-blg-entry-recipient")
+            // m_prop_el = document.getElementById("edit-entrys-entry-recipient")
             // if ( m_prop_el ) { m_prop_el.value = message.recipient }
             //
-            // m_prop_el = document.getElementById("edit-blg-entry-cc")
+            // m_prop_el = document.getElementById("edit-entrys-entry-cc")
             // if ( m_prop_el ) { m_prop_el.value = message.cc }
             //
-            m_prop_el = document.getElementById("edit-blg-entry-subject")
+            m_prop_el = document.getElementById("edit-entrys-entry-subject")
             if ( m_prop_el ) { m_prop_el.value = message.subject }
-            m_prop_el = document.getElementById("edit-blg-entry-date")
+            m_prop_el = document.getElementById("edit-entrys-entry-date")
             if ( m_prop_el ) { m_prop_el.innerHTML = message.date }
             //
-            store_current_blg_entry_undo_stack()
+            store_current_entrys_entry_undo_stack()
             if ( message.attachments ) {
                 clear_atts_list('edit')
                 add_atts_to_list('edit',message.attachments)
@@ -2721,56 +2720,56 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
     }
 
 
-    function unload_blg_entry_for_undo(email) {
-        if ( email ) {
-            let id = email.id
-            let sender = email.sender
-            let recipient = email.recipient
-            let cc = email.cc
-            let subject = email.subject
-            let text = email.text
-            let date = email.date
-            let timestamp = email.timestamp
-            email.dirty = false
+    function unload_entrys_entry_for_undo(entry) {
+        if ( entry ) {
+            let id = entry.id
+            let sender = entry.sender
+            let recipient = entry.recipient
+            let cc = entry.cc
+            let subject = entry.subject
+            let text = entry.text
+            let date = entry.date
+            let timestamp = entry.timestamp
+            entry.dirty = false
             return { id, sender, recipient, cc, subject, text, date, timestamp }
         }
     }
 
 
-    function reload_blg_entry_by_undo(email,old_values) {
-        if ( email ) {
-            email.id = old_values.id
-            email.sender = old_values.sender
-            email.recipient = old_values.recipient
-            email.cc = old_values.cc
-            email.subject = old_values.subject
-            email.text = old_values.text
-            email.date = old_values.date
-            email.timestamp = old_values.timestamp
-            email.dirty = false
+    function reload_entrys_entry_by_undo(entry,old_values) {
+        if ( entry ) {
+            entry.id = old_values.id
+            entry.sender = old_values.sender
+            entry.recipient = old_values.recipient
+            entry.cc = old_values.cc
+            entry.subject = old_values.subject
+            entry.text = old_values.text
+            entry.date = old_values.date
+            entry.timestamp = old_values.timestamp
+            entry.dirty = false
         }
     }
 
-    function unequal_objects(save_email,stored_email) {
-        if ( save_email && stored_email ) {
-            if ( save_email.id !== stored_email.id ) return true
-            if ( save_email.sender !== stored_email.sender ) return true
-            if ( save_email.recipient !== stored_email.recipient ) return true
-            if ( save_email.cc !== stored_email.cc ) return true
-            if ( save_email.subject !== stored_email.subject ) return true
-            if ( save_email.text !== stored_email.text ) return true
-            if ( save_email.date !== stored_email.date ) return true
-            if ( save_email.timestamp !== stored_email.timestamp ) return true
+    function unequal_objects(save_entry,stored_entry) {
+        if ( save_entry && stored_entry ) {
+            if ( save_entry.id !== stored_entry.id ) return true
+            if ( save_entry.sender !== stored_entry.sender ) return true
+            if ( save_entry.recipient !== stored_entry.recipient ) return true
+            if ( save_entry.cc !== stored_entry.cc ) return true
+            if ( save_entry.subject !== stored_entry.subject ) return true
+            if ( save_entry.text !== stored_entry.text ) return true
+            if ( save_entry.date !== stored_entry.date ) return true
+            if ( save_entry.timestamp !== stored_entry.timestamp ) return true
         }
         return true
     }
 
-    function store_current_blg_entry_undo_stack() {
-        if ( g_current_edit_email ) {
-            const email = g_current_edit_email
-            let save_email = unload_blg_entry_for_undo(g_current_edit_email)
-            if ( unequal_objects(save_email,email._saved_updates[0]) ) {
-                email._saved_updates.unshift(save_email)
+    function store_current_entrys_entry_undo_stack() {
+        if ( g_current_edit_entry ) {
+            const entry = g_current_edit_entry
+            let save_entry = unload_entrys_entry_for_undo(g_current_edit_entry)
+            if ( unequal_objects(save_entry,entry._saved_updates[0]) ) {
+                entry._saved_updates.unshift(save_entry)
             }
         }
     }
@@ -2782,7 +2781,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
             //
             let m_prop_el = document.getElementById("view-contact-name")
             if ( m_prop_el ) { m_prop_el.innerHTML = contact.name }
-            m_prop_el = document.getElementById("view-contact-email")
+            m_prop_el = document.getElementById("view-contact-entry")
             if ( m_prop_el ) { m_prop_el.innerHTML = contact.email }
             //
             m_prop_el = document.getElementById("edit-contact-name")
@@ -2837,7 +2836,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
         } else return
         let m_prop_el = document.getElementById(date_el_id)
         if ( m_prop_el ) { m_prop_el.innerHTML = message.date }
-        if ( date_el_id === "edit-blg-entry-date" ) {
+        if ( date_el_id === "edit-entrys-entry-date" ) {
             sort_one_or_more('drafts')
         } else {
             sort_one_or_more('contacts')
@@ -2846,72 +2845,72 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 
 
 
-    let g_current_edit_email = false
+    let g_current_edit_entry = false
     let g_current_edit_contact = false
     function setup_edit_response() {
         //
-        let msg_editor = document.getElementById("blg_entry_message_contents_edit")
+        let msg_editor = document.getElementById("entrys_entry_message_contents_edit")
         if ( msg_editor ) {
             msg_editor.addEventListener('input', (event) => {
-                if ( g_current_edit_email ) {
-                    g_current_edit_email.text = event.target.innerHTML
-                    update_just_date(g_current_edit_email,"edit-blg-entry-date")
-                    g_current_edit_email.dirty = true
+                if ( g_current_edit_entry ) {
+                    g_current_edit_entry.text = event.target.innerHTML
+                    update_just_date(g_current_edit_entry,"edit-entrys-entry-date")
+                    g_current_edit_entry.dirty = true
                 }
             });
         }
         //
-        let m_prop_el = document.getElementById("edit-blg-entry-sender")
+        let m_prop_el = document.getElementById("edit-entrys-entry-sender")
         if ( m_prop_el ) {
             m_prop_el.addEventListener('change', (event) => {
-                if ( g_current_edit_email ) {
-                    g_current_edit_email.sender = event.target.value
-                    update_just_date(g_current_edit_email,"edit-blg-entry-date")
-                    g_current_edit_email.dirty = true
+                if ( g_current_edit_entry ) {
+                    g_current_edit_entry.sender = event.target.value
+                    update_just_date(g_current_edit_entry,"edit-entrys-entry-date")
+                    g_current_edit_entry.dirty = true
                 }
             });
         }
         //
-        // m_prop_el = document.getElementById("edit-blg-entry-recipient")
+        // m_prop_el = document.getElementById("edit-entrys-entry-recipient")
         // if ( m_prop_el ) {
         //     m_prop_el.addEventListener('change', (event) => {
-        //         if ( g_current_edit_email ) {
-        //             g_current_edit_email.recipient = event.target.value
-        //             update_just_date(g_current_edit_email,"edit-blg-entry-date")
-        //             g_current_edit_email.dirty = true
+        //         if ( g_current_edit_entry ) {
+        //             g_current_edit_entry.recipient = event.target.value
+        //             update_just_date(g_current_edit_entry,"edit-entrys-entry-date")
+        //             g_current_edit_entry.dirty = true
         //         }
         //     });
         // }
         //
-        // m_prop_el = document.getElementById("edit-blg-entry-cc")
+        // m_prop_el = document.getElementById("edit-entrys-entry-cc")
         // if ( m_prop_el ) {
         //     m_prop_el.addEventListener('change', (event) => {
-        //         if ( g_current_edit_email ) {
-        //             g_current_edit_email.cc = event.target.value
-        //             update_just_date(g_current_edit_email,"edit-blg-entry-date")
-        //             g_current_edit_email.dirty = true
+        //         if ( g_current_edit_entry ) {
+        //             g_current_edit_entry.cc = event.target.value
+        //             update_just_date(g_current_edit_entry,"edit-entrys-entry-date")
+        //             g_current_edit_entry.dirty = true
         //         }
         //     });
         // }
         // //
-        // m_prop_el = document.getElementById("edit-blg-entry-bcc")
+        // m_prop_el = document.getElementById("edit-entrys-entry-bcc")
         // if ( m_prop_el ) {
         //     m_prop_el.addEventListener('change', (event) => {
-        //         if ( g_current_edit_email ) {
-        //             g_current_edit_email.bcc = event.target.value
-        //             update_just_date(g_current_edit_email,"edit-blg-entry-date")
-        //             g_current_edit_email.dirty = true
+        //         if ( g_current_edit_entry ) {
+        //             g_current_edit_entry.bcc = event.target.value
+        //             update_just_date(g_current_edit_entry,"edit-entrys-entry-date")
+        //             g_current_edit_entry.dirty = true
         //         }
         //     });
         // }
         //
-        m_prop_el = document.getElementById("edit-blg-entry-subject")
+        m_prop_el = document.getElementById("edit-entrys-entry-subject")
         if ( m_prop_el ) {
             m_prop_el.addEventListener('change', (event) => {
-                if ( g_current_edit_email ) {
-                    g_current_edit_email.subject = event.target.value
-                    update_just_date(g_current_edit_email,"edit-blg-entry-date")
-                    g_current_edit_email.dirty = true
+                if ( g_current_edit_entry ) {
+                    g_current_edit_entry.subject = event.target.value
+                    update_just_date(g_current_edit_entry,"edit-entrys-entry-date")
+                    g_current_edit_entry.dirty = true
                 }
             });
         }
@@ -2957,10 +2956,10 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
     }
 
  
-    function blg_entry_create() {
-        blg_entry_switch_to('drafts')
-        let sect_box = `#blg_entry_edit`
-        let msg_view = document.getElementById("blg_entry_message_contents_edit")
+    function entrys_entry_create() {
+        entrys_entry_switch_to('drafts')
+        let sect_box = `#entrys_entry_edit`
+        let msg_view = document.getElementById("entrys_entry_message_contents_edit")
         if ( msg_view ) {
            let id = get_next_id()
             let draft = add_empty_draft(id)
@@ -2972,8 +2971,8 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
                 <br> ${clear_text}
                 <br> will be adding text here`
                 //
-                g_current_edit_email = draft
-                update_blg_entry_properties_edit("drafts",msg_id)
+                g_current_edit_entry = draft
+                update_entrys_entry_properties_edit("drafts",msg_id)
             }
         }
         pinBox(sect_box)
@@ -2982,10 +2981,10 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 
 
     function edit_from_draft(msg_id) {
-        let sect_box = `#blg_entry_edit`
-        let msg_view = document.getElementById("blg_entry_message_contents_edit")
+        let sect_box = `#entrys_entry_edit`
+        let msg_view = document.getElementById("entrys_entry_message_contents_edit")
         if ( msg_view ) {
-            update_blg_entry_properties_edit("drafts",msg_id)
+            update_entrys_entry_properties_edit("drafts",msg_id)
             let clear_text = get_text_from_store("drafts",msg_id)
             msg_view.innerHTML = clear_text
         }
@@ -2998,18 +2997,18 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
     //
 
     // item view support
-    function update_blg_entry_properties_view(mtype,msg_id) {
+    function update_entrys_entry_properties_view(mtype,msg_id) {
         //
         let message = get_message_from_store(mtype,msg_id)
         if ( message ) {
-            g_current_edit_email = message
-            let m_prop_el = document.getElementById("view-blg-entry-sender")
+            g_current_edit_entry = message
+            let m_prop_el = document.getElementById("view-entrys-entry-sender")
             if ( m_prop_el ) { m_prop_el.innerHTML = message.sender }
-            m_prop_el = document.getElementById("view-blg-entry-recipient")
+            m_prop_el = document.getElementById("view-entrys-entry-recipient")
             if ( m_prop_el ) { m_prop_el.innerHTML = message.recipient }
-            m_prop_el = document.getElementById("view-blg-entry-subject")
+            m_prop_el = document.getElementById("view-entrys-entry-subject")
             if ( m_prop_el ) { m_prop_el.innerHTML = message.subject }
-            m_prop_el = document.getElementById("view-blg-entry-date")
+            m_prop_el = document.getElementById("view-entrys-entry-date")
             if ( m_prop_el ) { m_prop_el.innerHTML = message.date }
             if ( message.attachments ) {
                 clear_atts_list('view')
@@ -3026,10 +3025,10 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
         if (event.target.type === 'checkbox') {
             return; // Do nothing if the checkbox was clicked
         }
-        let sect_box = `#blg_entry_view`
-        let msg_view = document.getElementById("blg_entry_message_contents")
+        let sect_box = `#entrys_entry_view`
+        let msg_view = document.getElementById("entrys_entry_message_contents")
         if ( msg_view ) {
-            update_blg_entry_properties_view("blog",msg_id)
+            update_entrys_entry_properties_view("blog",msg_id)
             let check_box_marker = document.getElementById(`grid-card-stats-checker-${msg_id}`)
             if ( check_box_marker ) {
                 check_box_marker.checked = true
@@ -3045,10 +3044,10 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 
     //
     function view_from_notify(msg_id) {
-        let sect_box = `#blg_entry_view`
-        let msg_view = document.getElementById("blg_entry_message_contents")
+        let sect_box = `#entrys_entry_view`
+        let msg_view = document.getElementById("entrys_entry_message_contents")
         if ( msg_view ) {
-            update_blg_entry_properties_view("notify",msg_id)
+            update_entrys_entry_properties_view("notify",msg_id)
             let clear_text = get_text_from_store("notify",msg_id)
             msg_view.innerHTML = `picked message id = ${msg_id} <br> ${clear_text}`
         }
@@ -3056,10 +3055,10 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
     }
     //
     function view_from_published(msg_id) {
-        let sect_box = `#blg_entry_view`
-        let msg_view = document.getElementById("blg_entry_message_contents")
+        let sect_box = `#entrys_entry_view`
+        let msg_view = document.getElementById("entrys_entry_message_contents")
         if ( msg_view ) {
-            update_blg_entry_properties_view("published",msg_id)
+            update_entrys_entry_properties_view("published",msg_id)
             let clear_text = get_text_from_store("published",msg_id)
             msg_view.innerHTML = `picked message id = ${msg_id} <br> ${clear_text}`
         }
@@ -3067,10 +3066,10 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
     }
     //
     function view_from_trash(msg_id) {
-        let sect_box = `#blg_entry_view`
-        let msg_view = document.getElementById("blg_entry_message_contents")
+        let sect_box = `#entrys_entry_view`
+        let msg_view = document.getElementById("entrys_entry_message_contents")
         if ( msg_view ) {
-            update_blg_entry_properties_view("trash",msg_id)
+            update_entrys_entry_properties_view("trash",msg_id)
             let clear_text = get_text_from_store("trash",msg_id)
             msg_view.innerHTML = `picked message id = ${msg_id} <br> ${clear_text}`
         }
@@ -3147,8 +3146,8 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
      * 
      */
     function set_blog_view_contents(bobj) {
-        let title_el = document.getElementById("blg_entry_message_title")
-        let content_el = document.getElementById("blg_entry_message_contents")
+        let title_el = document.getElementById("entrys_entry_message_title")
+        let content_el = document.getElementById("entrys_entry_message_contents")
         if ( title_el && content_el ) {
             title_el.innerText = bobj.subject
             content_el.innerHTML = bobj.text
@@ -3177,7 +3176,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
     
 
     function set_banner_search_selector(mtype) {
-        let ts_banner_selector = document.getElementById("banner_blg_entry_type_selector")
+        let ts_banner_selector = document.getElementById("banner_entrys_entry_type_selector")
         if ( ts_banner_selector ) {
             if ( mtype === 'contacts' ) {
                 ts_banner_selector.style.display = 'none'
@@ -3191,13 +3190,13 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 
     function search_ui(mtype) {
         //
-        let type_select = document.getElementById("blg_entry_type_select")
-        let ts_label = document.getElementById("blg_entry_type_select_label")
-        let ts_selector = document.getElementById("blg_entry_type_selector")
-        let ts_banner_selector = document.getElementById("banner_blg_entry_type_selector")
+        let type_select = document.getElementById("entrys_entry_type_select")
+        let ts_label = document.getElementById("entrys_entry_type_select_label")
+        let ts_selector = document.getElementById("entrys_entry_type_selector")
+        let ts_banner_selector = document.getElementById("banner_entrys_entry_type_selector")
 
         if ( mtype === 'contacts' ) {
-            blg_entry_switch_to('contacts')
+            entrys_entry_switch_to('contacts')
             if ( type_select && ts_label ) {
                 type_select.style.display = "none"
                 ts_label.style.display = "none"
@@ -3213,7 +3212,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
                     if ( ts_banner_selector ) ts_banner_selector.value = mtype
                 }
             }
-            blg_entry_switch_to(mtype)
+            entrys_entry_switch_to(mtype)
         }
         //
         open_search_box()
@@ -3246,10 +3245,10 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
         delete_entries_from_server(from,id_list)
     }
 
-    const blg_entry_op_message_el = document.getElementById("chosen_operation")
+    const entrys_entry_op_message_el = document.getElementById("chosen_operation")
     const contact_op_message_el = document.getElementById("chosen_contact_operation")
     //
-    const blg_entry_op_dialog = document.getElementById('blg-entry-ops-modal');
+    const entrys_entry_op_dialog = document.getElementById('entrys-entry-ops-modal');
     const contact_op_dialog = document.getElementById('contact-ops-modal');
     const search_op_dialog = document.getElementById('search-ops-modal');
     const select_all_op_dialog = document.getElementById('select-all-ops-modal');
@@ -3261,14 +3260,14 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
         if ( category === "contacts" ) {
             contact_op_message_el.innerHTML = msg
         } else {
-            blg_entry_op_message_el.innerHTML = msg
+            entrys_entry_op_message_el.innerHTML = msg
         }
     }
 
     function show_op_buttons(display_this_one) {
-        let mtypes = window._x_share_blg_entry_classes
+        let mtypes = window._x_share_entrys_entry_classes
         for ( let mtype of mtypes ) {
-            let mops = document.getElementById(`blg-entry-ops-${mtype}`)
+            let mops = document.getElementById(`entrys-entry-ops-${mtype}`)
             if ( mops ) {
                 mops.style.display = "none"
             }
@@ -3284,27 +3283,27 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
         select_all_op_cb_on_ops.checked = false
     }
 
-    let g_current_blg_entry_list_for_op = []
+    let g_current_entrys_entry_list_for_op = []
 
     async function collect_entries_list_for_op(mtype) {
         let m_list = await get_checked_messages(mtype)
         if ( m_list) {
-            g_current_blg_entry_list_for_op = m_list.map(id => parseInt(id))
+            g_current_entrys_entry_list_for_op = m_list.map(id => parseInt(id))
         }
     }
 
-    async function do_op_modal(mtype,blg_entry_id_list_set = false) {
+    async function do_op_modal(mtype,entrys_entry_id_list_set = false) {
         disable_ok_button()
         disable_selall_ok_button()
-        let m_list = blg_entry_id_list_set ? false : await get_checked_messages_or_ask_for_all(mtype)
-        if ( m_list || blg_entry_id_list_set ) {
-            if ( !(blg_entry_id_list_set) ) {
-                g_current_blg_entry_list_for_op = m_list.map(id => parseInt(id))
+        let m_list = entrys_entry_id_list_set ? false : await get_checked_messages_or_ask_for_all(mtype)
+        if ( m_list || entrys_entry_id_list_set ) {
+            if ( !(entrys_entry_id_list_set) ) {
+                g_current_entrys_entry_list_for_op = m_list.map(id => parseInt(id))
             }
-            const dialog = document.getElementById('blg-entry-ops-modal');
+            const dialog = document.getElementById('entrys-entry-ops-modal');
             if ( dialog ) {
-                reset_op_starter_message('email',"<u>Please select an action to perform.</u>")
-                show_op_buttons(`blg-entry-ops-${mtype}`)
+                reset_op_starter_message(mtype,"<u>Please select an action to perform.</u>")
+                show_op_buttons(`entrys-entry-ops-${mtype}`)
                 dialog.showModal();
             }
         }
@@ -3317,21 +3316,21 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
             let mtype = window._current_mtype
             restore_checkbox_pattern(mtype)
             if ( g_var_restoreable_checkbox_ids ) {
-                g_current_blg_entry_list_for_op = g_var_restoreable_checkbox_ids
+                g_current_entrys_entry_list_for_op = g_var_restoreable_checkbox_ids
                 g_var_restoreable_checkbox_ids = false
             }
             reset_select_all_op_cb()
         }
     }
 
-    function single_blg_entry_ops(event) {
+    function single_entrys_entry_ops(event) {
         disable_ok_button()
-        let save_entries_for_ops = g_current_blg_entry_list_for_op
+        let save_entries_for_ops = g_current_entrys_entry_list_for_op
         let mtype = window._current_mtype
-        let email = g_current_edit_email
-        if ( email && (typeof mtype === "string") && (mtype !== 'contact') ) {
-            let id = email.id
-            g_current_blg_entry_list_for_op = [id]
+        let entry = g_current_edit_entry
+        if ( entry && (typeof mtype === "string") && (mtype !== 'contact') ) {
+            let id = entry.id
+            g_current_entrys_entry_list_for_op = [id]
             g_var_restoreable_checkbox_ids = save_entries_for_ops
             g_var_restoreable_mtype = mtype
             do_op_modal(mtype,true)
@@ -3362,14 +3361,14 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 
 
 
-    async function is_ready_to_publish_blg_entry(email) {
-        // is_ready_to_send_email
-        if ( email ) {
+    async function is_ready_to_publish_entrys_entry(entry) {
+        // is_ready_to_send_entry
+        if ( entry ) {
             // ---- ---- ---- ---- ---- ---- ---- ----
-            let recipient = email.recipient
-            let sender = email.sender
-            let subject = email.subject
-            let text = email.text
+            let recipient = entry.recipient
+            let sender = entry.sender
+            let subject = entry.subject
+            let text = entry.text
             let ready = true
             // ---- ---- ---- ---- ---- ---- ---- ----
             ready &&= (recipient.length !== 0)
@@ -3400,8 +3399,8 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
     }
 
 
-    async function publish_blg_entry_list(from) {
-        let id_list = g_current_blg_entry_list_for_op
+    async function publish_entrys_entry_list(from) {
+        let id_list = g_current_entrys_entry_list_for_op
         let object_list = get_list_of_objects(from,id_list)
         if ( object_list && object_list.length ) {
             if ( await publish_items(object_list) ) {
@@ -3411,15 +3410,15 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
         }
     }
 
-    async function do_publish_blg_entries(event) {
-        let email = g_current_edit_email
-        if ( email ) {
-            if ( await is_ready_to_publish_blg_entry(email) ) {
-                let save_blg_entry_list_for_op = g_current_blg_entry_list_for_op
-                g_current_blg_entry_list_for_op = [email.id]
-                await publish_blg_entry_list('drafts')
-                g_current_blg_entry_list_for_op = save_blg_entry_list_for_op
-                blg_entry_switch_to('published')
+    async function do_publish_entrys_entries(event) {
+        let entry = g_current_edit_entry
+        if ( entry ) {
+            if ( await is_ready_to_publish_entrys_entry(entry) ) {
+                let save_entrys_entry_list_for_op = g_current_entrys_entry_list_for_op
+                g_current_entrys_entry_list_for_op = [entry.id]
+                await publish_entrys_entry_list('drafts')
+                g_current_entrys_entry_list_for_op = save_entrys_entry_list_for_op
+                entrys_entry_switch_to('published')
                 return true
             }
         }
@@ -3427,17 +3426,17 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
     }
 
 
-    async function do_publish_blg_entry_closefader(event) {
+    async function do_publish_entrys_entry_closefader(event) {
         event.preventDefault()
-        let status = await do_publish_blg_entries(event)
+        let status = await do_publish_entrys_entries(event)
         if ( status ) {
-            closefader(event,'blg_entry_edit')
+            closefader(event,'entrys_entry_edit')
         }
     }
 
 
-    function blg_entry_list_move_to(from,to) {
-        let id_list = g_current_blg_entry_list_for_op
+    function entrys_entry_list_move_to(from,to) {
+        let id_list = g_current_entrys_entry_list_for_op
         let object_list = get_list_of_objects(from,id_list)
         if ( object_list && object_list.length ) {
             add_objects_to_list(to,object_list)
@@ -3445,16 +3444,16 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
         }
     }
 
-    function blg_entry_list_copy_to(from,to) {
-        let id_list = g_current_blg_entry_list_for_op
+    function entrys_entry_list_copy_to(from,to) {
+        let id_list = g_current_entrys_entry_list_for_op
         let object_list = get_list_of_objects(from,id_list)
         if ( object_list && object_list.length ) {
             add_objects_to_list(to,object_list)
         }
     }
 
-    function blg_entry_list_delete(from) {
-        let id_list = g_current_blg_entry_list_for_op
+    function entrys_entry_list_delete(from) {
+        let id_list = g_current_entrys_entry_list_for_op
         if ( id_list && id_list.length ) {
             delete_objects_from_list(from,id_list)
         }
@@ -3462,40 +3461,40 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 
 
 
-    function increment_blg_entry_save_count() {
-        if ( g_current_edit_email ) {
-            g_current_edit_email._count_edits++
-            g_current_edit_email.dirty = false
+    function increment_entrys_entry_save_count() {
+        if ( g_current_edit_entry ) {
+            g_current_edit_entry._count_edits++
+            g_current_edit_entry.dirty = false
         }
     }
 
-    function blg_entry_edit_mode_reset(event) {
-        if ( g_current_edit_email && g_current_edit_email.dirty ) {
-            let revert_email = g_current_edit_email
-            let previous_values = revert_email._saved_updates.shift()  // this is the last saved version, does not undo more{
+    function entrys_entry_edit_mode_reset(event) {
+        if ( g_current_edit_entry && g_current_edit_entry.dirty ) {
+            let revert_entry = g_current_edit_entry
+            let previous_values = revert_entry._saved_updates.shift()  // this is the last saved version, does not undo more{
             if ( previous_values ) {
-                reload_blg_entry_by_undo(revert_email,previous_values)
+                reload_entrys_entry_by_undo(revert_entry,previous_values)
                 sort_one_or_more('drafts')
             }
-        } else if ( g_current_edit_email && (g_current_edit_email._count_edits === 0) ) {
-            let save_checked_entries = g_current_blg_entry_list_for_op
-            g_current_blg_entry_list_for_op = [g_current_edit_email.id]
-            blg_entry_list_delete('drafts')
+        } else if ( g_current_edit_entry && (g_current_edit_entry._count_edits === 0) ) {
+            let save_checked_entries = g_current_entrys_entry_list_for_op
+            g_current_entrys_entry_list_for_op = [g_current_edit_entry.id]
+            entrys_entry_list_delete('drafts')
         }
     }
 
-    function edit_blg_entry_save(event) {
-        increment_blg_entry_save_count()
-        save_blg_entries(g_current_edit_email)
+    function edit_entrys_entry_save(event) {
+        increment_entrys_entry_save_count()
+        save_entrys_entries(g_current_edit_entry)
     }
 
-    function void_current_edit_blg_entry() {
-        g_current_edit_email = false
+    function void_current_edit_entrys_entry() {
+        g_current_edit_entry = false
     }
 
 
     function disable_ok_button() {
-        let ok_btn = document.getElementById("blg-entry-ops-modal-ok")
+        let ok_btn = document.getElementById("entrys-entry-ops-modal-ok")
         if ( ok_btn ) {
             ok_btn.disabled = true
         }
@@ -3503,7 +3502,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 
 
     function enable_ok_button() {
-        let ok_btn = document.getElementById("blg-entry-ops-modal-ok")
+        let ok_btn = document.getElementById("entrys-entry-ops-modal-ok")
         if ( ok_btn ) {
             ok_btn.disabled = false
         }
@@ -3531,11 +3530,11 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
         if ( checkedBoxes.length > 0 ) {
             enable_ok_button()
         } else {
-            if ( g_current_edit_email !== false ) {
-                if ( g_current_blg_entry_list_for_op.length === 0 ) {
-                    g_current_blg_entry_list_for_op.unshift(g_current_edit_email.id)   
+            if ( g_current_edit_entry !== false ) {
+                if ( g_current_entrys_entry_list_for_op.length === 0 ) {
+                    g_current_entrys_entry_list_for_op.unshift(g_current_edit_entry.id)   
                 }
-                if ( g_current_blg_entry_list_for_op[0] == g_current_edit_email.id ) {
+                if ( g_current_entrys_entry_list_for_op[0] == g_current_edit_entry.id ) {
                     enable_ok_button()
                 }
             }
@@ -3546,9 +3545,9 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
     function disable_ok_button_if_no_selection(mtype) {
         let checkedBoxes = document.querySelectorAll(`.${mtype}_check_select:checked`);
         if ( checkedBoxes.length === 0 ) {
-            if ( g_current_edit_email !== false ) {
-                if ( g_current_blg_entry_list_for_op.length === 0 ) {
-                    g_current_blg_entry_list_for_op.unshift(g_current_edit_email.id)   
+            if ( g_current_edit_entry !== false ) {
+                if ( g_current_entrys_entry_list_for_op.length === 0 ) {
+                    g_current_entrys_entry_list_for_op.unshift(g_current_edit_entry.id)   
                 }
                 return
             }
@@ -3557,41 +3556,41 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
     }
 
 
-    function prep_publish_blg_entry_list(from) {
-        if ( blg_entry_op_message_el ) {
-            blg_entry_op_message_el.innerText = "Publish selected entries?"
-            blg_entry_op_dialog._acceptance_action = () => {
+    function prep_publish_entrys_entry_list(from) {
+        if ( entrys_entry_op_message_el ) {
+            entrys_entry_op_message_el.innerText = "Publish selected entries?"
+            entrys_entry_op_dialog._acceptance_action = () => {
                 if ( confirm("This decision if final. Proceed?") ) {
-                    publish_blg_entry_list(from)
+                    publish_entrys_entry_list(from)
                 }
             }
             enable_ok_button_if_any_selected(from)
         }
     }
-    function prep_blg_entry_list_move_to(from,to) {
-        if ( blg_entry_op_message_el ) {
-            blg_entry_op_message_el.innerText = `Move these entries from ${from} to ${to}?`
-            blg_entry_op_dialog._acceptance_action = () => {
-                blg_entry_list_move_to(from,to)
+    function prep_entrys_entry_list_move_to(from,to) {
+        if ( entrys_entry_op_message_el ) {
+            entrys_entry_op_message_el.innerText = `Move these entries from ${from} to ${to}?`
+            entrys_entry_op_dialog._acceptance_action = () => {
+                entrys_entry_list_move_to(from,to)
             }
             enable_ok_button_if_any_selected(from)
         }
     }
-    function prep_blg_entry_list_copy_to(from,to) {
-        if ( blg_entry_op_message_el ) {
-            blg_entry_op_message_el.innerText = `Clopy these entries from ${from} to ${to}?`
-            blg_entry_op_dialog._acceptance_action = () => {
-                blg_entry_list_copy_to(from,to)
+    function prep_entrys_entry_list_copy_to(from,to) {
+        if ( entrys_entry_op_message_el ) {
+            entrys_entry_op_message_el.innerText = `Clopy these entries from ${from} to ${to}?`
+            entrys_entry_op_dialog._acceptance_action = () => {
+                entrys_entry_list_copy_to(from,to)
             }
             enable_ok_button_if_any_selected(from)
         }
     }
-    function prep_blg_entry_list_delete(from) {
-        if ( blg_entry_op_message_el ) {
-            blg_entry_op_message_el.innerText = `Permanently delete these entries?`
-            blg_entry_op_dialog._acceptance_action = () => {
+    function prep_entrys_entry_list_delete(from) {
+        if ( entrys_entry_op_message_el ) {
+            entrys_entry_op_message_el.innerText = `Permanently delete these entries?`
+            entrys_entry_op_dialog._acceptance_action = () => {
                 if ( confirm("This action cannot be undone. Proceed?") ) {
-                    blg_entry_list_delete(from)
+                    entrys_entry_list_delete(from)
                 }
             }
             enable_ok_button_if_any_selected(from)
@@ -3600,20 +3599,20 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 
 
 
-    function prep_blg_entry_list_reply_to(from) {
-        if ( blg_entry_op_message_el ) {
-            blg_entry_op_message_el.innerText = `Reply to these entries?`
-            blg_entry_op_dialog._acceptance_action = () => {
+    function prep_entrys_entry_list_reply_to(from) {
+        if ( entrys_entry_op_message_el ) {
+            entrys_entry_op_message_el.innerText = `Reply to these entries?`
+            entrys_entry_op_dialog._acceptance_action = () => {
                 reply_to_entries(from)
             }
             enable_ok_button_if_any_selected(from)
         }
     }
 
-    function prep_blg_entry_list_reply_all(from) {
-        if ( blg_entry_op_message_el ) {
-            blg_entry_op_message_el.innerText = `Reply to all readers of these entries?`
-            blg_entry_op_dialog._acceptance_action = () => {
+    function prep_entrys_entry_list_reply_all(from) {
+        if ( entrys_entry_op_message_el ) {
+            entrys_entry_op_message_el.innerText = `Reply to all readers of these entries?`
+            entrys_entry_op_dialog._acceptance_action = () => {
                 reply_all_to_entries(from)
             }
             enable_ok_button_if_any_selected(from)
@@ -3630,7 +3629,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
      */
     function reply_to_entries(from) {
         enable_ok_button_if_any_selected(from)
-        setup_blg_entry_reply_editing(from)
+        setup_entrys_entry_reply_editing(from)
     }
 
     function reply_all_to_entries(from) {
@@ -3640,10 +3639,10 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 
     /**
      */
-    function setup_blg_entry_reply_editing(from) {
+    function setup_entrys_entry_reply_editing(from) {
 
     }
-    function setup_blg_entry_reply_all_editing(from) {
+    function setup_entrys_entry_reply_all_editing(from) {
 
     }
     
@@ -4350,7 +4349,7 @@ function preventDefaults(e) {
     e.stopPropagation();
 }
 
-const dropZone = document.getElementById('edit-blg-entry-attachments');
+const dropZone = document.getElementById('edit-entrys-entry-attachments');
 
 // 1. Prevent default behaviors for all drag/drop events
 ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
@@ -4675,8 +4674,8 @@ post_submit
         return new Uint8Array(hash).toBase64()
     }
 
-    function gen_json_id(blg_entry_ob) {
-        if ( blg_entry_obj ) {
+    function gen_json_id(entrys_entry_ob) {
+        if ( entrys_entry_obj ) {
             return 10
         } else {
             let current_user_name = window._current_user_account.name
@@ -4689,7 +4688,7 @@ post_submit
             this.id = 10 // get a good method for this id
             let user = window._current_user_account.name
             this.params = {
-                "blg_entry_type" : mtype,
+                "entrys_entry_type" : mtype,
                 "user" : user,
                 "params" : params,
                 "date" : Date.now()
@@ -4767,7 +4766,7 @@ function switch_slots(event) {
     */
 
 
-    // blg_entry_proto = 
+    // entrys_entry_proto = 
     // "id" : 1,
     // "sender" : "richard@myhost.local", 
     // "category" : "cecks",
@@ -4786,22 +4785,22 @@ function switch_slots(event) {
 
     // TALK TO THE SERVER
     async function load_a_bunch_of_entries(mtype) {
-        let data = new MailJsonRpc(mtype,"get-mail")
+        let data = new MailJsonRpc(mtype,"get-entry")
 
         let port = web_page_port
-        let url = `http://localhost:${port}/json/email`
+        let url = `http://localhost:${port}/json/entry`
         let rpc_result = await postData(url, data)
         if ( rpc_result && (rpc_result.error === undefined) ) {
             console.log(rpc_result)
             if ( rpc_result.result === undefined ) return []
             let entries = rpc_result.result
 
-            for ( let email of entries ) {
-                email.created_when = _x_test_blg_entry_proto.created_when
-                email.updated_when = _x_test_blg_entry_proto.updated_when
-                email.description = _x_test_blg_entry_proto.description
-                email.score = _x_test_blg_entry_proto.score
-                email.keys =_x_test_blg_entry_proto.keys
+            for ( let entry of entries ) {
+                entry.created_when = _x_test_entrys_entry_proto.created_when
+                entry.updated_when = _x_test_entrys_entry_proto.updated_when
+                entry.description = _x_test_entrys_entry_proto.description
+                entry.score = _x_test_entrys_entry_proto.score
+                entry.keys =_x_test_entrys_entry_proto.keys
             }
 
 
@@ -4814,7 +4813,7 @@ function switch_slots(event) {
         let data = new MailJsonRpc('contacts',"get-contacts")
 
         let port = web_page_port
-        let url = `http://localhost:${port}/json/email`
+        let url = `http://localhost:${port}/json/entry`
         let rpc_result = await postData(url, data)
         if ( rpc_result && (rpc_result.error === undefined) ) {
             console.log(rpc_result)
@@ -4828,14 +4827,14 @@ function switch_slots(event) {
     // * delete_objects_from_list
     // * remove_one_contact
     // * publish_items
-    // * save_mail -- to drafts
+    // * save_entry -- to drafts
     // * save_contact
 
     /* 
-    "get-mail"
-    "store-mail"
-    "remove-mail"
-    "send-mail"
+    "get-entry"
+    "store-entry"
+    "remove-entry"
+    "send-entry"
     "store-draft"
     "get-contacts"
     "store-contact"
@@ -4846,10 +4845,10 @@ function switch_slots(event) {
      */
     async function add_entries_to_server(to,object_list) {
         // server communication
-        let data = new MailJsonRpc(to,"store-mail",object_list)
+        let data = new MailJsonRpc(to,"store-entry",object_list)
         //
         let port = web_page_port
-        let url = `http://localhost:${port}/json/email`
+        let url = `http://localhost:${port}/json/entry`
         let rpc_result = await postData(url, data)
         if ( rpc_result && (rpc_result.error === undefined) ) {
             console.log(rpc_result)
@@ -4862,10 +4861,10 @@ function switch_slots(event) {
      */
     async function delete_entries_from_server(from,id_list) {
         // server communication
-        let data = new MailJsonRpc(from,"remove-mail",id_list)
+        let data = new MailJsonRpc(from,"remove-entry",id_list)
         //
         let port = web_page_port
-        let url = `http://localhost:${port}/json/email`
+        let url = `http://localhost:${port}/json/entry`
         let rpc_result = await postData(url, data)
         if ( rpc_result && (rpc_result.error === undefined) ) {
             console.log(rpc_result)
@@ -4879,10 +4878,10 @@ function switch_slots(event) {
      */
     async function publish_items(object_list) {
         // server communication
-        let data = new MailJsonRpc("published","send-mail",object_list)
+        let data = new MailJsonRpc("published","send-entry",object_list)
 
         let port = web_page_port
-        let url = `http://localhost:${port}/json/email`
+        let url = `http://localhost:${port}/json/entry`
         let rpc_result = await postData(url, data)
         if ( rpc_result && (rpc_result.error === undefined) ) {
             return true
@@ -4892,12 +4891,12 @@ function switch_slots(event) {
 
     /**
      */
-    async function save_blg_entries(blg_entry_obj) {
+    async function save_entrys_entries(entrys_entry_obj) {
         // server communicate
-        let data = new MailJsonRpc("drafts","store-draft",blg_entry_obj)
+        let data = new MailJsonRpc("drafts","store-draft",entrys_entry_obj)
 
         let port = web_page_port
-        let url = `http://localhost:${port}/json/email`
+        let url = `http://localhost:${port}/json/entry`
         let rpc_result = await postData(url, data)
         if ( rpc_result && (rpc_result.error === undefined) ) {
             return true
@@ -4913,7 +4912,7 @@ function switch_slots(event) {
         let data = new MailJsonRpc("contacts","remove-contact",a_contact)
 
         let port = web_page_port
-        let url = `http://localhost:${port}/json/email`
+        let url = `http://localhost:${port}/json/entry`
         let rpc_result = await postData(url, data)
         if ( rpc_result && (rpc_result.error === undefined) ) {
             return true
@@ -4928,7 +4927,7 @@ function switch_slots(event) {
         let data = new MailJsonRpc("contacts","store-contact",edited_contact)
 
         let port = web_page_port
-        let url = `http://localhost:${port}/json/email`
+        let url = `http://localhost:${port}/json/entry`
         let rpc_result = await postData(url, data)
         if ( rpc_result && (rpc_result.error === undefined) ) {
             return true
@@ -4953,7 +4952,7 @@ class WsSocketController {
             if ( sock ) {
                 let sid = true // an actual id from the server so that it can know itself
                 let message = {
-                    "type" : "blg-entry-ops",
+                    "type" : "entrys-entry-ops",
                     "message" : {
                         "op" : "initial-messages",
                         "server_id" : sid,
@@ -5091,7 +5090,7 @@ function stopResize() {
     window.onload = () => {
         g_searcher.setup_article_count(12,3)
         // initializers ----
-        setup_blg_entry_ops_dialog()
+        setup_entrys_entry_ops_dialog()
         setup_contacts_ops_dialog()
         setup_search_ops_dialog()
         setup_edit_response()

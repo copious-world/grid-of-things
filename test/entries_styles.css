@@ -1,0 +1,40 @@
+
+
+
+nav {
+    min-height: 32px;
+    max-height: 32px;
+    border-bottom: 1px solid rgb(35, 8, 53);
+    width: 100%;
+    vertical-align: middle;
+}
+
+button {
+    cursor: pointer;
+}
+
+
+.squash_m {
+    width: "90%";
+    min-height: 30px;
+    position: relative;
+    left:2px;
+    top: 2px;
+    bottom:28px;
+    cursor: pointer;
+    vertical-align: bottom;
+    background-color: white;
+}
+
+
+/* 
+.squash_m:hover {
+} */
+
+.heroicon-ui {
+    fill: black;
+}
+.heroicon-ui:hover {
+    fill: rgb(21, 68, 15);
+    background-color: rgb(245, 249, 255);
+}
