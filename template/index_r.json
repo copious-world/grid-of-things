@@ -49,25 +49,29 @@
         },
         "switch_types" : ["blog", "create", "filtered", "manage"],
         "switch_links" : {
-            "blog" : "switch_to_el",
+            "blog" : {
+                "browse blogs" : { "action" : "entrys_entry_switch_to", "template" : "switch_to_el", "ky" : "blog" }
+            },
             "create" : {
-                "write new" : "entrys_entry_create()",
-                "drafts" : "entrys_entry_switch_to($ky)",
-                "published" : "entrys_entry_switch_to($ky)"
+                "write new" : { "action" : "entrys_entry_create()", "template" : "simple_action"},
+                "drafts" : { "action" : "entrys_entry_switch_to", "template" : "switch_to_el"},
+                "published" : { "action" : "entrys_entry_switch_to", "template" : "switch_to_el"}
             }, 
             "filtered" : {
-                "trash" : "entrys_entry_switch_to($ky)"
+                "trash" : { "action" : "entrys_entry_switch_to", "template" : "switch_to_el"}
             }, 
             "manage" : {
-                "search ${main_type}" : "search_ui('${main_type}')",
-                "preferences" : "manage_prefs()"
+                "search ${main_type}" :  { "action" : "search_ui('${main_type}')", "template" : "simple_action"},
+                "spacer1" : "shadow_line",
+                "preferences" :  { "action" : "manage_prefs()", "template" : "simple_action"}
             }
         }
     },
     "templates" : {
         "section_switch" : "            <h4><button onclick=\"toggle_ul(event,'${ctype}')\">${ctype} <span id=\"ardn-${ctype}\" style=\"display:inline-block;color:darkgreen;\">&#x25BC;</span><span id=\"arrt-${ctype}\" style=\"display:none;color:darkgreen;\">&#x25BA;</span></button></h4>",
-        "link_panel" : "\t\t\t<ul id=\"ul-${ctype}\">\n\t\t\t\t$gen:list_els(switch_links,[${ctype}])\n\t\t\t</ul>",
-        "switch_to_el" : "<li><button onclick=\"$action('${ctype}')\" >${ctype}</button></li>",
+        "link_panel" : "\t\t\t<ul id=\"ul-${ctype}\">\n\t\t\t\t$gen:list_els(switch_links,${ctype})\n\t\t\t</ul>",
+        "switch_to_el" : "<li><button onclick=\"${action}('${ky}')\" >${title}</button></li>",
+        "simple_action" : "<li><button onclick=\"${action}\" >${title}</button></li>",
         "shadow_line" : "\n\t\t\t\t<div style=\"height:6px;background-color: rgba(156, 157, 165, 1);margin-bottom:6px\">&nbsp;</div>"
     }
 }

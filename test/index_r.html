@@ -1239,10 +1239,31 @@ span {
             </svg>
 
             
-do i in [0..3] {
-$template:section_switch(${switch_types[i]})
-$template:link_panel(${switch_types[i]})
-}
+            <h4><button onclick="toggle_ul(event,'blog')">blog <span id="ardn-blog" style="display:inline-block;color:darkgreen;">&#x25BC;</span><span id="arrt-blog" style="display:none;color:darkgreen;">&#x25BA;</span></button></h4>
+			<ul id="ul-blog">
+<li><button onclick="entrys_entry_switch_to('blog')" >browse blogs</button></li>
+
+			</ul>
+            <h4><button onclick="toggle_ul(event,'create')">create <span id="ardn-create" style="display:inline-block;color:darkgreen;">&#x25BC;</span><span id="arrt-create" style="display:none;color:darkgreen;">&#x25BA;</span></button></h4>
+			<ul id="ul-create">
+<li><button onclick="entrys_entry_create()" >write new</button></li>
+<li><button onclick="entrys_entry_switch_to('drafts')" >drafts</button></li>
+<li><button onclick="entrys_entry_switch_to('published')" >published</button></li>
+
+			</ul>
+            <h4><button onclick="toggle_ul(event,'filtered')">filtered <span id="ardn-filtered" style="display:inline-block;color:darkgreen;">&#x25BC;</span><span id="arrt-filtered" style="display:none;color:darkgreen;">&#x25BA;</span></button></h4>
+			<ul id="ul-filtered">
+<li><button onclick="entrys_entry_switch_to('trash')" >trash</button></li>
+
+			</ul>
+            <h4><button onclick="toggle_ul(event,'manage')">manage <span id="ardn-manage" style="display:inline-block;color:darkgreen;">&#x25BC;</span><span id="arrt-manage" style="display:none;color:darkgreen;">&#x25BA;</span></button></h4>
+			<ul id="ul-manage">
+<li><button onclick="search_ui('blog')" >search blog</button></li>
+
+				<div style="height:6px;background-color: rgba(156, 157, 165, 1);margin-bottom:6px">&nbsp;</div>
+<li><button onclick="manage_prefs()" >preferences</button></li>
+
+			</ul>
 
             
         </blockquote>
