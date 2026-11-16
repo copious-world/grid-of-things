@@ -31,6 +31,10 @@
             "${el}" : "entries_list_classes",
             "file" : "template/body_panels_tmpl.html"
         }, 
+        "$load$imports(${entries_list_classes},view_opener.js)" : {
+            "${el}" : "entries_list_classes",
+            "file" : "template/view_opener.js"
+        }, 
         "$load$category_css(${entrys_entry_classes},mtype_css_template.css)" : {
             "${el}" : "entries_list_classes",
             "file" : "template/mtype_css_template.css"

@@ -1232,7 +1232,7 @@ span {
         <path class="heroicon-ui" d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"/>
     </svg>
     <div class="sum-banner">
-        <span id="section-category-title" style="color:black"><b>Blog</b> Copious World</span> 
+        <span id="section-category-title" style="color:black"><b>blog</b> Copious World</span> 
     </div>
     <div>
         <button onclick="add_blog_el()">add entry</button>
@@ -1585,23 +1585,6 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 
 </main>
 
-<!-- Style the label to look exactly like a button using CSS -->
-<style>
-  .custom-button {
-    display: inline-block;
-    padding: 2px 4px;
-    border-radius: 2px;
-    cursor: pointer;
-    font-family: sans-serif;
-    border:solid 1px transparent;
-  }
-  .custom-button:hover {
-    color: rgb(94, 5, 5);
-    background-color: #e9fff8ff;
-    border:dotted 1px rgb(255, 169, 57);
-  }
-</style>
-
 
 <div id="entrys_entry_view" class="right_fade_able" style="z-index:124" >
 	<div class="togglebar" >
@@ -1635,6 +1618,25 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 
 	</div>
 </div>
+
+
+
+<!-- Style the label to look exactly like a button using CSS -->
+<style>
+  .custom-button {
+    display: inline-block;
+    padding: 2px 4px;
+    border-radius: 2px;
+    cursor: pointer;
+    font-family: sans-serif;
+    border:solid 1px transparent;
+  }
+  .custom-button:hover {
+    color: rgb(94, 5, 5);
+    background-color: #e9fff8ff;
+    border:dotted 1px rgb(255, 169, 57);
+  }
+</style>
 
 
 <div id="entrys_entry_edit" class="right_fade_able" style="z-index:124" >
@@ -2047,7 +2049,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
             entrys_cycle = (entrys_cycle >= tinytitle.length) ? 0 : entrys_cycle
             let ii = Math.random()
             ii = Math.floor(ii*test_new_entrys_entry_bunch.length)
-            test_new_entrys_entry_bunch[ii]["check_me"] = new_txt
+            test_new_entrys_entry_bunch[ii].check_me = new_txt
         }
     }
 
@@ -3060,8 +3062,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
     }
 
     //
-
-    function view_from_blog_entries(event,msg_id) {
+    function view_from_item_entries(event,msg_id) {
         if (event.target.type === 'checkbox') {
             return; // Do nothing if the checkbox was clicked
         }
@@ -3082,17 +3083,21 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
         pinBox(sect_box)
     }
 
+    
+
     //
-    function view_from_notify(msg_id) {
+    function view_from_drafts(msg_id) {
         let sect_box = `#entrys_entry_view`
         let msg_view = document.getElementById("entrys_entry_message_contents")
         if ( msg_view ) {
-            update_entrys_entry_properties_view("notify",msg_id)
-            let clear_text = get_text_from_store("notify",msg_id)
+            update_entrys_entry_properties_view("drafts",msg_id)
+            let clear_text = get_text_from_store("drafts",msg_id)
             msg_view.innerHTML = `picked message id = ${msg_id} <br> ${clear_text}`
         }
         pinBox(sect_box)
     }
+
+
     //
     function view_from_published(msg_id) {
         let sect_box = `#entrys_entry_view`
@@ -3104,6 +3109,8 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
         }
         pinBox(sect_box)
     }
+
+
     //
     function view_from_trash(msg_id) {
         let sect_box = `#entrys_entry_view`
@@ -3116,6 +3123,9 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
         pinBox(sect_box)
     }
 
+    
+
+    // toggel for menu
 
     function toggle_ul(ev,category) {
         ev.preventDefault = true
@@ -3137,7 +3147,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
         }
     }
 
-
+    // toggle for attachments
     function toggle_table(ev,category) {
         ev.preventDefault = true
         ev.cancelBubble = true

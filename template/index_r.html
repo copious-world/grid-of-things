@@ -851,7 +851,7 @@ span {
     padding-left: 1%;
 }
 
-.reader-box-blog-contents {
+.reader-box-${main_type}-contents {
     border-left: solid 3px rgba(219, 219, 219, 0.63);
     padding:2px;
     cursor:auto;
@@ -1060,11 +1060,11 @@ span {
 
     let tab_controller_management = false
     if ( tab_controller ) {
-        let blog_view_store = new Mikado.Array()
-        let view = new Mikado(tab_controller, { observe: blog_view_store });
+        let ${main_type}_view_store = new Mikado.Array()
+        let view = new Mikado(tab_controller, { observe: ${main_type}_view_store });
         tab_controller_management = {
             "view" : view,
-            "store" : blog_view_store,
+            "store" : ${main_type}_view_store,
             "root" : null,
             "container_el" : null
         }
@@ -1084,7 +1084,7 @@ span {
     const capitalize = ([first, ...rest]) => 
             first ? first.toUpperCase() + rest.join('') : '';
 
-    window.blog_title_map = (mtype) => {
+    window.${main_type}_title_map = (mtype) => {
         let title = entrys_types_to_titles[mtype]
         return title
     }
@@ -1123,11 +1123,11 @@ span {
         <path class="heroicon-ui" d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"/>
     </svg>
     <div class="sum-banner">
-        <span id="section-category-title" style="color:black"><b>Blog</b> Copious World</span> 
+        <span id="section-category-title" style="color:black"><b>${main_type}</b> Copious World</span> 
     </div>
     <div>
-        <button onclick="add_blog_el()">add entry</button>
-        <button onclick="change_blog_el()">change entry</button>
+        <button onclick="add_${main_type}_el()">add entry</button>
+        <button onclick="change_${main_type}_el()">change entry</button>
     </div>
     </summary>
     <!-- MAIL MENU CONTROL -->
@@ -1173,7 +1173,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
             
             this.search_ordering = SearchControl.search_order.UPDATE
             //
-            this.mtype = "blog"
+            this.mtype = "${main_type}"
             //
             // the buffer tracked by the Mikado class will be this buffer.
             // this will be set up like a mail manager
@@ -1340,7 +1340,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 
 <!-- MAIL DISPLAY -->
 <main id="grid-main"  class="big-list-container">
-    <div id="blog-entries" style="display:block" >
+    <div id="${main_type}-entries" style="display:block" >
 
 <div class="search_control_banner">
     <div class="entrys-ctrl-panel entrys-window-size-ctrl"  >
@@ -1386,7 +1386,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 	</div>
 </div>
 
-        <div id="list-entities-blog" class="grid-container" style="width:96%" >
+        <div id="list-entities-${main_type}" class="grid-container" style="width:96%" >
 
         </div>
     </div>
@@ -1414,7 +1414,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
         <div class="readers-and-comments" >
             <div id="reader-box-container" class="reader-box entities-left" style="min-width: 350px;min-height: 300px;">
                 <h3 id="entrys_entry_message_title">title</h3>
-                <div id="entrys_entry_message_contents" class="reader-box-blog-contents" >
+                <div id="entrys_entry_message_contents" class="reader-box-${main_type}-contents" >
 
                 </div>
             </div>
@@ -1499,7 +1499,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
         </div>
 		<div class="message-box" style="min-width: 400px;min-height: 300px;">
             <div class="entrys-entry-editor-body" id="entrys_entry_message_contents_edit" contenteditable="true" >
-                This is the blog entry to view
+                This is the ${main_type} entry to view
             </div>
 		</div>
 	</div>
@@ -1520,10 +1520,10 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 <!--
 * Drafts can delete, move to trash, or be published (sending moves to published).
 * published can move to archive, or copy to drafts.
-* blog can move to trash, to spam, or notify
-* Spam can move to trash, to blog, or notify
-* Notify can move to trash, to blog, or to spam
-* Trash can permanently delete a message, or move to blog, or notify
+* ${main_type} can move to trash, to spam, or notify
+* Spam can move to trash, to ${main_type}, or notify
+* Notify can move to trash, to ${main_type}, or to spam
+* Trash can permanently delete a message, or move to ${main_type}, or notify
 -->
 <dialog id="entrys-entry-ops-modal" style="min-width: 300px;">
     <div id="entrys-entry-ops-drafts" style="display: none;" >
@@ -1534,20 +1534,20 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
         <button onclick="prep_entrys_entry_list_move_to('published','archive')">archive</button>
         <button onclick="prep_entrys_entry_list_copy_to('published','drafts')">copy to drafts</button>
     </div>
-    <div id="entrys-entry-ops-blog" style="display: none;" >
-        <!-- <button onclick="prep_entrys_entry_list_reply_to('blog')">reply</button>
-        <button onclick="prep_entrys_entry_list_reply_all('blog')">reply all</button> -->
+    <div id="entrys-entry-ops-${main_type}" style="display: none;" >
+        <!-- <button onclick="prep_entrys_entry_list_reply_to('${main_type}')">reply</button>
+        <button onclick="prep_entrys_entry_list_reply_all('${main_type}')">reply all</button> -->
         &nbsp;|&nbsp;
-        <button onclick="prep_entrys_entry_list_move_to('blog','trash')">move to trash</button>
-        <!-- <button onclick="prep_entrys_entry_list_move_to('blog','spam')">move to spam</button>
-        <button onclick="prep_entrys_entry_list_move_to('blog','notfify')">move to notify</button> -->
+        <button onclick="prep_entrys_entry_list_move_to('${main_type}','trash')">move to trash</button>
+        <!-- <button onclick="prep_entrys_entry_list_move_to('${main_type}','spam')">move to spam</button>
+        <button onclick="prep_entrys_entry_list_move_to('${main_type}','notfify')">move to notify</button> -->
     </div>
     <div id="entrys-entry-ops-trash" style="display: none;" >
         <button onclick="prep_entrys_entry_list_delete('trash')">delete</button>
     </div>
     <div class="select-all-ops-properties-on-ops">
         <div class="field-label">Select All:</div>
-        <div class="field-value"><input id="select-all-op-on-ops" type="checkbox" onchange="toggle_current_select_all(event)" value="blog" /></div>
+        <div class="field-value"><input id="select-all-op-on-ops" type="checkbox" onchange="toggle_current_select_all(event)" value="${main_type}" /></div>
     </div>
     <form method="dialog">
         <p id="chosen_operation"><u>Please select an action to perform.</u></p>
@@ -1569,7 +1569,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
             <select id="entrys_entry_type_selector" onchange="entrys_entry_switch_to_event(event)" >  
                 <option value="all-messages">all messages</option>
                  <optgroup label="received">
-                    <option value="blog">blog</option>
+                    <option value="${main_type}">${main_type}</option>
                     <option value="notify">notify</option>
                 </optgroup>
                  <optgroup label="composed">
@@ -1597,7 +1597,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
         <p id="chosen_contact_operation"><u>Would you like to select all messages?</u></p>
         <div class="select-all-ops-properties">
             <div class="field-label">Select All:</div>
-            <div class="field-value"><input id="select-all-op" type="checkbox" onchange="toggle_current_select_all(event)" value="blog" /></div>
+            <div class="field-value"><input id="select-all-op" type="checkbox" onchange="toggle_current_select_all(event)" value="${main_type}" /></div>
         </div>
         <!-- Cancel button: closes modal, returnValue is "cancel" -->
         <button type="submit" formmethod="dialog" value="cancel">Cancel</button>
@@ -1657,7 +1657,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
         let a_manager = entrys_entry_managers[mtype]
         a_manager.root = document.getElementById(`list-entities-${mtype}`)
         //
-        a_manager.container_el = document.getElementById(`${mtype}-entries`)   // blog-entries
+        a_manager.container_el = document.getElementById(`${mtype}-entries`)   // ${main_type}-entries
         if ( a_manager.root ) {
             a_manager?.view?.mount(a_manager.root)
         }
@@ -1739,8 +1739,8 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
     window.store_of_tab_controller = store_of_tab_controller
 
     /** --------------------------- */
-    let g_current_mtype = "blog"
-    window._current_mtype = "blog"
+    let g_current_mtype = "${main_type}"
+    window._current_mtype = "${main_type}"
 
     //  MAIL IDENTIFIER -- need something better
     window.largest_id = 20
@@ -1797,8 +1797,8 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
     }
 
     let test_new_entrys_entry_bunch = []
-    window.add_blog_el = () => {        // for testing
-        let entrys_entry_view = view_of_entrys_entry_manager("blog")
+    window.add_${main_type}_el = () => {        // for testing
+        let entrys_entry_view = view_of_entrys_entry_manager("${main_type}")
         //
         let box_count = 1
         if ( entrys_entry_view ) {
@@ -1822,13 +1822,13 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
             // }
         }
 
-        sort_entrys_entries("blog")
+        sort_entrys_entries("${main_type}")
     }
 
     let entrys_cycle = 0;
     let tinytitle = ["AAA","BBB","ZZZZZ","TEXT", "T.SAURUS REX"]
-    window.change_blog_el = () => {
-        // let entrys_entry_store = store_of_entrys_entry_manager("blog")
+    window.change_${main_type}_el = () => {
+        // let entrys_entry_store = store_of_entrys_entry_manager("${main_type}")
         // if ( entrys_entry_store && entrys_entry_store.length > 0 ) {
         if ( test_new_entrys_entry_bunch.length > 0 ) {
             let new_txt = tinytitle[entrys_cycle++]
@@ -2056,7 +2056,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
     let b_section_title = document.getElementById("section-category-title")
     function set_section_title(mtype) {
         if ( mtype && b_section_title ) {
-            b_section_title.innerHTML = blog_title_map(mtype)
+            b_section_title.innerHTML = ${main_type}_title_map(mtype)
         }
     }
 
@@ -2211,10 +2211,10 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 
     // ---- ---- ---- ---- ---- ---- ---- ---- ----
     //
-    // ['blog','drafts', 'published', 'trash' ]
+    // ['${main_type}','drafts', 'published', 'trash' ]
     //
     /*
-    // blog_check_select
+    // ${main_type}_check_select
     // published_check_select
     // spam_check_select
     // notify_check_select
@@ -2821,7 +2821,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 
 
     // 
-    // VIEW WINDOW ['blog','drafts', 'published', 'trash' ]
+    // VIEW WINDOW ['${main_type}','drafts', 'published', 'trash' ]
     //
 
     // item view support
@@ -2848,62 +2848,31 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
     }
 
     //
-
-    function view_from_blog_entries(event,msg_id) {
+    function view_from_item_entries(event,msg_id) {
         if (event.target.type === 'checkbox') {
             return; // Do nothing if the checkbox was clicked
         }
         let sect_box = `#entrys_entry_view`
         let msg_view = document.getElementById("entrys_entry_message_contents")
         if ( msg_view ) {
-            update_entrys_entry_properties_view("blog",msg_id)
+            update_entrys_entry_properties_view("${main_type}",msg_id)
             let check_box_marker = document.getElementById(`grid-card-stats-checker-${msg_id}`)
             if ( check_box_marker ) {
                 check_box_marker.checked = true
                 
                 setTimeout(() => { store_current_check_box_pattern(); do_tab_bar_tab_select(msg_id) },10)
             } else {
-                let clear_text = get_text_from_store("blog",msg_id)
+                let clear_text = get_text_from_store("${main_type}",msg_id)
                 msg_view.innerHTML = `picked message id = ${msg_id} <br> ${clear_text}`
             }
         }
         pinBox(sect_box)
     }
 
-    //
-    function view_from_notify(msg_id) {
-        let sect_box = `#entrys_entry_view`
-        let msg_view = document.getElementById("entrys_entry_message_contents")
-        if ( msg_view ) {
-            update_entrys_entry_properties_view("notify",msg_id)
-            let clear_text = get_text_from_store("notify",msg_id)
-            msg_view.innerHTML = `picked message id = ${msg_id} <br> ${clear_text}`
-        }
-        pinBox(sect_box)
-    }
-    //
-    function view_from_published(msg_id) {
-        let sect_box = `#entrys_entry_view`
-        let msg_view = document.getElementById("entrys_entry_message_contents")
-        if ( msg_view ) {
-            update_entrys_entry_properties_view("published",msg_id)
-            let clear_text = get_text_from_store("published",msg_id)
-            msg_view.innerHTML = `picked message id = ${msg_id} <br> ${clear_text}`
-        }
-        pinBox(sect_box)
-    }
-    //
-    function view_from_trash(msg_id) {
-        let sect_box = `#entrys_entry_view`
-        let msg_view = document.getElementById("entrys_entry_message_contents")
-        if ( msg_view ) {
-            update_entrys_entry_properties_view("trash",msg_id)
-            let clear_text = get_text_from_store("trash",msg_id)
-            msg_view.innerHTML = `picked message id = ${msg_id} <br> ${clear_text}`
-        }
-        pinBox(sect_box)
-    }
+    $load$imports(${entries_list_classes},view_opener.js)
+    
 
+    // toggel for menu
 
     function toggle_ul(ev,category) {
         ev.preventDefault = true
@@ -2925,7 +2894,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
         }
     }
 
-
+    // toggle for attachments
     function toggle_table(ev,category) {
         ev.preventDefault = true
         ev.cancelBubble = true
@@ -2965,7 +2934,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
         //
         let mtype = window._current_mtype
         let objects = get_list_of_objects(mtype,[id])
-        if ( objects ) set_blog_view_contents(objects[0])
+        if ( objects ) set_${main_type}_view_contents(objects[0])
     }
 
 
@@ -2973,7 +2942,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
     /**
      * 
      */
-    function set_blog_view_contents(bobj) {
+    function set_${main_type}_view_contents(bobj) {
         let title_el = document.getElementById("entrys_entry_message_title")
         let content_el = document.getElementById("entrys_entry_message_contents")
         if ( title_el && content_el ) {
@@ -3031,7 +3000,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
             }
         } else if ( mtype === 'messages' ) {
             let mtype = window._current_mtype
-            if ( mtype === 'contacts' ) mtype = 'blog'
+            if ( mtype === 'contacts' ) mtype = '${main_type}'
             if ( type_select  && ts_label ) {
                 type_select.style.display = "inline"
                 ts_label.style.display = "inline"
@@ -3050,14 +3019,14 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
     /**
      * Perform operations on a list.
      * 
-     *  ['blog','drafts', 'published', 'trash' ]
+     *  ['${main_type}','drafts', 'published', 'trash' ]
      * 
      * Some lists may allow movement to another list.
      * 
      * Drafts can delete, move to trash, or be published (sending moves to published).
      * published can move to archive, or copy to drafts.
-     * Spam can move to trash, to blog, or notify
-     * Notify can move to trash, to blog, or to spam
+     * Spam can move to trash, to ${main_type}, or notify
+     * Notify can move to trash, to ${main_type}, or to spam
      * Trash can permanently delete a message.
      * 
      * 
