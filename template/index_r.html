@@ -2670,11 +2670,44 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
         }
     }
 
-
+    function entry_time_update(eproxy,entry) {
+        let date = new Date()
+        let ds = date.toLocaleString()
+        let dms = date.getTime()
+        eproxy.date = ds
+        eproxy.timestamp = dms
+        eproxy.updated_when = ds
+        g_current_edit_entry.date = ds
+        g_current_edit_entry.timestamp = dms
+        g_current_edit_entry.updated_when = ds
+        entry.dirty = true
+        sort_one_or_more('drafts')
+    }
 
     let g_current_edit_entry = false
     let g_current_edit_contact = false
     function setup_edit_response() {
+        //
+        {
+            let edit_props_manager = window._x_edit_properties_management
+            let entrys_entry_view = edit_props_manager.view
+            //
+            entrys_entry_view.route("update-author", function(target, event) {
+                let store = edit_props_manager.store
+                // Update the proxified store, the copy of the element from the list
+                store[0].author = target.value;
+                g_current_edit_entry.author = target.value;
+                entry_time_update(store[0],g_current_edit_entry)
+            });
+            entrys_entry_view.route("update-title", function(target, event) {
+                let store = edit_props_manager.store
+                // Update the proxified store, the copy of the element from the list
+                store[0].title = target.value;
+                g_current_edit_entry.title = target.value;
+                entry_time_update(store[0],g_current_edit_entry)
+            });
+        }
+
         //
         let msg_editor = document.getElementById("entrys_entry_message_contents_edit")
         if ( msg_editor ) {
