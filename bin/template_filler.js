@@ -18,6 +18,16 @@ function convert_fname_to_abstract(fname,abstract_vname) {
     return fname
 }
 
+
+function calc_conf_values(val) {
+    if ( val === "${date_local_string}" ) {
+        val = (new Date()).toLocaleString()
+    } else if ( val = "${timestamp}" ) {
+        val = Date.now()
+    }
+    return val
+}
+
 /*
 do i in [0..3] {
 $template:section_switch(${switch_types[i]})
@@ -206,6 +216,7 @@ if ( template_file && output_file ) {
     let vars = conf_args.vars
     //
     for ( let [funcall,directive] of Object.entries(funcs) ) {
+        let only_file = false
 console.log(funcall)
         let replacer = ""
         let loop_template = directive.template
@@ -217,11 +228,15 @@ console.log(funcall)
                 } catch (e) {
                     continue
                 }
+                if ( (directive["${el}"] === undefined) && (directive["${vars}"] === undefined) ) {
+                    only_file = true
+                    replacer = loop_template
+                }
             } else continue
         }
         let par_lst_var = directive["${el}"]
         let sep = ""
-        if ( par_lst_var ) {
+        if ( par_lst_var && !only_file ) {
             let var_lst = vars[par_lst_var]
             if ( Array.isArray(var_lst) ) {
                 for ( let el of var_lst ) {
@@ -234,17 +249,21 @@ console.log(funcall)
                 if ( par_lst_value ) {
                     for ( let [el,val] of Object.entries(var_lst) ) {
                         let nxt_line = loop_template.replaceAll("${el}",el)
+                        if ( (typeof val === 'string') && val.startsWith('${') ) {
+                            val = calc_conf_values(val)
+                        }
+                        if ( typeof val === 'string' ) {
+                            val = `"${val}"`
+                        } else if ( typeof val === 'object' ) {
+                            val = JSON.stringify(val)
+                        }
                         nxt_line = nxt_line.replaceAll("${val}",val)
                         replacer += sep + "\n" + nxt_line
                         sep = directive.sep ? directive.sep : ""
                     }
                 }
             }
-
-
-
-
-        } else {
+        } else if ( !only_file ) {
 
         // "funcs" : "func_table",
         // "fkey" : "$id",

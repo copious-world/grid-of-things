@@ -371,12 +371,12 @@ $gen$css_select(${entrys_entry_classes})
     }
     .entrys-checkbox-th { background-color: white; cursor: pointer; width: 5%;}
     .entrys-recipient-th { background-color: white; cursor: pointer; width: 25%; }
-    .entrys-subject-th { background-color: white; cursor: pointer; width: 33%; }
+    .entrys-title-th { background-color: white; cursor: pointer; width: 33%; }
     .entrys-date-th { background-color: white; cursor: pointer; width: 33%; }
     /* ----   */
     .entrys-checkbox-cell { background-color: white; cursor: pointer; width: 5%; }
     .entrys-recipient-cell { background-color: white; cursor: pointer; width: 25%; padding-left: 4%; }
-    .entrys-subject-cell { background-color: white; cursor: pointer; width: 33%; padding-left: 4%; }
+    .entrys-title-cell { background-color: white; cursor: pointer; width: 33%; padding-left: 4%; }
     .entrys-date-cell { background-color: white; cursor: pointer; width: 33%; padding-left: 4%; }
 
     .entrys-entry th > button {
@@ -398,35 +398,15 @@ $load$category_css(${entrys_entry_classes},mtype_css_template.css)
     }
 
     .entrys-entry-properties {
-        display: grid;
-        grid-template-columns: 20% 1fr;
-        gap: 12px 16px;
-        align-items: center;
-        padding: 16px;
-        background: #f9f9f9;
-        /* border-radius: 8px; */
-        /* max-width: 600px; */
+$load$category_css_fields(entrys-entry-properties.css)
     }
 
     .edit-entrys-entry-properties {
-        display: grid;
-        grid-template-columns: 20% 1fr;
-        gap: 12px 16px;
-        align-items: center;
-        padding: 16px;
-        background: #f9f9f9;
+$load$category_css_fields(edit-entrys-entry-properties.css)
     }
-    
 
     .contact-properties {
-        display: grid;
-        grid-template-columns: 20% 1fr;
-        gap: 12px 16px;
-        align-items: center;
-        padding: 16px;
-        background: #f9f9f9;
-        /* border-radius: 8px; */
-        /* max-width: 600px; */
+$load$category_css_fields(contact-properties.css)
     }
 
     .select-all-ops-properties {
@@ -721,7 +701,7 @@ span {
     border-bottom: 1px darkslateblue solid;
 }
 
-.entrys-item-subject {
+.entrys-item-title {
     color:black;
     display: unset;
 }
@@ -1015,8 +995,8 @@ span {
     import attachment_view_template from "./tpl_r/partial/attachment_view.js"
     import attachment_edit_template from "./tpl_r/partial/attachment_edit.js"
     //
-    import tab_controller from "./tpl_r/partial/selected_entries_tab.js"
-
+    import tab_controller from "./tpl_r/partial/selected_entries_tab.js"  // tabs in the view
+    import edit_properties from "./tpl_r/partial/edit_properties.js"  // tabs in the view
 
     let entrys_entry_imports = { $gen$imports_map(${entrys_entry_classes})
     }
@@ -1070,6 +1050,18 @@ span {
         }
     }
 
+
+    let edit_properties_management = false
+    if ( edit_properties ) {
+        let view = new Mikado(edit_properties);
+        edit_properties_management = {
+            "view" : view,
+            "store" : [],
+            "root" : null,
+            "container_el" : null
+        }
+    }
+
     window._x_share_entrys_entry_managers = entrys_entry_management
     window._x_share_entrys_entry_classes = ${entrys_entry_classes}
 
@@ -1077,7 +1069,7 @@ span {
     window._x_share_attachment_classes = ['view','edit']
 
     window._x_share_tab_controller_manager = tab_controller_management
-
+    window._x_edit_properties_management = edit_properties_management
 
     const entrys_types_to_titles = ${entrys_types_to_titles}
 
@@ -1406,9 +1398,6 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 
         <div id="selected-tabs" class="selected-tabs-container" >
             <button class="selected-tab-bar-el" style="color:darkgreen" onclick="activate_this_selected(event,1)">selected</button>
-            <button class="selected-tab-bar-el" style="color:darkgreen" onclick="activate_this_selected(event,2)">but_not</button>
-            <button class="selected-tab-bar-el" style="color:darkgreen" onclick="activate_this_selected(event,3)">yet again no</button>
-            <button class="selected-tab-bar-el" style="color:darkgreen" onclick="activate_this_selected(event,4)">speedy thoughts</button>
         </div>
         <!-- <div id="selected-tab" style="color: {{ data.active ? 'green' : 'black' }}; {{ data.value ? '' : 'display: none;' }}"></div> -->
         <div class="readers-and-comments" >
@@ -1465,24 +1454,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
             <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
             <button id="entrys_entry_ops" onclick="single_entrys_entry_ops(event);">ops</button>
         </div>
-        <div class="edit-entrys-entry-properties">
-            <div class="field-label">Author:</div>
-            <div class="field-value"><input id="edit-entrys-entry-sender" type="email" /></div>
-            
-            <!-- <div class="field-label">To:</div>
-            <div class="field-value"><input id="edit-entrys-entry-recipient" type="email" /></div> -->
-
-            <!-- <div class="field-label">cc:</div>
-            <div id="view-entrys-entry-cc" class="field-value"><input id="edit-entrys-entry-cc" type="email" /></div>
-
-            <div class="field-label">bcc:</div>
-            <div id="view-entrys-entry-bcc" class="field-value"><input id="edit-entrys-entry-bcc" type="email" /></div> -->
-
-            <div class="field-label">Subject:</div>
-            <div class="field-value"></label><input id="edit-entrys-entry-subject" type="text" /></div>
-
-            <div class="field-label">Last edit:</div>
-            <div id="edit-entrys-entry-date" class="field-value">September 14, 2026, 12:51 PM</div>
+        <div id="edit-entrys-entry-properties-el" style="visibility: inherit;">
         </div>
         <div id="edit-entrys-entry-attachments" class="attachments-controls file-dropper-handler" dropzone="true" >
             <label for="fileInput" class="custom-button">
@@ -1689,6 +1661,8 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
         tab_controller_manager?.view?.mount(tab_controller_manager.root)
     }
 
+
+
     /**
      * 
      */
@@ -1766,6 +1740,33 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 
     window._x_test_entrys_entry_proto = entrys_entry_proto
 
+
+    // will be using the prototype
+    const edit_props_controller_el = document.getElementById("edit-entrys-entry-properties-el")
+    const edit_properties_manager = window._x_edit_properties_management
+    if ( edit_properties_manager ) {
+        edit_properties_manager.root = edit_props_controller_el
+        edit_properties_manager?.view?.mount(edit_properties_manager.root)
+        let bentry = structuredClone(entrys_entry_proto)
+        edit_properties_manager?.store.push(bentry)
+        edit_properties_manager?.view?.render(edit_properties_manager?.store);
+    }
+
+
+    // populate the entry header on the edit page.
+    // similar can be done for the view... which works at the moment. (when wanting it to be more complex...)
+    window.edit_properties_of = (entry)  => {
+        let entrys_entry_store = edit_properties_manager.store
+        if ( entrys_entry_store ) { // simple array
+            let ventry = entrys_entry_store[0]
+            for ( let ky in entry ) {
+                ventry[ky] = entry[ky]
+            }
+        }
+    }
+
+
+
     //
     // testing
     window.add_entrys_entries = async (mtype,box_count) => {
@@ -1796,34 +1797,39 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
         sort_entrys_entries(mtype)
     }
 
+
+
     let test_new_entrys_entry_bunch = []
     window.add_${main_type}_el = () => {        // for testing
-        let entrys_entry_view = view_of_entrys_entry_manager("${main_type}")
+        let entrys_entry_store = store_of_entrys_entry_manager("${main_type}")
         //
         let box_count = 1
-        if ( entrys_entry_view ) {
+        if ( entrys_entry_store ) {
+            // let bentry = structuredClone(entrys_entry_proto)
+            // test_new_entrys_entry_bunch.push(bentry)
+            // bentry.check_me = "CHECKS"
+            //
+            //entrys_entry_view.render(test_new_entrys_entry_bunch)
             let bentry = structuredClone(entrys_entry_proto)
             test_new_entrys_entry_bunch.push(bentry)
-            bentry.check_me = "CHECKS"
             //
-            entrys_entry_view.render(test_new_entrys_entry_bunch)
-            // //
-            // if ( (box_count !== undefined) && (parseInt(box_count) !== NaN) ) {
-            //     new_entrys_entry_bunch = new_entrys_entry_bunch.slice(0,box_count)
-            // }
-            // if ( new_entrys_entry_bunch && new_entrys_entry_bunch.length ) {
-            //     for ( let m of new_entrys_entry_bunch ) {
-            //         entrys_entry_store.unshift(m)
-            //     }
-            // } else {
-            //     if ( new_entrys_entry_bunch ) {
-            //         entrys_entry_store.set(new_entrys_entry_bunch)
-            //     }
-            // }
+            if ( (box_count !== undefined) && (parseInt(box_count) !== NaN) ) {
+                test_new_entrys_entry_bunch = test_new_entrys_entry_bunch.slice(0,box_count)
+            }
+            if ( test_new_entrys_entry_bunch && test_new_entrys_entry_bunch.length ) {
+                for ( let m of test_new_entrys_entry_bunch ) {
+                    entrys_entry_store.unshift(m)
+                }
+            } else {
+                if ( test_new_entrys_entry_bunch ) {
+                    entrys_entry_store.set(test_new_entrys_entry_bunch)
+                }
+            }
         }
 
         sort_entrys_entries("${main_type}")
     }
+
 
     let entrys_cycle = 0;
     let tinytitle = ["AAA","BBB","ZZZZZ","TEXT", "T.SAURUS REX"]
@@ -2093,18 +2099,19 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 
     // useful (mail and contacts)
     window.add_atts_to_list = (atype,att_list) => {
-        // if ( atype === undefined ) return false
-        // let atts_store = store_of_attachment_manager(atype)
-        // if ( atts_store ) {
-        //     if ( atts_store.length ) {
-        //         for ( let a of att_list ) {
-        //             atts_store.unshift(a)
-        //         }
-        //     } else {
-        //         atts_store.set(att_list)
-        //     }
-        // }
-        // // sort_attachments(atype)
+        if ( atype === undefined ) return false
+        if ( att_list === undefined ) return false
+        let atts_store = store_of_attachment_manager(atype)  // will keep the attachment manager for all types
+        if ( atts_store ) {
+            if ( atts_store.length ) {
+                for ( let a of att_list ) {
+                    atts_store.unshift(a)
+                }
+            } else {
+                atts_store.set(att_list)
+            }
+        }
+        //sort_attachments(atype)
         return true
     }
 
@@ -2191,7 +2198,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
     }
 
 
-    function get_message_from_store(mtype,msg_id) {
+    function get_entry_from_store(mtype,msg_id) {
         let entrys_entry_store = store_of_entrys_entry_manager(mtype)
         //
         if ( entrys_entry_store ) {
@@ -2363,7 +2370,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
                     let tab_objects = objects.map(obj => {
                         return {
                             "id" : obj.id,
-                            "subject" : obj.subject
+                            "title" : obj.title
                         }
                     })
                     //
@@ -2512,34 +2519,36 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
             return false
         }
     }
+
+
+  
+    // EDIT WINDOW  ['drafts'] and undo stack
+
+    function store_current_entrys_entry_undo_stack() {
+        if ( g_current_edit_entry ) {
+            const entry = g_current_edit_entry
+            let save_entry = unload_entrys_entry_for_undo(g_current_edit_entry)
+            if ( unequal_objects(save_entry,entry._saved_updates[0]) ) {
+                entry._saved_updates.unshift(save_entry)
+            }
+        }
+    }
+
     
     // EDIT WINDOW  ['drafts'] and create
 
     // change support
     function update_entrys_entry_properties_edit(mtype,msg_id) {
         //
-        let message = get_message_from_store(mtype,msg_id)
-        if ( message ) {
-            g_current_edit_entry = message
-            //
-            let m_prop_el = document.getElementById("edit-entrys-entry-sender")
-            if ( m_prop_el ) { m_prop_el.value = message.sender }
-
-            // m_prop_el = document.getElementById("edit-entrys-entry-recipient")
-            // if ( m_prop_el ) { m_prop_el.value = message.recipient }
-            //
-            // m_prop_el = document.getElementById("edit-entrys-entry-cc")
-            // if ( m_prop_el ) { m_prop_el.value = message.cc }
-            //
-            m_prop_el = document.getElementById("edit-entrys-entry-subject")
-            if ( m_prop_el ) { m_prop_el.value = message.subject }
-            m_prop_el = document.getElementById("edit-entrys-entry-date")
-            if ( m_prop_el ) { m_prop_el.innerHTML = message.date }
+        let entry = get_entry_from_store(mtype,msg_id)
+        if ( entry ) {
+            g_current_edit_entry = entry
+            edit_properties_of(entry)
             //
             store_current_entrys_entry_undo_stack()
-            if ( message.attachments ) {
+            if ( entry.attachments ) {
                 clear_atts_list('edit')
-                add_atts_to_list('edit',message.attachments)
+                add_atts_to_list('edit',entry.attachments)
             }
         } else {
             alert("no message")
@@ -2554,12 +2563,12 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
             let sender = entry.sender
             let recipient = entry.recipient
             let cc = entry.cc
-            let subject = entry.subject
+            let title = entry.title
             let text = entry.text
             let date = entry.date
             let timestamp = entry.timestamp
             entry.dirty = false
-            return { id, sender, recipient, cc, subject, text, date, timestamp }
+            return { id, sender, recipient, cc, title, text, date, timestamp }
         }
     }
 
@@ -2570,7 +2579,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
             entry.sender = old_values.sender
             entry.recipient = old_values.recipient
             entry.cc = old_values.cc
-            entry.subject = old_values.subject
+            entry.title = old_values.title
             entry.text = old_values.text
             entry.date = old_values.date
             entry.timestamp = old_values.timestamp
@@ -2584,7 +2593,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
             if ( save_entry.sender !== stored_entry.sender ) return true
             if ( save_entry.recipient !== stored_entry.recipient ) return true
             if ( save_entry.cc !== stored_entry.cc ) return true
-            if ( save_entry.subject !== stored_entry.subject ) return true
+            if ( save_entry.title !== stored_entry.title ) return true
             if ( save_entry.text !== stored_entry.text ) return true
             if ( save_entry.date !== stored_entry.date ) return true
             if ( save_entry.timestamp !== stored_entry.timestamp ) return true
@@ -2592,18 +2601,8 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
         return true
     }
 
-    function store_current_entrys_entry_undo_stack() {
-        if ( g_current_edit_entry ) {
-            const entry = g_current_edit_entry
-            let save_entry = unload_entrys_entry_for_undo(g_current_edit_entry)
-            if ( unequal_objects(save_entry,entry._saved_updates[0]) ) {
-                entry._saved_updates.unshift(save_entry)
-            }
-        }
-    }
-
     function update_contact_properties_view(cid) {
-        let contact = get_message_from_store('contacts',cid)
+        let contact = get_entry_from_store('contacts',cid)
         if ( contact ) {
             g_current_edit_contact = contact
             //
@@ -2688,7 +2687,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
             });
         }
         //
-        let m_prop_el = document.getElementById("edit-entrys-entry-sender")
+        let m_prop_el = document.getElementById("edit-entrys-entry-author")
         if ( m_prop_el ) {
             m_prop_el.addEventListener('change', (event) => {
                 if ( g_current_edit_entry ) {
@@ -2732,11 +2731,11 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
         //     });
         // }
         //
-        m_prop_el = document.getElementById("edit-entrys-entry-subject")
+        m_prop_el = document.getElementById("edit-entrys-entry-title")
         if ( m_prop_el ) {
             m_prop_el.addEventListener('change', (event) => {
                 if ( g_current_edit_entry ) {
-                    g_current_edit_entry.subject = event.target.value
+                    g_current_edit_entry.title = event.target.value
                     update_just_date(g_current_edit_entry,"edit-entrys-entry-date")
                     g_current_edit_entry.dirty = true
                 }
@@ -2827,20 +2826,12 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
     // item view support
     function update_entrys_entry_properties_view(mtype,msg_id) {
         //
-        let message = get_message_from_store(mtype,msg_id)
-        if ( message ) {
-            g_current_edit_entry = message
-            let m_prop_el = document.getElementById("view-entrys-entry-sender")
-            if ( m_prop_el ) { m_prop_el.innerHTML = message.sender }
-            m_prop_el = document.getElementById("view-entrys-entry-recipient")
-            if ( m_prop_el ) { m_prop_el.innerHTML = message.recipient }
-            m_prop_el = document.getElementById("view-entrys-entry-subject")
-            if ( m_prop_el ) { m_prop_el.innerHTML = message.subject }
-            m_prop_el = document.getElementById("view-entrys-entry-date")
-            if ( m_prop_el ) { m_prop_el.innerHTML = message.date }
-            if ( message.attachments ) {
+        let entry = get_entry_from_store(mtype,msg_id)
+        if ( entry ) {
+            g_current_edit_entry = entry
+            if ( entry.attachments ) {
                 clear_atts_list('view')
-                add_atts_to_list('view',message.attachments)
+                add_atts_to_list('view',entry.attachments)
             }
             indicate_page_on_window_banner(mtype)
         }
@@ -2946,7 +2937,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
         let title_el = document.getElementById("entrys_entry_message_title")
         let content_el = document.getElementById("entrys_entry_message_contents")
         if ( title_el && content_el ) {
-            title_el.innerText = bobj.subject
+            title_el.innerText = bobj.title
             content_el.innerHTML = bobj.text
         }
     }
@@ -3164,13 +3155,13 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
             // ---- ---- ---- ---- ---- ---- ---- ----
             let recipient = entry.recipient
             let sender = entry.sender
-            let subject = entry.subject
+            let title = entry.title
             let text = entry.text
             let ready = true
             // ---- ---- ---- ---- ---- ---- ---- ----
             ready &&= (recipient.length !== 0)
             ready &&= (sender.length !== 0)
-            ready &&= (subject.length !== 0)
+            ready &&= (title.length !== 0)
             ready &&= (text.length !== 0)
 
             if ( !ready ) {
@@ -3181,8 +3172,8 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
                 if (recipient.length === 0) {
                     user_should_see.recipient = true  // not optional
                 }
-                if (subject.length === 0) {
-                    user_should_see.subject = true  // not optional
+                if (title.length === 0) {
+                    user_should_see.title = true  // not optional
                 }
                 if (text.length === 0) {
                     user_should_see.text = false  //    optional
