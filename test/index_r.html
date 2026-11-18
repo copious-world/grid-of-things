@@ -361,13 +361,13 @@
 	.blog_check_select {
 		border:solid 1px rgba(255, 0, 0, 0.438);
 	}
-	.blog_check_select {
+	.drafts_check_select {
 		border:solid 1px rgba(255, 0, 0, 0.438);
 	}
-	.blog_check_select {
+	.published_check_select {
 		border:solid 1px rgba(255, 0, 0, 0.438);
 	}
-	.blog_check_select {
+	.trash_check_select {
 		border:solid 1px rgba(255, 0, 0, 0.438);
 	}
 
@@ -412,12 +412,10 @@
         background-color: #e6f0d4ff; 
     }
     .drafts-checkbox-th { background-color: white; cursor: pointer; width: 5%;}
-    .drafts-recipient-th { background-color: white; cursor: pointer; width: 25%; }
     .drafts-subject-th { background-color: white; cursor: pointer; width: 33%; }
     .drafts-date-th { background-color: white; cursor: pointer; width: 33%; }
     /* ----   */
     .drafts-checkbox-cell { background-color: white; cursor: pointer; width: 5%; }
-    .drafts-recipient-cell { background-color: white; cursor: pointer; width: 25%; padding-left: 4%; }
     .drafts-subject-cell { background-color: white; cursor: pointer; width: 33%; padding-left: 4%; }
     .drafts-date-cell { background-color: white; cursor: pointer; width: 33%; padding-left: 4%; }
 
@@ -440,12 +438,10 @@
         background-color: #e6f0d4ff; 
     }
     .published-checkbox-th { background-color: white; cursor: pointer; width: 5%;}
-    .published-recipient-th { background-color: white; cursor: pointer; width: 25%; }
     .published-subject-th { background-color: white; cursor: pointer; width: 33%; }
     .published-date-th { background-color: white; cursor: pointer; width: 33%; }
     /* ----   */
     .published-checkbox-cell { background-color: white; cursor: pointer; width: 5%; }
-    .published-recipient-cell { background-color: white; cursor: pointer; width: 25%; padding-left: 4%; }
     .published-subject-cell { background-color: white; cursor: pointer; width: 33%; padding-left: 4%; }
     .published-date-cell { background-color: white; cursor: pointer; width: 33%; padding-left: 4%; }
 
@@ -468,12 +464,10 @@
         background-color: #e6f0d4ff; 
     }
     .trash-checkbox-th { background-color: white; cursor: pointer; width: 5%;}
-    .trash-recipient-th { background-color: white; cursor: pointer; width: 25%; }
     .trash-subject-th { background-color: white; cursor: pointer; width: 33%; }
     .trash-date-th { background-color: white; cursor: pointer; width: 33%; }
     /* ----   */
     .trash-checkbox-cell { background-color: white; cursor: pointer; width: 5%; }
-    .trash-recipient-cell { background-color: white; cursor: pointer; width: 25%; padding-left: 4%; }
     .trash-subject-cell { background-color: white; cursor: pointer; width: 33%; padding-left: 4%; }
     .trash-date-cell { background-color: white; cursor: pointer; width: 33%; padding-left: 4%; }
 
@@ -1197,7 +1191,7 @@ span {
     window._x_edit_properties_management = edit_properties_management
 
     const entrys_types_to_titles = {
-    "blog": "<b>Blog</b> Copious World",
+    "blog": "<i>Copious World</i> <b>Blog</b>",
     "drafts": "<b>Drafts</b>",
     "published": "<b>Published</b>",
     "trash": "<b>Trash</b>"
@@ -1546,8 +1540,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
             <table class="entrys-entry-drafts" style="width:100%" >
                 <thead>
                     <th class="drafts-checkbox-th"><button onclick="do_op_modal('drafts')">ops</button></th>
-                    <th class="drafts-recipient-th">sender</th>
-                    <th class="drafts-subject-th">subject</th>
+                    <th class="drafts-subject-th">title</th>
                     <th class="drafts-date-th">time</th>
                 </thead>
             </table>
@@ -1564,8 +1557,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
             <table class="entrys-entry-published" style="width:100%" >
                 <thead>
                     <th class="published-checkbox-th"><button onclick="do_op_modal('published')">ops</button></th>
-                    <th class="published-recipient-th">sender</th>
-                    <th class="published-subject-th">subject</th>
+                    <th class="published-subject-th">title</th>
                     <th class="published-date-th">time</th>
                 </thead>
             </table>
@@ -1582,8 +1574,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
             <table class="entrys-entry-trash" style="width:100%" >
                 <thead>
                     <th class="trash-checkbox-th"><button onclick="do_op_modal('trash')">ops</button></th>
-                    <th class="trash-recipient-th">sender</th>
-                    <th class="trash-subject-th">subject</th>
+                    <th class="trash-subject-th">title</th>
                     <th class="trash-date-th">time</th>
                 </thead>
             </table>
@@ -1945,12 +1936,10 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 		"category" : "cecks",
 		"title" : "much to do with tests",
 		"recipient" : "blog",
-		"cc" : "",
-		"bcc" : "",
-		"date" : "11/17/2026, 4:41:02 PM",
-		"timestamp" : 1794962462233,
-		"created_when" : "11/17/2026, 4:41:02 PM",
-		"updated_when" : "11/17/2026, 4:41:02 PM",
+		"date" : "11/18/2026, 11:17:40 AM",
+		"timestamp" : 1795029460225,
+		"created_when" : "11/18/2026, 11:17:40 AM",
+		"updated_when" : "11/18/2026, 11:17:40 AM",
 		"description" : "this is a test",
 		"score" : 1,
 		"keys" : "sensless,common,often",
@@ -1965,8 +1954,8 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 		"id" : 1,
 		"email" : "",
 		"name" : "",
-		"date" : "11/17/2026, 4:41:02 PM",
-		"timestamp" : 1794962462233,
+		"date" : "11/18/2026, 11:17:40 AM",
+		"timestamp" : 1795029460225,
 		"text" : "",
 		"_count_edits" : 0,
 		"_saved_updates" : []
@@ -2301,6 +2290,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
             b_section_title.innerHTML = blog_title_map(mtype)
         }
     }
+    set_section_title("blog")
 
     window.entrys_entry_switch_to  = (mtype) => {
         if ( mtype === undefined ) mtype = g_current_mtype
@@ -2801,8 +2791,6 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 			let category = entry.category
 			let title = entry.title
 			let recipient = entry.recipient
-			let cc = entry.cc
-			let bcc = entry.bcc
 			let date = entry.date
 			let timestamp = entry.timestamp
 			let created_when = entry.created_when
@@ -2814,7 +2802,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 			let _count_edits = entry._count_edits
 			let _saved_updates = entry._saved_updates
             entry.dirty = false
-            return { id, author, category, title, recipient, cc, bcc, date, timestamp, created_when, updated_when, description, score, keys, text, _count_edits, _saved_updates }
+            return { id, author, category, title, recipient, date, timestamp, created_when, updated_when, description, score, keys, text, _count_edits, _saved_updates }
         }
     }
 
@@ -2827,8 +2815,6 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 			entry.category = old_values.category
 			entry.title = old_values.title
 			entry.recipient = old_values.recipient
-			entry.cc = old_values.cc
-			entry.bcc = old_values.bcc
 			entry.date = old_values.date
 			entry.timestamp = old_values.timestamp
 			entry.created_when = old_values.created_when
@@ -2859,8 +2845,6 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 			if ( save_entry.category !== stored_entry.category ) return true
 			if ( save_entry.title !== stored_entry.title ) return true
 			if ( save_entry.recipient !== stored_entry.recipient ) return true
-			if ( save_entry.cc !== stored_entry.cc ) return true
-			if ( save_entry.bcc !== stored_entry.bcc ) return true
 			if ( save_entry.date !== stored_entry.date ) return true
 			if ( save_entry.timestamp !== stored_entry.timestamp ) return true
 			if ( save_entry.created_when !== stored_entry.created_when ) return true
@@ -2869,8 +2853,6 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 			if ( save_entry.score !== stored_entry.score ) return true
 			if ( save_entry.keys !== stored_entry.keys ) return true
 			if ( save_entry.text !== stored_entry.text ) return true
-			if ( save_entry._count_edits !== stored_entry._count_edits ) return true
-			if ( save_entry._saved_updates !== stored_entry._saved_updates ) return true
         }
         return true
     }
@@ -3409,6 +3391,8 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
     async function is_ready_to_publish_entrys_entry(entry) {
         // is_ready_to_send_entry
         if ( entry ) {
+            delete entry._saved_updates
+            entry._saved_updates = []
             // ---- ---- ---- ---- ---- ---- ---- ----
 
 			let author = entry.author
@@ -4881,7 +4865,10 @@ async function ctxt_fetchUrl(endpoint) {
      */
     async function save_entrys_entries(entrys_entry_obj) {
         // server communicate
-        let data = new MailJsonRpc("drafts","store-draft",entrys_entry_obj)
+        let save_save_updates = entrys_entry_obj._saved_updates
+        delete entrys_entry_obj._saved_updates
+        let data = new MailJsonRpc("drafts","store-draft",structuredClone(entrys_entry_obj))
+        entrys_entry_obj._saved_updates = save_save_updates
         //
         let url = `${html_url}/json/entry`
         let rpc_result = await ctxt_PostData(url, data)

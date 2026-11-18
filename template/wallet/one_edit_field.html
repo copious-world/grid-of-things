@@ -1,0 +1,7 @@
+            entrys_entry_view.route("update-${el}", function(target, event) {
+                let store = edit_props_manager.store
+                // Update the proxified store, the copy of the element from the list
+                store[0].${el} = target.value;
+                g_current_edit_entry.${el} = target.value;
+                entry_time_update(store[0],g_current_edit_entry)
+            });

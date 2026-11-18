@@ -81,11 +81,13 @@ function process_any_subs(pre_figured) {
         lines = lines.map(line => {
             let replaced = line
             if ( line.indexOf("$gen:")  > 0 ) {
+console.log("process_any_subs", line)
                 let replacer = line.substring(line.indexOf("$gen:"),line.lastIndexOf(')')+1)
                 let oper = replacer.substring("$gen:".length,replacer.indexOf('('))
                 let func = func_table[oper]
                 if( func ) {
                     let pars = replacer.substring(replacer.indexOf('(')+1.,replacer.indexOf(')'))
+console.log("process_any_subs", pars)
                     pars = pars.split(',').map(p => p.trim())
                     replaced = func(...pars)
                 }
@@ -102,6 +104,7 @@ console.log(replacer)
 
 function populate_list_template(t_vars_ky,ctype) {
     let ctype_selections = conf_args.vars[t_vars_ky]
+console.log(ctype_selections,t_vars_ky,ctype)
     let sel_def_list = ctype_selections[ctype]
     let output = ""
     for ( let [title,entry_spec] of Object.entries(sel_def_list) ) {
@@ -193,9 +196,9 @@ console.log("parse_and_satisfy_file",file_data)
             for ( let line of lines ) {
                 let figured = ""
                 let thing_in_pars = line.substring(line.indexOf('(')+1,line.lastIndexOf(')'))
-console.log(thing_in_pars)
+console.log("AAAAA   ",thing_in_pars)
                 let var_entry = thing_in_pars.substring(thing_in_pars.indexOf('${')+2,thing_in_pars.indexOf('['))
-console.log(var_entry)
+console.log("AAAAA   ",var_entry)
                 let values = conf_args.vars[var_entry]
                 let value
                 if ( Array.isArray(values) ) {
@@ -204,9 +207,9 @@ console.log(var_entry)
                     value = values
                 }
                 if ( line.startsWith('$template:') ) {
-console.log(line)
+console.log("AAAAA   ", "value", value, "line", line)
                     let template = line.substring('$template:'.length ,line.indexOf('('))
-console.log(template)
+console.log("AAAAA   parse_and_satisfy_file" ,template)
                     template = conf_args.templates[template]
                     let tvar = '${ctype}'
                     figured = template.replaceAll(tvar,value)
@@ -232,6 +235,12 @@ let func_table = {
     },
     "list_els" : (t_vars_ky,ctype) => {
         return populate_list_template(t_vars_ky,ctype)
+    },
+    "starts_with_underscore" : (str) => {
+        if ( typeof str === "string" ) {
+            return str[0] === '_'
+        }
+        return false
     }
 }
 
@@ -280,7 +289,13 @@ console.log(funcall)
             } else if ( typeof var_lst === 'object' ) {
                 let par_lst_value = directive["${val}"]
                 if ( par_lst_value ) {
+                    let skip_func = false
+                    if ( directive.skip ) {
+                        skip_func = directive.skip
+                        skip_func = func_table[skip_func]
+                    }
                     for ( let [el,val] of Object.entries(var_lst) ) {
+                        if ( skip_func && skip_func(el) ) continue
                         let nxt_line = loop_template.replaceAll("${el}",el)
                         if ( (typeof val === 'string') && val.startsWith('${') ) {
                             val = calc_conf_values(val)

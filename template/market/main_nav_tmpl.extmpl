@@ -1,0 +1,4 @@
+do i in [0..3] {
+$template:section_switch(${switch_types[i]})
+$template:link_panel(${switch_types[i]})
+}

@@ -1,0 +1,8 @@
+        display: grid;
+        grid-template-columns: 20% 1fr;
+        gap: 12px 16px;
+        align-items: center;
+        padding: 16px;
+        background: #f9f9f9;
+        /* border-radius: 8px; */
+        /* max-width: 600px; */

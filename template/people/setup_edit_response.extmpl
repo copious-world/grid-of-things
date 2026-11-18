@@ -1,0 +1,3 @@
+do i in [0..1] {
+$load:imports(one_edit_field.html,${edit_field_types[i]})
+}

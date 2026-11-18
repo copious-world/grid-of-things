@@ -12,6 +12,9 @@
         "compile": "npx mikado-compile ./tpl/",
         "compile-test": "npx mikado-compile ./test/tpl/",
         "cmp-rtest": "npx mikado-compile ./test/tpl_r/",
+        "cmp-wtest": "npx mikado-compile ./test/tpl_w/",
+        "cmp-mtest": "npx mikado-compile ./test/tpl_m/",
+        "cmp-ptest": "npx mikado-compile ./test/tpl_p/",
         "build": "rollup -c",
         "dev": "rollup -c -w",
         "gen-docs": "jsdoc --configure ./tools/jsdoc.conf -a all -R README.md --verbose"
