@@ -73,7 +73,8 @@ function ends_from_range(a_range) {
 }
 
 // "$gen$imports_value_map(${entrys_entry_proto})" 
-
+// "$gen$inline$keys_of,unload_entrys_entry_for_undo(${entrys_entry_proto})"
+//
 function process_any_subs(pre_figured) {
     if ( pre_figured.indexOf("$gen:")  > 0 ) {
         let lines = pre_figured.split('\n')
@@ -136,6 +137,36 @@ function populate_list_template(t_vars_ky,ctype) {
     return output
 }
 
+
+var template_for_subst = ""
+var last_file = ""
+function load_file_then_subsitute(line,ith) {
+    //
+    let descriptor = conf_args.funcs[line]
+// console.log("LOAD_FILE_THEN_SUBSITUTE")
+// console.dir(descriptor)
+    if ( descriptor ) {
+        let file_name = descriptor.file
+        try {
+            if ( last_file !== file_name ) {
+                template_for_subst = fs.readFileSync(file_name).toString()
+            }
+            last_file = file_name
+            let values = conf_args.vars[descriptor["${el}"]]
+            let value = values[ith]
+            if ( value !== undefined ) {
+                let output = "" + template_for_subst
+                output = output.replaceAll("${el}",value)
+                return output
+            }
+        } catch (e) {
+console.log(e)
+        }
+    }
+    //
+    return "could have been here"
+}
+
 function parse_and_satisfy_file(file_data) {
 console.log("parse_and_satisfy_file",file_data)
     let output = file_data
@@ -180,6 +211,8 @@ console.log(template)
                     let tvar = '${ctype}'
                     figured = template.replaceAll(tvar,value)
                     figured = process_any_subs(figured)
+                } else if ( line.startsWith('$load:imports') ) {
+                    figured = load_file_then_subsitute(line,i)
                 } else {
                     figured = line.replace(thing_in_pars,value)
                 }
@@ -261,6 +294,10 @@ console.log(funcall)
                         replacer += sep + "\n" + nxt_line
                         sep = directive.sep ? directive.sep : ""
                     }
+                } else if ( funcall.indexOf('$inline$') > 0 ) {
+                    let kys = Object.keys(var_lst)
+                    sep = directive.sep ? directive.sep : ", "
+                    replacer = kys.join(sep)
                 }
             }
         } else if ( !only_file ) {

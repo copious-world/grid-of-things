@@ -1757,6 +1757,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
     // similar can be done for the view... which works at the moment. (when wanting it to be more complex...)
     window.edit_properties_of = (entry)  => {
         let entrys_entry_store = edit_properties_manager.store
+        edit_properties_manager?.view?.render(edit_properties_manager?.store);
         if ( entrys_entry_store ) { // simple array
             let ventry = entrys_entry_store[0]
             for ( let ky in entry ) {
@@ -2370,7 +2371,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
                     let tab_objects = objects.map(obj => {
                         return {
                             "id" : obj.id,
-                            "title" : obj.title
+                            "${title_role_field}" : obj.${title_role_field}
                         }
                     })
                     //
@@ -2559,22 +2560,16 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 
     function unload_entrys_entry_for_undo(entry) {
         if ( entry ) {
-            let id = entry.id
-            let sender = entry.sender
-            let recipient = entry.recipient
-            let cc = entry.cc
-            let title = entry.title
-            let text = entry.text
-            let date = entry.date
-            let timestamp = entry.timestamp
+$gen$unload_entrys_entry_for_undo(${entrys_entry_proto})
             entry.dirty = false
-            return { id, sender, recipient, cc, title, text, date, timestamp }
+            return { $gen$inline$keys_of(unload_entrys_entry_for_undo,${entrys_entry_proto}) }
         }
     }
 
 
     function reload_entrys_entry_by_undo(entry,old_values) {
         if ( entry ) {
+$gen$reload_entrys_entry_by_undo(${entrys_entry_proto})
             entry.id = old_values.id
             entry.sender = old_values.sender
             entry.recipient = old_values.recipient
@@ -2589,17 +2584,12 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 
     function unequal_objects(save_entry,stored_entry) {
         if ( save_entry && stored_entry ) {
-            if ( save_entry.id !== stored_entry.id ) return true
-            if ( save_entry.sender !== stored_entry.sender ) return true
-            if ( save_entry.recipient !== stored_entry.recipient ) return true
-            if ( save_entry.cc !== stored_entry.cc ) return true
-            if ( save_entry.title !== stored_entry.title ) return true
-            if ( save_entry.text !== stored_entry.text ) return true
-            if ( save_entry.date !== stored_entry.date ) return true
-            if ( save_entry.timestamp !== stored_entry.timestamp ) return true
+$gen$unequal_objects(${entrys_entry_proto})
         }
         return true
     }
+
+
 
     function update_contact_properties_view(cid) {
         let contact = get_entry_from_store('contacts',cid)
@@ -2692,20 +2682,7 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
             let edit_props_manager = window._x_edit_properties_management
             let entrys_entry_view = edit_props_manager.view
             //
-            entrys_entry_view.route("update-author", function(target, event) {
-                let store = edit_props_manager.store
-                // Update the proxified store, the copy of the element from the list
-                store[0].author = target.value;
-                g_current_edit_entry.author = target.value;
-                entry_time_update(store[0],g_current_edit_entry)
-            });
-            entrys_entry_view.route("update-title", function(target, event) {
-                let store = edit_props_manager.store
-                // Update the proxified store, the copy of the element from the list
-                store[0].title = target.value;
-                g_current_edit_entry.title = target.value;
-                entry_time_update(store[0],g_current_edit_entry)
-            });
+$load_with_ops:edit_response(setup_edit_response.extmpl)
         }
 
         //
@@ -2719,99 +2696,6 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
                 }
             });
         }
-        //
-        let m_prop_el = document.getElementById("edit-entrys-entry-author")
-        if ( m_prop_el ) {
-            m_prop_el.addEventListener('change', (event) => {
-                if ( g_current_edit_entry ) {
-                    g_current_edit_entry.sender = event.target.value
-                    update_just_date(g_current_edit_entry,"edit-entrys-entry-date")
-                    g_current_edit_entry.dirty = true
-                }
-            });
-        }
-        //
-        // m_prop_el = document.getElementById("edit-entrys-entry-recipient")
-        // if ( m_prop_el ) {
-        //     m_prop_el.addEventListener('change', (event) => {
-        //         if ( g_current_edit_entry ) {
-        //             g_current_edit_entry.recipient = event.target.value
-        //             update_just_date(g_current_edit_entry,"edit-entrys-entry-date")
-        //             g_current_edit_entry.dirty = true
-        //         }
-        //     });
-        // }
-        //
-        // m_prop_el = document.getElementById("edit-entrys-entry-cc")
-        // if ( m_prop_el ) {
-        //     m_prop_el.addEventListener('change', (event) => {
-        //         if ( g_current_edit_entry ) {
-        //             g_current_edit_entry.cc = event.target.value
-        //             update_just_date(g_current_edit_entry,"edit-entrys-entry-date")
-        //             g_current_edit_entry.dirty = true
-        //         }
-        //     });
-        // }
-        // //
-        // m_prop_el = document.getElementById("edit-entrys-entry-bcc")
-        // if ( m_prop_el ) {
-        //     m_prop_el.addEventListener('change', (event) => {
-        //         if ( g_current_edit_entry ) {
-        //             g_current_edit_entry.bcc = event.target.value
-        //             update_just_date(g_current_edit_entry,"edit-entrys-entry-date")
-        //             g_current_edit_entry.dirty = true
-        //         }
-        //     });
-        // }
-        //
-        m_prop_el = document.getElementById("edit-entrys-entry-title")
-        if ( m_prop_el ) {
-            m_prop_el.addEventListener('change', (event) => {
-                if ( g_current_edit_entry ) {
-                    g_current_edit_entry.title = event.target.value
-                    update_just_date(g_current_edit_entry,"edit-entrys-entry-date")
-                    g_current_edit_entry.dirty = true
-                }
-            });
-        }
-
-        // // contacts 
-        // //
-        // let contact_editor = document.getElementById("contact_contents_edit")
-        // if ( contact_editor ) {
-        //     contact_editor.addEventListener('input', (event) => {
-        //         if ( g_current_edit_contact ) {
-        //             g_current_edit_contact.text = event.target.innerHTML
-        //             update_just_date(g_current_edit_contact,"edit-contact-date")
-        //             update_just_date(g_current_edit_contact,"view-contact-date")
-        //             g_current_edit_contact.dirty = true
-        //         }
-        //     });
-        // }
-        // //
-        // let c_prop_el = document.getElementById("edit-contact-name")
-        // if ( c_prop_el ) {
-        //     c_prop_el.addEventListener('change', (event) => {
-        //         if ( g_current_edit_contact ) {
-        //             g_current_edit_contact.name = event.target.value
-        //             update_just_date(g_current_edit_contact,"edit-contact-date")
-        //             update_just_date(g_current_edit_contact,"view-contact-date")
-        //             g_current_edit_contact.dirty = true
-        //         }
-        //     });
-        // }
-        // //
-        // c_prop_el = document.getElementById("edit-contact-email")
-        // if ( c_prop_el ) {
-        //     c_prop_el.addEventListener('change', (event) => {
-        //         if ( g_current_edit_contact ) {
-        //             g_current_edit_contact.email = event.target.value
-        //             update_just_date(g_current_edit_contact,"edit-contact-date")
-        //             update_just_date(g_current_edit_contact,"view-contact-date")
-        //             g_current_edit_contact.dirty = true
-        //         }
-        //     });
-        // }
 
     }
 
@@ -3186,34 +3070,15 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
         // is_ready_to_send_entry
         if ( entry ) {
             // ---- ---- ---- ---- ---- ---- ---- ----
-            let recipient = entry.recipient
-            let sender = entry.sender
-            let title = entry.title
-            let text = entry.text
+$gen$is_ready_to_publish_entrys_entry(assign,${publish_field_requirements})
             let ready = true
             // ---- ---- ---- ---- ---- ---- ---- ----
-            ready &&= (recipient.length !== 0)
-            ready &&= (sender.length !== 0)
-            ready &&= (title.length !== 0)
-            ready &&= (text.length !== 0)
-
+$gen$is_ready_to_publish_entrys_entry(emptiness,${publish_field_requirements})
             if ( !ready ) {
                 let user_should_see = {}
-                if (sender.length === 0) {
-                    user_should_see.sender = true  // not optional
-                }
-                if (recipient.length === 0) {
-                    user_should_see.recipient = true  // not optional
-                }
-                if (title.length === 0) {
-                    user_should_see.title = true  // not optional
-                }
-                if (text.length === 0) {
-                    user_should_see.text = false  //    optional
-                }
+$gen$is_ready_to_publish_entrys_entry(required,${publish_field_requirements})
                 ready = await g_confirmation_modal.stylish_confirm(user_should_see)
             }
-
             return ready
         }
         return false

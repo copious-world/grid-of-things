@@ -58,6 +58,51 @@
             "funcs" : "func_table",
             "fkey" : "$id",
             "${vars}" : "canonical"
+        },
+        "$gen$unload_entrys_entry_for_undo(${entrys_entry_proto})" : {
+            "${el}" : "entrys_entry_proto",
+            "${val}" : "t[${el}]",
+            "template" : "\t\t\tlet ${el} = entry.${el}"
+        },
+        "$gen$inline$keys_of(unload_entrys_entry_for_undo,${entrys_entry_proto})" : {
+            "${el}" : "entrys_entry_proto",
+            "sep"  : ", ",
+            "template" : "<{keys}>"
+        },
+        "$gen$reload_entrys_entry_by_undo(${entrys_entry_proto})" : {
+            "${el}" : "entrys_entry_proto",
+            "${val}" : "t[${el}]",
+            "template" : "\t\t\tentry.${el} = old_values.${el}"
+        },
+        "$gen$unequal_objects(${entrys_entry_proto})" : {
+            "${el}" : "entrys_entry_proto",
+            "${val}" : "t[${el}]",
+            "template" : "\t\t\tif ( save_entry.${el} !== stored_entry.${el} ) return true"
+        },
+        "$gen$is_ready_to_publish_entrys_entry(assign,${publish_field_requirements})" : {
+            "${el}" : "publish_field_requirements",
+            "${val}" : "t[${el}]",
+            "template" : "\t\t\tlet ${el} = entry.${el}"
+        },
+        "$gen$is_ready_to_publish_entrys_entry(emptiness,${publish_field_requirements})" : {
+            "${el}" : "publish_field_requirements",
+            "${val}" : "t[${el}]",
+            "template" : "\t\t\tready &&= (${el}.length !== 0)"
+        },
+        "$gen$is_ready_to_publish_entrys_entry(required,${publish_field_requirements})" : {
+            "${el}" : "publish_field_requirements",
+            "${val}" : "t[${el}]",
+            "template" : "\t\t\t\tif (${el}.length === 0) {\n\t\t\t\t\t user_should_see.${el} = true\n\t\t\t\t}"
+        },
+        "$load_with_ops:edit_response(setup_edit_response.extmpl)" : {
+            "file" : "template/setup_edit_response.extmpl",
+            "funcs" : "func_table",
+            "fkey" : "$tmpl_lines",
+            "${vars}" : "one_shot"
+        },
+        "$load:imports(one_edit_field.html,${edit_field_types[i]})" : {
+            "${el}" : "edit_field_types",
+            "file" : "template/one_edit_field.html"
         }
     },
     "vars" : {
@@ -65,6 +110,7 @@
         "canonical" : "http://www.copious.world",
         "logo_icon" : "copiousLogo.svg",
         "main_type" : "blog",
+        "title_role_field" : "title",
         "entrys_entry_classes" : [ "blog", "drafts", "published", "trash" ],
         "entries_list_classes" : [ "drafts", "published", "trash" ],
         "entrys_types_to_titles" : {
@@ -91,6 +137,11 @@
             "text" : "edit this message",
             "_count_edits" : 0, "_saved_updates" : []
         },
+        "publish_field_requirements" : {
+            "author" : true,
+            "title" : true,
+            "text" : false
+        },
         "contact_proto" : {
             "id" : 1, 
             "email" : "", 
@@ -102,6 +153,7 @@
             "_saved_updates" : []  
         },
         "switch_types" : ["blog", "create", "filtered", "manage"],
+        "edit_field_types" : ["author", "title"],
         "switch_links" : {
             "blog" : {
                 "browse blogs" : { "action" : "entrys_entry_switch_to", "template" : "switch_to_el", "ky" : "blog" }
