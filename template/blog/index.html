@@ -992,11 +992,11 @@ span {
     //
     $gen$imports(${entrys_entry_classes})
     //
-    import attachment_view_template from "./tpl_r/partial/attachment_view.js"
-    import attachment_edit_template from "./tpl_r/partial/attachment_edit.js"
+    import attachment_view_template from "./${tpl_dir}/partial/attachment_view.js"
+    import attachment_edit_template from "./tpl_w/partial/attachment_edit.js"
     //
-    import tab_controller from "./tpl_r/partial/selected_entries_tab.js"  // tabs in the view
-    import edit_properties from "./tpl_r/partial/edit_properties.js"  // tabs in the view
+    import tab_controller from "./${tpl_dir}/partial/selected_entries_tab.js"  // tabs in the view
+    import edit_properties from "./${tpl_dir}/partial/edit_properties.js"  // tabs in the view
 
     let entrys_entry_imports = { $gen$imports_map(${entrys_entry_classes})
     }
@@ -1117,10 +1117,10 @@ span {
     <div class="sum-banner">
         <span id="section-category-title" style="color:black"><b>${main_type}</b> Copious World</span> 
     </div>
-    <div>
+    <!-- <div>
         <button onclick="add_${main_type}_el()">add entry</button>
         <button onclick="change_${main_type}_el()">change entry</button>
-    </div>
+    </div> -->
     </summary>
     <!-- MAIL MENU CONTROL -->
     <div class="nav-go-container" >

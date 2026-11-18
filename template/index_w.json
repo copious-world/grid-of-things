@@ -112,12 +112,13 @@
         "logo_icon" : "copiousLogo.svg",
         "main_type" : "transactions",
         "title_role_field" : "title",
-        "entrys_entry_classes" : [ "transactions", "drafts", "published", "trash" ],
-        "entries_list_classes" : [ "drafts", "published", "trash" ],
+        "tpl_dir" : "tpl_w",
+        "entrys_entry_classes" : [ "transactions", "drafts", "sent", "trash" ],
+        "entries_list_classes" : [ "drafts", "sent", "trash", "coins", "tokens", "bitcoin", "eth", "solano" ],
         "entrys_types_to_titles" : {
             "transactions" : "<i>Copious World</i> <b>Wallet</b>",
             "drafts" : "<b>Drafts</b>",
-            "published" : "<b>Published</b>",
+            "sent" : "<b>Sent</b>",
             "trash" : "<b>Trash</b>"
         },
         "entrys_entry_proto" : {
@@ -168,13 +169,13 @@
             },
             "received" : {
                 "spacer1" : "shadow_line",
-                "coins" : { "action" : "entrys_entry_switch_to", "template" : "switch_to_el"},
-                "tokens" : { "action" : "entrys_entry_switch_to", "template" : "switch_to_el"}
+                "coins" : { "action" : "entrys_entry_switch_to", "template" : "switch_to_el", "ky" : "transactions"},
+                "tokens" : { "action" : "entrys_entry_switch_to", "template" : "switch_to_el", "ky" : "transactions"}
             }, 
             "tx by coin" : {
-                "bitcoin" : { "action" : "entrys_entry_switch_to", "template" : "switch_to_el"},
-                "eth" : { "action" : "entrys_entry_switch_to", "template" : "switch_to_el"},
-                "solano" : { "action" : "entrys_entry_switch_to", "template" : "switch_to_el"}
+                "bitcoin" : { "action" : "entrys_entry_switch_to", "template" : "switch_to_el", "ky" : "transactions"},
+                "eth" : { "action" : "entrys_entry_switch_to", "template" : "switch_to_el", "ky" : "transactions"},
+                "solano" : { "action" : "entrys_entry_switch_to", "template" : "switch_to_el", "ky" : "transactions"}
             }
         }
     },

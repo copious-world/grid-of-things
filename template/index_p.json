@@ -112,6 +112,7 @@
         "logo_icon" : "copiousLogo.svg",
         "main_type" : "people",
         "title_role_field" : "title",
+        "tpl_dir" : "tpl_p",
         "entrys_entry_classes" : [ "people", "drafts", "published", "trash" ],
         "entries_list_classes" : [ "drafts", "published", "trash" ],
         "entrys_types_to_titles" : {

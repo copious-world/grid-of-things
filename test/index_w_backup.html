@@ -1,0 +1,4408 @@
+<!doctype html>
+<html>
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="author" content="Richard Leddy" />
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+<meta id="theme-color" name="theme-color" content="#452770">
+
+<link rel="canonical" href="http://www.copious.world">
+
+<title>Copious World</title>
+<meta name="description" content="An entry point into the our world of AI, IoT, and Communities built around songs, etc.">
+<link rel="icon" type="image/svg+xml" href="/copiousLogo.svg" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700" />
+
+<link rel="stylesheet" href="./tx_styles.css" />
+
+<style>
+
+.fade_able {
+	position:absolute;
+	visibility:hidden;
+	top : 10px; left : 10px;
+	height:80%;
+	width: 40%;
+	z-index:101;
+	border: rgba(252, 190, 190, 0.4) 2px solid;
+	background-color: white;
+	overflow:hidden;
+    box-shadow: 8px 8px 2px 1px rgb(0 0 255 / 0.2);
+}
+
+@media screen and (max-width: 1100px) {
+    .right_fade_able {
+        position:absolute;
+        visibility:hidden;
+        top : 10px; left : 10px;
+        height:80%;
+        width: 90%;
+        z-index:101;
+        border: rgba(252, 190, 190, 0.4) 2px solid;
+        background-color: white;
+        overflow:hidden;
+        box-shadow: 8px 8px 2px 1px rgb(0 0 255 / 0.2);
+    }
+}
+@media screen and (min-width: 1100px) {
+    .right_fade_able {
+        position:absolute;
+        visibility:hidden;
+        top : 10px; left : 20%;
+        height:80%;
+        width: 60%;
+        z-index:101;
+        border: rgba(252, 190, 190, 0.4) 2px solid;
+        background-color: white;
+        overflow:hidden;
+        box-shadow: 8px 8px 2px 1px rgb(0 0 255 / 0.2);
+    }
+}
+
+
+.fadeable-wide {
+	width: 60%;
+}
+
+@media screen and (max-width: 1040px) {
+	.fade_able {
+		width: 60%;
+	}
+    .fadeable-wide {
+	    width: 60%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+	.fade_able {
+		width: 90%;
+	}
+    .fadeable-wide {
+	    width: 90%;
+    }
+}
+
+
+.fade_able_content {
+	height:100%;
+	width: 100%;
+	overflow:auto;
+    cursor: pointer;
+}
+
+
+
+.togglebar {
+	height: fit-content;
+	visibility:inherit;
+	background-color: navy;
+	text-align:right;
+    cursor: move;
+}
+
+.togglebar:hover { 
+	background-color: darkgreen;
+}
+
+
+.togglebar-sect {
+	height:16px;
+	visibility:inherit;
+	background-color: navy;
+	text-align:center;
+    vertical-align:middle;
+    cursor: pointer;
+    font-weight: bold;
+    font-size:200%;
+    color: navy;
+    padding-bottom: 3px;
+    padding-top:0;
+}
+
+.togglebar-sect:hover { 
+	background-color: darkgreen;
+    color: orange;
+}
+
+
+.closer_x {
+	padding-left:2px;
+	padding-right:2px;
+	color:rgb(216, 159, 37);
+	font-weight:bolder;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+	border: solid 1px rgb(255, 102, 0);
+	cursor:pointer;
+	height: 24px;
+	min-height: 24px;
+	max-height: 24px;
+    font-weight: bolder;
+	background-color: rgba(92, 92, 117, 0.815);
+}
+
+.closer_x:hover {
+	padding-left:2px;
+	padding-right:2px;
+	color:purple;
+	font-weight:bolder;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+	border: solid 1px rgb(44, 129, 44);
+	cursor:pointer;
+	height: inherit;
+    font-weight: bolder;
+	background-color: rgb(248, 245, 219);
+}
+
+
+.sizerbar {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 1000; /* Adjust as needed to be above other content */
+    height:10px;
+    width: 10px;
+	visibility:inherit;
+	background-color: navy;
+	text-align:center;
+    cursor: nesw-resize;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+	border: solid 1px rgb(44, 129, 44);
+	cursor:pointer;
+    font-weight: bolder;
+}
+
+.sizerbar:hover {
+	padding-left:2px;
+	padding-right:2px;
+	color:purple;
+    cursor: nesw-resize;
+	background-color: rgb(248, 245, 219);
+}
+
+.op-button {
+    padding:2px;
+    width:fit-content;
+    font-size: small;
+	border-color: rgb(248, 245, 219);
+}
+
+.flows-bash-cmd {
+    background-color:rgb(255, 255, 234);
+    border:1px solid rgb(51, 25, 51);
+    padding:2px;
+    color:rgb(53, 15, 15);
+    font-weight: 550;
+}
+
+.flows-bash-cmd-the-cmd {
+    color:rgb(9, 39, 9);
+    font-weight: 600;
+}
+
+
+.report-window-styles {
+    border : solid 1px rgb(43, 11, 43);
+    padding : 3px;
+    background-color: rgb(255, 253, 225);
+}
+
+</style>
+
+<style>
+
+    html {
+        interpolate-size: allow-keywords;
+    }
+
+    summary {
+        list-style: none; /* Modern standard way */
+    }
+    summary::-webkit-details-marker {
+        display: none; /* Safari and older Chrome support */
+    }
+
+    /* 
+    details[open] summary::after {
+        background-color: rgba(235, 235, 187, 1);
+    } */
+
+    /* 1. Target the wrapper element containing the content inside <details> */
+    details::details-content {
+        width: 0;
+        overflow: hidden;
+    }
+
+    /* 2. Target the content when the parent <details> is open */
+    details[open]::details-content {
+        width: auto;
+    }
+
+
+    .mail-go-container {
+        padding: 6px;
+        padding-right: 16px;
+        /*  -- */
+    }
+
+    .mail-go-container > blockquote {
+        border: solid 1px rgb(8, 22, 8);
+        background-color: white;
+        box-shadow: 3px 3px rgba(128, 128, 128, 0.377);
+        margin: 0;             /* Prevents default browser spacing */
+        position: absolute;
+        top: 0;
+        left:0;
+        height: calc(100vh - 40px);
+        overflow-y: auto;
+        transition: width 0.3s ease-out, content-visibility 0.3s allow-discrete;
+        display: none;
+    }
+
+    details[open]  .mail-go-container > blockquote {
+        display: block;
+        width: 200px;
+        @starting-style { width: 0; }
+    }
+
+
+    .mail-go-container ul {
+        width: calc(100% - 24px);
+        list-style-type: none; /* Removes the dots */
+        padding-left: 10px;
+        padding-right: 10px;
+        margin: 0;             /* Prevents default browser spacing */
+    }
+
+    .mail-go-container ul > li {
+        border-bottom: 1px solid rgb(5, 36, 5);
+    }
+
+    .mail-go-container ul > li > button {
+        width: 100%;
+        background-color: white;
+        border:none;
+        margin-bottom: 2%;
+        font-weight: bold;
+        font-size: 105%;
+        text-wrap: nowrap;
+    }
+
+    .mail-go-container ul > li > button:hover {
+        background-color: rgba(221, 255, 177, 0.57);
+        color: rgba(255, 123, 0, 0.86)
+    }
+
+
+    .follow-menu {
+        float: inline-end;
+        padding-right:20%;
+        font-weight: bold;
+        font-size: 1.15em;
+        width: 50%;
+    }
+
+    .search-band {
+        padding:4px;
+        text-align: center;
+        background-color: rgba(255, 255, 225, 1);
+        border-bottom: solid 1px rgb(7, 7, 39);
+    }
+    .search-band > span {
+        font-weight: bolder;
+    }
+    .search-band > input {
+        font-weight: normal;
+        width: 20%;
+    }
+    .search-band > button {
+        font-weight: normal;
+        width: fit-content;
+        text-wrap: nowrap;
+        border:none;
+        border-bottom: 1px dotted rgba(102, 102, 95, 0.356);
+        background-color: transparent;
+        box-shadow: 2px 2px rgba(186, 186, 201, 0.31);
+    }
+
+    h4 {
+        padding-left: 8%;
+        font-style: italic;
+        color: rgb(50, 88, 40);
+        width: calc(100% - 20px);
+        background-color: rgba(250, 250, 179, 0.84);
+    }
+
+    h4 > button {
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+        font: inherit;
+        text-wrap: nowrap;
+    }
+
+
+
+    /** list styling **/
+
+
+    .overview_check_select {
+        border:solid 1px rgba(255, 0, 0, 0.438);
+    }
+    .sent_check_select {
+        border:solid 1px rgba(255, 0, 0, 0.438);
+    }
+    .spam_check_select {
+        border:solid 1px rgba(255, 0, 0, 0.438);
+    }
+    .notify_check_select {
+        border:solid 1px rgba(255, 0, 0, 0.438);
+    }
+    .drafts_check_select {
+        border:solid 1px rgba(255, 0, 0, 0.438);
+    }
+    .trash_check_select {
+        border:solid 1px rgba(255, 0, 0, 0.438);
+    }
+
+    /* drafts list */
+    .coin-drafts {
+        background-color: white;
+    }
+    .coin-drafts tr:hover td, tr:hover th {
+        background-color: #e0e0e0;
+    }
+    .coin-drafts > thead  th { 
+        background-color: #e6f0d4ff; 
+    }
+    .drafts-checkbox-th { background-color: white; cursor: pointer; width: 5%;}
+    .drafts-recipient-th { background-color: white; cursor: pointer; width: 25%; }
+    .drafts-subject-th { background-color: white; cursor: pointer; width: 33%; }
+    .drafts-date-th { background-color: white; cursor: pointer; width: 33%; }
+    /* ----   */
+    .ed-checkbox-cell { background-color: white; cursor: pointer; width: 5%; }
+    .ed-recipient-cell { background-color: white; cursor: pointer; width: 25%; padding-left: 4%; }
+    .ed-subject-cell { background-color: white; cursor: pointer; width: 33%; padding-left: 4%; }
+    .ed-date-cell { background-color: white; cursor: pointer; width: 33%; padding-left: 4%; }
+
+    .coin-drafts th > button {
+        color: navy;
+    }
+    .coin-drafts th > button:hover {
+        color: green;
+        background-color: #f7fddcff;
+    }
+
+    /* sent list */
+    .coin-sent {
+        background-color: white;
+    }
+    .coin-sent tr:hover td, tr:hover th {
+        background-color: #e0e0e0;
+    }
+    .coin-sent > thead  th { 
+        background-color: #e6f0d4ff; 
+    }
+    .sent-checkbox-th { background-color: white; cursor: pointer; width: 5%;}
+    .sent-recipient-th { background-color: white; cursor: pointer; width: 25%; }
+    .sent-subject-th { background-color: white; cursor: pointer; width: 33%; }
+    .sent-date-th { background-color: white; cursor: pointer; width: 33%; }
+    /* ----   */
+    .sent-checkbox-cell { background-color: white; cursor: pointer; width: 5%; }
+    .sent-recipient-cell { background-color: white; cursor: pointer; width: 25%; padding-left: 4%; }
+    .sent-subject-cell { background-color: white; cursor: pointer; width: 33%; padding-left: 4%; }
+    .sent-date-cell { background-color: white; cursor: pointer; width: 33%; padding-left: 4%; }
+
+    .coin-sent th > button {
+        color: navy;
+    }
+    .coin-sent th > button:hover {
+        color: green;
+        background-color: #f7fddcff;
+    }
+
+    
+    /* overview list */
+    .coin-overview { 
+        background-color: white; 
+    }
+    .coin-overview tr:hover td, tr:hover th {
+        background-color: #e0e0e0;
+    }
+    .coin-overview > thead  th { 
+        background-color: #e6f0d4ff; 
+    }
+    .in-checkbox-th { background-color: white; cursor: pointer; width: 5%;}
+    .in-recipient-th { background-color: white; cursor: pointer; width: 25%; }
+    .in-subject-th { background-color: white; cursor: pointer; width: 33%; }
+    .in-date-th { background-color: white; cursor: pointer; width: 33%; }
+    /* ----   */
+    .in-checkbox-cell { background-color: white; cursor: pointer; width: 5%; }
+    .in-recipient-cell { background-color: white; cursor: pointer; width: 25%; padding-left: 4%; }
+    .in-subject-cell { background-color: white; cursor: pointer; width: 33%; padding-left: 4%; }
+    .in-date-cell { background-color: white; cursor: pointer; width: 33%; padding-left: 4%; }
+
+    .coin-overview th > button {
+        color: navy;
+    }
+    .coin-overview th > button:hover {
+        color: green;
+        background-color: #f7fddcff;
+    }
+
+
+    /* received list */
+    .coin-received { 
+        background-color: white; 
+    }
+    .coin-received tr:hover td, tr:hover th {
+        background-color: #e0e0e0;
+    }
+    .coin-received > thead  th { 
+        background-color: #e6f0d4ff; 
+    }
+    .received-checkbox-th { background-color: white; cursor: pointer; width: 5%;}
+    .received-recipient-th { background-color: white; cursor: pointer; width: 25%; }
+    .received-subject-th { background-color: white; cursor: pointer; width: 33%; }
+    .received-date-th { background-color: white; cursor: pointer; width: 33%; }
+    /* ----   */
+    .received-checkbox-cell { background-color: white; cursor: pointer; width: 5%; }
+    .received-recipient-cell { background-color: white; cursor: pointer; width: 25%; padding-left: 4%; }
+    .received-subject-cell { background-color: white; cursor: pointer; width: 33%; padding-left: 4%; }
+    .received-date-cell { background-color: white; cursor: pointer; width: 33%; padding-left: 4%; }
+
+    .coin-received th > button {
+        color: navy;
+    }
+    .coin-received th > button:hover {
+        color: green;
+        background-color: #f7fddcff;
+    }
+
+    /* transactions list */
+    .coin-transactions { 
+        background-color: white; 
+    }
+    .coin-transactions tr:hover td, tr:hover th {
+        background-color: #e0e0e0;
+    }
+    .coin-transactions > thead  th { 
+        background-color: #e6f0d4ff; 
+    }
+    .transactions-checkbox-th { background-color: white; cursor: pointer; width: 5%;}
+    .transactions-recipient-th { background-color: white; cursor: pointer; width: 25%; }
+    .transactions-subject-th { background-color: white; cursor: pointer; width: 33%; }
+    .transactions-date-th { background-color: white; cursor: pointer; width: 33%; }
+    /* ----   */
+    .transactions-checkbox-cell { background-color: white; cursor: pointer; width: 5%; }
+    .transactions-recipient-cell { background-color: white; cursor: pointer; width: 25%; padding-left: 4%; }
+    .transactions-subject-cell { background-color: white; cursor: pointer; width: 33%; padding-left: 4%; }
+    .transactions-date-cell { background-color: white; cursor: pointer; width: 33%; padding-left: 4%; }
+
+    .coin-transactions th > button {
+        color: navy;
+    }
+    .coin-transactions th > button:hover {
+        color: green;
+        background-color: #f7fddcff;
+    }
+
+    /* trash list */
+    .coin-trash { 
+        background-color: white; 
+    }
+    .coin-trash tr:hover td, tr:hover th {
+        background-color: #e0e0e0;
+    }
+    .coin-trash > thead  th { 
+        background-color: #e6f0d4ff; 
+    }
+    .trash-checkbox-th { background-color: white; cursor: pointer; width: 5%;}
+    .trash-recipient-th { background-color: white; cursor: pointer; width: 25%; }
+    .trash-subject-th { background-color: white; cursor: pointer; width: 33%; }
+    .trash-date-th { background-color: white; cursor: pointer; width: 33%; }
+    /* ----   */
+    .trash-checkbox-cell { background-color: white; cursor: pointer; width: 5%; }
+    .trash-recipient-cell { background-color: white; cursor: pointer; width: 25%; padding-left: 4%; }
+    .trash-subject-cell { background-color: white; cursor: pointer; width: 33%; padding-left: 4%; }
+    .trash-date-cell { background-color: white; cursor: pointer; width: 33%; padding-left: 4%; }
+
+
+    .coin-trash th > button {
+        color: navy;
+    }
+    .coin-trash th > button:hover {
+        color: green;
+        background-color: #f7fddcff;
+    }
+
+    .coin-editor-body {
+        border: solid 1px rgb(13, 43, 13);
+    }
+
+    .mail-properties {
+        display: grid;
+        grid-template-columns: 20% 1fr;
+        gap: 12px 16px;
+        align-items: center;
+        padding: 16px;
+        background: #f9f9f9;
+        /* border-radius: 8px; */
+        /* max-width: 600px; */
+    }
+
+    .edit-mail-properties {
+        display: grid;
+        grid-template-columns: 20% 1fr;
+        gap: 12px 16px;
+        align-items: center;
+        padding: 16px;
+        background: #f9f9f9;
+    }
+    
+
+    .contact-properties {
+        display: grid;
+        grid-template-columns: 20% 1fr;
+        gap: 12px 16px;
+        align-items: center;
+        padding: 16px;
+        background: #f9f9f9;
+        /* border-radius: 8px; */
+        /* max-width: 600px; */
+    }
+
+    .select-all-ops-properties {
+        display: grid;
+        grid-template-columns: 50% 1fr;
+        gap: 12px 16px;
+        align-items: center;
+        padding: 16px;
+        background: #f9f9f9;
+        /* border-radius: 8px;
+        max-width: 600px; */
+    }
+
+    .select-all-ops-properties-on-ops {
+        display: grid;
+        grid-template-columns: 50% 1fr;
+        gap: 12px 16px;
+        align-items: center;
+        padding: 2px;
+        border-top:solid 1px rgb(9, 37, 9);
+        border-bottom:solid 1px rgb(9, 37, 9);
+        background: #fffef7ff;
+        margin-top: 6px;
+    }
+
+    .style-confirm-properties {
+        display: grid;
+        grid-template-columns: 50% 1fr;
+        gap: 6px 66px;
+        align-items: center;
+        padding: 4px;
+        background: #fff6d9ff;
+    }
+
+    .attachments-controls {
+        background-color: rgb(243, 239, 219);
+        border-bottom: 1px solid rgb(9, 54, 9);
+        border-top: 1px solid rgb(9, 54, 9);
+        padding:4px;
+        font-style: italic;
+        color: rgb(50, 88, 40);
+        user-select: none;
+        cursor: arrow;
+    }
+
+    .attachments-controls > button {
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+        font: inherit;
+        text-wrap: nowrap;
+    }
+
+    .attachments-controls a:hover {
+        color:rgb(168, 53, 0);
+        font-weight: 600;
+    }
+
+    .file-dropper-handler.drag-over {
+        cursor: grab;
+        border: solid 1px rgb(255, 94, 0);
+        background-color: rgb(248, 255, 230);
+    }
+
+
+    .ops-button-containers {
+        background: #e9ebf0ff;
+        width: 100%;
+        border-bottom: 1px solid black;
+        margin-bottom: 8px;
+    }
+
+    .field-label {
+        font-weight: bold;
+        color: #555;
+        text-align: right;
+    }
+
+    .select-all-ops-properties-on-ops .field-label {
+        font-size:smaller;
+        color: #1f1c2eff;
+    }
+
+    .style-confirm-properties .field-label {
+        font-size:smaller;
+        color: #1f1c2eff;
+    }
+    
+
+    .field-value {
+        color: #222;
+        word-break: break-word;
+    }
+
+    /** contact list **/
+
+    .contact-list { 
+        background-color: white; 
+    }
+    .contact-list tr:hover td, tr:hover th {
+        background-color: #e0e0e0;
+    }
+    .contact-list > thead  th { 
+        background-color: #e6f0d4ff; 
+    }
+    .contact-checkbox-th { background-color: white; cursor: pointer; width: 5%;}
+    .contact-name-th { background-color: white; cursor: pointer; width: 25%; }
+    .contact-coin-th { background-color: white; cursor: pointer; width: 33%; }
+    .contact-date-th { background-color: white; cursor: pointer; width: 33%; }
+    /* ----   */
+    .contact-checkbox-cell { background-color: white; cursor: pointer; width: 5%; }
+    .contact-name-cell { background-color: white; cursor: pointer; width: 25%; padding-left: 4%; }
+    .contact-coin-cell { background-color: white; cursor: pointer; width: 33%; padding-left: 4%; }
+    .contact-date-cell { background-color: white; cursor: pointer; width: 33%; padding-left: 4%; }
+
+    .contact-list th > button {
+        color: navy;
+    }
+    .contact-list th > button:hover {
+        color: green;
+        background-color: #f7fddcff;
+    }
+
+    /* attachments */
+
+    .ul-attachments-list > li {
+        border-bottom: 1px solid rgba(228, 227, 219, 0.445);
+    }
+
+    .ul-attachments-list > li > button {
+        border: none;
+        border-bottom: 1px solid transparent;
+        font-weight: bold;
+    }
+    .ul-attachments-list > li > button:hover {
+        border-bottom: 1px solid navy;
+    }
+
+    .edit-attachments-cell-2 > button {
+        cursor: pointer;
+        border: none;
+        border-bottom: 1px dotted rgba(246, 255, 116, 1);
+        font-weight: bold;
+    }
+
+    .edit-attachments-cell-2 > button:hover {
+        color: rgba(87, 26, 26, 1);
+        background-color: rgb(251, 255, 242);
+    }
+
+    .edit-attachments-cell-3 > button {
+        cursor: pointer;
+        border: none;
+        border-bottom: 1px dotted rgba(255, 230, 116, 1);
+        font-weight: bold;
+    }
+
+    .edit-attachments-cell-3 > button:hover {
+        color: rgba(194, 0, 0, 1);
+        background-color: rgba(254, 255, 191, 1);
+    }
+
+    .show-cat {
+        font-weight: bold;
+        color: rgb(9, 9, 59);
+    }
+
+</style>
+
+<script type="module">
+
+    import Mikado from "./mikado.bundle.module.min.js";
+
+    //
+    // import tweet_template from "./tpl/partial/user.js";
+    // const tweet_view = new Mikado(tweet_template, {/* options */});
+    // window._x_share_tweet_view = tweet_view
+
+    //
+    import overview_template from "./tpl/partial/inbox_list.js";
+    import sent_template from "./tpl/partial/sent_list.js";
+    import draft_template from "./tpl/partial/draft_list.js";
+    import spam_template from "./tpl/partial/spam_list.js";
+    import notify_template from "./tpl/partial/notify_list.js";
+    import trash_template from "./tpl/partial/trash_list.js";
+    import attachment_view_template from "./tpl/partial/attachment_view.js"
+    import attachment_edit_template from "./tpl/partial/attachment_edit.js"
+
+//    import coin_type_list_tmpl from "./tpl/partial/coin_type_list.js"
+
+
+    
+    let tx_imports = {
+        "overview" : overview_template,
+        'sent' : sent_template,
+        'drafts' : draft_template,
+        'transactions' : spam_template,
+        'received' : notify_template,
+        'trash' : trash_template
+    }
+
+    let attachment_imports = {
+        'view' : attachment_view_template,
+        'edit' : attachment_edit_template
+    }
+
+    //
+    let tx_classes = ['overview','sent','drafts','transactions','received','trash']
+    let tx_management = {}
+
+    for ( let mtype of tx_classes ) {
+        let store = new Mikado.Array();
+        let tx_template = tx_imports[mtype]
+        let view = new Mikado(tx_template, { observe: store });
+        tx_management[mtype] = {
+            "view" : view,
+            "store" : store,
+            "root" : null,
+            "container_el" : null
+        }
+    }
+
+    let attachment_classes = ['view','edit']
+    let attachment_management = {}
+
+    for ( let mtype of attachment_classes ) {
+        let store = new Mikado.Array();
+        let attachment_template = attachment_imports[mtype]
+        let view = new Mikado(attachment_template, { observe: store });
+        attachment_management[mtype] = {
+            "view" : view,
+            "store" : store,
+            "root" : null,
+            "container_el" : null
+        }
+    }
+
+ 
+
+    window._x_share_tx_managers = tx_management
+    window._x_share_tx_classes = ['overview','sent','drafts','transactions','received','trash']
+
+    window._x_share_attachment_managers = attachment_management
+    window._x_share_attachment_classes = ['view','edit']
+
+
+</script>
+</head>
+<body>
+<nav id="mainNav" >
+
+<div class="follow-menu">
+    <span id="mail-type-title">overview</span>
+</div>
+
+
+<details id="squash_container" class="squash_m" >
+    <summary>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" >
+        <path class="heroicon-ui" d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"/>
+    </svg>
+    </summary>
+    <!-- MAIL MENU CONTROL -->
+    <div class="mail-go-container" >
+        <blockquote id="expanded-menu" onclick="close_if_open()">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" >
+                <path class="heroicon-ui" d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"/>
+            </svg>
+            <h4><button onclick="toggle_ul(event,'manage')">manage <span id="ardn-manage" style="display:none">&#x25BC;</span><span id="arrt-manage" style="display:inline-block">&#x25BA;</span></button></h4>
+            <ul id="ul-manage" style="display: none;">
+                <li><button onclick="search_ui('transactions')" >search transactions</button></li>
+                <li><button onclick="manage_prefs()" >preferences</button></li>
+            </ul>
+            <h4><button onclick="toggle_ul(event,'transactions')">transactions <span id="ardn-transactions" style="display:inline-block">&#x25BC;</span><span id="arrt-transactions" style="display:none">&#x25BA;</span></button></h4>
+            <ul id="ul-transactions">
+                <li><button onclick="tx_switch_to('overview')" >overview</button></li>
+                <li><button onclick="tx_create()" >new tx</button></li>
+                <li><button onclick="tx_switch_to('drafts')" >drafts</button></li>
+                <li><button onclick="tx_switch_to('sent')" >sent</button></li>
+                <li><button onclick="tx_switch_to('trash')" >trash</button></li>
+            </ul>
+            <h4><button onclick="toggle_ul(event,'received')">received <span id="ardn-received" style="display:inline-block">&#x25BC;</span><span id="arrt-received" style="display:none">&#x25BA;</span></button></h4>
+            <ul id="ul-received">
+                <li><button onclick="tx_switch_to('received','coins')" >coins</button></li>
+                <li><button onclick="tx_switch_to('received','tokens')" >tokens</button></li>
+             </ul>
+            <h4><button onclick="toggle_ul(event,'filtered')">tx by coin<span id="ardn-filtered" style="display:inline-block">&#x25BC;</span><span id="arrt-filtered" style="display:none">&#x25BA;</span></button></h4>
+            <ul id="ul-filtered">
+                <li><button onclick="tx_switch_to_coin('transactions','bitcoin')" >bitcoin</button></li>
+                <li><button onclick="tx_switch_to_coin('transactions','eth')" >eth</button></li>
+            </ul>
+        </blockquote>
+    </div>
+</details>
+
+<!-- 
+/*
+Source - https://stackoverflow.com/a/71646714
+Posted by TrojanName
+Retrieved 2026-09-09, License - CC BY-SA 4.0
+*/ -->
+
+</nav>
+
+<div class="search-band">
+        <span id="mail-search-title" >search</span>
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <input id="search-filter" type="text" value="" />
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <select id="banner_tx_type_selector" onchange="tx_switch_to_event(event)" >  
+            <option value="all-messages">all messages</option>
+                <optgroup label="received">
+                <option value="overview">overview</option>
+                <option value="received">received</option>
+            </optgroup>
+                <optgroup label="composed">
+                <option value="drafts">drafts</option>
+                <option value="sent">sent</option>
+            </optgroup>
+                <optgroup label="no interest">
+                <option value="transactions">transactions</option>
+                <option value="trash">trash</option>
+            </optgroup>
+        </select>
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <button onclick="detailed_search(event)">detailed search</button>
+</div>
+
+
+    <!-- MAIL DISPLAY -->
+    <main id="mail-main" >
+        <div id="overview-mail" style="display:block" >
+            this is a test
+        </div>
+        <div id="received-mail" style="display:none" >
+            <div>
+                <table class="coin-received" style="width:100%" >
+                    <thead>
+                        <th class="received-checkbox-th"><button onclick="do_op_modal('received')">ops</button></th>
+                        <th class="received-recipient-th">sender</th>
+                        <th class="received-subject-th">subject</th>
+                        <th class="received-date-th">time</th>
+                    </thead>
+                </table>
+                <table id="list-mail-received" class="coin-received" style="width:100%" >
+
+                </table>
+            </div>
+        </div>
+        <div id="sent-mail" style="display:none" >
+            <div>
+                <table class="coin-sent" style="width:100%" >
+                    <thead>
+                        <th class="sent-checkbox-th"><button onclick="do_op_modal('sent')">ops</button></th>
+                        <th class="sent-recipient-th">sender</th>
+                        <th class="sent-subject-th">subject</th>
+                        <th class="sent-date-th">time</th>
+                    </thead>
+                </table>
+                <table id="list-mail-sent" class="coin-sent" style="width:100%" >
+
+                </table>
+            </div>
+        </div>
+        <div id="drafts-mail" style="display:none" >
+            <div>
+                <table class="coin-drafts" style="width:100%" >
+                    <thead>
+                        <th class="drafts-checkbox-th"><button onclick="do_op_modal('drafts')">ops</button></th>
+                        <th class="drafts-recipient-th">recipient</th>
+                        <th class="drafts-subject-th">subject</th>
+                        <th class="drafts-date-th">time</th>
+                    </thead>
+                </table>
+                <table id="list-mail-drafts" class="coin-drafts" style="width:100%" >
+
+                </table>
+            </div>
+        </div>
+        <div id="transactions-mail" style="display:none" >
+            <div>
+                <table class="coin-transactions" style="width:100%" >
+                    <thead>
+                        <th class="transactions-checkbox-th"><button onclick="do_op_modal('transactions')">ops</button></th>
+                        <th class="transactions-recipient-th">sender</th>
+                        <th class="transactions-subject-th">subject</th>
+                        <th class="transactions-date-th">time</th>
+                    </thead>
+                </table>
+                <table id="list-mail-transactions" class="coin-transactions" style="width:100%" >
+
+                </table>
+            </div>
+        </div>
+        <div id="trash-mail" style="display:none" >
+            <div>
+                <table class="coin-trash" style="width:100%" >
+                    <thead>
+                        <th class="trash-checkbox-th"><button onclick="do_op_modal('trash')">ops</button></th>
+                        <th class="trash-recipient-th">sender</th>
+                        <th class="trash-subject-th">subject</th>
+                        <th class="trash-date-th">time</th>
+                    </thead>
+                </table>
+                <table id="list-mail-trash" class="coin-trash" style="width:100%" >
+
+                </table>
+            </div>
+        </div>
+
+    </main>
+
+
+<div id="coin_view" class="right_fade_able" style="z-index:124" >
+	<div class="togglebar" >
+		<span class="closer_x" onmousedown="closefader(event,'coin_view');void_current_edit_coin()">X</span>
+	</div>
+	<div class="sizerbar" > S </div>
+	<div class="fade_able_content" >
+        <div class="ops-button-containers">
+            <span id="tx_view_category" class="show-cat" >overview: </span>&nbsp;&nbsp;
+            <button id="tx_view_move" onclick="single_tx_ops(event);">ops</button>
+        </div>
+        <div class="mail-properties">
+            <div class="field-label">From:</div>
+            <div id="view-coin-sender" class="field-value">sender@example.com</div>
+
+            <div class="field-label">To:</div>
+            <div id="view-coin-recipient" class="field-value">recipient@example.com</div>
+
+            <div class="field-label">cc:</div>
+            <div id="view-coin-cc" class="field-value"></div>
+
+            <div class="field-label">Subject:</div>
+            <div id="view-coin-subject" class="field-value">Project Update &amp; Next Steps</div>
+
+            <div class="field-label">Date:</div>
+            <div id="view-coin-date" class="field-value">September 14, 2026, 12:51 PM</div>
+        </div>
+        <div class="attachments-controls">
+            <button onclick="toggle_ul(event,'attachments')">attachments <span id="ardn-attachments" style="display:none">&#x25BC;</span><span id="arrt-attachments" style="display:inline-block">&#x25BA;</span></button>
+            <ul id="ul-attachments" class="ul-attachments-list" style="display:none" >
+                <li><button id="attach-128" onclick="show_attachment(128)">first attachment</button></li>
+                <li><button id="attach-129" onclick="show_attachment(129)">second attachment</button></li>
+                <li><button id="attach-130" onclick="show_attachment(130)">third attachment</button></li>
+            </ul>
+        </div>
+		<div class="message-box" style="min-width: 400px;min-height: 300px;">
+            <div id="coin_message_contents" >
+                This is the coin to view
+            </div>
+		</div>
+	</div>
+</div>
+
+
+<!-- Style the label to look exactly like a button using CSS -->
+<style>
+  .custom-button {
+    display: inline-block;
+    padding: 2px 4px;
+    border-radius: 2px;
+    cursor: pointer;
+    font-family: sans-serif;
+    border:solid 1px transparent;
+  }
+  .custom-button:hover {
+    color: rgb(94, 5, 5);
+    background-color: #e9fff8ff;
+    border:dotted 1px rgb(255, 169, 57);
+  }
+</style>
+
+
+<div id="coin_edit" class="right_fade_able" style="z-index:124" >
+	<div class="togglebar" >
+		<span class="closer_x" onmousedown="closefader(event,'coin_edit');tx_edit_mode_reset(event);void_current_edit_coin();">X</span>
+	</div>
+	<div class="sizerbar" > S </div>
+	<div class="fade_able_content" >
+        <div  class="ops-button-containers">
+            <span id="drafts_view_category" class="show-cat">drafts: </span>&nbsp;&nbsp;
+            <button id="tx_edit_mode_send" onclick="do_send_tx_closefader(event)">send</button>
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <button id="tx_edit_mode_save" onclick="edit_tx_save(event);" >save</button>
+            <button id="tx_edit_mode_cancel" onclick="tx_edit_mode_reset(event);closefader(event,'coin_edit');" >cancel</button>
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <button id="tx_ops" onclick="single_tx_ops(event);">ops</button>
+        </div>
+        <div class="edit-mail-properties">
+            <div class="field-label">From:</div>
+            <div class="field-value"><input id="edit-coin-sender" type="coin" /></div>
+            
+            <div class="field-label">To:</div>
+            <div class="field-value"><input id="edit-coin-recipient" type="coin" /></div>
+
+            <div class="field-label">cc:</div>
+            <div id="view-coin-cc" class="field-value"><input id="edit-coin-cc" type="coin" /></div>
+
+            <div class="field-label">bcc:</div>
+            <div id="view-coin-bcc" class="field-value"><input id="edit-coin-bcc" type="coin" /></div>
+
+            <div class="field-label">Subject:</div>
+            <div class="field-value"></label><input id="edit-coin-subject" type="text" /></div>
+
+            <div class="field-label">Last edit:</div>
+            <div id="edit-coin-date" class="field-value">September 14, 2026, 12:51 PM</div>
+        </div>
+        <div id="edit-coin-attachments" class="attachments-controls file-dropper-handler" dropzone="true" >
+            <label for="fileInput" class="custom-button">
+            add &#128206;
+            </label>
+            <input type="file" id="fileInput" style="display: none;" onchange="onFileSelected(event)" />
+
+            <button onclick="toggle_table(event,'edit-attachments')">attachments <span id="ardn-edit-attachments" style="display:none">&#x25BC;</span><span id="arrt-edit-attachments" style="display:inline-block">&#x25BA;</span></button>
+            <table id="table-edit-attachments" style="display:none" >
+                <tr><td class="edit-attachments-cell-1">first attachment</td> <td class="edit-attachments-cell-2">view</td><td class="edit-attachments-cell-3">delete</td></tr>
+                <tr><td class="edit-attachments-cell-1">second attachment</td> <td class="edit-attachments-cell-2">view</td><td class="edit-attachments-cell-3">delete</td></tr>
+                <tr><td class="edit-attachments-cell-1">third attachment</td> <td class="edit-attachments-cell-2">view</td><td class="edit-attachments-cell-3">delete</td></tr>
+            </table>
+        </div>
+		<div class="message-box" style="min-width: 400px;min-height: 300px;">
+            <div class="coin-editor-body" id="coin_message_contents_edit" contenteditable="true" >
+                This is the coin to view
+            </div>
+		</div>
+	</div>
+</div>
+
+
+<div id="contact_view" class="right_fade_able" style="z-index:124" >
+	<div class="togglebar" >
+		<span class="closer_x" onmousedown="closefader(event,'contact_view');contact_edit_mode_reset(event)">X</span>
+	</div>
+	<div class="sizerbar" > S </div>
+	<div class="fade_able_content" >
+        <div class="ops-button-containers" >
+            <button id="contact_edit_mode_select" onclick="contact_edit_mode_toggle(event)">edit</button>
+            <button id="contact_edit_mode_cancel" onclick="contact_edit_mode_reset(event)"  style="display: none;">cancel</button>
+            <button id="contact_launch_compose" onclick="contact_launch_compose(event)">compose message</button>
+            <button id="contact_remove" onclick="remove_one_contact(event);closefader(event,'contact_view')">remove contact</button>
+        </div>
+        <div id="contact-properties-view" class="contact-properties" style="display: grid;">
+            <div class="field-label">Name:</div>
+            <div id="view-contact-name" class="field-value">Sender Upper</div>
+            
+            <div class="field-label">Email:</div>
+            <div id="view-contact-coin" class="field-value">contact@example.com</div>
+
+            <div class="field-label">Date:</div>
+            <div id="view-contact-date" class="field-value">September 14, 2026, 12:51 PM</div>
+        </div>
+        <div id="contact-properties-edit" class="contact-properties" style="display: none;">
+            <div class="field-label">Name:</div>
+            <div class="field-value"><input id="edit-contact-name" type="text" /></div>
+            
+            <div class="field-label">Email:</div>
+            <div class="field-value"><input id="edit-contact-coin" type="coin" /></div>
+
+            <div class="field-label">Date:</div>
+            <div id="edit-contact-date" class="field-value">September 14, 2026, 12:51 PM</div>
+        </div>
+		<div class="message-box" style="min-width: 400px;min-height: 300px;">
+            <div class="coin-editor-body" id="contact_contents_edit" contenteditable="true" >
+                Contact record info
+            </div>
+		</div>
+	</div>
+</div>
+
+
+
+<div id="preferences" class="right_fade_able" style="z-index:124" >
+	<div class="togglebar" >
+		<span class="closer_x" onmousedown="closefader(event,'preferences')">X</span>
+	</div>
+	<div class="sizerbar" > S </div>
+	<div class="fade_able_content" >
+        update a user's preferences
+	</div>
+</div>
+
+<!--
+* Drafts can delete, move to trash, or be sent (sending moves to sent).
+* Sent can move to archive, or copy to drafts.
+* Inbox can move to trash, to transactions, or received
+* Spam can move to trash, to overview, or received
+* Notify can move to trash, to overview, or to transactions
+* Trash can permanently delete a message, or move to overview, or received
+-->
+<dialog id="coin-ops-modal" style="min-width: 300px;">
+    <div id="coin-ops-drafts" style="display: none;" >
+        <button onclick="prep_send_coin_list('drafts')">send</button>
+        <button onclick="prep_coin_list_move_to('drafts','trash')">move to trash</button>
+    </div>
+    <div id="coin-ops-sent" style="display: none;" >
+        <button onclick="prep_coin_list_move_to('sent','archive')">archive</button>
+        <button onclick="prep_coin_list_copy_to('sent','drafts')">copy to drafts</button>
+    </div>
+    <div id="coin-ops-overview" style="display: none;" >
+        <button onclick="prep_coin_list_reply_to('overview')">reply</button>
+        <button onclick="prep_coin_list_reply_all('overview')">reply all</button>
+        &nbsp;|&nbsp;
+        <button onclick="prep_coin_list_move_to('overview','trash')">move to trash</button>
+        <button onclick="prep_coin_list_move_to('overview','transactions')">move to transactions</button>
+        <button onclick="prep_coin_list_move_to('overview','received')">move to received</button>
+    </div>
+    <div id="coin-ops-transactions" style="display: none;" >
+        <button onclick="prep_coin_list_move_to('transactions','trash')">move to trash</button>
+        <button onclick="prep_coin_list_move_to('transactions','overview')">move to overview</button>
+        <button onclick="prep_coin_list_move_to('transactions','notfify')">move to received</button>
+    </div>
+    <div id="coin-ops-received" style="display: none;" >
+        <button onclick="prep_coin_list_move_to('received','trash')">move to trash</button>
+        <button onclick="prep_coin_list_move_to('received','overview')">move to overview</button>
+        <button onclick="prep_coin_list_move_to('received','transactions')">move to transactions</button>
+    </div>
+    <div id="coin-ops-trash" style="display: none;" >
+        <button onclick="prep_coin_list_delete('trash')">delete</button>
+        <button onclick="prep_coin_list_move_to('trash','overview')">move to overview</button>
+        <button onclick="prep_coin_list_move_to('trash','notfify')">move to received</button>
+    </div>
+    <div class="select-all-ops-properties-on-ops">
+        <div class="field-label">Select All:</div>
+        <div class="field-value"><input id="select-all-op-on-ops" type="checkbox" onchange="toggle_current_select_all(event)" value="overview" /></div>
+    </div>
+    <form method="dialog">
+        <p id="chosen_operation"><u>Please select an action to perform.</u></p>
+        <!-- Cancel button: closes modal, returnValue is "cancel" -->
+        <button type="submit" formmethod="dialog" value="cancel">Cancel</button>
+        <!-- Close/Confirm button: closes modal, returnValue is "confirm" or selected value -->
+        <button id="coin-ops-modal-ok" type="submit" value="confirm" disabled>OK</button>
+    </form>
+</dialog>
+
+<dialog id="contact-ops-modal" style="min-width: 300px;">
+    <div id="coin-ops-drafts" style="display: block;" >
+        <button onclick="prep_compose_for_contacts()">compose a message</button>
+        <!-- <button onclick="prep_instant_message_contacts()">instant message</button> -->
+        <button onclick="prep_edit_contacts()">edit contacts</button>
+        <button onclick="prep_contact_delete()">delete contacts</button>
+    </div>
+    <form method="dialog">
+        <p id="chosen_contact_operation"><u>Please select an action to perform.</u></p>
+        <!-- Cancel button: closes modal, returnValue is "cancel" -->
+        <button type="submit" formmethod="dialog" value="cancel">Cancel</button>
+        <!-- Close/Confirm button: closes modal, returnValue is "confirm" or selected value -->
+        <button type="submit" value="confirm" >OK</button>
+    </form>
+</dialog>
+
+<dialog id="search-ops-modal" style="min-width: 300px;">
+    <div class="mail-properties" >
+        <div class="field-label">search:</div>
+        <div class="field-value"><input id="search-list-patterns" type="text" /></div>
+
+        <div id="tx_type_select_label" class="field-label" style="display: none;">mail type:</div>
+        <div id="tx_type_select" class="field-value" style="display: none;">
+            <select id="tx_type_selector" onchange="tx_switch_to_event(event)" >  
+                <option value="all-messages">all messages</option>
+                 <optgroup label="received">
+                    <option value="overview">overview</option>
+                    <option value="received">received</option>
+                </optgroup>
+                 <optgroup label="composed">
+                    <option value="drafts">drafts</option>
+                    <option value="sent">sent</option>
+                </optgroup>
+                 <optgroup label="no interest">
+                    <option value="transactions">transactions</option>
+                    <option value="trash">trash</option>
+                </optgroup>
+            </select>
+        </div>
+    </div>
+    <div>
+        testing...
+        <button onclick="add_mails()">add mails</button>
+        <button onclick="sort_mail()">sort mails</button>
+        <button onclick="reverse_mail()">reverse mails</button>
+        <button onclick="add_contacts()">add contacts</button>
+    </div>
+    <form method="dialog">
+        <!-- Cancel button: closes modal, returnValue is "cancel" -->
+        <button type="submit" formmethod="dialog" value="cancel">Cancel</button>
+        <!-- Close/Confirm button: closes modal, returnValue is "confirm" or selected value -->
+        <button type="submit" value="confirm">search</button>
+    </form>
+</dialog>
+
+
+<dialog id="select-all-ops-modal" style="min-width: 300px;">
+    <form method="dialog">
+        <p id="chosen_contact_operation"><u>Would you like to select all messages?</u></p>
+        <div class="select-all-ops-properties">
+            <div class="field-label">Select All:</div>
+            <div class="field-value"><input id="select-all-op" type="checkbox" onchange="toggle_current_select_all(event)" value="overview" /></div>
+        </div>
+        <!-- Cancel button: closes modal, returnValue is "cancel" -->
+        <button type="submit" formmethod="dialog" value="cancel">Cancel</button>
+        <!-- Close/Confirm button: closes modal, returnValue is "confirm" or selected value -->
+        <button id="sel-all-ops-modal-ok" type="submit" value="confirm" disabled>OK</button>
+    </form>
+</dialog>
+
+
+<dialog id="style-confirm-modal" style="min-width: 300px;">
+    <form method="dialog">
+        <div id="blocking-confirmation" >
+            <h5>error: empty fields not allowed</h5>
+            <div id="list-blocking-confirmation" class="style-confirm-properties">
+
+            </div>
+        </div>
+        <h5></h5>
+        <div id="warn-confirmation">
+            <h5>warning: empty fields may be awkward</h5>
+            <div id="list-warn-confirmation" class="style-confirm-properties">
+
+            </div>
+        </div>
+        <!-- Cancel button: closes modal, returnValue is "cancel" -->
+        <button type="submit" formmethod="dialog" value="cancel">Cancel</button>
+        <!-- Close/Confirm button: closes modal, returnValue is "confirm" or selected value -->
+        <button id="style-confirm-modal-ok" type="submit" value="confirm" disabled>Continue</button>
+    </form>
+</dialog>
+
+
+</body>
+</html>
+<script>
+    function noop(event) {
+        console.log(event?.target?.id)
+    }
+
+
+    class Attachment {
+        constructor(id,title,data) {
+            this.id = id
+            this.title = title
+            this.data = data
+        }
+    }
+</script>
+<script type="module">
+
+    const tx_managers = window._x_share_tx_managers
+    //
+    let tx_main = document.getElementById("mail-main")
+
+
+    for ( let mtype in tx_managers ) {
+        let a_manager = tx_managers[mtype]
+        a_manager.root = ('contacts' === mtype) ? document.getElementById(`list-contacts`) : document.getElementById(`list-mail-${mtype}`)
+        //
+        a_manager.container_el = ('contacts' === mtype) ? document.getElementById(`human-contacts`) : document.getElementById(`${mtype}-mail`)
+        if ( a_manager.root ) {
+            a_manager?.view?.mount(a_manager.root)
+        }
+    }
+
+    // attachments
+
+    const view_ul_attachments = document.getElementById("ul-attachments")
+    const edit_attachments_el = document.getElementById("table-edit-attachments")
+
+    const attachment_managers = window._x_share_attachment_managers
+    const attach_types = window._x_share_attachment_classes
+    
+    // ['view','edit']
+    for ( let atype in attachment_managers ) {
+        let a_manager = attachment_managers[atype]
+        a_manager.root = (atype === 'view') ? view_ul_attachments : edit_attachments_el
+        //
+        if ( a_manager.root ) {
+            a_manager?.view?.mount(a_manager.root)
+        }
+    }
+    
+
+    /**
+     * 
+     */
+    function store_of_tx_manager(mtype) {
+        let mobj = tx_managers[mtype]
+        if ( mobj ) {
+            if ( mobj.store ){
+                return mobj.store
+            }            
+        }
+        return false
+    }
+
+    window.store_of_tx_manager = store_of_tx_manager
+
+
+
+    function store_of_attachment_manager(atype) {
+        let aobj = attachment_managers[atype]
+        if ( aobj ) {
+            if ( aobj.store ){
+                return aobj.store
+            }            
+        }
+        return false
+    }
+
+    window.store_of_attachment_manager = store_of_attachment_manager
+    
+
+    /** --------------------------- */
+    let g_current_mtype = "overview"
+    window._current_mtype = "overview"
+
+    //  MAIL IDENTIFIER -- need something better
+    window.largest_id = 20
+
+    window.get_next_id = () => {
+        window.largest_id++
+        return window.largest_id
+    }
+
+    let date = new Date()
+
+    //
+    let tx_proto = {  "id" : 1,
+                        "sender" : "richard@myhost.local", 
+                        "category" : "",
+                        "subject" : "", 
+                        "recipient" : "",
+                        "cc" : "", "bcc" : "",
+                        "date" : date.toLocaleString(), 
+                        "timestamp" : date.getTime(),
+                        "text" : "edit this message",
+                        "_count_edits" : 0, "_saved_updates" : []
+                    }
+
+    let contact_proto = { "id" : 1, "coin" : "", "name" : "", "date" : date.toLocaleString(), "timestamp" : date.getTime(),
+                        "text" : "", "_count_edits" : 0, "_saved_updates" : []  }
+
+
+    let coin_type_list = [
+        { "id" : 1, "coin_name" : "bitcoin" },
+        { "id" : 2, "coin_name" : "eth" },
+        { "id" : 3, "coin_name" : "solano" }
+    ]
+    window.add_coins_types = () => {
+        let child_html = ""
+        for ( let ct of coin_type_list ) {
+            let coin_line = `<li><button id="tx-${ct.id}" onclick="tx_switch_to_coin('transactions','${ct.coin_name}')" >${ct.coin_name}</button></li>`
+            child_html += `${coin_line}\n`
+        }
+        let pel = document.getElementById("ul-filtered")
+        if ( pel ) {
+            pel.innerHTML = child_html
+        }
+    }
+
+    //
+    // testing
+    window.add_mails = async (mtype) => {
+        //
+        if ( mtype === undefined ) mtype = g_current_mtype
+        if ( mtype === "contacts" ) {
+            add_contacts()
+            return
+        }
+        let tx_store = store_of_tx_manager(mtype)
+        //
+        if ( tx_store ) {
+            let new_tx_bunch = await load_a_bunch_of_coins(mtype)
+            if ( new_tx_bunch && new_tx_bunch.length ) {
+                for ( let m of new_tx_bunch ) {
+                    tx_store.unshift(m)
+                }
+            } else {
+                if ( new_tx_bunch ) {
+                    tx_store.set(new_tx_bunch)
+                }
+            }
+        }
+
+        sort_mail(mtype)
+    }
+
+
+    // useful
+    window.add_contacts = async () => {
+        let contact_store = store_of_tx_manager('contacts')
+        if ( contact_store ) {
+            let new_contact_bunch = await load_a_bunch_of_contacts()
+            if ( new_contact_bunch && new_contact_bunch.length ) {
+                for ( let c of new_contact_bunch ) {
+                    contact_store.unshift(c)
+                }
+            } else {
+                if ( new_contact_bunch ) {
+                    contact_store.set(new_contact_bunch)
+                }
+            }
+        }
+        sort_mail('contacts')
+        return true
+    }
+
+
+
+    // useful (mail and contacts)
+    window.add_coins_to_list = (mtype,coin_list) => {
+        if ( mtype === undefined ) return false
+        let tx_store = store_of_tx_manager(mtype)
+        if ( tx_store ) {
+            if ( tx_store.length ) {
+                for ( let m of coin_list ) {
+                    tx_store.unshift(m)
+                    m.category = mtype
+                }
+            } else {
+                tx_store.set(coin_list)
+                for ( let m of coin_list ) {
+                    m.category = mtype
+                }
+            }
+        }
+        sort_mail(mtype)
+        return true
+    }
+
+
+    window.delete_coins_from_list = (mtype,coin_ids_list) => {
+        if ( mtype === undefined ) return false
+        let tx_store = store_of_tx_manager(mtype)
+        if ( tx_store ) {
+            tx_store.filter((coin)=>{
+                let mid = coin.id
+                if ( coin_ids_list.indexOf(mid) >= 0 ) {
+                    return false
+                }
+                return true
+            })
+        }
+        return true
+    }
+
+    //
+    window.get_list_of_objects = (mtype,id_list) => {
+        if ( mtype === undefined ) return false
+        let tx_store = store_of_tx_manager(mtype)
+        if ( tx_store ) {
+            let obj_list = []
+            tx_store.forEach((obj) => {
+                if ( id_list.includes(obj.id) )  {
+                    obj_list.push(obj)
+                }
+            })
+            if ( !(obj_list.length) ) return false
+            return obj_list
+        }
+        return false
+    }
+
+
+    window.add_empty_draft = (id) => {
+        let mtype = "drafts"
+        let tx_store = store_of_tx_manager(mtype)
+        let new_mail = structuredClone(tx_proto)
+        new_mail.id = id
+        new_mail._count_edits = 0
+        new_mail._saved_updates = []
+        //
+        if ( tx_store ) {
+            tx_store.unshift(new_mail)
+            return new_mail
+        }
+        return false
+    }
+
+    window.add_empty_contact = (id) => {
+        let mtype = "contacts"
+        let tx_store = store_of_tx_manager(mtype)
+        let new_contact = structuredClone(contact_proto)
+        new_contact.id = id
+        new_contact._count_edits = 0
+        new_contact._saved_updates = []
+        //
+        if ( tx_store ) {
+            tx_store.unshift(new_contact)
+            return new_contact
+        }
+        return false
+    }
+ 
+
+    window.swap_two = (mtype) => {
+        if ( mtype === undefined ) mtype = g_current_mtype
+        let tx_store = store_of_tx_manager(mtype)
+        if ( tx_store ) tx_store.swap(2,5)
+    }
+
+    window.delete_two = (mtype) => {
+        if ( mtype === undefined ) mtype = g_current_mtype
+        let tx_store = store_of_tx_manager(mtype)
+        if ( tx_store ) tx_store.splice(3,2)
+    }
+
+    window.sort_mail = (mtype) => {
+        if ( mtype === undefined ) mtype = g_current_mtype
+        let tx_store = store_of_tx_manager(mtype)
+        if ( tx_store ) tx_store.sort((a,b) => {
+            if ( a.timestamp < b.timestamp ) return 1
+            if ( a.timestamp > b.timestamp ) return -1
+            return 0
+        })
+    }
+
+    window.sort_one_or_more = (mtype) => {
+        if ( mtype === undefined ) mtype = g_current_mtype
+        let tx_store = store_of_tx_manager(mtype)
+        if ( tx_store ) {
+            if ( tx_store.length === 1 ) {
+                let obj = tx_store.pop()
+                tx_store.push(obj)
+            } else {
+                sort_mail(mtype)
+            }
+        }
+    }
+
+    window.reverse_mail = (mtype) => {
+        if ( mtype === undefined ) mtype = g_current_mtype
+        let tx_store = store_of_tx_manager(mtype)
+        if ( tx_store ) tx_store.reverse()
+    }
+
+    let mtype_title = document.getElementById("mail-type-title")
+
+    window.tx_switch_to_coin = (mtype,coin_name) => {
+        // use the coin to filter all txs (or retreive this index)
+        tx_switch_to(mtype)
+    }
+
+    window.tx_switch_to  = (mtype) => {
+        if ( mtype === undefined ) mtype = g_current_mtype
+        for ( let one_mtype in tx_managers ) {
+            let mobj = tx_managers[one_mtype]
+            if ( mobj.container_el ) {
+                mobj.container_el.style.display = "none"
+            }
+        }
+        let mobj = tx_managers[mtype]
+        if ( mobj ) {
+            if ( mobj.container_el ) {
+                mobj.container_el.style.display = "block"
+                //
+                mtype_title.innerText = mtype
+                g_current_mtype = mtype
+                window._current_mtype = mtype
+                set_banner_search_selector(mtype)
+            }            
+        }
+    }
+
+    window.tx_switch_to_event = (event) => {
+        let sel_el = event.target
+        if ( sel_el ) {
+            if ( sel_el.value === "all-messages") return
+            tx_switch_to(sel_el.value)
+        }
+    }
+
+    window.contacts_ui = () => {
+        for ( let one_mtype in tx_managers ) {
+            let mobj = tx_managers[one_mtype]
+            if ( mobj.container_el ) {
+                mobj.container_el.style.display = "none"
+            }
+        }
+        let mtype = "contacts"
+        let mobj = tx_managers[mtype]
+        if ( mobj ) {
+            if ( mobj.container_el ) {
+                mobj.container_el.style.display = "block"
+                //
+                mtype_title.innerText = mtype
+                g_current_mtype = mtype
+                window._current_mtype = g_current_mtype
+                set_banner_search_selector(mtype)
+            }            
+        }
+    }
+
+    // attachments -------------------
+
+    // useful (mail and contacts)
+    window.add_atts_to_list = (atype,att_list) => {
+        if ( atype === undefined ) return false
+        let atts_store = store_of_attachment_manager(atype)
+        if ( atts_store ) {
+            if ( atts_store.length ) {
+                for ( let a of att_list ) {
+                    atts_store.unshift(a)
+                }
+            } else {
+                atts_store.set(att_list)
+            }
+        }
+        // sort_attachments(atype)
+        return true
+    }
+
+
+    window.delete_atts_from_list = (atype,atts_ids_list) => {
+        if ( atype === undefined ) return false
+        let atts_store = store_of_attachment_manager(atype)
+        if ( atts_store ) {
+            atts_store.filter((attachment)=>{
+                let aid = attachment.id
+                if ( atts_ids_list.indexOf(aid) >= 0 ) {
+                    return false
+                }
+                return true
+            })
+        }
+        return true
+    }
+
+    window.clear_atts_list = (atype) => {
+        if ( atype === undefined ) return false
+        let atts_store = store_of_attachment_manager(atype)
+        if ( atts_store ) {
+            atts_store.set([])
+        }
+    }
+
+
+    
+    window.indicate_page_on_window_banner = (mtype) => {
+        if ( mtype !== 'drafts' ) {
+            let wb_var = document.getElementById("tx_view_category")
+            if ( wb_var ) {
+                wb_var.innerText = `${mtype}: `
+            }
+        }
+    }
+
+
+
+</script>
+<script>
+    const squash_container = document.getElementById("squash_container")
+    const expanded = document.getElementById("expanded-menu")
+    window.addEventListener("click",(event) => {
+        close_if_open()
+    })
+
+    function close_if_open() {
+        if ( squash_container.hasAttribute("open" ) ) {
+            squash_container.removeAttribute("open")
+
+            // 1. Kill the transition and snap back to the start
+            expanded.style.transition = 'none';
+
+            // 2. Force reflow
+            void expanded.offsetWidth;
+
+            // 3. Turn the transition back on and start the move
+            expanded.style.transition = 'width 0.3s ease-out, content-visibility 0.3s allow-discrete';
+
+        }
+    }
+
+    // ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+    // open windows
+
+
+    function get_text_from_store(mtype,msg_id) {
+        let tx_store = store_of_tx_manager(mtype)
+        let clear_text = "message not found"
+        if ( tx_store ) {
+            let the_msg = false
+            tx_store.forEach(msg => {
+                if ( msg.id === msg_id ) {
+                    the_msg = msg
+                }
+            })
+            if ( the_msg ) {
+                clear_text = the_msg.text
+            }
+        }
+        return clear_text
+    }
+
+
+    function get_message_from_store(mtype,msg_id) {
+        let tx_store = store_of_tx_manager(mtype)
+        //
+        if ( tx_store ) {
+            let the_msg = false
+            tx_store.forEach(msg => {
+                if ( msg.id === msg_id ) {
+                    the_msg = msg
+                }
+            })
+            if ( the_msg ) {
+                return the_msg
+            }
+        }
+        //
+        return false
+    }
+
+    // ---- ---- ---- ---- ---- ---- ---- ---- ----
+    //
+    // ['overview','sent','transactions','received','trash'], ['drafts']
+    //
+    /*
+    // overview_check_select
+    // sent_check_select
+    // spam_check_select
+    // notify_check_select
+    // drafts_check_select
+    // trash_check_select
+    */
+
+    function setup_modal_response(dialog_id) {
+        const dialog = document.getElementById(dialog_id);
+        dialog._acceptance_action = false
+        dialog._cancel_action = false
+        let self = dialog
+        dialog.addEventListener('close', () => {
+            const action = dialog.returnValue;
+            switch (action) {
+                case "confirm" : {
+                    if ( dialog._acceptance_action ) {
+                        dialog._acceptance_action()
+                        dialog._acceptance_action = false
+                    }
+                    break;
+                }
+                case "cancel" : {
+                    if ( dialog._cancel_action ) {
+                        dialog._cancel_action()
+                        dialog._cancel_action = false
+                    }
+                    break
+                }
+            }
+            restore_check_box_selections(self,action)  // if the dialog was used for a single coin in view or drafts
+        });
+        disable_ok_button()
+        return dialog
+    }
+
+    function setup_coin_ops_dialog() {
+        let diag = setup_modal_response('coin-ops-modal')
+        diag._cancel_action = () => {
+            disable_ok_button()
+            disable_selall_ok_button()
+        }
+    }
+
+    function setup_contacts_ops_dialog() {
+        setup_modal_response('contact-ops-modal')
+    }
+
+    function setup_search_ops_dialog() {
+        let search_d = setup_modal_response('search-ops-modal')
+        search_d._acceptance_action = () => {
+            // final search update -- otherwise the fields are reactive 
+        }
+    }
+
+
+    // checkbox patterns
+
+    // for saving a pattern to be restored (handle indecision about checkboxes)
+    class CheckBoxPatternEntry {
+        constructor(id,cb_el) {
+            this.data_id = id
+            this.checkbox_element = cb_el
+            this.state = cb_el.checked
+        }
+
+        set_state(state) {
+            this.state = state
+        }
+
+        sync_state_view() {
+            this.checkbox_element.checked = this.state
+        }
+    }
+
+    let g_all_list_view_check_box_patterns = {}
+    function setup_checkbox_pattern_tracking() {
+        let mtypes = window._x_share_tx_classes
+        for ( let mtype of mtypes ) {
+            g_all_list_view_check_box_patterns[mtype] = []
+        }
+    }
+
+    function update_check_box_pattern(ev) {
+        store_current_check_box_pattern()
+    }
+
+    function store_current_check_box_pattern() {
+        const mtype = window._current_mtype
+        let result_pattern = []
+        g_all_list_view_check_box_patterns[mtype] = result_pattern
+        const checkedBoxes = document.querySelectorAll(`.${mtype}_check_select`);
+        for ( let cb of checkedBoxes ) {
+            let id = cb.value
+            let cb_entry = new CheckBoxPatternEntry(id,cb)
+            result_pattern.push(cb_entry)
+        }
+    }
+
+    function restore_checkbox_pattern(mtype) {
+        let saved_pattern = g_all_list_view_check_box_patterns[mtype]
+        if ( saved_pattern.length ) {
+            for ( let p_entry of saved_pattern ) {
+                p_entry.sync_state_view()
+            }
+        } else {
+            clear_check_boxes(mtype)
+        }
+    }
+
+
+    
+    // --------
+
+    
+    let g_select_all_response_promise = {
+        resolver : false,
+        rejector : false
+    }
+
+    function prep_select_all_modal_response() {
+        let sel_d = select_all_op_dialog
+        sel_d._acceptance_action = () => {
+            if ( g_select_all_response_promise.resolver ) {
+                g_select_all_response_promise.resolver()
+                g_select_all_response_promise = { resolver : false, rejector : false }
+            }
+        }
+        sel_d._cancel_action = () => {
+            if ( g_select_all_response_promise.rejector ) {
+                g_select_all_response_promise.rejector()
+                g_select_all_response_promise = { resolver : false, rejector : false }
+            }
+        }
+    }
+
+
+    function setup_select_all_ops_dialog() {
+        setup_modal_response('select-all-ops-modal')
+    }
+
+
+
+    async function check_all_decision(mtype) {
+        const dialog = select_all_op_dialog
+        if ( dialog ) {
+            //              -- responses set to false after call 
+            prep_select_all_modal_response()
+            //
+            let p = new Promise((resolve,reject) => {
+                g_select_all_response_promise.resolver = () => {
+                    resolve(true)
+                }
+                g_select_all_response_promise.rejector = () => {
+                    reject(false)
+                }
+            })
+            dialog.showModal()
+            try {
+                let decision = await p
+                if ( decision ) {
+                    let checkedBoxes = document.querySelectorAll(`.${mtype}_check_select:checked`);
+                    if ( checkedBoxes.length === 0 ) {
+                        checkedBoxes = document.querySelectorAll(`.${mtype}_check_select`)
+                        set_check_boxes(mtype)
+                    }
+                    const collectedIds = Array.from(checkedBoxes).map(cb => cb.value);
+                    disable_selall_ok_button()
+                    return collectedIds
+                }
+            } catch (e) {
+                clear_check_boxes(mtype)
+                disable_selall_ok_button()
+                return false
+            }
+        }
+        return false
+    }
+
+    function clear_check_boxes(mtype) {
+        const checkedBoxes = document.querySelectorAll(`.${mtype}_check_select`);
+        for ( let cb of checkedBoxes ) {
+            cb.checked = false
+        }
+    }
+    
+    function set_check_boxes(mtype) {
+        const checkedBoxes = document.querySelectorAll(`.${mtype}_check_select`);
+        for ( let cb of checkedBoxes ) {
+            cb.checked = true
+        }
+    }
+
+    // select_all_op_dialog_on_ops
+    // const select_all_op_cb
+    // const select_all_op_cb_on_ops
+
+    // SELECT ALL
+
+    function toggle_current_select_all(ev) {
+        let check_master = ev.target
+        let mtype = check_master.value
+        let checked = check_master.checked
+        //
+        select_all_op_cb_on_ops.checked = checked
+        select_all_op_cb.checked = checked
+        if ( checked ) {
+            enable_selall_ok_button()
+        } else {
+            disable_selall_ok_button()
+        }
+        //
+        if ( checked ) {
+            set_check_boxes(mtype)
+        } else {
+            restore_checkbox_pattern(mtype)
+            if ( check_master === select_all_op_cb_on_ops ) {
+                disable_ok_button_if_no_selection(mtype)
+            }
+        }
+        collect_coins_list_for_op(mtype)
+    }
+
+
+    function get_checked_messages(mtype) {
+        const checkedBoxes = document.querySelectorAll(`.${mtype}_check_select:checked`);
+        const collectedIds = Array.from(checkedBoxes).map(cb => cb.value);
+        return collectedIds
+    }
+
+
+    async function get_checked_messages_or_ask_for_all(mtype) {
+        const check_master = document.getElementById("select-all-op")
+        if ( select_all_op_cb && select_all_op_cb_on_ops ) {
+            select_all_op_cb.value = mtype;
+            select_all_op_cb.checked = false
+            select_all_op_cb_on_ops.value = mtype;
+            select_all_op_cb_on_ops.checked = false
+        }
+        const collectedIds = get_checked_messages(mtype)
+        if (collectedIds.length ) {
+            return collectedIds
+        } else {        // alternate with promise
+            let all_collected_ids = await check_all_decision(mtype)
+            if ( all_collected_ids && all_collected_ids.length ) return all_collected_ids
+            return false
+        }
+    }
+    
+    // EDIT WINDOW  ['drafts'] and create
+
+    // change support
+    function update_tx_properties_edit(mtype,msg_id) {
+        //
+        let message = get_message_from_store(mtype,msg_id)
+        if ( message ) {
+            g_current_edit_coin = message
+            //
+            let m_prop_el = document.getElementById("edit-coin-sender")
+            if ( m_prop_el ) { m_prop_el.value = message.sender }
+            m_prop_el = document.getElementById("edit-coin-recipient")
+            if ( m_prop_el ) { m_prop_el.value = message.recipient }
+            //
+            m_prop_el = document.getElementById("edit-coin-cc")
+            if ( m_prop_el ) { m_prop_el.value = message.cc }
+            //
+            m_prop_el = document.getElementById("edit-coin-subject")
+            if ( m_prop_el ) { m_prop_el.value = message.subject }
+            m_prop_el = document.getElementById("edit-coin-date")
+            if ( m_prop_el ) { m_prop_el.innerHTML = message.date }
+            //
+            store_current_coin_undo_stack()
+            if ( message.attachments ) {
+                clear_atts_list('edit')
+                add_atts_to_list('edit',message.attachments)
+            }
+        } else {
+            alert("no message")
+        }
+        //
+    }
+
+
+    function unload_coin_for_undo(coin) {
+        if ( coin ) {
+            let id = coin.id
+            let sender = coin.sender
+            let recipient = coin.recipient
+            let cc = coin.cc
+            let subject = coin.subject
+            let text = coin.text
+            let date = coin.date
+            let timestamp = coin.timestamp
+            coin.dirty = false
+            return { id, sender, recipient, cc, subject, text, date, timestamp }
+        }
+    }
+
+
+    function reload_coin_by_undo(coin,old_values) {
+        if ( coin ) {
+            coin.id = old_values.id
+            coin.sender = old_values.sender
+            coin.recipient = old_values.recipient
+            coin.cc = old_values.cc
+            coin.subject = old_values.subject
+            coin.text = old_values.text
+            coin.date = old_values.date
+            coin.timestamp = old_values.timestamp
+            coin.dirty = false
+        }
+    }
+
+    function unequal_objects(save_coin,stored_coin) {
+        if ( save_coin && stored_coin ) {
+            if ( save_coin.id !== stored_coin.id ) return true
+            if ( save_coin.sender !== stored_coin.sender ) return true
+            if ( save_coin.recipient !== stored_coin.recipient ) return true
+            if ( save_coin.cc !== stored_coin.cc ) return true
+            if ( save_coin.subject !== stored_coin.subject ) return true
+            if ( save_coin.text !== stored_coin.text ) return true
+            if ( save_coin.date !== stored_coin.date ) return true
+            if ( save_coin.timestamp !== stored_coin.timestamp ) return true
+        }
+        return true
+    }
+
+    function store_current_coin_undo_stack() {
+        if ( g_current_edit_coin ) {
+            const coin = g_current_edit_coin
+            let save_coin = unload_coin_for_undo(g_current_edit_coin)
+            if ( unequal_objects(save_coin,coin._saved_updates[0]) ) {
+                coin._saved_updates.unshift(save_coin)
+            }
+        }
+    }
+
+    function update_contact_properties_view(cid) {
+        let contact = get_message_from_store('contacts',cid)
+        if ( contact ) {
+            g_current_edit_contact = contact
+            //
+            let m_prop_el = document.getElementById("view-contact-name")
+            if ( m_prop_el ) { m_prop_el.innerHTML = contact.name }
+            m_prop_el = document.getElementById("view-contact-coin")
+            if ( m_prop_el ) { m_prop_el.innerHTML = contact.coin }
+            //
+            m_prop_el = document.getElementById("edit-contact-name")
+            if ( m_prop_el ) { m_prop_el.value = contact.name }
+            m_prop_el = document.getElementById("edit-contact-coin")
+            if ( m_prop_el ) { m_prop_el.value = contact.coin }
+            //
+            m_prop_el = document.getElementById("view-contact-date")
+            if ( m_prop_el ) { m_prop_el.innerHTML = contact.date }
+            m_prop_el = document.getElementById("edit-contact-date")
+            if ( m_prop_el ) { m_prop_el.innerHTML = contact.date }
+            //
+        } else {
+            alert("no message")
+        }
+    }
+
+
+    function unload_contact_for_undo(contact) {
+        if ( contact ) {
+            let name = contact.name
+            let coin = contact.coin
+            let date = contact.date
+            let text = contact.text
+            let id = contact.id
+            let timestamp = contact.timestamp
+            contact.dirty = false
+            return { id, name, coin, text, date, timestamp }
+        }
+    }
+
+
+    function reload_contact_by_undo(contact,old_values) {
+        if ( contact ) {
+            contact.name = old_values.name
+            contact.coin = old_values.coin
+            contact.date = old_values.date
+            contact.text = old_values.text
+            contact.id = old_values.id
+            contact.imestamp = old_values.timestamp
+        }
+    }
+
+
+
+
+    function update_just_date(message,date_el_id) {
+        let date = new Date()
+        if ( message ) {  
+            message.date = date.toLocaleString()
+            message.timestamp = date.getTime()
+        } else return
+        let m_prop_el = document.getElementById(date_el_id)
+        if ( m_prop_el ) { m_prop_el.innerHTML = message.date }
+        if ( date_el_id === "edit-coin-date" ) {
+            sort_one_or_more('drafts')
+        } else {
+            sort_one_or_more('contacts')
+        }
+    }
+
+
+
+    let g_current_edit_coin = false
+    let g_current_edit_contact = false
+    function setup_edit_response() {
+        //
+        let msg_editor = document.getElementById("coin_message_contents_edit")
+        if ( msg_editor ) {
+            msg_editor.addEventListener('input', (event) => {
+                if ( g_current_edit_coin ) {
+                    g_current_edit_coin.text = event.target.innerHTML
+                    update_just_date(g_current_edit_coin,"edit-coin-date")
+                    g_current_edit_coin.dirty = true
+                }
+            });
+        }
+        //
+        let m_prop_el = document.getElementById("edit-coin-sender")
+        if ( m_prop_el ) {
+            m_prop_el.addEventListener('change', (event) => {
+                if ( g_current_edit_coin ) {
+                    g_current_edit_coin.sender = event.target.value
+                    update_just_date(g_current_edit_coin,"edit-coin-date")
+                    g_current_edit_coin.dirty = true
+                }
+            });
+        }
+        //
+        m_prop_el = document.getElementById("edit-coin-recipient")
+        if ( m_prop_el ) {
+            m_prop_el.addEventListener('change', (event) => {
+                if ( g_current_edit_coin ) {
+                    g_current_edit_coin.recipient = event.target.value
+                    update_just_date(g_current_edit_coin,"edit-coin-date")
+                    g_current_edit_coin.dirty = true
+                }
+            });
+        }
+        //
+        m_prop_el = document.getElementById("edit-coin-cc")
+        if ( m_prop_el ) {
+            m_prop_el.addEventListener('change', (event) => {
+                if ( g_current_edit_coin ) {
+                    g_current_edit_coin.cc = event.target.value
+                    update_just_date(g_current_edit_coin,"edit-coin-date")
+                    g_current_edit_coin.dirty = true
+                }
+            });
+        }
+        //
+        m_prop_el = document.getElementById("edit-coin-bcc")
+        if ( m_prop_el ) {
+            m_prop_el.addEventListener('change', (event) => {
+                if ( g_current_edit_coin ) {
+                    g_current_edit_coin.bcc = event.target.value
+                    update_just_date(g_current_edit_coin,"edit-coin-date")
+                    g_current_edit_coin.dirty = true
+                }
+            });
+        }
+        //
+        m_prop_el = document.getElementById("edit-coin-subject")
+        if ( m_prop_el ) {
+            m_prop_el.addEventListener('change', (event) => {
+                if ( g_current_edit_coin ) {
+                    g_current_edit_coin.subject = event.target.value
+                    update_just_date(g_current_edit_coin,"edit-coin-date")
+                    g_current_edit_coin.dirty = true
+                }
+            });
+        }
+
+        // contacts 
+        //
+        let contact_editor = document.getElementById("contact_contents_edit")
+        if ( contact_editor ) {
+            contact_editor.addEventListener('input', (event) => {
+                if ( g_current_edit_contact ) {
+                    g_current_edit_contact.text = event.target.innerHTML
+                    update_just_date(g_current_edit_contact,"edit-contact-date")
+                    update_just_date(g_current_edit_contact,"view-contact-date")
+                    g_current_edit_contact.dirty = true
+                }
+            });
+        }
+        //
+        let c_prop_el = document.getElementById("edit-contact-name")
+        if ( c_prop_el ) {
+            c_prop_el.addEventListener('change', (event) => {
+                if ( g_current_edit_contact ) {
+                    g_current_edit_contact.name = event.target.value
+                    update_just_date(g_current_edit_contact,"edit-contact-date")
+                    update_just_date(g_current_edit_contact,"view-contact-date")
+                    g_current_edit_contact.dirty = true
+                }
+            });
+        }
+        //
+        c_prop_el = document.getElementById("edit-contact-coin")
+        if ( c_prop_el ) {
+            c_prop_el.addEventListener('change', (event) => {
+                if ( g_current_edit_contact ) {
+                    g_current_edit_contact.coin = event.target.value
+                    update_just_date(g_current_edit_contact,"edit-contact-date")
+                    update_just_date(g_current_edit_contact,"view-contact-date")
+                    g_current_edit_contact.dirty = true
+                }
+            });
+        }
+    }
+
+ 
+    function tx_create() {
+        tx_switch_to('drafts')
+        let sect_box = `#coin_edit`
+        let msg_view = document.getElementById("coin_message_contents_edit")
+        if ( msg_view ) {
+           let id = get_next_id()
+            let draft = add_empty_draft(id)
+            if ( draft ) {
+                let msg_id = draft.id
+                draft.text = ""
+                let clear_text = draft.text
+                msg_view.innerHTML = `adding message id = ${msg_id}
+                <br> ${clear_text}
+                <br> will be adding text here`
+                //
+                g_current_edit_coin = draft
+                update_tx_properties_edit("drafts",msg_id)
+            }
+        }
+        pinBox(sect_box)
+    }
+
+    function contact_create() {
+        tx_switch_to('contacts')
+        let sect_box = `#contact_view`
+        let msg_view = document.getElementById("contact_contents_edit")
+        if ( msg_view ) {
+           let id = get_next_id()
+            let contact = add_empty_contact(id)
+            if ( contact ) {
+                let c_id = contact.id
+                contact.text = ""
+                let clear_text = contact.text
+                msg_view.innerHTML = `adding message id = ${c_id}
+                <br> ${clear_text}
+                <br> will be adding text here`
+                //
+                g_current_edit_contact = contact
+                update_contact_properties_view(c_id)
+                contact_edit_mode_toggle(true)
+            }
+        }
+        pinBox(sect_box)
+    }
+
+
+    function edit_from_draft(msg_id) {
+        let sect_box = `#coin_edit`
+        let msg_view = document.getElementById("coin_message_contents_edit")
+        if ( msg_view ) {
+            update_tx_properties_edit("drafts",msg_id)
+            let clear_text = get_text_from_store("drafts",msg_id)
+            msg_view.innerHTML = clear_text
+        }
+        pinBox(sect_box)
+    }
+
+
+    // 
+    // VIEW WINDOW ['overview','sent','transactions','received','trash']
+    //
+
+    // item view support
+    function update_tx_properties_view(mtype,msg_id) {
+        //
+        let message = get_message_from_store(mtype,msg_id)
+        if ( message ) {
+            g_current_edit_coin = message
+            let m_prop_el = document.getElementById("view-coin-sender")
+            if ( m_prop_el ) { m_prop_el.innerHTML = message.sender }
+            m_prop_el = document.getElementById("view-coin-recipient")
+            if ( m_prop_el ) { m_prop_el.innerHTML = message.recipient }
+            m_prop_el = document.getElementById("view-coin-subject")
+            if ( m_prop_el ) { m_prop_el.innerHTML = message.subject }
+            m_prop_el = document.getElementById("view-coin-date")
+            if ( m_prop_el ) { m_prop_el.innerHTML = message.date }
+            if ( message.attachments ) {
+                clear_atts_list('view')
+                add_atts_to_list('view',message.attachments)
+            }
+            indicate_page_on_window_banner(mtype)
+        }
+        //
+    }
+
+    //
+
+    function view_from_overview(msg_id) {
+        let sect_box = `#coin_view`
+        let msg_view = document.getElementById("coin_message_contents")
+        if ( msg_view ) {
+            update_tx_properties_view("overview",msg_id)
+            let clear_text = get_text_from_store("overview",msg_id)
+            msg_view.innerHTML = `picked message id = ${msg_id} <br> ${clear_text}`
+        }
+        pinBox(sect_box)
+    }
+    //
+    function view_from_notify(msg_id) {
+        let sect_box = `#coin_view`
+        let msg_view = document.getElementById("coin_message_contents")
+        if ( msg_view ) {
+            update_tx_properties_view("received",msg_id)
+            let clear_text = get_text_from_store("received",msg_id)
+            msg_view.innerHTML = `picked message id = ${msg_id} <br> ${clear_text}`
+        }
+        pinBox(sect_box)
+    }
+    //
+    function view_from_sent(msg_id) {
+        let sect_box = `#coin_view`
+        let msg_view = document.getElementById("coin_message_contents")
+        if ( msg_view ) {
+            update_tx_properties_view("sent",msg_id)
+            let clear_text = get_text_from_store("sent",msg_id)
+            msg_view.innerHTML = `picked message id = ${msg_id} <br> ${clear_text}`
+        }
+        pinBox(sect_box)
+    }
+    //
+    function view_from_spam(msg_id) {
+        let sect_box = `#coin_view`
+        let msg_view = document.getElementById("coin_message_contents")
+        if ( msg_view ) {
+            update_tx_properties_view("transactions",msg_id)
+            let clear_text = get_text_from_store("transactions",msg_id)
+            msg_view.innerHTML = `picked message id = ${msg_id} <br> ${clear_text}`
+        }
+        pinBox(sect_box)
+    }
+    //
+    function view_from_trash(msg_id) {
+        let sect_box = `#coin_view`
+        let msg_view = document.getElementById("coin_message_contents")
+        if ( msg_view ) {
+            update_tx_properties_view("trash",msg_id)
+            let clear_text = get_text_from_store("trash",msg_id)
+            msg_view.innerHTML = `picked message id = ${msg_id} <br> ${clear_text}`
+        }
+        pinBox(sect_box)
+    }
+
+
+    function toggle_ul(ev,category) {
+        ev.preventDefault = true
+        ev.cancelBubble = true
+
+        let dn_ar = document.getElementById(`ardn-${category}`)
+        let rt_ar = document.getElementById(`arrt-${category}`)
+        let mul = document.getElementById(`ul-${category}`)
+        if ( dn_ar && rt_ar && mul ) {
+            if ( rt_ar.style.display === "none" ) {
+                rt_ar.style.display = "inline-block"
+                dn_ar.style.display = "none"
+                mul.style.display = "none"
+            } else {
+                rt_ar.style.display = "none"
+                dn_ar.style.display = "inline-block"
+                mul.style.display = "block"
+            }
+        }
+    }
+
+
+    function toggle_table(ev,category) {
+        ev.preventDefault = true
+        ev.cancelBubble = true
+
+        let dn_ar = document.getElementById(`ardn-${category}`)
+        let rt_ar = document.getElementById(`arrt-${category}`)
+        let mul = document.getElementById(`table-${category}`)
+        if ( dn_ar && rt_ar && mul ) {
+            if ( rt_ar.style.display === "none" ) {
+                rt_ar.style.display = "inline-block"
+                dn_ar.style.display = "none"
+                mul.style.display = "none"
+            } else {
+                rt_ar.style.display = "none"
+                dn_ar.style.display = "inline-block"
+                mul.style.display = "block"
+            }
+        }
+    }
+    /**
+     * 
+     */
+    function view_from_contacts(cid) {
+        let sect_box = `#contact_view`
+        let msg_view = document.getElementById("contact_contents_edit")
+        if ( msg_view ) {
+            update_contact_properties_view(cid)
+            let clear_text = get_text_from_store("contacts",cid)
+            msg_view.innerHTML = `picked contact id = ${cid} <br> ${clear_text}`
+        }
+        pinBox(sect_box)
+    }
+
+
+    /**
+     * 
+     */
+    function manage_prefs() {
+        let sect_box = `#preferences`
+        pinBox(sect_box)
+    }
+
+
+    function detailed_search(ev) {
+        let mtype = window._current_mtype
+        if ( mtype === 'contacts'  ) {
+            search_ui(mtype)
+        } else {
+            search_ui('messages')
+        }   
+    }
+    
+
+    function set_banner_search_selector(mtype) {
+        let ts_banner_selector = document.getElementById("banner_tx_type_selector")
+        if ( ts_banner_selector ) {
+            if ( mtype === 'contacts' ) {
+                ts_banner_selector.style.display = 'none'
+            } else {
+                ts_banner_selector.style.display = 'inline'
+                ts_banner_selector.value = mtype
+            }
+        }
+    }
+
+
+    function search_ui(mtype) {
+        //
+        let type_select = document.getElementById("tx_type_select")
+        let ts_label = document.getElementById("tx_type_select_label")
+        let ts_selector = document.getElementById("tx_type_selector")
+        let ts_banner_selector = document.getElementById("banner_tx_type_selector")
+
+        if ( mtype === 'contacts' ) {
+            tx_switch_to('contacts')
+            if ( type_select && ts_label ) {
+                type_select.style.display = "none"
+                ts_label.style.display = "none"
+            }
+        } else if ( mtype === 'messages' ) {
+            let mtype = window._current_mtype
+            if ( mtype === 'contacts' ) mtype = 'overview'
+            if ( type_select  && ts_label ) {
+                type_select.style.display = "inline"
+                ts_label.style.display = "inline"
+                if ( mtype && mtype.length ) {
+                    ts_selector.value = mtype
+                    ts_banner_selector.value = mtype
+                }
+            }
+            tx_switch_to(mtype)
+        }
+        //
+        open_search_box()
+    }
+
+
+    /**
+     * Perform operations on a list.
+     * 
+     *  ['overview','sent','drafts','transactions','received','trash']
+     * 
+     * Some lists may allow movement to another list.
+     * 
+     * Drafts can delete, move to trash, or be sent (sending moves to sent).
+     * Sent can move to archive, or copy to drafts.
+     * Spam can move to trash, to overview, or received
+     * Notify can move to trash, to overview, or to transactions
+     * Trash can permanently delete a message.
+     * 
+     * 
+     */
+
+    async function add_objects_to_list(to,object_list) {
+        add_coins_to_list(to,object_list)
+        add_coins_to_server(to,object_list)
+    }
+
+    async function delete_objects_from_list(from,id_list) {
+        delete_coins_from_list(from,id_list)
+        delete_coins_from_server(from,id_list)
+    }
+
+    const coin_op_message_el = document.getElementById("chosen_operation")
+    const contact_op_message_el = document.getElementById("chosen_contact_operation")
+    //
+    const coin_op_dialog = document.getElementById('coin-ops-modal');
+    const contact_op_dialog = document.getElementById('contact-ops-modal');
+    const search_op_dialog = document.getElementById('search-ops-modal');
+    const select_all_op_dialog = document.getElementById('select-all-ops-modal');
+    //
+    const select_all_op_cb = document.getElementById('select-all-op');
+    const select_all_op_cb_on_ops = document.getElementById('select-all-op-on-ops');
+
+    function reset_op_starter_message(category,msg) {
+        if ( category === "contacts" ) {
+            contact_op_message_el.innerHTML = msg
+        } else {
+            coin_op_message_el.innerHTML = msg
+        }
+    }
+
+    function show_op_buttons(display_this_one) {
+        let mtypes = window._x_share_tx_classes
+        for ( let mtype of mtypes ) {
+            let mops = document.getElementById(`coin-ops-${mtype}`)
+            if ( mops ) {
+                mops.style.display = "none"
+            }
+        }
+        let mops = document.getElementById(display_this_one)
+        if ( mops ) {
+            mops.style.display = "block"
+        }
+    }
+
+    function reset_select_all_op_cb() {
+        select_all_op_cb.checked = false
+        select_all_op_cb_on_ops.checked = false
+    }
+
+    let g_current_coin_list_for_op = []
+
+    async function collect_coins_list_for_op(mtype) {
+        let m_list = await get_checked_messages(mtype)
+        if ( m_list) {
+            g_current_coin_list_for_op = m_list.map(id => parseInt(id))
+        }
+    }
+
+    async function do_op_modal(mtype,tx_id_list_set = false) {
+        disable_ok_button()
+        disable_selall_ok_button()
+        let m_list = tx_id_list_set ? false : await get_checked_messages_or_ask_for_all(mtype)
+        if ( m_list || tx_id_list_set ) {
+            if ( !(tx_id_list_set) ) {
+                g_current_coin_list_for_op = m_list.map(id => parseInt(id))
+            }
+            const dialog = document.getElementById('coin-ops-modal');
+            if ( dialog ) {
+                reset_op_starter_message('coin',"<u>Please select an action to perform.</u>")
+                show_op_buttons(`coin-ops-${mtype}`)
+                dialog.showModal();
+            }
+        }
+    }
+
+    let g_var_restoreable_checkbox_ids = false
+    let g_var_restoreable_mtype = false
+    function restore_check_box_selections(which_dialog,action) {
+        if ( (which_dialog !== select_all_op_dialog) || ((which_dialog === select_all_op_dialog) && (action === 'cancel')) ) {
+            let mtype = window._current_mtype
+            restore_checkbox_pattern(mtype)
+            if ( g_var_restoreable_checkbox_ids ) {
+                g_current_coin_list_for_op = g_var_restoreable_checkbox_ids
+                g_var_restoreable_checkbox_ids = false
+            }
+            reset_select_all_op_cb()
+        }
+    }
+
+    function single_tx_ops(event) {
+        disable_ok_button()
+        let save_coins_for_ops = g_current_coin_list_for_op
+        let mtype = window._current_mtype
+        let coin = g_current_edit_coin
+        if ( coin && (typeof mtype === "string") && (mtype !== 'contact') ) {
+            let id = coin.id
+            g_current_coin_list_for_op = [id]
+            g_var_restoreable_checkbox_ids = save_coins_for_ops
+            g_var_restoreable_mtype = mtype
+            do_op_modal(mtype,true)
+        }
+    }
+
+
+    let g_current_contact_list_for_op = []
+    async function do_contact_op_modal() {
+        let m_list = await get_checked_messages_or_ask_for_all('contacts')
+        if ( m_list ) {
+            g_current_contact_list_for_op = m_list.map(id => parseInt(id))
+            const dialog = contact_op_dialog;
+            if ( dialog ) {
+                reset_op_starter_message('contacts',"<u>Please select an action to perform.</u>")
+                dialog.showModal();
+            }
+        }
+    }
+
+
+    function open_search_box() {
+        const dialog = search_op_dialog
+        if ( dialog ) {
+            dialog.showModal();
+        }
+    }
+
+
+
+    async function is_ready_to_send_coin(coin) {
+        // is_ready_to_send_coin
+        if ( coin ) {
+            // ---- ---- ---- ---- ---- ---- ---- ----
+            let recipient = coin.recipient
+            let sender = coin.sender
+            let subject = coin.subject
+            let text = coin.text
+            let ready = true
+            // ---- ---- ---- ---- ---- ---- ---- ----
+            ready &&= (recipient.length !== 0)
+            ready &&= (sender.length !== 0)
+            ready &&= (subject.length !== 0)
+            ready &&= (text.length !== 0)
+
+            if ( !ready ) {
+                let user_should_see = {}
+                if (sender.length === 0) {
+                    user_should_see.sender = true  // not optional
+                }
+                if (recipient.length === 0) {
+                    user_should_see.recipient = true  // not optional
+                }
+                if (subject.length === 0) {
+                    user_should_see.subject = true  // not optional
+                }
+                if (text.length === 0) {
+                    user_should_see.text = false  //    optional
+                }
+                ready = await g_confirmation_modal.stylish_confirm(user_should_see)
+            }
+
+            return ready
+        }
+        return false
+    }
+
+
+    async function send_coin_list(from) {
+        let id_list = g_current_coin_list_for_op
+        let object_list = get_list_of_objects(from,id_list)
+        if ( object_list && object_list.length ) {
+            if ( await send_coins(object_list) ) {
+                add_objects_to_list('sent',object_list)
+                delete_objects_from_list(from,id_list)
+            }
+        }
+    }
+
+    async function do_send_mail(event) {
+        let coin = g_current_edit_coin
+        if ( coin ) {
+            if ( await is_ready_to_send_coin(coin) ) {
+                let save_coin_list_for_op = g_current_coin_list_for_op
+                g_current_coin_list_for_op = [coin.id]
+                await send_coin_list('drafts')
+                g_current_coin_list_for_op = save_coin_list_for_op
+                tx_switch_to('sent')
+                return true
+            }
+        }
+        return false
+    }
+
+
+    async function do_send_tx_closefader(event) {
+        event.preventDefault()
+        let status = await do_send_mail(event)
+        if ( status ) {
+            closefader(event,'coin_edit')
+        }
+    }
+
+
+    function coin_list_move_to(from,to) {
+        let id_list = g_current_coin_list_for_op
+        let object_list = get_list_of_objects(from,id_list)
+        if ( object_list && object_list.length ) {
+            add_objects_to_list(to,object_list)
+            delete_objects_from_list(from,id_list)
+        }
+    }
+
+    function coin_list_copy_to(from,to) {
+        let id_list = g_current_coin_list_for_op
+        let object_list = get_list_of_objects(from,id_list)
+        if ( object_list && object_list.length ) {
+            add_objects_to_list(to,object_list)
+        }
+    }
+
+    function coin_list_delete(from) {
+        let id_list = g_current_coin_list_for_op
+        if ( id_list && id_list.length ) {
+            delete_objects_from_list(from,id_list)
+        }
+    }
+
+
+
+    function increment_coin_save_count() {
+        if ( g_current_edit_coin ) {
+            g_current_edit_coin._count_edits++
+            g_current_edit_coin.dirty = false
+        }
+    }
+
+    function tx_edit_mode_reset(event) {
+        if ( g_current_edit_coin && g_current_edit_coin.dirty ) {
+            let revert_coin = g_current_edit_coin
+            let previous_values = revert_coin._saved_updates.shift()  // this is the last saved version, does not undo more{
+            if ( previous_values ) {
+                reload_coin_by_undo(revert_coin,previous_values)
+                sort_one_or_more('drafts')
+            }
+        } else if ( g_current_edit_coin && (g_current_edit_coin._count_edits === 0) ) {
+            let save_checked_coins = g_current_coin_list_for_op
+            g_current_coin_list_for_op = [g_current_edit_coin.id]
+            coin_list_delete('drafts')
+        }
+    }
+
+    function edit_tx_save(event) {
+        increment_coin_save_count()
+        save_mail(g_current_edit_coin)
+    }
+
+    function void_current_edit_coin() {
+        g_current_edit_coin = false
+    }
+
+
+    function disable_ok_button() {
+        let ok_btn = document.getElementById("coin-ops-modal-ok")
+        if ( ok_btn ) {
+            ok_btn.disabled = true
+        }
+    }
+
+
+    function enable_ok_button() {
+        let ok_btn = document.getElementById("coin-ops-modal-ok")
+        if ( ok_btn ) {
+            ok_btn.disabled = false
+        }
+    }
+
+
+
+    function disable_selall_ok_button() {
+        let ok_btn = document.getElementById("sel-all-ops-modal-ok")
+        if ( ok_btn ) {
+            ok_btn.disabled = true
+        }
+    }
+
+
+    function enable_selall_ok_button() {
+        let ok_btn = document.getElementById("sel-all-ops-modal-ok")
+        if ( ok_btn ) {
+            ok_btn.disabled = false
+        }
+    }
+
+    function enable_ok_button_if_any_selected(mtype) {
+        let checkedBoxes = document.querySelectorAll(`.${mtype}_check_select:checked`);
+        if ( checkedBoxes.length > 0 ) {
+            enable_ok_button()
+        } else {
+            if ( g_current_edit_coin !== false ) {
+                if ( g_current_coin_list_for_op.length === 0 ) {
+                    g_current_coin_list_for_op.unshift(g_current_edit_coin.id)   
+                }
+                if ( g_current_coin_list_for_op[0] == g_current_edit_coin.id ) {
+                    enable_ok_button()
+                }
+            }
+        }
+    }
+
+
+    function disable_ok_button_if_no_selection(mtype) {
+        let checkedBoxes = document.querySelectorAll(`.${mtype}_check_select:checked`);
+        if ( checkedBoxes.length === 0 ) {
+            if ( g_current_edit_coin !== false ) {
+                if ( g_current_coin_list_for_op.length === 0 ) {
+                    g_current_coin_list_for_op.unshift(g_current_edit_coin.id)   
+                }
+                return
+            }
+            disable_ok_button()
+        } 
+    }
+
+
+    function prep_send_coin_list(from) {
+        if ( coin_op_message_el ) {
+            coin_op_message_el.innerText = "Send selected coins?"
+            coin_op_dialog._acceptance_action = () => {
+                if ( confirm("This decision if final. Proceed?") ) {
+                    send_coin_list(from)
+                }
+            }
+            enable_ok_button_if_any_selected(from)
+        }
+    }
+    function prep_coin_list_move_to(from,to) {
+        if ( coin_op_message_el ) {
+            coin_op_message_el.innerText = `Move these coins from ${from} to ${to}?`
+            coin_op_dialog._acceptance_action = () => {
+                coin_list_move_to(from,to)
+            }
+            enable_ok_button_if_any_selected(from)
+        }
+    }
+    function prep_coin_list_copy_to(from,to) {
+        if ( coin_op_message_el ) {
+            coin_op_message_el.innerText = `Clopy these coins from ${from} to ${to}?`
+            coin_op_dialog._acceptance_action = () => {
+                coin_list_copy_to(from,to)
+            }
+            enable_ok_button_if_any_selected(from)
+        }
+    }
+    function prep_coin_list_delete(from) {
+        if ( coin_op_message_el ) {
+            coin_op_message_el.innerText = `Permanently delete these coins?`
+            coin_op_dialog._acceptance_action = () => {
+                if ( confirm("This action cannot be undone. Proceed?") ) {
+                    coin_list_delete(from)
+                }
+            }
+            enable_ok_button_if_any_selected(from)
+        }
+    }
+
+
+
+    function prep_coin_list_reply_to(from) {
+        if ( coin_op_message_el ) {
+            coin_op_message_el.innerText = `Reply to these coins?`
+            coin_op_dialog._acceptance_action = () => {
+                reply_to_coins(from)
+            }
+            enable_ok_button_if_any_selected(from)
+        }
+    }
+
+    function prep_coin_list_reply_all(from) {
+        if ( coin_op_message_el ) {
+            coin_op_message_el.innerText = `Reply to all readers of these coins?`
+            coin_op_dialog._acceptance_action = () => {
+                reply_all_to_coins(from)
+            }
+            enable_ok_button_if_any_selected(from)
+        }
+    }
+
+
+    /**
+     * These functions setup the mail draft (like create draft, that will allow for editing followed by a send)
+     * 
+     * Server communication happens when these are send from drafts...
+     * OR when the draft is saved (checkpoint save)
+     * 
+     */
+    function reply_to_coins(from) {
+        enable_ok_button_if_any_selected(from)
+        setup_coin_reply_editing(from)
+    }
+
+    function reply_all_to_coins(from) {
+        enable_ok_button_if_any_selected(from)
+    }
+    
+
+    /**
+     */
+    function setup_coin_reply_editing(from) {
+
+    }
+    function setup_coin_reply_all_editing(from) {
+
+    }
+    
+
+    // contact edting ops
+    const contact_edit_mode_select_el = document.getElementById("contact_edit_mode_select")
+    const contact_edit_mode_cancel = document.getElementById("contact_edit_mode_cancel")
+    const contact_launch_compose_el = document.getElementById("contact_launch_compose")
+    const contact_remove_el = document.getElementById("contact_remove")
+    const contact_properties_view = document.getElementById("contact-properties-view")
+    const contact_properties_edit = document.getElementById("contact-properties-edit")
+
+
+    function contact_edit_mode_toggle(set_val) {
+        let start_edit = false
+        let launch_save = false
+        if ( typeof set_val !== "boolean" ) {
+            let ev = set_val // should be an event
+            let domel = ev.target
+            let state = domel.innerText
+            if ( state === "edit" ) {
+                domel.innerText = "save"    // next use will launch save 
+                if ( contact_edit_mode_cancel ) {
+                    contact_edit_mode_cancel.style.display = "inline-block"
+                }
+                start_edit = true
+            } else {
+                domel.innerText = "edit"
+                if ( contact_edit_mode_cancel ) {
+                    contact_edit_mode_cancel.style.display = "none"
+                }
+                start_edit = false
+                launch_save = true // shut down editing and update the contact record
+            }
+        } else {
+            if ( contact_edit_mode_select_el && contact_edit_mode_cancel ) {
+                if ( set_val ) {
+                    contact_edit_mode_select_el.innerText = "save"
+                    contact_edit_mode_cancel.style.display = "inline-block"
+                    start_edit = true
+                } else {
+                    contact_edit_mode_select_el.innerText = "edit"
+                    contact_edit_mode_cancel.style.display = "none"
+                    start_edit = false
+                }
+            }
+        }
+        if ( contact_properties_view && contact_properties_edit ) {
+            if ( start_edit ) {
+                contact_properties_edit.style.display = "grid"
+                contact_properties_view.style.display = "none"
+                store_current_contact_undo_stack()
+            } else {
+                contact_properties_edit.style.display = "none"
+                contact_properties_view.style.display = "grid"
+            }
+        }
+        if ( launch_save ) {
+            increment_contact_save_count()
+            // finalize a save that has been placed in the data
+            // clears the undo stack (this is a commit)
+        }
+    }
+    //
+
+    function increment_contact_save_count() {
+        if ( g_current_edit_contact ) {
+            g_current_edit_contact._count_edits++
+            g_current_edit_contact.dirty = false
+        }
+    }
+
+    function store_current_contact_undo_stack() {
+        if ( g_current_edit_contact ) {
+            const contact = g_current_edit_contact
+            let save_contact = unload_contact_for_undo(g_current_edit_contact)
+            contact._saved_updates.unshift(save_contact)
+        }
+    }
+
+    function restore_contact_values(revert_contact) {
+        let previous_values = revert_contact._saved_updates.shift()  // this is the last saved version, does not undo more{
+        if ( previous_values ) {
+            if ( revert_contact.dirty ) {
+                reload_contact_by_undo(revert_contact,previous_values)
+            }
+            sort_one_or_more('contacts')
+        }
+    }
+
+
+    // ---- ---- ---- ---- ---- ---- ---- ---- ----
+    
+    function contact_edit_mode_reset(event) {
+        contact_edit_mode_toggle(false)
+        //
+        if ( g_current_edit_contact ) {
+            if ( g_current_edit_contact._count_edits === 0 ) {    // , "_count_edits" : 0, "_saved_updates" : []
+                let del_contact = g_current_edit_contact
+                g_current_edit_contact = false
+                g_current_coin_list_for_op = g_current_contact_list_for_op = [del_contact.id]
+                coin_list_delete('contacts')
+            } else if ( g_current_edit_contact.dirty ) {
+                let revert_contact = g_current_edit_contact
+                g_current_edit_contact = false
+                restore_contact_values(revert_contact)
+            }
+            if ( event.target.className !== "closer_x" ) {
+                closefader(false,'contact_view')
+            }
+        }
+        //
+    }
+
+
+    function contact_launch_compose() {
+        tx_create()
+        if ( g_current_edit_contact && g_current_edit_coin ) {
+            g_current_edit_coin.recipient = g_current_edit_contact.coin
+            update_tx_properties_edit("drafts",g_current_edit_coin.id)
+        }
+    }
+
+    function remove_one_contact() {
+        if ( g_current_edit_contact ) {
+            if ( confirm("This action cannot be undone. Proceed?") ) {
+                delete_coins_from_list('contacts',[g_current_edit_contact.id])
+                remove_contact_from_server(g_current_edit_contact)
+            }
+        }
+    }
+
+
+    function prep_compose_for_contacts() {
+        if ( contact_op_message_el ) {
+            contact_op_message_el.innerText = `Compose a message for selected contacts?`
+            contact_op_dialog._acceptance_action = () => {
+                tx_create()
+                if ( g_current_edit_contact && g_current_edit_coin ) {
+                    g_current_edit_coin.recipient = g_current_edit_contact.coin
+                    update_tx_properties_edit("drafts",g_current_edit_coin.id)  // for opening the coin editor for the contact
+                }
+            }
+        }
+    }
+
+    // This makes a work queue that will present to user one contact edit at a time.
+    //
+    function prep_edit_contacts() {
+
+    }
+
+    function prep_contact_delete() {
+        if ( contact_op_message_el ) {
+            contact_op_message_el.innerText = `Permanently delete these contacts?`
+            contact_op_dialog._acceptance_action = () => {
+                if ( confirm("This action cannot be undone. Proceed?") ) {
+                    g_current_coin_list_for_op = g_current_contact_list_for_op
+                    coin_list_delete('contacts')
+                }
+            }
+        }
+    }
+
+
+    // attachments
+    // -------------------------------------------------
+
+    async function onFileSelected(e) {
+        if ( e.target.files.length ) {
+            attachment_drop_file_handler(e.target.files)
+        }
+    }
+
+    async function onFilesSelected(e) {
+        if ( e.target.files && e.target.files[0] ) {
+            let file_proper = e.target.files[0]            //
+            //let upload_size = file_proper.size
+            let [fname,blob] = await drop_one(e.target.files)
+            file_proper.blob = blob
+            // store as attachment
+            let att = new Attachment(get_next_id(),fname,file_proper)
+            add_atts_to_list('edit',[att])
+        }
+    }
+
+    function show_attachment(a_id) {
+        alert(`showing ${a_id}`)
+    }
+
+    function remove_attachment(a_id) {
+        delete_atts_from_list('edit',[a_id])
+    }
+
+
+
+    async function attachment_drop_file_handler(files) {
+        if ( files && files.length ) {
+            let files_blobs_tripples = await drop(files)
+
+            files_blobs_tripples.forEach(async file_tripple => {
+                let [fname,file_proper,blob] = file_tripple
+                file_proper.blob = blob
+                // store as attachment
+                let att = new Attachment(get_next_id(),fname,file_proper)
+                add_atts_to_list('edit',[att])
+            });
+        }
+    }
+
+
+    window._x_app_handle_files = attachment_drop_file_handler
+
+</script>
+<script>
+
+    class StylishConfirmModalOps {
+
+        constructor() {
+            this.style_confirm_modal = document.getElementById("style-confirm-modal")
+            this.stylish_confirm_ok_btn = document.getElementById("style-confirm-modal-ok")
+            this.stylish_blocking_div = document.getElementById("blocking-confirmation")
+            this.stylish_warn_div = document.getElementById("warn-confirmation")
+            this.stylish_confirm_blockers = document.getElementById("list-blocking-confirmation")
+            this.stylish_confirm_optional = document.getElementById("list-warn-confirmation")
+            this.setup_modal_confirmation_response()
+
+            this.dialog_promise = false
+            this.resolver = () => {}
+            this.rejector = () => {}
+        }
+
+        setup_modal_confirmation_response() {
+            const dialog = this.style_confirm_modal
+            if ( dialog ) {
+                dialog.addEventListener('close', () => {
+                    const action = dialog.returnValue;
+                    switch (action) {
+                        case "confirm" : {
+                            if ( this.dialog_promise  ) {
+                                this.resolver()
+                            }
+                            break;
+                        }
+                        case "cancel" : {
+                            if ( this.dialog_promise  ) {
+                                this.rejector()
+                            }
+                            break
+                        }
+                    }
+                });
+            }
+        }
+
+
+        async show_stylish_confirmation() {
+            if ( this.style_confirm_modal ) {
+                this.dialog_promise = new Promise((resolve,reject) => {
+                    this.resolver = () => { resolve(true) }
+                    this.rejector = () => { reject(false) } 
+                })
+                this.style_confirm_modal.showModal();
+                try {
+                    await this.dialog_promise
+                    return true
+                } catch(e) {
+                    return false
+                }
+            }
+            return false
+        }
+
+        async stylish_confirm(required_and_warn) {
+            if ( typeof required_and_warn === "object" ) {
+                this.stylish_confirm_ok_btn.disabled = true
+                this.stylish_blocking_div.style.display = "none"
+                this.stylish_warn_div.style.display = "none"
+                //
+                let blockers = []
+                let optionals = []
+                for ( let [field_name,is_blocking] of Object.entries(required_and_warn) ) {
+                    if ( is_blocking ) {
+                        blockers.push(field_name)
+                    } else {
+                        optionals.push(field_name)
+                    }
+                }
+                if ( blockers.length ) {
+                    this.stylish_blocking_div.style.display = "block"
+                }
+                if ( optionals.length ) {
+                    this.stylish_warn_div.style.display = "block"
+                }
+                if ( blockers.length === 0 ) {
+                    this.stylish_confirm_ok_btn.disabled = false
+                }
+                let blocker_list = ""
+                let warning_list = ""
+                for ( let blocker of blockers ) {
+                    blocker_list += `<div class="field-label">${blocker}</div><div class="field-value">empty</div>`
+                }
+                for ( let option of optionals ) {
+                    warning_list += `<div class="field-label">${option}</div><div class="field-value">empty</div>`
+                }
+                if ( blocker_list.length ) {
+                    this.stylish_confirm_blockers.innerHTML = blocker_list
+                }
+                if ( warning_list.length ) {
+                    this.stylish_confirm_optional.innerHTML = warning_list
+                }
+
+                return await this.show_stylish_confirmation()
+            }
+            return false
+        }
+
+
+    }
+
+
+    window.g_confirmation_modal = new StylishConfirmModalOps()
+
+    
+</script>
+<script>
+
+// https://github.com/omgovich/colord
+
+//let all_windows = {}
+
+const g_fader_interval = 50
+
+// ---->>>
+
+// === ---------------------------------------  === ---------------------------------------  === --------------------------------------- 
+// ANIMATION
+// -- -- -- -- -- -- -- -- -- -- -- -- -- 
+//
+
+var g_apparition = null;
+var g_current_pin = null;
+var g_fade_scheduled = null;
+var g_defade_scheduled = null;
+
+
+function hideFader(fdr) {
+	fdr.style.visibility = "hidden"
+    fdr.style.display = "none"
+	// fdr.style.zIndex = -10
+	stopDefade()
+	stopFade()
+	g_apparition = null;
+	g_current_pin = null;
+}
+
+function closefader(ev,whichFader) {
+    if (ev) ev.stopPropagation()
+	clear_pin_time()
+	let fdr = document.querySelector('#' + whichFader);
+	hideFader(fdr)
+}
+
+function closesolid(whichSolid) {
+	let sld = document.querySelector('#' + whichSolid);
+	sld.style.visibility = "hidden"
+	sld.style.display = "none";
+}
+// ---- ---- ---- ---- ---- ----
+
+let g_pin_time = false
+function newest_pin(pinned) {
+	g_pin_time = Date.now()
+	setTimeout(() => { g_pin_time = false }, 5500 )
+}
+
+function recent_pin(pinned) {
+	if ( g_pin_time === false ) {
+		return false
+	}
+	let check_time = Date.now()
+	if ( (check_time - g_pin_time)  > 5000 ) {
+		g_pin_time = false
+		return false
+	}
+	return true
+}
+
+function clear_pin_time() {
+	g_pin_time = false
+}
+
+
+function unpin_current(timeless) {
+	if ( g_current_pin && !timeless && recent_pin(g_current_pin) ) {
+		return false
+	}
+	if ( g_current_pin != null ) {
+        g_current_pin.style.visibility = "hidden";
+		g_current_pin.style.display = "none";
+//		g_current_pin.style.zIndex = -10
+	}
+	return true
+}
+function fade_apparition(btn,evt) {
+	if ( g_apparition !== null ) {
+		var fader = g_apparition;
+		//if ( evt ) console.log(fader.offsetWidth + "," + evt.clientX + "," + window.innerWidth)
+		if ( ( evt !== undefined )&& (fader.offsetWidth >= evt.clientX) ) {
+			return;
+		}
+		stopDefade()
+		g_defade_scheduled = setInterval(() => { lowerAlpha(fader); },g_fader_interval);
+	}
+}
+function stopDefade() {
+	if ( g_defade_scheduled != null ) {
+		clearInterval(g_defade_scheduled);
+	}
+}
+function stopFade() {
+	if ( g_fade_scheduled != null ) {
+		clearInterval(g_fade_scheduled);
+	}
+}
+function pin_ItsAlive(pinned) {
+	newest_pin(pinned)
+	if ( pinned && (typeof pinned.openAction === 'function')) {
+		pinned.openAction()
+	}
+	g_apparition = null;
+}
+// ---- ---- ---- ---- ---- ----
+function raiseAlpha(aGhost) {
+	if ( aGhost.style.opacity == 1.0 ) {
+		stopDefade()
+		pinBoxElem(aGhost)
+	} else {
+		aGhost.style.opacity = parseFloat(aGhost.style.opacity) + 0.025;
+	}
+}
+function lowerAlpha(aGhost) {
+	if ( aGhost.style.opacity <= 0.2 ) {
+		hideFader(aGhost)
+	} else {
+		aGhost.style.opacity = parseFloat(aGhost.style.opacity) - 0.1;
+	}
+}
+// ---- ---- ---- ---- ---- ----
+function replaceApparition(newGhost) {
+	if ( !unpin_current() ) {
+		return
+	}
+	if ( g_apparition !== null ) {
+		stopDefade()
+		stopFade()
+        g_apparition.style.display = "none"
+		g_apparition.style.visibility = "hidden";
+//		newGhost.style.zIndex = -10
+	}
+	if ( newGhost !== null ) {
+		newGhost.style.opacity = "0.0"
+        newGhost.style.display = "block"
+		newGhost.style.visibility = "visible"
+//		newGhost.style.zIndex = 200
+		g_apparition = newGhost
+		g_defade_scheduled = setInterval(() => { raiseAlpha(newGhost); },50);
+	}
+}
+
+// ---- ---- ---- ---- ---- ----
+function pinBoxElem(thisPin) {
+	clear_pin_time()
+	// if ( g_current_pin !== thisPin ) unpin_current();
+	g_current_pin = thisPin;
+	stopDefade()
+	thisPin.style.opacity = "0.0"
+    thisPin.style.display = "block"
+	thisPin.style.visibility = "visible"
+//	thisPin.style.zIndex = 200
+	//
+	thisPin.style.opacity = "1.0"
+	pin_ItsAlive(g_current_pin);
+}
+
+function pinBox(selector) {
+    // if ( selector in all_windows ) {
+    //     let woverview = all_windows[selector]
+    //     winbox.show()
+    //     winbox.focus()
+    //     return
+    // }
+	let thisPin = document.querySelector(selector);
+	pinBoxElem(thisPin)
+}
+
+// ---- ---- ---- ---- ---- ----
+function defadeBox(selector) {
+	replaceApparition(document.querySelector(selector));
+}
+
+
+
+let draggers = {}
+let current_dragger = false
+
+let dragger_z_map = {}
+function rotate_z_index(drag_Node) {
+    //
+    let zs = Object.keys(dragger_z_map)
+    let z = zs[zs.length-1]
+    let waz = parseInt(drag_Node.style.zIndex)
+    while ( waz < z ) {
+        let demoted = dragger_z_map[waz+1]
+        dragger_z_map[waz] = demoted
+        demoted.style.zIndex = waz
+        waz++
+    }
+    dragger_z_map[z] = drag_Node
+    drag_Node.style.zIndex = z
+    //
+}
+
+function manage_z_index(drag_bars) {
+
+    let minz = 10000
+
+    for ( let db of drag_bars ) {
+        let pnode = db.parentNode
+        let z = parseInt(pnode.style.zIndex)
+        if ( z < minz ) {
+            minz = z
+        }
+    }
+
+    let z = minz
+    for ( let db of drag_bars ) {
+        let pnode = db.parentNode
+        pnode.style.zIndex = z
+        dragger_z_map[z] = pnode
+        z++
+    }
+
+}
+
+
+function add_dragging() {
+
+    let drag_bars = document.getElementsByClassName("togglebar")
+    manage_z_index(drag_bars)
+    for ( let db of drag_bars ) {
+
+        let cname = db.parentNode.className
+        if ( cname.indexOf(' ') > 0 ) {
+            cname = cname.split(' ')[0]
+        }
+
+        if ( cname === 'solid_able' ) {
+            if ( db.parentNode.id === "intergalactic-explain" ) {
+                cname = "fade_able"
+            }
+        }
+
+        if ( ["fade_able","right_fade_able"].indexOf(cname) >= 0 ) {
+            let drag_Node = db.parentNode
+            draggers[drag_Node.id] = {
+                "offsetX" : 0,
+                "offsetY" : 0,
+                "isDragging" : false,
+                "dragged" : drag_Node,
+                "drag_control" : db
+            }
+
+            db.onmousedown = (e) => {
+                let drag_Node = e.target.parentNode;
+                if ( !draggers[drag_Node.id] ) return
+                rotate_z_index(drag_Node)
+                e.preventDefault()
+                draggers[drag_Node.id].isDragging = true;
+                // Calculate the offset between the mouse position and the div's top-left corner
+                draggers[drag_Node.id].offsetX = e.clientX - drag_Node.getBoundingClientRect().left;
+                draggers[drag_Node.id].offsetY = e.clientY - drag_Node.getBoundingClientRect().top;
+                db.style.cursor = 'grabbing';
+                current_dragger = drag_Node.id
+            }
+
+            db.onmouseup = (ev) => {
+                if ( current_dragger ) {
+                    let dragger_stats = draggers[current_dragger]
+                    let drag_bar = dragger_stats.drag_control
+                    drag_bar.style.cursor = 'move';
+                }
+            }
+        }
+    }
+
+    document.addEventListener('mousemove', (e) => {
+        if (!current_dragger) return;
+
+        if ( current_dragger ) {
+            let dragger_stats = draggers[current_dragger]
+            let drag_Node = dragger_stats.dragged
+            // Calculate new position based on mouse movement and offsetif 
+            if ( drag_Node ) {
+                let mouseX = e.clientX
+                let mouseY = e.clientY
+                //
+                let newX = mouseX - dragger_stats.offsetX;
+                let newY = mouseY - dragger_stats.offsetY;
+                //
+                if ( newX > 5 && newX < window.innerWidth ) {
+                    drag_Node.style.left = `${newX}px`;
+                }
+                //
+                let stopper = document.getElementsByTagName("footer")[0]
+                let stoRect = stopper ? stopper.getBoundingClientRect() : false
+                let maxY = stoRect ? stoRect.top : 500
+                //
+                if ( (newY > 5) && (newY < window.innerHeight) && (newY < maxY )) {
+                    drag_Node.style.top = `${newY}px`;
+                }
+            }
+        }
+
+    });
+
+    document.addEventListener('mouseup', () => {
+        if ( current_dragger ) {
+            let dragger_stats = draggers[current_dragger]
+            let drag_bar = dragger_stats.drag_control
+            drag_bar.style.cursor = 'move';
+        }
+        current_dragger = false
+    });
+
+}
+add_dragging()
+
+
+
+
+
+let resizers = {}
+let current_resizer = false
+
+function window_resize_event(e) {
+    if (!current_resizer) return;
+
+    if ( current_resizer ) {
+        let resizer_stats = resizers[current_resizer]
+        let pnode = resizer_stats.dragged
+        // Calculate new position based on mouse movement and offsetif 
+        if ( pnode ) {
+            const newX = e.clientX;
+            const newY = e.clientY;
+            //
+            let brect = pnode.getBoundingClientRect()
+            let resizer = resizer_stats.drag_control
+            let resize_rect = resizer.getBoundingClientRect()
+            let r_h_delta = resize_rect.width
+            let r_v_detla = resize_rect.height
+            let newW = newX - brect.left + r_h_delta/2
+            let newH = newY - brect.top + r_v_detla/2
+            //
+            if ( newW > 60 ) {
+                pnode.style.width = `${newW}px`;
+            }
+            if ( newH > 60 ) {
+                pnode.style.height = `${newH}px`;
+            }
+        }
+    }
+}
+
+
+function add_resizing() {
+    let sizer_bobs = document.getElementsByClassName("sizerbar")
+    for ( let sb of sizer_bobs ) {
+        let pnode = sb.parentNode
+
+        resizers[pnode.id] = {
+            "isDragging" : false,
+            "dragged" : pnode,
+            "drag_control" : sb
+        }
+
+        sb.onmousedown = (e) => {
+            let pnode = e.target.parentNode;
+            if ( !resizers[pnode.id] ) return
+            e.preventDefault()
+            resizers[pnode.id].isDragging = true;
+            current_resizer = pnode.id
+        }
+
+        sb.onmouseout = (e) => {
+            window_resize_event(e)
+        }
+  
+    }
+
+
+    document.addEventListener('mousemove', (e) => {
+        window_resize_event(e)
+    });
+
+
+    document.addEventListener('mouseup', () => {
+        current_resizer = false
+    });
+
+    window.addEventListener('mouseup',() => {
+        current_resizer = false
+    })
+
+}
+
+add_resizing() 
+
+
+
+
+// <div id="flow_display_button_ref">${dir_buttons}</div>
+// <div id="flow_display_below_button_ref" class="file-browsers">
+
+document.addEventListener('mousemove',(e) => {
+    if ( !current_resizer ) return
+    let ref_obj = document.getElementById("flow_display_button_ref")
+    let above_ref = document.getElementById("directory_section-breadcrumb")
+    let need_ref_obj = document.getElementById("flow_display_below_button_ref")
+    if ( above_ref && ref_obj && need_ref_obj ) {
+        let refrect = ref_obj.getBoundingClientRect()
+        let aboverect = above_ref.getBoundingClientRect()
+        need_ref_obj.style.top = `${(refrect.height + aboverect.height + 22)}px`
+    }
+})
+
+</script>
+<script>
+
+    // general client stuff...
+    // 
+    function drop_one(file) {
+        if ( !file ) {
+            throw new Error("drop-one: no file passed")
+        }
+        let p = new Promise((resolve,reject) => {
+            var reader = new FileReader();
+            let fname = file.name
+            reader.onload = (e) => {
+                let blob64 = e.target.result
+                resolve([fname,file,blob64])
+            };
+            reader.readAsDataURL(file)
+        })
+        return p
+    }
+
+    // 
+    function drop(files) {
+        //
+        let promises = [];
+        //
+        [...files].forEach(async file_proper => {
+            promises.push(drop_one(file_proper))
+        });
+        //
+    	return Promise.all(promises)
+    }
+
+
+</script>
+<script>
+
+function preventDefaults(e) {
+    e.preventDefault();
+    e.stopPropagation();
+}
+
+const dropZone = document.getElementById('edit-coin-attachments');
+
+// 1. Prevent default behaviors for all drag/drop events
+['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+    dropZone.addEventListener(eventName, preventDefaults, false);
+});
+
+// 3. Handle the drop event itself
+dropZone.addEventListener('drop', handleDrop, false);
+
+function handleDrop(e) {
+    // Access the dropped files via DataTransfer
+    const dt = e.dataTransfer;
+    const files = dt.files;
+
+    if (files.length > 0) {
+        window._x_app_handle_files(files);
+    }
+}
+
+</script>
+<script>
+// MODULE: POST FETCH (windowized)
+
+
+// $>> may include interface helpers for displaying success and error
+
+
+
+//$>>	fetchUrl
+// //
+// fetch with GET method
+/**
+ * 
+ * Assume the endpoint is a complete URL (URI)
+ * Each of the methods (helpers) pick a set of parameters useful for calls made the most often.
+ * 
+ * The server should return an object, and this will parse it as JSON
+ * 
+ * @param {string} endpoint 
+ * @returns {object|boolean}  - returns false on error otherwise an object delivered from the server.
+ */
+async function fetchUrl(endpoint) {
+	let myRequest = new Request(endpoint);
+	try {
+		const body = await fetch(myRequest, {
+									method: 'GET', // *GET, POST, PUT, DELETE, etc.
+									mode: 'cors', // no-cors, *cors, same-origin
+									cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+									credentials: 'omit', // include, *same-origin, omit
+									redirect: 'follow', // manual, *follow, error
+									referrerPolicy: 'no-referrer', // no-referrer, *client
+								});
+		//
+		let infoObj = await body.json();
+		return(infoObj)
+		//
+	} catch (e) {
+		console.log(e.message)
+		return(false)
+	}
+}
+
+
+
+
+//$>>	fetchEndPoint
+/**
+ * 
+ * Requests an object from the including page's host.
+ * This is a simple object file fetch.
+ * It expects the server to return a string that can be parsed as JSON, or else there will be an error.
+ * The end point string should be some part of the local host API.
+ * If the port is passed, will be used to identify the server on the 
+ * 
+ * This method constructs the full URL(URI)
+ * 
+ * fetch with GET method * 
+ * @param {string} endpoint 
+ * @param {string} port -- optionals
+ * @returns {object|boolean}
+ */
+async function fetchEndPoint(endpoint,port) {
+	port = !(port) ? '' : ( port.length ? `:${port}`   : '')
+	let myRequest = new Request(`${location.protocol}//${location.hostname}${port}/${endpoint}`);
+	try {
+		const body = await fetch(myRequest, {
+									method: 'GET', // *GET, POST, PUT, DELETE, etc.
+									mode: 'cors', // no-cors, *cors, same-origin
+									cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+									credentials: 'omit', // include, *same-origin, omit
+									redirect: 'follow', // manual, *follow, error
+									referrerPolicy: 'no-referrer', // no-referrer, *client
+								});
+		//
+		let infoObj = await body.json();
+		return(infoObj)
+		//
+	} catch (e) {
+		console.log(e.message)
+		return(false)
+	}
+}
+
+
+//$>>	fetchTextFile
+/**
+ * Requests a string from the including page's host.
+ * This is a simple text file fetch.
+ * It expects the server to return a string, or else there will be an error.
+ * The end point string should be some part of the local host API.
+ * If the port is passed, will be used to identify the server on the 
+ * 
+ * This method constructs the full URL(URI)
+ * 
+ * fetch with GET method
+ * 
+ * @param {string} endpoint 
+ * @param {string} port -- optional
+ * @returns {string}
+ */
+async function fetchTextFile(endpoint,port) {
+	port = !(port) ? '' : ( port.length ? `:${port}`   : '')
+	let myRequest = new Request(`${location.protocol}//${location.hostname}${port}/${endpoint}`);
+	try {
+		const body = await fetch(myRequest, {
+									method: 'GET', // *GET, POST, PUT, DELETE, etc.
+									mode: 'cors', // no-cors, *cors, same-origin
+									cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+									credentials: 'omit', // include, *same-origin, omit
+									redirect: 'follow', // manual, *follow, error
+									referrerPolicy: 'no-referrer', // no-referrer, *client
+								});
+		//
+		let html = await body.text();
+		return(html)
+		//
+	} catch (e) {
+		console.log(e.message)
+		return(false)
+	}
+}
+
+
+//$>>	postData
+/**
+ * 
+ * call fetch with method POST tyr to help with parameters..  If data is FromData set do_stringify to false
+ * default content type 'application/json'
+ * User 'cors', Default cres = omit, If ctype == 'multipart/form-data' be sure to use FormData -- lets fetch set content type.
+ * RETURNS: parsed JSON object or an empty object. ... Check for fields
+ * @param {string} url 
+ * @param {object} data 
+ * @param {string} creds - (optional)
+ * @param {boolean} do_stringify 
+ * @param {string} ctype - content type
+ * @returns {object}
+ */
+async function postData(url = '', data = {}, creds = 'omit', do_stringify = true, ctype) {
+	let content_type = 'application/json'
+	if ( ctype !== undefined ) {
+		content_type = ctype            // ctype is content type
+	}
+	let options = {
+		method: 'POST', // *GET, POST, PUT, DELETE, etc.
+		mode: 'cors', // no-cors, *cors, same-origin
+		cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+		credentials: creds, // include, *same-origin, omit
+		headers: {
+			'Content-Type': content_type
+		},
+		redirect: 'follow', // manual, *follow, error
+		referrerPolicy: 'no-referrer', // no-referrer, *client
+		body: (do_stringify ? JSON.stringify(data)  : data)	// body data type must match "Content-Type" header
+	}
+
+	if ( ctype === 'multipart/form-data') {
+		delete options.headers['Content-Type']  // content type will be set automatically with a boundary
+	}
+
+	// Default options are marked with *
+	const response = await fetch(url, options);
+	if ( response.ok == false ) {
+		console.log(response.status + ': ' + response.statusText)
+		return {}
+	} else {
+		return await response.json(); // parses JSON response into native JavaScript objects
+	}
+}
+
+
+
+//$>>	postDataWithRefer
+
+/**
+ * call fetch with method POST try to help with parameters..  If data is FromData set do_stringify to false
+ * default content type 'application/json'
+ * User 'cors', Default cres = omit, If ctype == 'multipart/form-data' be sure to use FormData -- lets fetch set content type.
+ * 
+ * @param {string} url 
+ * @param {object} data 
+ * @param {string} creds 
+ * @param {boolean} do_stringify 
+ * @param {string} ctype 
+ * @returns {object} - parsed JSON object or an empty object. ... Check for fields
+ */
+async function postDataWithRefer(url = '', data = {}, creds = 'omit', do_stringify = true, ctype) {
+	let content_type = 'application/json'
+	if ( ctype !== undefined ) {
+		content_type = ctype            // ctype is content type
+	}
+	let options = {
+		method: 'POST', // *GET, POST, PUT, DELETE, etc.
+		mode: 'cors', // no-cors, *cors, same-origin
+		cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+		credentials: creds, // include, *same-origin, omit
+		headers: {
+			'Content-Type': content_type
+		},
+		redirect: 'error', // manual, *follow, error
+		referrerPolicy: 'origin', // no-referrer, origin
+		body: (do_stringify ? JSON.stringify(data)  : data)	// body data type must match "Content-Type" header
+	}
+
+	if ( ctype === 'multipart/form-data') {
+		delete options.headers['Content-Type']  // content type will be set automatically with a boundary
+	}
+
+	// Default options are marked with *
+	const response = await fetch(url, options);
+	if ( response.ok == false ) {
+		console.log(response.status + ': ' + response.statusText)
+		return {}
+	} else {
+		return await response.json(); // parses JSON response into native JavaScript objects
+	}
+}
+
+
+//$>>	post_submit
+
+/**
+ * Takes in a list of names of form fields each having a "value" member.
+ * The list is used to contsuct a JSON object which will be the body of the request.
+ * 
+ * This method then calls postData with the url found in the field with id "post_url"
+ * 
+ * If visusl indicators have been programmed with respect to this method.
+ * If the `hide_interface_box` has been defined, then it will be called.
+ * Similarly, `show_box` for ids 'success-box' and 'error-box'
+ * 
+ * @param {Array} fields 
+ */
+async function post_submit(fields) {
+	if ( !(Array.isArray(fields)) ) return
+	let bdy = {}
+	fields.forEach(element => {
+		let fld = document.getElementById(element)
+		if ( fld ) {
+			bdy[element] = fld.value
+		}
+	});
+	let url = bdy.post_url
+	if ( url ) {
+		delete bdy.post_url
+		//
+		let resp = await postData(url, bdy)
+		//
+		if ( resp && typeof hide_interface_box === "function" ) hide_interface_box()
+		if ( resp && (resp.OK === 'true') ) {
+			if( typeof show_box === "function" ) show_box('success-box')
+		} else {
+			if( typeof show_box === "function" ) show_box('error-box')
+		}
+	}
+}
+
+
+
+//$>>	make_host_request
+
+/**
+ * 
+ * This method wraps postData for the one use case that object (JSON) returned 
+ * by the host has a field "OK", which may have string values "true"  or "false"
+ * 
+ * @param {string} endpoint 
+ * @param {object} data 
+ * @returns {object|boolean}
+ */
+async function make_host_request(endpoint,data) {
+	try {
+		let resp = await postData(endpoint, data ) //,'include')
+		if ( resp.OK === "true" ) {
+			return resp.data
+		} else {
+			return false
+		}
+	} catch (e) {
+		return false
+	}
+}
+
+
+
+
+//$$EXPORTABLE::
+/*
+fetchEndPoint
+fetchTextFile
+fetchUrl
+postData
+post_submit
+*/
+
+</script>
+<script>
+
+    async function hash_of(string) {
+        let buf = new TextEncoder()
+        string = buf.encode(string)
+        let hash = await window.crypto.subtle.digest('SHA-256',string)
+        return new Uint8Array(hash).toBase64()
+    }
+
+    function gen_json_id(tx_ob) {
+        if ( tx_obj ) {
+            return 10
+        } else {
+            let current_user_name = window._current_user_account.name
+            return hash_of(current_user_name + Date.now())
+        }
+    }
+
+    class MailJsonRpc {
+        constructor(mtype,method,params) {
+            this.id = 10 // get a good method for this id
+            let user = window._current_user_account.name
+            this.params = {
+                "tx_type" : mtype,
+                "user" : user,
+                "params" : params,
+                "date" : Date.now()
+            }
+            this.method = method
+            this.jsonrpc = '2.0'
+        }
+    }
+
+    window._current_user_account = {
+        "name" : "testing",
+        "password" : "testing"
+    }
+
+    let web_page_port = 9989
+    let wss_app_port = 9990
+
+
+    //
+    // let tx_proto = { "id" : 1, "sender" : "richard@myhost.local", "subject" : "", "date" : date.toLocaleString(), "timestamp" : date.getTime(),
+    //                     "recipient" : "",
+    //                     "cc" : "", "bcc" : "",
+    //                     "text" : "edit this message", "_count_edits" : 0, "_saved_updates" : []  }
+
+    // TALK TO THE SERVER
+    async function load_a_bunch_of_coins(mtype) {
+        let data = new MailJsonRpc(mtype,"get-mail")
+
+        let port = web_page_port
+        let url = `http://localhost:${port}/json/coin`
+        let rpc_result = await postData(url, data)
+        if ( rpc_result && (rpc_result.error === undefined) ) {
+            console.log(rpc_result)
+            if ( rpc_result.result === undefined ) return []
+            return rpc_result.result
+        }
+        return []
+    }
+
+    async function load_a_bunch_of_contacts() {
+        let data = new MailJsonRpc('contacts',"get-contacts")
+
+        let port = web_page_port
+        let url = `http://localhost:${port}/json/coin`
+        let rpc_result = await postData(url, data)
+        if ( rpc_result && (rpc_result.error === undefined) ) {
+            console.log(rpc_result)
+            if ( rpc_result.result === undefined ) return []
+            return rpc_result.result
+        }
+        return []
+    }
+
+    // * add_objects_to_list
+    // * delete_objects_from_list
+    // * remove_one_contact
+    // * send_coins
+    // * save_mail -- to drafts
+    // * save_contact
+
+    /* 
+    "get-mail"
+    "store-mail"
+    "remove-mail"
+    "send-mail"
+    "store-draft"
+    "get-contacts"
+    "store-contact"
+    "remove-contact"
+    */
+
+    /**
+     */
+    async function add_coins_to_server(to,object_list) {
+        // server communication
+        let data = new MailJsonRpc(to,"store-mail",object_list)
+        //
+        let port = web_page_port
+        let url = `http://localhost:${port}/json/coin`
+        let rpc_result = await postData(url, data)
+        if ( rpc_result && (rpc_result.error === undefined) ) {
+            console.log(rpc_result)
+            return true
+        }
+        return false
+    }
+
+    /**
+     */
+    async function delete_coins_from_server(from,id_list) {
+        // server communication
+        let data = new MailJsonRpc(from,"remove-mail",id_list)
+        //
+        let port = web_page_port
+        let url = `http://localhost:${port}/json/coin`
+        let rpc_result = await postData(url, data)
+        if ( rpc_result && (rpc_result.error === undefined) ) {
+            console.log(rpc_result)
+            return true
+        }
+        return false
+    }
+
+
+    /**
+     */
+    async function send_coins(object_list) {
+        // server communication
+        let data = new MailJsonRpc("sent","send-mail",object_list)
+
+        let port = web_page_port
+        let url = `http://localhost:${port}/json/coin`
+        let rpc_result = await postData(url, data)
+        if ( rpc_result && (rpc_result.error === undefined) ) {
+            return true
+        }
+        return false
+    }
+
+    /**
+     */
+    async function save_mail(coin_obj) {
+        // server communicate
+        let data = new MailJsonRpc("drafts","store-draft",coin_obj)
+
+        let port = web_page_port
+        let url = `http://localhost:${port}/json/coin`
+        let rpc_result = await postData(url, data)
+        if ( rpc_result && (rpc_result.error === undefined) ) {
+            return true
+        }
+        return false
+    }
+
+
+    /**
+     */
+    async function remove_contact_from_server(a_contact) {
+        // server communication
+        let data = new MailJsonRpc("contacts","remove-contact",a_contact)
+
+        let port = web_page_port
+        let url = `http://localhost:${port}/json/coin`
+        let rpc_result = await postData(url, data)
+        if ( rpc_result && (rpc_result.error === undefined) ) {
+            return true
+        }
+        return false
+    }
+    
+    /**
+     */
+    async function save_contact(edited_contact) {
+        // server communication
+        let data = new MailJsonRpc("contacts","store-contact",edited_contact)
+
+        let port = web_page_port
+        let url = `http://localhost:${port}/json/coin`
+        let rpc_result = await postData(url, data)
+        if ( rpc_result && (rpc_result.error === undefined) ) {
+            return true
+        }
+        return false
+    }
+
+</script>
+<script>
+//
+let ws_url = `http://localhost:${wss_app_port}`
+let g_ws_controller = null
+
+class WsSocketController {
+    constructor(url) {
+        this.url = url
+        this.socket = new WebSocket(url);
+
+        // Connection successfully opened
+        let sock = this.socket
+        this.socket.onopen = (event) => {
+            if ( sock ) {
+                let sid = true // an actual id from the server so that it can know itself
+                let message = {
+                    "type" : "mail-ops",
+                    "message" : {
+                        "op" : "initial-messages",
+                        "server_id" : sid,
+                        "concern" : "copious",
+                        "data" : {
+                            "user_name" : window._current_user_account.name
+                        }
+                    }
+                }
+                let msg_as_str = JSON.stringify(message)
+                sock.send(msg_as_str)
+            }
+            // statusSpan.textContent = 'Connected';
+            // statusSpan.style.color = 'green';
+        };
+
+        // Listen for incoming messages from server
+        this.socket.onmessage = (event) => {
+            let msg = JSON.parse(event.data)
+            let data = msg.data
+            // 
+            if ( data.op ) {
+                switch ( data.op ) {
+                    case "initial-messages":
+                    case "all-updates" : {
+                        let message_map = data.data
+                        if ( window.add_coins_to_list === undefined ) {
+                            setTimeout(() => {
+                                if ( typeof message_map === "object" ) {
+                                    for ( let [ky,mlist] of Object.entries(message_map) ) {
+                                        window.add_coins_to_list(ky,mlist)
+                                    }
+                                }                                
+                            },100)
+                        } else {
+                            if ( typeof message_map === "object" ) {
+                                for ( let [ky,mlist] of Object.entries(message_map) ) {
+                                    window.add_coins_to_list(ky,mlist)
+                                }
+                            }
+                        }
+                        break
+                    }
+                    case "coins" : {
+                        break;
+                    }
+                    case "contacts" : {
+                        break;
+                    }
+                    case "nofify" : {
+                        break;
+                    }
+                    case "no-delivery" : {
+                        break;
+                    }
+                    case "proc-status": {
+                        console.log(data.data)
+                        break
+                    }
+                }
+            }
+        };
+
+        // Connection closed
+        this.socket.onclose = (event) => {
+            // statusSpan.textContent = 'Disconnected';
+            // statusSpan.style.color = 'red';
+            this.socket = null;
+        };
+
+        // Handle errors
+        this.socket.onerror = (error) => {
+            console.log(error)
+        };
+
+
+        window.addEventListener('close',() => {
+            this.socket.close();
+        })
+    }
+
+    // Send Message to Server
+    sendMessage(text) {
+        if (text && socket && (socket.readyState === WebSocket.OPEN )) {
+            this.socket.send(text);
+        }
+    }
+
+
+    sendObject(obj) {
+        let text = JSON.stringify(obj)
+        this.sendMessage(text)
+    }
+
+}
+
+g_ws_controller = new WsSocketController(ws_url)
+
+
+</script>
+<script>
+    window.onload = () => {
+        // initializers ----
+        setup_coin_ops_dialog()
+        setup_contacts_ops_dialog()
+        setup_search_ops_dialog()
+        setup_edit_response()
+        setup_select_all_ops_dialog()
+        setup_checkbox_pattern_tracking()
+
+        add_coins_types()
+    }
+</script>

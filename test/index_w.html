@@ -364,7 +364,7 @@
 	.drafts_check_select {
 		border:solid 1px rgba(255, 0, 0, 0.438);
 	}
-	.published_check_select {
+	.sent_check_select {
 		border:solid 1px rgba(255, 0, 0, 0.438);
 	}
 	.trash_check_select {
@@ -427,28 +427,28 @@
         background-color: #f7fddcff;
     }
 
-    /* published list */
-    .entrys-entry-published {
+    /* sent list */
+    .entrys-entry-sent {
         background-color: white;
     }
-    .entrys-entry-published tr:hover td, tr:hover th {
+    .entrys-entry-sent tr:hover td, tr:hover th {
         background-color: #e0e0e0;
     }
-    .entrys-entry-published > thead  th { 
+    .entrys-entry-sent > thead  th { 
         background-color: #e6f0d4ff; 
     }
-    .published-checkbox-th { background-color: white; cursor: pointer; width: 5%;}
-    .published-subject-th { background-color: white; cursor: pointer; width: 33%; }
-    .published-date-th { background-color: white; cursor: pointer; width: 33%; }
+    .sent-checkbox-th { background-color: white; cursor: pointer; width: 5%;}
+    .sent-subject-th { background-color: white; cursor: pointer; width: 33%; }
+    .sent-date-th { background-color: white; cursor: pointer; width: 33%; }
     /* ----   */
-    .published-checkbox-cell { background-color: white; cursor: pointer; width: 5%; }
-    .published-subject-cell { background-color: white; cursor: pointer; width: 33%; padding-left: 4%; }
-    .published-date-cell { background-color: white; cursor: pointer; width: 33%; padding-left: 4%; }
+    .sent-checkbox-cell { background-color: white; cursor: pointer; width: 5%; }
+    .sent-subject-cell { background-color: white; cursor: pointer; width: 33%; padding-left: 4%; }
+    .sent-date-cell { background-color: white; cursor: pointer; width: 33%; padding-left: 4%; }
 
-    .entrys-entry-published th > button {
+    .entrys-entry-sent th > button {
         color: navy;
     }
-    .entrys-entry-published th > button:hover {
+    .entrys-entry-sent th > button:hover {
         color: green;
         background-color: #f7fddcff;
     }
@@ -475,6 +475,136 @@
         color: navy;
     }
     .entrys-entry-trash th > button:hover {
+        color: green;
+        background-color: #f7fddcff;
+    }
+
+    /* coins list */
+    .entrys-entry-coins {
+        background-color: white;
+    }
+    .entrys-entry-coins tr:hover td, tr:hover th {
+        background-color: #e0e0e0;
+    }
+    .entrys-entry-coins > thead  th { 
+        background-color: #e6f0d4ff; 
+    }
+    .coins-checkbox-th { background-color: white; cursor: pointer; width: 5%;}
+    .coins-subject-th { background-color: white; cursor: pointer; width: 33%; }
+    .coins-date-th { background-color: white; cursor: pointer; width: 33%; }
+    /* ----   */
+    .coins-checkbox-cell { background-color: white; cursor: pointer; width: 5%; }
+    .coins-subject-cell { background-color: white; cursor: pointer; width: 33%; padding-left: 4%; }
+    .coins-date-cell { background-color: white; cursor: pointer; width: 33%; padding-left: 4%; }
+
+    .entrys-entry-coins th > button {
+        color: navy;
+    }
+    .entrys-entry-coins th > button:hover {
+        color: green;
+        background-color: #f7fddcff;
+    }
+
+    /* tokens list */
+    .entrys-entry-tokens {
+        background-color: white;
+    }
+    .entrys-entry-tokens tr:hover td, tr:hover th {
+        background-color: #e0e0e0;
+    }
+    .entrys-entry-tokens > thead  th { 
+        background-color: #e6f0d4ff; 
+    }
+    .tokens-checkbox-th { background-color: white; cursor: pointer; width: 5%;}
+    .tokens-subject-th { background-color: white; cursor: pointer; width: 33%; }
+    .tokens-date-th { background-color: white; cursor: pointer; width: 33%; }
+    /* ----   */
+    .tokens-checkbox-cell { background-color: white; cursor: pointer; width: 5%; }
+    .tokens-subject-cell { background-color: white; cursor: pointer; width: 33%; padding-left: 4%; }
+    .tokens-date-cell { background-color: white; cursor: pointer; width: 33%; padding-left: 4%; }
+
+    .entrys-entry-tokens th > button {
+        color: navy;
+    }
+    .entrys-entry-tokens th > button:hover {
+        color: green;
+        background-color: #f7fddcff;
+    }
+
+    /* bitcoin list */
+    .entrys-entry-bitcoin {
+        background-color: white;
+    }
+    .entrys-entry-bitcoin tr:hover td, tr:hover th {
+        background-color: #e0e0e0;
+    }
+    .entrys-entry-bitcoin > thead  th { 
+        background-color: #e6f0d4ff; 
+    }
+    .bitcoin-checkbox-th { background-color: white; cursor: pointer; width: 5%;}
+    .bitcoin-subject-th { background-color: white; cursor: pointer; width: 33%; }
+    .bitcoin-date-th { background-color: white; cursor: pointer; width: 33%; }
+    /* ----   */
+    .bitcoin-checkbox-cell { background-color: white; cursor: pointer; width: 5%; }
+    .bitcoin-subject-cell { background-color: white; cursor: pointer; width: 33%; padding-left: 4%; }
+    .bitcoin-date-cell { background-color: white; cursor: pointer; width: 33%; padding-left: 4%; }
+
+    .entrys-entry-bitcoin th > button {
+        color: navy;
+    }
+    .entrys-entry-bitcoin th > button:hover {
+        color: green;
+        background-color: #f7fddcff;
+    }
+
+    /* eth list */
+    .entrys-entry-eth {
+        background-color: white;
+    }
+    .entrys-entry-eth tr:hover td, tr:hover th {
+        background-color: #e0e0e0;
+    }
+    .entrys-entry-eth > thead  th { 
+        background-color: #e6f0d4ff; 
+    }
+    .eth-checkbox-th { background-color: white; cursor: pointer; width: 5%;}
+    .eth-subject-th { background-color: white; cursor: pointer; width: 33%; }
+    .eth-date-th { background-color: white; cursor: pointer; width: 33%; }
+    /* ----   */
+    .eth-checkbox-cell { background-color: white; cursor: pointer; width: 5%; }
+    .eth-subject-cell { background-color: white; cursor: pointer; width: 33%; padding-left: 4%; }
+    .eth-date-cell { background-color: white; cursor: pointer; width: 33%; padding-left: 4%; }
+
+    .entrys-entry-eth th > button {
+        color: navy;
+    }
+    .entrys-entry-eth th > button:hover {
+        color: green;
+        background-color: #f7fddcff;
+    }
+
+    /* solano list */
+    .entrys-entry-solano {
+        background-color: white;
+    }
+    .entrys-entry-solano tr:hover td, tr:hover th {
+        background-color: #e0e0e0;
+    }
+    .entrys-entry-solano > thead  th { 
+        background-color: #e6f0d4ff; 
+    }
+    .solano-checkbox-th { background-color: white; cursor: pointer; width: 5%;}
+    .solano-subject-th { background-color: white; cursor: pointer; width: 33%; }
+    .solano-date-th { background-color: white; cursor: pointer; width: 33%; }
+    /* ----   */
+    .solano-checkbox-cell { background-color: white; cursor: pointer; width: 5%; }
+    .solano-subject-cell { background-color: white; cursor: pointer; width: 33%; padding-left: 4%; }
+    .solano-date-cell { background-color: white; cursor: pointer; width: 33%; padding-left: 4%; }
+
+    .entrys-entry-solano th > button {
+        color: navy;
+    }
+    .entrys-entry-solano th > button:hover {
         color: green;
         background-color: #f7fddcff;
     }
@@ -1104,19 +1234,19 @@ span {
     
 	import transactions_template from "./tpl_w/partial/transactions_list.js";
 	import drafts_template from "./tpl_w/partial/drafts_list.js";
-	import published_template from "./tpl_w/partial/published_list.js";
+	import sent_template from "./tpl_w/partial/sent_list.js";
 	import trash_template from "./tpl_w/partial/trash_list.js";
     //
-    import attachment_view_template from "./tpl_r/partial/attachment_view.js"
-    import attachment_edit_template from "./tpl_r/partial/attachment_edit.js"
+    import attachment_view_template from "./tpl_w/partial/attachment_view.js"
+    import attachment_edit_template from "./tpl_w/partial/attachment_edit.js"
     //
-    import tab_controller from "./tpl_r/partial/selected_entries_tab.js"  // tabs in the view
-    import edit_properties from "./tpl_r/partial/edit_properties.js"  // tabs in the view
+    import tab_controller from "./tpl_w/partial/selected_entries_tab.js"  // tabs in the view
+    import edit_properties from "./tpl_w/partial/edit_properties.js"  // tabs in the view
 
     let entrys_entry_imports = { 
 		"transactions" : transactions_template,
 		"drafts" : drafts_template,
-		"published" : published_template,
+		"sent" : sent_template,
 		"trash" : trash_template
     }
 
@@ -1125,9 +1255,9 @@ span {
         'edit' : attachment_edit_template
     }
 
-    //  ["transactions","drafts","published","trash"]
+    //  ["transactions","drafts","sent","trash"]
     //
-    let entrys_entry_classes = ["transactions","drafts","published","trash"]
+    let entrys_entry_classes = ["transactions","drafts","sent","trash"]
     let entrys_entry_management = {}
 
     for ( let mtype of entrys_entry_classes ) {
@@ -1182,7 +1312,7 @@ span {
     }
 
     window._x_share_entrys_entry_managers = entrys_entry_management
-    window._x_share_entrys_entry_classes = ["transactions","drafts","published","trash"]
+    window._x_share_entrys_entry_classes = ["transactions","drafts","sent","trash"]
 
     window._x_share_attachment_managers = attachment_management
     window._x_share_attachment_classes = ['view','edit']
@@ -1193,7 +1323,7 @@ span {
     const entrys_types_to_titles = {
     "transactions": "<i>Copious World</i> <b>Wallet</b>",
     "drafts": "<b>Drafts</b>",
-    "published": "<b>Published</b>",
+    "sent": "<b>Sent</b>",
     "trash": "<b>Trash</b>"
 }
 
@@ -1241,10 +1371,10 @@ span {
     <div class="sum-banner">
         <span id="section-category-title" style="color:black"><b>transactions</b> Copious World</span> 
     </div>
-    <div>
+    <!-- <div>
         <button onclick="add_transactions_el()">add entry</button>
         <button onclick="change_transactions_el()">change entry</button>
-    </div>
+    </div> -->
     </summary>
     <!-- MAIL MENU CONTROL -->
     <div class="nav-go-container" >
@@ -1275,15 +1405,15 @@ span {
 			<ul id="ul-received">
 
 				<div style="height:6px;background-color: rgba(156, 157, 165, 1);margin-bottom:6px">&nbsp;</div>
-<li><button onclick="entrys_entry_switch_to('coins')" >coins</button></li>
-<li><button onclick="entrys_entry_switch_to('tokens')" >tokens</button></li>
+<li><button onclick="entrys_entry_switch_to('transactions')" >coins</button></li>
+<li><button onclick="entrys_entry_switch_to('transactions')" >tokens</button></li>
 
 			</ul>
             <h4><button onclick="toggle_ul(event,'tx by coin')">tx by coin <span id="ardn-tx by coin" style="display:inline-block;color:darkgreen;">&#x25BC;</span><span id="arrt-tx by coin" style="display:none;color:darkgreen;">&#x25BA;</span></button></h4>
 			<ul id="ul-tx by coin">
-<li><button onclick="entrys_entry_switch_to('bitcoin')" >bitcoin</button></li>
-<li><button onclick="entrys_entry_switch_to('eth')" >eth</button></li>
-<li><button onclick="entrys_entry_switch_to('solano')" >solano</button></li>
+<li><button onclick="entrys_entry_switch_to('transactions')" >bitcoin</button></li>
+<li><button onclick="entrys_entry_switch_to('transactions')" >eth</button></li>
+<li><button onclick="entrys_entry_switch_to('transactions')" >solano</button></li>
 
 			</ul>
 
@@ -1559,16 +1689,16 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 
 
 
-    <div id="published-entries" style="display:none" >
+    <div id="sent-entries" style="display:none" >
         <div>
-            <table class="entrys-entry-published" style="width:100%" >
+            <table class="entrys-entry-sent" style="width:100%" >
                 <thead>
-                    <th class="published-checkbox-th"><button onclick="do_op_modal('published')">ops</button></th>
-                    <th class="published-subject-th">title</th>
-                    <th class="published-date-th">time</th>
+                    <th class="sent-checkbox-th"><button onclick="do_op_modal('sent')">ops</button></th>
+                    <th class="sent-subject-th">title</th>
+                    <th class="sent-date-th">time</th>
                 </thead>
             </table>
-            <table id="list-entities-published" class="entrys-entry-published" style="width:100%" >
+            <table id="list-entities-sent" class="entrys-entry-sent" style="width:100%" >
 
             </table>
         </div>
@@ -1586,6 +1716,91 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
                 </thead>
             </table>
             <table id="list-entities-trash" class="entrys-entry-trash" style="width:100%" >
+
+            </table>
+        </div>
+    </div>
+
+
+
+    <div id="coins-entries" style="display:none" >
+        <div>
+            <table class="entrys-entry-coins" style="width:100%" >
+                <thead>
+                    <th class="coins-checkbox-th"><button onclick="do_op_modal('coins')">ops</button></th>
+                    <th class="coins-subject-th">title</th>
+                    <th class="coins-date-th">time</th>
+                </thead>
+            </table>
+            <table id="list-entities-coins" class="entrys-entry-coins" style="width:100%" >
+
+            </table>
+        </div>
+    </div>
+
+
+
+    <div id="tokens-entries" style="display:none" >
+        <div>
+            <table class="entrys-entry-tokens" style="width:100%" >
+                <thead>
+                    <th class="tokens-checkbox-th"><button onclick="do_op_modal('tokens')">ops</button></th>
+                    <th class="tokens-subject-th">title</th>
+                    <th class="tokens-date-th">time</th>
+                </thead>
+            </table>
+            <table id="list-entities-tokens" class="entrys-entry-tokens" style="width:100%" >
+
+            </table>
+        </div>
+    </div>
+
+
+
+    <div id="bitcoin-entries" style="display:none" >
+        <div>
+            <table class="entrys-entry-bitcoin" style="width:100%" >
+                <thead>
+                    <th class="bitcoin-checkbox-th"><button onclick="do_op_modal('bitcoin')">ops</button></th>
+                    <th class="bitcoin-subject-th">title</th>
+                    <th class="bitcoin-date-th">time</th>
+                </thead>
+            </table>
+            <table id="list-entities-bitcoin" class="entrys-entry-bitcoin" style="width:100%" >
+
+            </table>
+        </div>
+    </div>
+
+
+
+    <div id="eth-entries" style="display:none" >
+        <div>
+            <table class="entrys-entry-eth" style="width:100%" >
+                <thead>
+                    <th class="eth-checkbox-th"><button onclick="do_op_modal('eth')">ops</button></th>
+                    <th class="eth-subject-th">title</th>
+                    <th class="eth-date-th">time</th>
+                </thead>
+            </table>
+            <table id="list-entities-eth" class="entrys-entry-eth" style="width:100%" >
+
+            </table>
+        </div>
+    </div>
+
+
+
+    <div id="solano-entries" style="display:none" >
+        <div>
+            <table class="entrys-entry-solano" style="width:100%" >
+                <thead>
+                    <th class="solano-checkbox-th"><button onclick="do_op_modal('solano')">ops</button></th>
+                    <th class="solano-subject-th">title</th>
+                    <th class="solano-date-th">time</th>
+                </thead>
+            </table>
+            <table id="list-entities-solano" class="entrys-entry-solano" style="width:100%" >
 
             </table>
         </div>
@@ -1943,10 +2158,10 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 		"category" : "cecks",
 		"title" : "much to do with tests",
 		"recipient" : "wallet",
-		"date" : "11/18/2026, 12:02:01 PM",
-		"timestamp" : 1795032121107,
-		"created_when" : "11/18/2026, 12:02:01 PM",
-		"updated_when" : "11/18/2026, 12:02:01 PM",
+		"date" : "11/18/2026, 3:33:14 PM",
+		"timestamp" : 1795044794190,
+		"created_when" : "11/18/2026, 3:33:14 PM",
+		"updated_when" : "11/18/2026, 3:33:14 PM",
 		"description" : "this is a test",
 		"score" : 1,
 		"keys" : "sensless,common,often",
@@ -1961,8 +2176,8 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 		"id" : 1,
 		"email" : "",
 		"name" : "",
-		"date" : "11/18/2026, 12:02:01 PM",
-		"timestamp" : 1795032121108,
+		"date" : "11/18/2026, 3:33:14 PM",
+		"timestamp" : 1795044794190,
 		"text" : "",
 		"_count_edits" : 0,
 		"_saved_updates" : []
@@ -3083,12 +3298,12 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
 
 
     //
-    function view_from_published(msg_id) {
+    function view_from_sent(msg_id) {
         let sect_box = `#entrys_entry_view`
         let msg_view = document.getElementById("entrys_entry_message_contents")
         if ( msg_view ) {
-            update_entrys_entry_properties_view("published",msg_id)
-            let clear_text = get_text_from_store("published",msg_id)
+            update_entrys_entry_properties_view("sent",msg_id)
+            let clear_text = get_text_from_store("sent",msg_id)
             msg_view.innerHTML = `picked message id = ${msg_id} <br> ${clear_text}`
         }
         pinBox(sect_box)
@@ -3102,6 +3317,71 @@ Retrieved 2026-09-09, License - CC BY-SA 4.0
         if ( msg_view ) {
             update_entrys_entry_properties_view("trash",msg_id)
             let clear_text = get_text_from_store("trash",msg_id)
+            msg_view.innerHTML = `picked message id = ${msg_id} <br> ${clear_text}`
+        }
+        pinBox(sect_box)
+    }
+
+
+    //
+    function view_from_coins(msg_id) {
+        let sect_box = `#entrys_entry_view`
+        let msg_view = document.getElementById("entrys_entry_message_contents")
+        if ( msg_view ) {
+            update_entrys_entry_properties_view("coins",msg_id)
+            let clear_text = get_text_from_store("coins",msg_id)
+            msg_view.innerHTML = `picked message id = ${msg_id} <br> ${clear_text}`
+        }
+        pinBox(sect_box)
+    }
+
+
+    //
+    function view_from_tokens(msg_id) {
+        let sect_box = `#entrys_entry_view`
+        let msg_view = document.getElementById("entrys_entry_message_contents")
+        if ( msg_view ) {
+            update_entrys_entry_properties_view("tokens",msg_id)
+            let clear_text = get_text_from_store("tokens",msg_id)
+            msg_view.innerHTML = `picked message id = ${msg_id} <br> ${clear_text}`
+        }
+        pinBox(sect_box)
+    }
+
+
+    //
+    function view_from_bitcoin(msg_id) {
+        let sect_box = `#entrys_entry_view`
+        let msg_view = document.getElementById("entrys_entry_message_contents")
+        if ( msg_view ) {
+            update_entrys_entry_properties_view("bitcoin",msg_id)
+            let clear_text = get_text_from_store("bitcoin",msg_id)
+            msg_view.innerHTML = `picked message id = ${msg_id} <br> ${clear_text}`
+        }
+        pinBox(sect_box)
+    }
+
+
+    //
+    function view_from_eth(msg_id) {
+        let sect_box = `#entrys_entry_view`
+        let msg_view = document.getElementById("entrys_entry_message_contents")
+        if ( msg_view ) {
+            update_entrys_entry_properties_view("eth",msg_id)
+            let clear_text = get_text_from_store("eth",msg_id)
+            msg_view.innerHTML = `picked message id = ${msg_id} <br> ${clear_text}`
+        }
+        pinBox(sect_box)
+    }
+
+
+    //
+    function view_from_solano(msg_id) {
+        let sect_box = `#entrys_entry_view`
+        let msg_view = document.getElementById("entrys_entry_message_contents")
+        if ( msg_view ) {
+            update_entrys_entry_properties_view("solano",msg_id)
+            let clear_text = get_text_from_store("solano",msg_id)
             msg_view.innerHTML = `picked message id = ${msg_id} <br> ${clear_text}`
         }
         pinBox(sect_box)
